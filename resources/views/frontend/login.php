@@ -16,25 +16,34 @@
         <!-- Footer Section -->
         <section id="footer">
             <footer class="top">
-            <div class="logo-desc">
+            <div class="logo-desc-soc">
                 <div class="logo">
-                    <img src="/team-project/public/assets/E-spresso_logo.jpg">
+                    <a href="/team-project/resources/views/frontend/index.php"><img src="/team-project/public/assets/E-spresso_logo.jpg"></a>
                 </div>
-                <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo, lectus at luctus cursus, erat lacus varius ex, et imperdiet odio nisi eu ex. Maecenas eu ex nulla.</p>
+                <p class="desc">At E-spresso, we’re passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a curated selection to satisfy every coffee lover’s taste. Whether you’re a seasoned coffee connoisseur or just beginning your journey, Our online store is your gateway to a world of rich flavors and aromatic delights.</p>
+                <div class="socials">
+                    <ul class="social-links">
+                        <i class='bx bxl-facebook-circle'></i>
+                        <i class='bx bxl-instagram-alt' ></i>
+                        <i class='bx bxl-linkedin-square' ></i>
+                        <i class='bx bxl-pinterest' ></i>
+                    </ul>
+                </div>
             </div>
             <div class="quick-links">
                 <h3>Quick Links</h3>
                 <ul class="links">
                     <li><a href="/team-project/resources/views/frontend/index.php">Home</a></li>
-                    <li><a href="/team-project/resources/views/frontend/products">Products</a></li>
-                    <li><a href="/team-project/resources/views/frontend/about-us">About Us </a></li>
-                    <li><a href="/team-project/resources/views/frontend/blog">Blog</a></li>
+                    <li><a href="/team-project/resources/views/frontend/products.php">Products</a></li>
+                    <li><a href="/team-project/resources/views/frontend/about-us.php">About Us </a></li>
+                    <li><a href="/team-project/resources/views/frontend/blog.php">Blog</a></li>
                 </ul>
             </div>
 
             <div class="information">
                 <h3>Information</h3>
                 <ul class="details">
+                    <li><a href="#">FAQ</a></li>
                     <li><a href="#">Terms & Conditions</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                 </ul>
@@ -55,14 +64,14 @@
                     </li>
                     <li>
                         <i class="bx bx-building"></i>
-                        <a>Aston University, Aston St, Birmingham B4 7ET</a>
+                        <a href="https://maps.app.goo.gl/acBvLWsSNhHqHQcG7">Aston University, Aston St, Birmingham B4 7ET</a>
                     </li>
                 </ul>
             </div>
             </footer>
             <footer class="bottom">
             <div class="footer">
-                <p>© E - spresso | All Rights Reserved</p>
+                <p>© E-SPRESSO | All Rights Reserved</p>
             </div>
             </footer>
         </section>
