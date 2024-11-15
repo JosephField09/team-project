@@ -1,3 +1,118 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Reset default margin, padding, and box-sizing for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+footer {
+    width: 100vw;
+    display: inline-flex;
+    align-items: baseline;
+  }
+
+#footer {
+    font-size: 13px;
+    font-family: Arial;
+    z-index: -1;
+    top: 50px;
+    width: 100vw;
+  }
+  
+  footer.top {
+    background-color: black;
+    height: fit-content;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    align-items: flex-start;
+    border-bottom: 1px grey solid;
+    padding: 4% 14.25%;
+  }
+  
+  .logo-desc {
+    display: grid;
+    grid-template-rows: 35% 65%;
+    height: 100%;
+    margin-right: 70px;
+  }
+  
+  .logo img {
+    max-width: 182px;
+    max-height: 57px;
+    transform: translateY(-13px);
+  }
+  
+  .desc p {
+    font-size: 25px;
+    margin-left: 20px;
+    margin-bottom: 0;
+  }
+  
+  .desc {
+    color: rgba(255, 255, 255,0.7);
+  }
+  
+  footer.top h3{
+    color: white;
+    font-size: 20px;
+  }
+  
+  footer.top .quick-links ul,
+  footer.top .information ul,
+  footer.top .contact-information ul {
+    list-style: none;
+    color: white;
+    margin-top: 30px;
+  }
+  
+  footer.top .quick-links ul li,
+  footer.top .information ul li, 
+  footer.top .contact-information ul li{
+    font-size: 12px;
+    margin-top: 12px;
+  }
+
+  footer.top .quick-links ul li a,
+  footer.top .information ul li a, 
+  footer.top .contact-information ul li a{
+    color: rgba(255, 255, 255,0.7);
+    text-decoration:none;
+  }
+  
+  footer.top .information ul li span {
+    color: white;
+  }
+  
+  footer.top .contact-information ul li:nth-child(2),
+  footer.top .contact-information ul li:nth-child(3),
+  footer.top .contact-information ul li:nth-child(4) {
+    display: flex;
+    margin-top: 5px;
+  }
+  
+  footer.top .contact-information li i {
+    color: #FECC42;
+    font-size: 20px;
+    margin-right: 10px;
+    transform: translateY(-4px);
+  }
+
+  footer.top .information li p {
+    color: white;
+  }
+  
+  footer.bottom {
+    padding: 20px;
+    background: black;
+    color: white;
+  }
+  
+  #footer .footer {
+    margin-left: auto;
+    margin-right: auto;
+  }

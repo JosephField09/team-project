@@ -7,8 +7,8 @@
     <title>Products</title>
     <link rel="icon" type="image/jpg" href="/team-project/public/assets/E-spresso_logo.jpg">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="resources/css/style.css" >
-    <script src="/resources/js/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="/team-project/resources/css/style.css" >
+    <script src="/team-project/resources/js/app.js"></script>
 </head>
 
 <body>
