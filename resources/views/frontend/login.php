@@ -13,6 +13,26 @@
 
 <body>
     <main>
+        <!-- Header Section -->
+        <section id="header">
+            <nav>
+                <div class="navbar-left">
+                    <a href="/team-project/resources/views/frontend/index.php"><img src="/team-project/public/assets/E-spresso_logo.jpg"></a>
+               </div>
+                <div class="navbar-middle">
+                    <a class="middle" href="/team-project/resources/views/frontend/index.php">Home</a>
+                    <a class="middle" href="/team-project/resources/views/frontend/products.php">Products</a>
+                    <a class="middle" href="/team-project/resources/views/frontend/about-us.php">About Us</a>
+                    <a class="middle" href="/team-project/resources/views/frontend/blog.php">Blog</a>
+                </div>
+                <div class="navbar-right">
+                    <a class="login" href="/mobile/">Login</a>
+                    <p>|</p>
+                    <a class="basket" href="/team-project/resources/views/frontend/basket.php"><i class='bx bx-basket'></i></a>
+                </div>
+            </nav>
+        </section>
+
         <!-- Footer Section -->
         <section id="footer">
             <footer class="top">

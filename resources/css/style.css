@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Storing reused colours as variables */
 :root {
   --primary-colour: rgb(0, 0, 0);
   --secondary-colour: rgb(254, 204, 66);
@@ -11,6 +12,7 @@
   --text-colour:rgba(255, 255, 255,0.7);
 }
 
+/* Importing font and saving as 'Lato' */
 @font-face {
   font-family:'Lato';
   src: url('/team-project/public/assets/Lato-Regular.ttf') format('truetype'); 
@@ -25,6 +27,94 @@
   font-family: Lato;
 }
 
+/* Styling for the whole navigation bar */
+nav {
+  background: black;
+  padding: 1.5% 14.25%;
+  display: flex;
+  position: sticky;
+  justify-content: space-between;
+  width: 100vw;
+  height: 70px;
+  z-index: 2001;
+  align-items: center;
+}
+
+/* Styling for left section of navigation bar */
+.navbar-left{
+  align-items: center;
+  display: grid;
+}
+
+/* Styling for navigation bar image */
+.navbar-left img{
+  max-width: 182px;
+  max-height: 46px;
+  scale: 1;
+  transform: translateY(4px);
+}
+
+/* Styling for navigation bar links */
+.navbar-middle a{
+  color: var(--text-colour);
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: 100;
+  position: relative;
+  padding: 0 20px;
+  border-radius: 5px;
+  transition: font-size 0.5s linear, color 0.5s linear;
+}
+
+/* Styling for navigation bar links when hovered over or selected */
+.navbar-middle a.option-selected,
+.navbar-middle a:hover{
+  color: var(--secondary-colour);
+  font-size: 15px;
+}
+
+/* Styling for right section of navigation bar */
+.navbar-right{
+  display: inline-flex;
+}
+
+
+/* Styling for login button */
+.navbar-right a.login {
+  font-size: 14px;
+  color: var(--primary-colour);
+  background: var(--secondary-colour);
+  text-decoration: none;
+  padding: 5px 22px;
+  border-radius: 4px;
+}
+
+/* Styling for login button when hovering over */
+.login:hover {
+  scale: 1.1;
+}
+
+/* Styling for paragraph text in right of navigation bar */
+.navbar-right p{
+  font-size: 20px;
+  margin-left: 18px;
+  margin-right: 18px;
+  color: var(--text-colour);
+}
+
+/* Styling for a tags in right of navigation bar */
+.navbar-right a {
+  font-size: 20px;
+  color: var(--text-colour);
+  align-self: center;
+}
+
+/* Styling for basket a tag when hovering */
+.navbar-right a.basket:hover {
+  color: white;
+  transition: 0.3s ease-in-out;
+}
+
 /* Styling for footer */
 footer {
   width: 100vw;
@@ -33,10 +123,10 @@ footer {
 
 /* Styling for whole footer section */
 #footer {
-    font-size: 13px;
-    z-index: -1;
-    top: 50px;
-    width: 100vw;
+  font-size: 13px;
+  z-index: -1;
+  top: 50px;
+  width: 100vw;
 }
   
 /* Styling for top footer section */
