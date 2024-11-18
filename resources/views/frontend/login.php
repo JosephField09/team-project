@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="icon" type="image/jpg" href="/team-project/public/assets/E-spresso_logo.jpg">
+    <link rel="icon" type="image/png" href="/team-project/public/assets/favicon.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="/team-project/resources/css/style.css" >
     <script src="/team-project/resources/js/app.js"></script>
@@ -31,6 +31,23 @@
                     <a class="basket" href="/team-project/resources/views/frontend/basket.php"><i class='bx bx-basket'></i></a>
                 </div>
             </nav>
+        </section>
+
+        <!-- Register form and php section -->
+        <section class="main">
+            <div class="form-box">
+            <h1>Login</h1>
+                <div class="form-inner">
+                    <form id="login" class="input-group" action="/team-project/resources/views/frontend/login.php" method="post">
+                        <input type="email" class="input-field" name="username" placeholder="Enter your email" required>
+                        <input type="password" class="input-field" name="password" placeholder="Enter your password" required><br>
+                        <p>Forgot your password? <a href="/team-project/resources/views/frontend/login.php">Reset here</a></p>
+                        <button type="submit" class="submit-btn" value="Login">Login</button>
+                        <input type="hidden" name="register" value="true"/>
+                    </form>
+                    <p>Don't have an account? <a href="/team-project/resources/views/frontend/register.php">Create one here</a></p>
+                </div>
+            </div>
         </section>
 
         <!-- Footer Section -->

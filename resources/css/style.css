@@ -34,7 +34,6 @@ nav {
   display: flex;
   position: sticky;
   justify-content: space-between;
-  width: 100vw;
   height: 70px;
   z-index: 2001;
   align-items: center;
@@ -115,9 +114,82 @@ nav {
   transition: 0.3s ease-in-out;
 }
 
+/* Styling for Main container */
+.main {
+  height: 70vh;
+  background-color: var(--light-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling for form box */
+.form-box {
+  width: 630px;
+  background: white;
+  padding: 20px 100px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.form-box h1{
+  color: var(--header-colour);
+  padding: 20px;
+  font-size: 30px;
+}
+
+/* Styling for inner form container */
+.form-inner {
+  padding: 10px ;
+}
+
+.form-row{
+  display: flex;
+}
+
+.input-field{
+  background-color: rgba(211, 211, 211,0.3);
+  padding: 10px;
+  width: 100%;
+  padding: 10px;
+  margin: 8px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.submit-btn{
+  width: 46%;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 35px;
+  border-radius: 4px;
+  background: var(--secondary-colour);
+  border: none;
+  margin: 10px;
+}
+
+.form-inner p,
+.form-inner a{
+  font-size: 13px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Styling for inner form container paragprah text */
+.form-inner p {
+  color: grey;
+}
+
+/* Styling for inner form container a tag */
+.form-inner a {
+  color: var(--secondary-colour);
+  text-decoration: none;
+}
+
 /* Styling for footer */
 footer {
-  width: 100vw;
   display: inline-flex;
 }
 
@@ -126,7 +198,6 @@ footer {
   font-size: 13px;
   z-index: -1;
   top: 50px;
-  width: 100vw;
 }
   
 /* Styling for top footer section */
@@ -182,38 +253,6 @@ footer.top::after {
 /* Styling for social link icons when hovering*/
 .social-links i:hover{
   color: var(--secondary-colour);
-}
-
-/* Styling for Main container */
-.main {
-  height: 80vh;
-  width: 100%;
-  background-color: var(--light-bg);
-  display: flex;
-  padding-left: 20%;
-  padding-right: 20%;
-  padding-top: 5%;
-  padding-bottom: 5%;
-}
-
-/* Styling for form box */
-.form-box {
-  width: 350px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #121212;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  color: white;
-}
-
-/* Styling for inner form container */
-#form-inner {
-  padding: 0px 10px 10px 10px ;
 }
 
 /* Styling for footer headers */
@@ -282,6 +321,7 @@ footer.bottom {
   padding: 20px;
   background: var(--primary-colour);
   color: white;
+  width: 100%;
 }
 
 /* Styling for footer center alignment */
