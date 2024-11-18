@@ -184,6 +184,38 @@ footer.top::after {
   color: var(--secondary-colour);
 }
 
+/* Styling for Main container */
+.main {
+  height: 80vh;
+  width: 100%;
+  background-color: var(--light-bg);
+  display: flex;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+/* Styling for form box */
+.form-box {
+  width: 350px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #121212;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  color: white;
+}
+
+/* Styling for inner form container */
+#form-inner {
+  padding: 0px 10px 10px 10px ;
+}
+
 /* Styling for footer headers */
 footer.top h3{
   color: white;

@@ -32,7 +32,77 @@
                 </div>
             </nav>
         </section>
-        
+
+        <!-- Register form and php section -->
+        <section class="main">
+            <div class="form-box">
+                <div class="form-inner">
+                    <form id="register" class="input-group" action="register.php" method="post">
+                        <input type="text" class="input-field" name="username" placeholder="Username" required>
+                        <input type="password" class="input-field" name="password" placeholder="Password" required><br>
+                        <input type="password" class="input-field" name="confirmpassword" placeholder="Confirm Password" required><br>
+                        <button type="submit" class="submit-btn" value="Register">Register</button>
+                        <input type="hidden" name="register" value="true"/>
+
+                        <!-- PHP code to check if the registration form has been submitted -->
+                        <?php 
+                            $registerSubmitted = isset($_POST['register']);
+                        ?>
+
+                        <?php if ($registerSubmitted): ?>
+                            <?php if (isset($_POST['register'])): // Form Validation: Check if the register form has been submitted?>
+                                <?php
+                                // Connect to the database
+                                require_once('connectdb.php');
+                                
+                                // Prepare the form input
+                                $username = isset($_POST['username']) ? $_POST['username'] : false;
+                                $password = isset($_POST['password']) ? $_POST['password'] : false;
+                                $confirmpassword = isset($_POST['confirmpassword']) ? $_POST['confirmpassword'] : false;
+
+                                // Check if username already exists
+                                $stmt = $db->prepare("SELECT * FROM users WHERE username = ?");
+                                $stmt->execute([$username]);
+                                
+                                // Form Validation: check all fields have bene inputed
+                                if (!$username || !$password ||!$confirmpassword) {
+                                    echo "Please fill in all the fields.";
+                                }
+                                // Authorisation and form validation: Check if the username already exists in the database
+                                else if ($stmt->rowCount() > 0) {
+                                    $confirmpassword = '';
+                                    echo "<p style='color:red; transform:translateY(-10px);'>Username already exists </p>";
+                                }
+                                else {
+                                    // Form Validation: Check if passwords do not match
+                                    if ($password !== $confirmpassword) {
+                                        echo "<p style='color:red; transform:translateY(-10px);'>Passwords do not match </p>";	
+                                    }else{
+                                        try {
+                                            // Authentication and Authorisation: Hash the password and register the user by inserting their info into the users table
+                                            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                                            
+                                            // Register user by inserting the user info into the users table
+                                            $stmt = $db->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+                                            $stmt->execute([$username, $hashedPassword]);
+                                            
+                                            // Check if the registration was successful before switching to login tab
+                                            if ($stmt->rowCount() > 0) {
+                                                echo "<script>window.onload = function() { setSuccess(); }</script>";
+                                            } 
+                                        } catch (PDOException $ex) {
+                                            echo "Sorry, a database error occurred! <br>";
+                                            echo "Error details: <em>" . $ex->getMessage() . "</em>";
+                                        }
+                                    }
+                                }
+                                ?>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </form>
+                </div>
+            </div>
+        </section>
         <!-- Footer Section -->
         <section id="footer">
             <footer class="top">
