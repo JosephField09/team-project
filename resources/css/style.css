@@ -351,20 +351,20 @@ footer.bottom {
 #ImageBlocks {
   display: flex;
   flex-direction: column;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 14.25%;
+  padding-right: 14.25%;
   padding-top: 5%;
   padding-bottom: 5%;
   background-color: var(--light-bg);
 }
 
-/* Stylinf for the images on about us*/
+/* Styling for the images on about us*/
 #ImageBlocks img{
   border-radius: 15px;
   margin: 3%;
 }
 
-/* Stylinf for text on about us */
+/* Styling for text on about us */
 .aboutustext{
   h1{
     font-size: 40px;
@@ -373,7 +373,7 @@ footer.bottom {
   flex-direction: column
 }
 
-/* Stylinf for our story on about us*/
+/* Styling for our story on about us*/
 .ourstory{
   p{
     padding-top: 10px;
@@ -400,7 +400,7 @@ footer.bottom {
   }
 }
 
-/* Stylinf for the promises on about us*/
+/* Styling for the promises on about us*/
 .promise{
   display: flex;
   flex-direction: row;
