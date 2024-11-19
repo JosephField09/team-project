@@ -34,7 +34,6 @@ nav {
   display: flex;
   position: sticky;
   justify-content: space-between;
-  width: 100vw;
   height: 70px;
   z-index: 2001;
   align-items: center;
@@ -115,9 +114,87 @@ nav {
   transition: 0.3s ease-in-out;
 }
 
+/* Styling for Main container */
+.main {
+  height: 70vh;
+  background-color: var(--light-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling for form box */
+.form-box {
+  width: 630px;
+  background: white;
+  padding: 20px 100px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+/* Styling for form box header */
+.form-box h1{
+  color: var(--header-colour);
+  padding: 20px;
+  font-size: 30px;
+}
+
+/* Styling for inner form container */
+.form-inner {
+  padding: 10px ;
+}
+
+/* Styling for form rows */
+.form-row{
+  display: flex;
+}
+
+/* Styling for form input fields */
+.input-field{
+  background-color: rgba(211, 211, 211,0.3);
+  padding: 10px;
+  width: 100%;
+  padding: 10px;
+  margin: 8px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+/* Styling for form form submit buttons */
+.submit-btn{
+  width: 46%;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 35px;
+  border-radius: 4px;
+  background: var(--secondary-colour);
+  border: none;
+  margin: 10px;
+}
+
+/* Styling for text login/register switch prompts */
+.form-inner p,
+.form-inner a{
+  font-size: 13px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Styling for inner form container paragraph text */
+.form-inner p {
+  color: grey;
+}
+
+/* Styling for inner form container a tag */
+.form-inner a {
+  color: var(--secondary-colour);
+  text-decoration: none;
+}
+
 /* Styling for footer */
 footer {
-  width: 100vw;
   display: inline-flex;
 }
 
@@ -126,7 +203,6 @@ footer {
   font-size: 13px;
   z-index: -1;
   top: 50px;
-  width: 100vw;
 }
   
 /* Styling for top footer section */
@@ -250,6 +326,7 @@ footer.bottom {
   padding: 20px;
   background: var(--primary-colour);
   color: white;
+  width: 100%;
 }
 
 /* Styling for footer center alignment */
@@ -274,20 +351,20 @@ footer.bottom {
 #ImageBlocks {
   display: flex;
   flex-direction: column;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 14.25%;
+  padding-right: 14.25%;
   padding-top: 5%;
   padding-bottom: 5%;
   background-color: var(--light-bg);
 }
 
-/* Stylinf for the images on about us*/
+/* Styling for the images on about us*/
 #ImageBlocks img{
   border-radius: 15px;
   margin: 3%;
 }
 
-/* Stylinf for text on about us */
+/* Styling for text on about us */
 .aboutustext{
   h1{
     font-size: 40px;
@@ -296,7 +373,7 @@ footer.bottom {
   flex-direction: column
 }
 
-/* Stylinf for our story on about us*/
+/* Styling for our story on about us*/
 .ourstory{
   p{
     padding-top: 10px;
@@ -323,7 +400,7 @@ footer.bottom {
   }
 }
 
-/* Stylinf for the promises on about us*/
+/* Styling for the promises on about us*/
 .promise{
   display: flex;
   flex-direction: row;

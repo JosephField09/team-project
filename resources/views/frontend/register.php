@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="icon" type="image/jpg" href="/team-project/public/assets/E-spresso_logo.jpg">
+    <link rel="icon" type="image/png" href="/team-project/public/assets/favicon.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="/team-project/resources/css/style.css" >
     <script src="/team-project/resources/js/app.js"></script>
@@ -26,13 +26,38 @@
                     <a class="middle" href="/team-project/resources/views/frontend/blog.php">Blog</a>
                 </div>
                 <div class="navbar-right">
-                    <a class="login" href="/mobile/">Login</a>
+                    <a class="login" href="/team-project/resources/views/frontend/login.php">Login</a>
                     <p>|</p>
                     <a class="basket" href="/team-project/resources/views/frontend/basket.php"><i class='bx bx-basket'></i></a>
                 </div>
             </nav>
         </section>
-        
+
+        <!-- Register form and php section -->
+        <section class="main">
+            <div class="form-box">
+            <h1>Register</h1>
+                <div class="form-inner">
+                    <form id="register" class="input-group" action="/team-project/resources/views/frontend/register.php" method="post">
+                        <div class="form-row">
+                            <input type="text" class="input-field" name="firstname" placeholder="First Name" required>
+                            <input type="text" class="input-field" name="lastname" placeholder="Last Name" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="email" class="input-field" name="username" placeholder="Email" required>
+                            <input type="tel" class="input-field" name="phone" placeholder="Phone number" required/>
+                        </div>
+                        <div class="form-row">
+                            <input type="password" class="input-field" name="password" placeholder="Password" required><br>
+                            <input type="password" class="input-field" name="confirmpassword" placeholder="Confirm Password" required><br>
+                        </div>
+                        <button type="submit" class="submit-btn" value="Register">Register</button>
+                        <input type="hidden" name="register" value="true"/>
+                    </form>
+                    <p>Have an account? <a href="/team-project/resources/views/frontend/login.php">Login here</a></p>
+                </div>
+            </div>
+        </section>
         <!-- Footer Section -->
         <section id="footer">
             <footer class="top">

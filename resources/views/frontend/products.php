@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
-    <link rel="icon" type="image/jpg" href="/team-project/public/assets/E-spresso_logo.jpg">
+    <link rel="icon" type="image/png" href="/team-project/public/assets/favicon.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="/team-project/resources/css/style.css" >
     <script src="/team-project/resources/js/app.js"></script>
@@ -26,7 +26,7 @@
                     <a class="middle" href="/team-project/resources/views/frontend/blog.php">Blog</a>
                 </div>
                 <div class="navbar-right">
-                    <a class="login" href="/mobile/">Login</a>
+                    <a class="login" href="/team-project/resources/views/frontend/login.php">Login</a>
                     <p>|</p>
                     <a class="basket" href="/team-project/resources/views/frontend/basket.php"><i class='bx bx-basket'></i></a>
                 </div>

@@ -26,7 +26,7 @@
                     <a class="middle" href="/team-project/resources/views/frontend/blog.php">Blog</a>
                 </div>
                 <div class="navbar-right">
-                    <a class="login" href="/mobile/">Login</a>
+                    <a class="login" href="/team-project/resources/views/frontend/login.php">Login</a>
                     <p>|</p>
                     <a class="basket" href="/team-project/resources/views/frontend/basket.php"><i class='bx bx-basket'></i></a>
                 </div>
@@ -37,7 +37,7 @@
         <section id="ImageBlocks">
             <!-- Our story Section -->
             <div class="ourstory">
-                <img src="\team-project\public\assets\AdobeStock_835212991.jpeg" alt="Woman picking coffee beans" width=500 hieght=400 style="float: left;"></img>
+                <img src="\team-project\public\assets\AdobeStock_835212991.jpeg" alt="Woman picking coffee beans" width=200 hieght=300 style="float: left;"></img>
                 <div class="aboutustext">
                     <h3>About Us</h3>
                     <h1 class="header">Our Story, Your Coffee Experience</h1>
