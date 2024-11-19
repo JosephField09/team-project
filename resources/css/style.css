@@ -134,6 +134,7 @@ nav {
   color: white;
 }
 
+/* Styling for form box header */
 .form-box h1{
   color: var(--header-colour);
   padding: 20px;
@@ -145,10 +146,12 @@ nav {
   padding: 10px ;
 }
 
+/* Styling for form rows */
 .form-row{
   display: flex;
 }
 
+/* Styling for form input fields */
 .input-field{
   background-color: rgba(211, 211, 211,0.3);
   padding: 10px;
@@ -159,6 +162,7 @@ nav {
   border-radius: 5px;
 }
 
+/* Styling for form form submit buttons */
 .submit-btn{
   width: 46%;
   font-size: 15px;
@@ -170,6 +174,7 @@ nav {
   margin: 10px;
 }
 
+/* Styling for text login/register switch prompts */
 .form-inner p,
 .form-inner a{
   font-size: 13px;
@@ -177,7 +182,7 @@ nav {
   margin-bottom: 10px;
 }
 
-/* Styling for inner form container paragprah text */
+/* Styling for inner form container paragraph text */
 .form-inner p {
   color: grey;
 }
