@@ -26,7 +26,7 @@
                     <a class="middle" href="/team-project/resources/views/frontend/blog.php">Blog</a>
                 </div>
                 <div class="navbar-right">
-                    <a class="login" href="/mobile/">Login</a>
+                    <a class="login" href="/team-project/resources/views/frontend/login.php">Login</a>
                     <p>|</p>
                     <a class="basket" href="/team-project/resources/views/frontend/basket.php"><i class='bx bx-basket'></i></a>
                 </div>
