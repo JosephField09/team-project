@@ -26,7 +26,7 @@
                     <a class="middle" href="/team-project/resources/views/blog.blade.php">Blog</a>
                 </div>
                 <div class="navbar-right">
-                    <a class="login" href="/team-project/resources/views/frontend/login.php">Login</a>
+                    <a class="login" href="{{ route('register')">Login</a>
                     <p>|</p>
                     <a class="basket" href="/team-project/resources/views/basket.blade.php"><i class='bx bx-basket'></i></a>
                 </div>
