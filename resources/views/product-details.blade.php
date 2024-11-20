@@ -7,8 +7,8 @@
     <title>Details</title>
     <link rel="icon" type="image/png" href="/team-project/public/assets/favicon.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="/team-project/resources/css/style.css" >
-    <script src="/team-project/resources/js/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="/team-project/public/css/style.css" >
+    <script src="/team-project/public/js/app.js"></script>
 </head>
 
 <body>
@@ -17,18 +17,18 @@
         <section id="header">
             <nav>
                 <div class="navbar-left">
-                    <a href="/team-project/resources/views/frontend/index.php"><img src="/team-project/public/assets/E-spresso_logo.jpg"></a>
+                    <a href="/team-project/public/home.blade.php"><img src="/team-project/public/assets/E-spresso_logo.jpg"></a>
                </div>
                 <div class="navbar-middle">
-                    <a class="middle" href="/team-project/resources/views/frontend/index.php">Home</a>
-                    <a class="middle" href="/team-project/resources/views/frontend/products.php">Products</a>
-                    <a class="middle" href="/team-project/resources/views/frontend/about-us.php">About Us</a>
-                    <a class="middle" href="/team-project/resources/views/frontend/blog.php">Blog</a>
+                    <a class="middle" href="/team-project/public/home.blade.php">Home</a>
+                    <a class="middle" href="/team-project/resources/views/products.blade.php">Products</a>
+                    <a class="middle" href="/team-project/resources/views/about-us.blade.php">About Us</a>
+                    <a class="middle" href="/team-project/resources/views/blog.blade.php">Blog</a>
                 </div>
                 <div class="navbar-right">
                     <a class="login" href="/team-project/resources/views/frontend/login.php">Login</a>
                     <p>|</p>
-                    <a class="basket" href="/team-project/resources/views/frontend/basket.php"><i class='bx bx-basket'></i></a>
+                    <a class="basket" href="/team-project/resources/views/basket.blade.php"><i class='bx bx-basket'></i></a>
                 </div>
             </nav>
         </section>
@@ -38,7 +38,7 @@
             <footer class="top">
             <div class="logo-desc-soc">
                 <div class="logo">
-                    <a href="/team-project/resources/views/frontend/index.php"><img src="/team-project/public/assets/E-spresso_logo.jpg"></a>
+                    <a href="/team-project/public/home.blade.php"><img src="/team-project/public/assets/E-spresso_logo.jpg"></a>
                 </div>
                 <p class="desc">At E-spresso, we’re passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. Whether you’re a coffee connoisseur or just beginning your journey, Our store is your gateway to a world of rich flavors and aromatic delights.</p>
                 <div class="socials">
@@ -53,10 +53,10 @@
             <div class="quick-links">
                 <h3>Quick Links</h3>
                 <ul class="links">
-                    <li><a href="/team-project/resources/views/frontend/index.php">Home</a></li>
-                    <li><a href="/team-project/resources/views/frontend/products.php">Products</a></li>
-                    <li><a href="/team-project/resources/views/frontend/about-us.php">About Us </a></li>
-                    <li><a href="/team-project/resources/views/frontend/blog.php">Blog</a></li>
+                    <li><a href="/team-project/public/home.blade.php">Home</a></li>
+                    <li><a href="/team-project/resources/views/products.blade.php">Products</a></li>
+                    <li><a href="/team-project/resources/views/about-us.blade.php">About Us </a></li>
+                    <li><a href="/team-project/resources/views/blog.blade.php">Blog</a></li>
                 </ul>
             </div>
 
