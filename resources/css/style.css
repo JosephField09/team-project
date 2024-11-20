@@ -369,7 +369,6 @@ footer.bottom {
   max-height: 400px;
   width: 35%;
   height: 35%;
-  position: relative; /* or relative */
 }
 
 /* Styling for text on about us */
@@ -518,8 +517,9 @@ footer.bottom {
 }
 
 #ContactUs{
-  padding-left: 20%;
-  padding-right: 20%;
+  max-width: 100%;
+  padding-left: 14.25%;
+  padding-right: 14.25%;
   padding-bottom: 50px;
   align-items: center;
   display: flex;
@@ -534,10 +534,14 @@ footer.bottom {
   }
   img{
     border-radius: 15px;
+    max-width: 400px;
+    width: 35%;
+    height: 35%;
   }
 }
 
 .contact-us-form{
+  margin-left: 5px;
   align-self: center;
   display: flex;
   flex-direction: column;
@@ -590,7 +594,8 @@ footer.bottom {
 }
 
 #submit-form-btn{
-    width: 97%;
+    max-width: 97%;
+    width: auto;
     font-size: 15px;
     font-weight: bold;
     padding: 10px 35px;
@@ -603,4 +608,3 @@ footer.bottom {
   padding: 15px;
   text-align: center;
 }
-

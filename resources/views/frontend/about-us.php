@@ -106,7 +106,7 @@
 
         <!-- Contact Us Section -->
         <section id="ContactUs">
-            <img src="/team-project/public/assets/AdobeStock_1026464614.jpeg" width="400"></img>
+            <img src="/team-project/public/assets/AdobeStock_1026464614.jpeg"></img>
             <div class="contact-us-form">
                 <form id="contact-us">
                     <h1>Contact Us</h1>
