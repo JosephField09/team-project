@@ -78,7 +78,7 @@
                                 <li><p><span class="missionheader">Continuos Innovation:</span> From classic blends to unique creations, we strive to keep our menu exciting and fresh.</p></li>
                             </ul>
                         </div>
-                        <a class="contact-us" href="/team-project/resources/views/frontend/products.php"><h4>Explore Our menu</h4></a>
+                        <a class="contact-us" href="/team-project/resources/views/products.blade.php"><h4>Explore Our menu</h4></a>
                 </div>
                 <img src="/team-project/public/assets/AdobeStock_814649831.jpeg" width=500 height=500 style="float: right;"></img>
             </div>
@@ -97,7 +97,7 @@
                             <li><p><span class="missionheader">Innovation:</span> Continuosly evolving to offer unique experiences</p></li>
                         </ul>
                     </div>
-                    <a class="contact-us" href="/team-project/resources/views/frontend/products.php"><h4>Discover Our Product</h4></a>
+                    <a class="contact-us" href="/team-project/resources/views/products.blade.php"><h4>Discover Our Product</h4></a>
                 </div>
             </div>
         </section>
