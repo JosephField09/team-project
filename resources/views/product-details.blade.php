@@ -21,7 +21,7 @@
                </div>
                 <div class="navbar-middle">
                     <a class="middle" href="/team-project/public/home.blade.php">Home</a>
-                    <a class="middle" href="/team-project/resources/views/products.blade.php">Products2</a>
+                    <a class="middle" href="/team-project/resources/views/products.blade.php">Products</a>
                     <a class="middle" href="/team-project/resources/views/about-us.blade.php">About Us</a>
                     <a class="middle" href="/team-project/resources/views/blog.blade.php">Blog</a>
                 </div>
