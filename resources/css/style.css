@@ -341,7 +341,7 @@ footer.bottom {
   letter-spacing: 1px;
 }
 
-/* Stylinf for our story section on about us*/
+/* Styling for our story section on about us*/
 #ourstory{
   display: flex;
   flex-direction: row;
@@ -349,19 +349,27 @@ footer.bottom {
 
 /* Styling for image blocks ona bout us */
 #ImageBlocks {
+  align-items: center;
   display: flex;
   flex-direction: column;
   padding-left: 14.25%;
   padding-right: 14.25%;
   padding-top: 5%;
   padding-bottom: 5%;
-  background-color: var(--light-bg);
+  background-color: var(--dark-bg);
 }
 
 /* Styling for the images on about us*/
 #ImageBlocks img{
   border-radius: 15px;
   margin: 3%;
+}
+
+.bigimage{
+  max-height: 400px;
+  width: 35%;
+  height: 35%;
+  position: relative; /* or relative */
 }
 
 /* Styling for text on about us */
@@ -375,12 +383,14 @@ footer.bottom {
 
 /* Styling for our story on about us*/
 .ourstory{
+  max-width: 100%;
   p{
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 500px;
+    max-width: 500px;
+    width: 100% auto;
   }
-  button{
+  a{
     margin: 15px;
     font-size: 14px;
     color: var(--primary-colour);
@@ -389,9 +399,10 @@ footer.bottom {
     padding: 5px 22px;
     cursor: pointer;
     width: 150px;
-    height: 50px;
+    height: 30px;
     border: none;
     border-radius: 5px;
+    text-align: center;
   }
   h3{
     padding-top: 25px;
@@ -409,18 +420,22 @@ footer.bottom {
   margin-top: 0;
   padding-bottom: 0;
   height: 30px;
-  width: 300px;
+  max-width: 300px;
+  width: auto;
 }
+
 
 /* Styling for our missions on about us*/
 .ourmission{
+  max-width: 100%;
   padding-top: 75px;
   padding-left: 5%;
   display: flex;
   flex-direction: row;
   p{
     padding-top: 15px;
-    width: 525px;
+    max-width: 525px;
+    width: 100% auto;
   }
   a{
     margin: 15px;
@@ -431,7 +446,7 @@ footer.bottom {
     text-decoration: none;
     padding: 5px 22px;
     cursor: pointer;
-    width: 525px;
+    max-width: 100%;
     height: 50px;
     border: none;
     align-items: center;
@@ -452,7 +467,8 @@ footer.bottom {
   padding-top: 15px;
   display: flex;
   flex-direction: column;
-  width: 600px;
+  max-width: 600px;
+  width: auto;
   padding-left: 3%;
   p{
     padding-top: 10px;
@@ -467,13 +483,14 @@ footer.bottom {
 
 /* Styling for our vision section on about us*/
 .ourvision{
+  max-width: 100%;
   padding-top: 60px;
   padding-left: 5%;
   display: flex;
   flex-direction: row;
   p{
     padding-top: 15px;
-    width: 525px;
+    max-width: 525px;
   }
   a{
     margin: 15px;
@@ -485,7 +502,8 @@ footer.bottom {
     text-decoration: none;
     padding: 5px 22px;
     cursor: pointer;
-    width: 525px;
+    max-width: 525px;
+    width: auto;
     height: 50px;
     border: none;
     align-items: center;
@@ -498,3 +516,91 @@ footer.bottom {
     padding-top: 50px;
   }
 }
+
+#ContactUs{
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-bottom: 50px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--dark-bg);
+  h1{
+    color: var(--header-colour);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    padding-bottom: 40px;
+  }
+  img{
+    border-radius: 15px;
+  }
+}
+
+.contact-us-form{
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  width: 100%;
+  .input-field{
+    width: 300px;
+    background-color: var(--light-bg);
+  }
+  label{
+    margin-left: 10px;
+  }
+}
+
+.first-and-last-name{
+  display: flex;
+  flex-direction: row;
+  .first-name{
+    display: flex;
+    flex-direction: column;
+  }
+  .last-name{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.email-and-phone{
+  display: flex;
+  flex-direction: row;
+  .email{
+    display: flex;
+    flex-direction: column;
+  }
+  .phone{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.message-to-send{
+  display: flex;
+  flex-direction: column;
+  .input-field{
+    width: 620px;
+    resize: none;
+  }
+}
+
+#submit-form-btn{
+    width: 97%;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 35px;
+    border-radius: 4px;
+    background: var(--secondary-colour);
+    border: none;
+}
+
+.submit-form{
+  padding: 15px;
+  text-align: center;
+}
+

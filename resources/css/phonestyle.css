@@ -1,0 +1,538 @@
+@media screen and (max-width: 600px ) {
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    /* Storing reused colours as variables */
+    :root {
+    --primary-colour: rgb(0, 0, 0);
+    --secondary-colour: rgb(254, 204, 66);
+    --light-bg: rgb(255, 234, 197,0.2);
+    --dark-bg: rgba(255, 219, 181, 0.25);
+    --header-colour:rgba(0, 0, 0,0.8);
+    --text-colour:rgba(255, 255, 255,0.7);
+    }
+
+    /* Importing font and saving as 'Lato' */
+    @font-face {
+    font-family:'Lato';
+    src: url('/team-project/public/assets/Lato-Regular.ttf') format('truetype'); 
+    }
+
+
+    /* Reset default margin, padding, and box-sizing for all elements */
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Lato;
+    }
+
+    /* Styling for the whole navigation bar */
+    nav {
+    background: black;
+    padding: 1.5% 14.25%;
+    display: flex;
+    position: sticky;
+    justify-content: space-between;
+    height: 70px;
+    z-index: 2001;
+    align-items: center;
+    }
+
+    /* Styling for left section of navigation bar */
+    .navbar-left{
+    align-items: center;
+    display: grid;
+    }
+
+    /* Styling for navigation bar image */
+    .navbar-left img{
+    max-width: 0px;
+    max-height: 0px;
+    scale: 1;
+    transform: translateY(4px);
+    }
+
+    .navbar-middle{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    /* Styling for navigation bar links */
+    .navbar-middle a{
+    color: var(--text-colour);
+    text-align: center;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: 100;
+    position: relative;
+    padding: 0 10px;
+    border-radius: 5px;
+    transition: font-size 0.5s linear, color 0.5s linear;
+    }
+
+    /* Styling for navigation bar links when hovered over or selected */
+    .navbar-middle a.option-selected,
+    .navbar-middle a:hover{
+    color: var(--secondary-colour);
+    font-size: 15px;
+    }
+
+    /* Styling for right section of navigation bar */
+    .navbar-right{
+    display: flex;
+    flex-direction: row;
+    }
+
+
+    /* Styling for login button */
+    .navbar-right a.login {
+    font-size: 14px;
+    color: var(--primary-colour);
+    background: var(--secondary-colour);
+    text-decoration: none;
+    padding: 5px 22px;
+    border-radius: 4px;
+    }
+
+    /* Styling for login button when hovering over */
+    .login:hover {
+    scale: 1.1;
+    }
+
+    /* Styling for paragraph text in right of navigation bar */
+    .navbar-right p{
+    font-size: 20px;
+    margin-left: 18px;
+    margin-right: 18px;
+    color: var(--text-colour);
+    }
+
+    /* Styling for a tags in right of navigation bar */
+    .navbar-right a {
+    font-size: 20px;
+    color: var(--text-colour);
+    align-self: center;
+    }
+
+    /* Styling for basket a tag when hovering */
+    .navbar-right a.basket:hover {
+    color: white;
+    transition: 0.3s ease-in-out;
+    }
+
+    /* Styling for Main container */
+    .main {
+    height: 70vh;
+    background-color: var(--light-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    /* Styling for form box */
+    .form-box {
+    width: 630px;
+    background: white;
+    padding: 20px 100px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    color: white;
+    }
+
+    /* Styling for form box header */
+    .form-box h1{
+    color: var(--header-colour);
+    padding: 20px;
+    font-size: 30px;
+    }
+
+    /* Styling for inner form container */
+    .form-inner {
+    padding: 10px ;
+    }
+
+    /* Styling for form rows */
+    .form-row{
+    display: flex;
+    }
+
+    /* Styling for form input fields */
+    .input-field{
+    background-color: rgba(211, 211, 211,0.3);
+    padding: 10px;
+    width: 100%;
+    padding: 10px;
+    margin: 8px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    }
+
+    /* Styling for form form submit buttons */
+    .submit-btn{
+    width: 46%;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 35px;
+    border-radius: 4px;
+    background: var(--secondary-colour);
+    border: none;
+    margin: 10px;
+    }
+
+    /* Styling for text login/register switch prompts */
+    .form-inner p,
+    .form-inner a{
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    }
+
+    /* Styling for inner form container paragraph text */
+    .form-inner p {
+    color: grey;
+    }
+
+    /* Styling for inner form container a tag */
+    .form-inner a {
+    color: var(--secondary-colour);
+    text-decoration: none;
+    }
+
+    /* Styling for footer */
+    footer {
+    display: inline-flex;
+    }
+
+    /* Styling for whole footer section */
+    #footer {
+    font-size: 13px;
+    z-index: -1;
+    top: 50px;
+    }
+    
+    /* Styling for top footer section */
+    footer.top {
+    background-color: black;
+    height: fit-content;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    align-items: flex-start;
+    position: relative;
+    padding: 3% 14.25%;
+    }
+
+    /* Styling for footer border splitter */
+    footer.top::after {
+    content: '';
+    position: absolute;
+    bottom: 0; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 71.75%; 
+    border-bottom: 1px solid #333333;
+    }
+
+    /* Styling for logo/description/sociallinks grid */
+    .logo-desc-soc {
+    display: grid;
+    grid-template-rows: 31% 65% 10%;
+    height: 100%;
+    margin-right: 10%;
+    }
+
+    /* Styling for logo image */
+    .logo img {
+    max-width: 182px;
+    max-height: 57px;
+    transform: translateY(-10px);
+    }
+
+    /* Styling for description */
+    .desc {
+    color: var(--text-colour);
+    }
+
+    /* Styling for social link icons */
+    .social-links i{
+    color: white;
+    font-size: 25px;
+    margin: 5px 5px 0px 0px
+    }
+
+    /* Styling for social link icons when hovering*/
+    .social-links i:hover{
+    color: var(--secondary-colour);
+    }
+
+    /* Styling for footer headers */
+    footer.top h3{
+    color: white;
+    font-size: 20px;
+    }
+
+    /* Styling for all list groups */
+    footer.top .quick-links ul,
+    footer.top .information ul,
+    footer.top .contact-information ul {
+    list-style: none;
+    color: white;
+    margin-top: 30px;
+    }
+
+    /* Styling for all list elements */
+    footer.top .quick-links ul li,
+    footer.top .information ul li, 
+    footer.top .contact-information ul li{
+    font-size: 12px;
+    margin-top: 12px;
+    }
+
+    /* Styling for first contact info list */
+    footer.top .contact-information ul li:nth-child(1){
+    display: flex;
+    }
+
+    /* Styling for all link text */
+    footer.top .quick-links ul li a,
+    footer.top .information ul li a, 
+    footer.top .contact-information ul li a{
+    color: var(--text-colour);
+    text-decoration: none;
+    transform: translateY(-2px);
+    }
+
+    /* Styling for all link text when hovering */
+    footer.top .quick-links ul li a:hover,
+    footer.top .information ul li a:hover, 
+    footer.top .contact-information ul li a:hover{
+    color: var(--secondary-colour);
+    }
+
+    /* Styling for contact list elements */
+    footer.top .contact-information ul li:nth-child(2),
+    footer.top .contact-information ul li:nth-child(3),
+    footer.top .contact-information ul li:nth-child(4) {
+    display: flex;
+    margin-top: 5px;
+    }
+
+    /* Styling for contact info icons */
+    footer.top .contact-information li i {
+    color: var(--secondary-colour);
+    font-size: 19px;
+    margin-right: 10px;
+    transform: translateY(-4px);
+    margin-bottom: 12px;
+    }
+
+    /* Styling for bottom footer section */
+    footer.bottom {
+    padding: 20px;
+    background: var(--primary-colour);
+    color: white;
+    width: 100%;
+    }
+
+    /* Styling for footer center alignment */
+    #footer .footer {
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+    /* Styling for footer copyright */
+    #footer .footer p {
+    font-size: 10px;
+    letter-spacing: 1px;
+    }
+
+    /* Styling for our story section on about us*/
+    #ourstory{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    /* Styling for image blocks ona bout us */
+    #ImageBlocks {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-left: 14.25%;
+    padding-right: 14.25%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: var(--light-bg);
+    }
+
+    /* Styling for the images on about us*/
+    #ImageBlocks img{
+    border-radius: 15px;
+    }
+
+    .bigimage{
+    max-height: 400px;
+    width: 100%;
+    height: 35%;
+    position: relative; /* or relative */
+    }
+
+    /* Styling for text on about us */
+    .aboutustext{
+        display: flex;
+        flex-direction: column;
+        h1{
+            font-size: 20px;
+            text-align: center;
+        }
+    }
+
+    /* Styling for our story on about us*/
+    .ourstory{
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        align-items: center;
+        p{
+            padding-top: 10px;
+            padding-bottom: 10px;
+            max-width: 500px;
+            width: 100% auto;
+            text-align: center;
+        }
+        button{
+            align-self: center;
+            margin: 15px;
+            font-size: 14px;
+            color: var(--primary-colour);
+            background: var(--secondary-colour);
+            text-decoration: none;
+            padding: 5px 22px;
+            cursor: pointer;
+            width: 150px;
+            height: 50px;
+            border: none;
+            border-radius: 5px;
+        }
+        h3{
+            padding-top: 25px;
+            padding-bottom: 25px;
+            color: gray;
+            text-align: center;
+        }
+    }
+
+    /* Styling for the promises on about us*/
+    .promise{
+        align-self: center;
+        display: flex;
+        flex-direction: row;
+        justify-items: center;
+        align-items: center;
+        margin-top: 0;
+        padding-bottom: 0;
+        height: 50px;
+        width: 250px;
+        text-align: center;
+    }
+
+
+    /* Styling for our missions on about us*/
+    .ourmission{
+    max-width: 100%;
+    padding-top: 25px;
+    padding-left: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p{
+        padding-top: 15px;
+        max-width: 525px;
+        width: 100% auto;
+        text-align: center;
+    }
+    a{
+        margin: 15px;
+        margin-left: 0px;
+        font-size: 14px;
+        color: var(--primary-colour);
+        background: var(--secondary-colour);
+        text-decoration: none;
+        padding: 5px 22px;
+        cursor: pointer;
+        max-width: 100%;
+        height: 50px;
+        border: none;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+        font-size: 18px;
+        border-radius: 5px;
+        margin-top: 100px;
+    }
+    h1{
+        padding-top: 50px;
+    }
+    }
+
+
+    /* Styling for individual missions on about us*/
+    .missions{
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    width: auto;
+    padding-left: 3%;
+    p{
+        padding-top: 10px;
+    }
+    }
+
+    /* Styling for headers for missions and visions on about us*/
+    .missionheader{
+    font-weight: 600;
+    font-size: 1.1em;
+    }
+
+    /* Styling for our vision section on about us*/
+    .ourvision{
+    max-width: 100%;
+    padding-top: 60px;
+    padding-left: 5%;
+    display: flex;
+    flex-direction: column;
+    p{
+        padding-top: 15px;
+        max-width: 525px;
+        text-align: center;
+    }
+    a{
+        margin: 15px;
+        margin-left: 0px;
+        margin-top: 100px;
+        font-size: 14px;
+        color: var(--primary-colour);
+        background: var(--secondary-colour);
+        text-decoration: none;
+        padding: 5px 22px;
+        cursor: pointer;
+        max-width: 525px;
+        width: auto;
+        height: 50px;
+        border: none;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+        font-size: 18px;
+        border-radius: 5px;
+    }
+    h1{
+        padding-top: 50px;
+    }
+    }
+}
