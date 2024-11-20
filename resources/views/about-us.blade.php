@@ -7,14 +7,9 @@
     <title>About Us</title>
     <link rel="icon" type="image/png" href="/team-project/public/assets/favicon.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-<<<<<<< HEAD:resources/views/about-us.blade.php
     <link rel="stylesheet" type="text/css" href="/team-project/public/css/style.css" >
+    <link rel="stylesheet" type="text/css" href="/team-project/public/css/phonestyle.css" >
     <script src="/team-project/public/js/app.js"></script>
-=======
-    <link rel="stylesheet" type="text/css" href="/team-project/resources/css/style.css" >
-    <link rel="stylesheet" type="text/css" href="/team-project/resources/css/phonestyle.css" >
-    <script src="/team-project/resources/js/app.js"></script>
->>>>>>> a142be2917c721fc529723de866630c3ef8fc902:resources/views/frontend/about-us.php
 </head>
 
 <body>
