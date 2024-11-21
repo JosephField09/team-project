@@ -122,7 +122,7 @@
                     <div class="email-and-phone">
                         <div class="email">
                             <label for="email">Email</label>
-                            <input id="email1" type="email"  name="email1" placeholder="Enter your Email" class="input-field">
+                            <input id="email" type="email"  name="email" placeholder="Enter your Email" class="input-field">
                         </div>
                         <div class="phone">
                             <label for="phone">Phone</label>
@@ -131,11 +131,11 @@
                     </div>
                     <div class="message-to-send">
                         <label for="message">Message</label>
-                        <textarea rows="5" cols="50" name="comment" form="contactusform" class="input-field"
+                        <textarea rows="5" cols="50" id="message" name="message" form="contactusform" class="input-field"
                         placeholder="Write Message Here..."></textarea>
                     </div>
                     <div class ="submit-form">
-                        <input type="submit" value="Submit Now" id="submit-form-btn">
+                        <button type="button" id="submit-form-btn" onclick="validateContactMe()">Submit Now</button>
                     </div>
                 </form>
             </div>
