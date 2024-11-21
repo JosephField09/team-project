@@ -40,7 +40,7 @@
                 <div class="form-inner">
                 <form id="login"class="input-group" method="POST" action="{{ route('login') }}">
                     @csrf
-                    <input type="email" class="input-field" name="username" placeholder="Enter your email" required>
+                    <input type="email" class="input-field" name="email" placeholder="Enter your email" value="{{ old('email') }}" required >
                     <input type="password" class="input-field" name="password" placeholder="Enter your password" required><br>
                     @if ($errors->has('email'))
                         <p class="error-message" style="color: red; font-size: 0.9rem; margin-top: 5px;">
