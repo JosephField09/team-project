@@ -21,13 +21,6 @@ Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 // Blog route
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
-// Path to register page
-Route::get('/register', function () {
-    return view('auth.register'); 
-})->name('register');
-
-Route::post('/register', [RegisteredUserController::class, 'store']);
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

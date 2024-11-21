@@ -52,6 +52,22 @@
                             <input type="password" class="input-field" name="password" placeholder="Password" required>
                             <input type="password" class="input-field" name="password_confirmation" placeholder="Confirm Password" required>
                         </div>
+                        @if ($errors->has('email'))
+                            <p class="error-message" style="color: red; margin-top: 10px;">
+                            {{ __('This email is already registered. Please log in or use a different email.') }}
+                            </p>
+                        @endif
+
+                        @if ($errors->has('password') && $errors->first('password') == 'The password field confirmation does not match.')
+                            <p class="error-message" style="color: red; margin-top: 10px;">
+                                The passwords do not match, please try again.
+                            </p>
+                        @elseif ($errors->has('password'))
+                            <p class="error-message" style="color: red; margin-top: 10px;">
+                                {{ $errors->first('password') }}
+                            </p>
+                        @endif
+
                         <button type="submit" class="submit-btn">Register</button>
                     </form>
                     <p>Have an account? <a href="{{ route('login') }}">Login here</a></p>
