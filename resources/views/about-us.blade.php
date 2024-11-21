@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <link rel="icon" type="image/png" href="/team-project/public/assets/favicon.png">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="/team-project/public/css/style.css" >
-    <script src="/team-project/public/js/app.js"></script>
+    <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 
 <body>
@@ -17,16 +17,16 @@
         <section id="header">
             <nav>
                 <div class="navbar-left">
-                    <a href="/team-project/public/home.blade.php"><img src="/team-project/public/assets/E-spresso_logo.jpg"></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                </div>
                 <div class="navbar-middle">
-                    <a class="middle" href="/team-project/public/home.blade.php">Home</a>
-                    <a class="middle" href="/team-project/resources/views/products.blade.php">Products</a>
-                    <a class="middle option-selected" href="/team-project/resources/views/about-us.blade.php">About Us</a>
-                    <a class="middle" href="/team-project/resources/views/blog.blade.php">Blog</a>
+                    <a class="middle" href="{{ route('home') }}">Home</a>
+                    <a class="middle" href="{{ route('products') }}">Products</a>
+                    <a class="middle option-selected" href="{{ route('about-us') }}">About Us</a>
+                    <a class="middle" href="{{ route('blog') }}">Blog</a>
                 </div>
                 <div class="navbar-right">
-                    <a class="login" href="/team-project/resources/views/frontend/login.php">Login</a>
+                    <a class="login" href="{{ route('login') }}">Login</a>
                     <p>|</p>
                     <a class="basket" href="/team-project/resources/views/basket.blade.php"><i class='bx bx-basket'></i></a>
                 </div>
@@ -37,7 +37,8 @@
         <section id="ImageBlocks">
             <!-- Our story Section -->
             <div class="ourstory">
-                <img src="\team-project\public\assets\AdobeStock_835212991.jpeg" alt="Woman picking coffee beans" width=200 hieght=300 style="float: left;"></img>
+                <img src="{{ asset('assets/AdobeStock_835212991.jpeg') }}" alt="Woman picking coffee beans" 
+                class="bigimage" style="float: left;"></img>
                 <div class="aboutustext">
                     <h3>About Us</h3>
                     <h1 class="header">Our Story, Your Coffee Experience</h1>
@@ -46,22 +47,22 @@
                         dedicated to making every sip special. Join us in celebrating the art of coffee, brewed to perfection just for you.
                     </p>
                     <div class="promise">
-                        <img src="\team-project\public\assets\check-mark.png" height="15px" width="15px"></img>
+                        <img src="{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
                         <h4>Sustainably Sourced Beans</h4>
                     </div>
                     <div class="promise">
-                        <img src="\team-project\public\assets\check-mark.png" height="15px" width="15px"></img>
+                        <img src="{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
                         <h4>Sustainably Sourced Beans</h4>
                     </div>
                     <div class="promise">
-                        <img src="\team-project\public\assets\check-mark.png" height="15px" width="15px"></img>
+                        <img src="{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
                         <h4>Sustainably Sourced Beans</h4>
                     </div>
                     <div class="promise">
-                        <img src="\team-project\public\assets\check-mark.png" height="15px" width="15px"></img>
+                        <img src="{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
                         <h4>Sustainably Sourced Beans</h4>
                     </div>
-                    <button class="contact-us"><h4>Contact us</h4></button>
+                    <a class="contact-us"href="#contact-us"><h4>Contact us</h4></a>
                 </div>
             </div>
             <div class="ourmission">
@@ -78,12 +79,12 @@
                                 <li><p><span class="missionheader">Continuos Innovation:</span> From classic blends to unique creations, we strive to keep our menu exciting and fresh.</p></li>
                             </ul>
                         </div>
-                        <a class="contact-us" href="/team-project/resources/views/products.blade.php"><h4>Explore Our menu</h4></a>
+                        <a class="contact-us" href="{{ route('products') }}"><h4>Explore Our menu</h4></a>
                 </div>
-                <img src="/team-project/public/assets/AdobeStock_814649831.jpeg" width=500 height=500 style="float: right;"></img>
+                <img src="{{ asset('assets/AdobeStock_814649831.jpeg') }}" style="float: right;" class="bigimage"></img>
             </div>
             <div class="ourvision">
-                <img src="/team-project/public/assets/AdobeStock_859686298.jpeg" width="500px"></img>
+                <img src="{{ asset('assets/AdobeStock_859686298.jpeg') }}" class="bigimage"></img>
                 <div class="aboutustext">
                     <h1 class="header">Our Vision</h1>
                     <p>At E-Spresso, we strive to create a world where coffee inspires connections, fules creativity, and promotes sustainability. 
@@ -93,21 +94,63 @@
                         <ul>
                             <li><p><span class="missionheader">Connecting People:</span> Bringing communities together through coffee.</p></li>
                             <li><p><span class="missionheader">Sustainability:</span> Prioritising eco-friendly practices for a better planet.</p></li>
-                            <li><p><span class="missionheader">QUality:</span>  Serving the finest coffee with care and precision.</p></li>
+                            <li><p><span class="missionheader">Quality:</span>  Serving the finest coffee with care and precision.</p></li>
                             <li><p><span class="missionheader">Innovation:</span> Continuosly evolving to offer unique experiences</p></li>
                         </ul>
                     </div>
-                    <a class="contact-us" href="/team-project/resources/views/products.blade.php"><h4>Discover Our Product</h4></a>
+                    <a class="contact-us" href="{{ route('products') }}"><h4>Discover Our Product</h4></a>
                 </div>
             </div>
         </section>
+
+        <!-- Contact Us Section -->
+        <section id="ContactUs">
+            <img src="{{ asset('assets/AdobeStock_1026464614.jpeg') }}"></img>
+            <div class="contact-us-form">
+                <form id="contact-us">
+                    <h1>Contact Us</h1>
+                    <div class="first-and-last-name">
+                        <div class="first-name">
+                            <label for="fName">First Name</label>
+                            <input id ="fName "type ="text" name="fName" placeholder="Enter Your First Name" class="input-field"/>
+                        </div>
+                        <div class="last-name">
+                            <label for="lName">Last Name</label>
+                            <input id ="lName "type ="text" name="lName" placeholder="Enter Your Last Name" class="input-field"/>
+                        </div>
+                    </div>
+                    <div class="email-and-phone">
+                        <div class="email">
+                            <label for="email">Email</label>
+                            <input id="email1" type="email"  name="email1" placeholder="Enter your Email" class="input-field">
+                        </div>
+                        <div class="phone">
+                            <label for="phone">Phone</label>
+                            <input id="phone" type="tel" id="phone" name="phone" placeholder="Enter Your Phone number" class="input-field"/>
+                        </div>
+                    </div>
+                    <div class="message-to-send">
+                        <label for="message">Message</label>
+                        <textarea rows="5" cols="50" name="comment" form="contactusform" class="input-field"
+                        placeholder="Write Message Here..."></textarea>
+                    </div>
+                    <div class ="submit-form">
+                        <input type="submit" value="Submit Now" id="submit-form-btn">
+                    </div>
+                </form>
+            </div>
+
+
+        </section>
+
+
 
         <!-- Footer Section -->
         <section id="footer">
             <footer class="top">
             <div class="logo-desc-soc">
                 <div class="logo">
-                    <a href="/team-project/public/home.blade.php"><img src="/team-project/public/assets/E-spresso_logo.jpg"></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                 </div>
                 <p class="desc">At E-spresso, we’re passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. Whether you’re a coffee connoisseur or just beginning your journey, Our store is your gateway to a world of rich flavors and aromatic delights.</p>
                 <div class="socials">
@@ -122,10 +165,10 @@
             <div class="quick-links">
                 <h3>Quick Links</h3>
                 <ul class="links">
-                    <li><a href="/team-project/public/home.blade.php">Home</a></li>
-                    <li><a href="/team-project/resources/views/products.blade.php">Products</a></li>
-                    <li><a href="/team-project/resources/views/about-us.blade.php">About Us </a></li>
-                    <li><a href="/team-project/resources/views/blog.blade.php">Blog</a></li>
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><a href="{{ route('products') }}">Products</a></li>
+                    <li><a href="{{ route('about-us') }}">About Us </a></li>
+                    <li><a href="{{ route('blog') }}">Blog</a></li>
                 </ul>
             </div>
 

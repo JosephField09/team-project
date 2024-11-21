@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <link rel="icon" type="image/png" href="/team-project/public/assets/favicon.png">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="/team-project/public/css/style.css" >
-    <script src="/team-project/public/js/app.js"></script>
+    <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 
 <body>
@@ -17,16 +17,16 @@
         <section id="header">
             <nav>
                 <div class="navbar-left">
-                    <a href="/team-project/public/home.blade.php"><img src="/team-project/public/assets/E-spresso_logo.jpg"></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                </div>
                 <div class="navbar-middle">
-                    <a class="middle" href="/team-project/public/home.blade.php">Home</a>
-                    <a class="middle" href="/team-project/resources/views/products.blade.php">Products</a>
-                    <a class="middle" href="/team-project/resources/views/about-us.blade.php">About Us</a>
-                    <a class="middle" href="/team-project/resources/views/blog.blade.php">Blog</a>
+                    <a class="middle" href="{{ route('home') }}">Home</a>
+                    <a class="middle" href="{{ route('products') }}">Products</a>
+                    <a class="middle" href="{{ route('about-us') }}">About Us</a>
+                    <a class="middle" href="{{ route('blog') }}">Blog</a>
                 </div>
                 <div class="navbar-right">
-                    <a class="login" href="/team-project/resources/views/frontend/login.php">Login</a>
+                    <a class="login" href="{{ route('login') }}">Login</a>
                     <p>|</p>
                     <a class="basket" href="/team-project/resources/views/basket.blade.php"><i class='bx bx-basket'></i></a>
                 </div>
@@ -38,23 +38,39 @@
             <div class="form-box">
             <h1>Register</h1>
                 <div class="form-inner">
-                    <form id="register" class="input-group" action="/team-project/resources/views/frontend/register.php" method="post">
+                    <form id="register" class="input-group" action="{{ route('register') }}" method="post">
+                        @csrf
                         <div class="form-row">
-                            <input type="text" class="input-field" name="firstname" placeholder="First Name" required>
-                            <input type="text" class="input-field" name="lastname" placeholder="Last Name" required>
+                            <input type="text" class="input-field" name="firstName" placeholder="First Name" value="{{ old('firstName') }}" required>
+                            <input type="text" class="input-field" name="lastName" placeholder="Last Name" value="{{ old('lastName') }}" required>
                         </div>
                         <div class="form-row">
-                            <input type="email" class="input-field" name="username" placeholder="Email" required>
-                            <input type="tel" class="input-field" name="phone" placeholder="Phone number" required/>
+                            <input type="email" class="input-field" name="email" placeholder="Email" value="{{ old('email') }}" required>
+                            <input type="tel" class="input-field" name="phone" placeholder="Phone Number" value="{{ old('phone') }}" required>
                         </div>
                         <div class="form-row">
-                            <input type="password" class="input-field" name="password" placeholder="Password" required><br>
-                            <input type="password" class="input-field" name="confirmpassword" placeholder="Confirm Password" required><br>
+                            <input type="password" class="input-field" name="password" placeholder="Password" required>
+                            <input type="password" class="input-field" name="password_confirmation" placeholder="Confirm Password" required>
                         </div>
-                        <button type="submit" class="submit-btn" value="Register">Register</button>
-                        <input type="hidden" name="register" value="true"/>
+                        @if ($errors->has('email'))
+                            <p class="error-message" style="color: red; margin-top: 10px;">
+                            {{ __('This email is already registered. Please log in or use a different email.') }}
+                            </p>
+                        @endif
+
+                        @if ($errors->has('password') && $errors->first('password') == 'The password field confirmation does not match.')
+                            <p class="error-message" style="color: red; margin-top: 10px;">
+                                The passwords do not match, please try again.
+                            </p>
+                        @elseif ($errors->has('password'))
+                            <p class="error-message" style="color: red; margin-top: 10px;">
+                                {{ $errors->first('password') }}
+                            </p>
+                        @endif
+
+                        <button type="submit" class="submit-btn">Register</button>
                     </form>
-                    <p>Have an account? <a href="/team-project/resources/views/frontend/login.php">Login here</a></p>
+                    <p>Have an account? <a href="{{ route('login') }}">Login here</a></p>
                 </div>
             </div>
         </section>
@@ -64,7 +80,7 @@
             <footer class="top">
             <div class="logo-desc-soc">
                 <div class="logo">
-                    <a href="/team-project/public/home.blade.php"><img src="/team-project/public/assets/E-spresso_logo.jpg"></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                 </div>
                 <p class="desc">At E-spresso, we’re passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. Whether you’re a coffee connoisseur or just beginning your journey, Our store is your gateway to a world of rich flavors and aromatic delights.</p>
                 <div class="socials">
@@ -79,10 +95,10 @@
             <div class="quick-links">
                 <h3>Quick Links</h3>
                 <ul class="links">
-                    <li><a href="/team-project/public/home.blade.php">Home</a></li>
-                    <li><a href="/team-project/resources/views/products.blade.php">Products</a></li>
-                    <li><a href="/team-project/resources/views/about-us.blade.php">About Us </a></li>
-                    <li><a href="/team-project/resources/views/blog.blade.php">Blog</a></li>
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><a href="{{ route('products') }}">Products</a></li>
+                    <li><a href="{{ route('about-us') }}">About Us </a></li>
+                    <li><a href="{{ route('blog') }}">Blog</a></li>
                 </ul>
             </div>
 

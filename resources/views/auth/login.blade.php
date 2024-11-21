@@ -5,28 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <link rel="icon" type="image/png" href="/team-project/public/assets/favicon.png">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="/team-project/public/css/style.css" >
-    <script src="/team-project/public/js/app.js"></script>
+    <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 
 <body>
     <main>
         <!-- Header Section -->
-        <section id="header">
+       <section id="header">
             <nav>
                 <div class="navbar-left">
-                    <a href="/team-project/public/home.blade.php"><img src="/team-project/public/assets/E-spresso_logo.jpg"></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                </div>
                 <div class="navbar-middle">
-                    <a class="middle" href="/team-project/public/home.blade.php">Home</a>
-                    <a class="middle" href="/team-project/resources/views/products.blade.php">Products</a>
-                    <a class="middle" href="/team-project/resources/views/about-us.blade.php">About Us</a>
-                    <a class="middle" href="/team-project/resources/views/blog.blade.php">Blog</a>
+                    <a class="middle" href="{{ route('home') }}">Home</a>
+                    <a class="middle" href="{{ route('products') }}">Products</a>
+                    <a class="middle" href="{{ route('about-us') }}">About Us</a>
+                    <a class="middle" href="{{ route('blog') }}">Blog</a>
                 </div>
                 <div class="navbar-right">
-                    <a class="login" href="/team-project/resources/views/frontend/login.php">Login</a>
+                    <a class="login" href="{{ route('login') }}">Login</a>
                     <p>|</p>
                     <a class="basket" href="/team-project/resources/views/basket.blade.php"><i class='bx bx-basket'></i></a>
                 </div>
@@ -38,14 +38,20 @@
             <div class="form-box">
             <h1>Login</h1>
                 <div class="form-inner">
-                    <form id="login" class="input-group" action="/team-project/resources/views/frontend/login.php" method="post">
-                        <input type="email" class="input-field" name="username" placeholder="Enter your email" required>
-                        <input type="password" class="input-field" name="password" placeholder="Enter your password" required><br>
-                        <p>Forgot your password? <a href="/team-project/resources/views/frontend/login.php">Reset here</a></p>
-                        <button type="submit" class="submit-btn" value="Login">Login</button>
-                        <input type="hidden" name="register" value="true"/>
+                <form id="login"class="input-group" method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <input type="email" class="input-field" name="username" placeholder="Enter your email" required>
+                    <input type="password" class="input-field" name="password" placeholder="Enter your password" required><br>
+                    @if ($errors->has('email'))
+                        <p class="error-message" style="color: red; font-size: 0.9rem; margin-top: 5px;">
+                            {{ $errors->first('email') }}
+                        </p>
+                    @endif
+                    <p>Forgot your password? <a href="{{ route('password.request') }}">Reset here</a></p>
+                    <button type="submit" class="submit-btn" value="Login">Login</button>
+                    <input type="hidden" name="register" value="true"/>
                     </form>
-                    <p>Don't have an account? <a href="/team-project/resources/views/frontend/register.php">Create one here</a></p>
+                    <p>Don't have an account? <a href="{{ route('register') }}">Create one here</a></p>
                 </div>
             </div>
         </section>
@@ -55,7 +61,7 @@
             <footer class="top">
             <div class="logo-desc-soc">
                 <div class="logo">
-                    <a href="/team-project/public/home.blade.php"><img src="/team-project/public/assets/E-spresso_logo.jpg"></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                 </div>
                 <p class="desc">At E-spresso, we’re passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. Whether you’re a coffee connoisseur or just beginning your journey, Our store is your gateway to a world of rich flavors and aromatic delights.</p>
                 <div class="socials">
@@ -70,10 +76,10 @@
             <div class="quick-links">
                 <h3>Quick Links</h3>
                 <ul class="links">
-                    <li><a href="/team-project/public/home.blade.php">Home</a></li>
-                    <li><a href="/team-project/resources/views/products.blade.php">Products</a></li>
-                    <li><a href="/team-project/resources/views/about-us.blade.php">About Us </a></li>
-                    <li><a href="/team-project/resources/views/blog.blade.php">Blog</a></li>
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><a href="{{ route('products') }}">Products</a></li>
+                    <li><a href="{{ route('about-us') }}">About Us </a></li>
+                    <li><a href="{{ route('blog') }}">Blog</a></li>
                 </ul>
             </div>
 
