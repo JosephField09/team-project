@@ -1,4 +1,4 @@
-@media screen and (max-width: 600px ) {
+@media screen and (max-width: 915px ) {
     @tailwind base;
     @tailwind components;
     @tailwind utilities;
@@ -13,19 +13,12 @@
     --text-colour:rgba(255, 255, 255,0.7);
     }
 
-    /* Importing font and saving as 'Lato' */
-    @font-face {
-    font-family:'Lato';
-    src: url('/team-project/public/assets/Lato-Regular.ttf') format('truetype'); 
-    }
-
-
     /* Reset default margin, padding, and box-sizing for all elements */
     * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Lato;
+    font-family: 'Trebuchet MS';
     }
 
     /* Styling for the whole navigation bar */
