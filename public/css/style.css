@@ -1,11 +1,12 @@
 /* Storing reused colours as variables */
 :root {
   --primary-colour: rgb(0, 0, 0);
-  --secondary-colour: rgb(254, 204, 66);
+  --secondary-colour: #fecc42;
   --light-bg: rgb(255, 234, 197,0.2);
   --dark-bg: rgba(255, 219, 181, 0.25);
-  --header-colour:rgba(0, 0, 0,0.8);
-  --text-colour:rgba(255, 255, 255,0.7);
+  --headerfooter-text-colour:rgba(255, 255, 255,0.7);
+  --title-colour:rgb(51,51,51);
+  --text-colour:rgb(128,123,118);
 }
 
 /* Reset default margin, padding, and box-sizing for all elements */
@@ -44,7 +45,7 @@ nav {
 
 /* Styling for navigation bar links */
 .navbar-middle a{
-  color: var(--text-colour);
+  color: var(--headerfooter-text-colour);
   font-size: 12px;
   text-decoration: none;
   font-weight: 100;
@@ -93,7 +94,7 @@ nav {
 /* Styling for a tags in right of navigation bar */
 .navbar-right a {
   font-size: 20px;
-  color: var(--text-colour);
+  color: var(--headerfooter-text-colour);
   align-self: end;
 }
 
@@ -101,6 +102,166 @@ nav {
 .navbar-right a.basket:hover {
   color: white;
   transition: 0.3s ease-in-out;
+}
+
+/* Styling for dashboard */
+.dashboard{
+  padding: 5% 14.25%;
+  height: 70vh;
+  background-color: var(--light-bg);
+}
+
+/* Styling for inner dashboard area */
+.dash-inner{
+  display: grid;
+  grid-template-columns: 1.5fr 4fr;
+  height: 100%;
+  width: 100%;
+  gap: 10px;
+}
+
+/* Styling for dashboard navigation */
+.dash-nav{
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+/* Styling for user section */
+.user{
+  padding: 10px 0px 28px 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+  display: grid;
+  margin-bottom: 20px;
+  grid-template-columns: 1fr 2fr;
+}
+
+/* Styling for second user paragrpah text */
+.user p:nth-child(2){
+  color: gray;
+  font-size: 10px;
+  margin-top: 5px
+}
+
+/* Styling for user icon */
+.user i{
+  justify-self: center;
+  align-content: center;
+  height: 100%;
+  font-size: 37px;
+}
+
+/* Styling for dashboard button icons */
+.dash-buttons i{
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+/* Styling for dashboard form in navigation */
+.dash-nav form{
+  display: flex;
+  justify-content: center;
+}
+
+/* Styling for default dashboard nav buttons */
+.option{
+  display: flex;
+  background-color: #fff6cc;
+  width: 100%;
+  border-radius: 5px;
+  padding:10px 20px;
+  margin-bottom: 10px;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+}
+
+/* Styling for hovering over dashboard nav buttons */
+.option:hover {
+  background-color: var(--secondary-colour); 
+}
+
+/* Styling for the active dashboard nav buttons */
+.option.active {
+  font-weight: bold;
+  background-color: var(--secondary-colour); 
+}
+
+/* Styling for login button */
+.logout{
+  display: flex;
+  background-color: var(--secondary-colour);
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  align-items: center;
+  width: 70%;
+  font-size: smaller;
+  align-self: end;
+  transform: translateY(50px);
+  border: none;
+  justify-content: center;
+}
+
+/* Styling for dashboard title/content section */
+.dash-title-content{
+  display: grid;
+  grid-template-rows: 1fr 8fr;
+  gap: 10px;
+}
+
+/* Styling for title section */
+.title{
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  align-content: center;
+  padding-left: 15px;
+  color: var(--text-colour);
+}
+
+/* Styling for content section */
+.content{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 15px;
+}
+
+/* Styling for content h2 header */
+.content h2{
+  color: var(--title-colour);
+}
+
+/* Styling for member content paragraph */
+#memberContent p{
+  margin-top: 10px;
+  color: var(--text-colour);
+}
+
+/* Styling for member content h4 header */
+#memberContent h4{
+  color: var(--title-colour);
+  margin-top: 20px;
+}
+
+/* Styling for content span */
+#memberContent span{
+  color: var(--title-colour);
+  font-size: 30px;
+}
+
+/* Styling for subscribe button */
+.content .subscribe{
+  background-color: var(--secondary-colour);
+  padding: 10px 15px;
+  border-radius: 5px;
+  position: absolute;
+  margin-top: 20px;
 }
 
 /* Styling for Main container */
@@ -125,7 +286,7 @@ nav {
 
 /* Styling for form box header */
 .form-box h1{
-  color: var(--header-colour);
+  color: var(--title-colour);
   padding: 20px;
   font-size: 30px;
 }
@@ -234,7 +395,7 @@ footer.top::after {
 
 /* Styling for description */
 .desc {
-  color: var(--text-colour);
+  color: var(--headerfooter-text-colour);
 }
 
 /* Styling for social link icons */
@@ -281,7 +442,7 @@ footer.top .contact-information ul li:nth-child(1){
 footer.top .quick-links ul li a,
 footer.top .information ul li a, 
 footer.top .contact-information ul li a{
-  color: var(--text-colour);
+  color: var(--headerfooter-text-colour);
   text-decoration: none;
   transform: translateY(-2px);
 }
@@ -330,7 +491,7 @@ footer.bottom {
   letter-spacing: 1px;
 }
 
-/* Styling for our story section on about us*/
+/* Styling for our story section on about us */
 #ourstory{
   display: flex;
   flex-direction: row;
@@ -348,7 +509,7 @@ footer.bottom {
   background-color: var(--dark-bg);
 }
 
-/* Styling for the images on about us*/
+/* Styling for the images on about us */
 #ImageBlocks img{
   border-radius: 15px;
   margin: 3%;
@@ -369,7 +530,7 @@ footer.bottom {
   flex-direction: column
 }
 
-/* Styling for our story on about us*/
+/* Styling for our story on about us */
 .ourstory{
   max-width: 100%;
   p{
@@ -399,7 +560,7 @@ footer.bottom {
   }
 }
 
-/* Styling for the promises on about us*/
+/* Styling for the promises on about us */
 .promise{
   display: flex;
   flex-direction: row;
@@ -413,7 +574,7 @@ footer.bottom {
 }
 
 
-/* Styling for our missions on about us*/
+/* Styling for our missions on about us */
 .ourmission{
   max-width: 100%;
   padding-top: 75px;
@@ -450,7 +611,7 @@ footer.bottom {
 }
 
 
-/* Styling for individual missions on about us*/
+/* Styling for individual missions on about us */
 .missions{
   padding-top: 15px;
   display: flex;
@@ -463,13 +624,13 @@ footer.bottom {
   }
 }
 
-/* Styling for headers for missions and visions on about us*/
+/* Styling for headers for missions and visions on about us */
 .missionheader{
   font-weight: 600;
   font-size: 1.1em;
 }
 
-/* Styling for our vision section on about us*/
+/* Styling for our vision section on about us */
 .ourvision{
   max-width: 100%;
   padding-top: 60px;
@@ -505,6 +666,7 @@ footer.bottom {
   }
 }
 
+/* Styling for our contact us section on about us */
 #ContactUs{
   max-width: 100%;
   padding-left: 14.25%;
@@ -515,7 +677,7 @@ footer.bottom {
   flex-direction: row;
   background-color: var(--dark-bg);
   h1{
-    color: var(--header-colour);
+    color: var(--title-colour);
     padding: 20px;
     font-size: 30px;
     text-align: center;
@@ -529,6 +691,7 @@ footer.bottom {
   }
 }
 
+/* Styling for contact us form on about us */
 .contact-us-form{
   margin-left: 5px;
   align-self: center;
@@ -582,6 +745,7 @@ footer.bottom {
   }
 }
 
+/* Styling for submit contact form button */
 #submit-form-btn{
     max-width: 97%;
     width: auto;
@@ -593,6 +757,7 @@ footer.bottom {
     border: none;
 }
 
+/* Styling for our submit form */
 .submit-form{
   padding: 15px;
   text-align: center;
