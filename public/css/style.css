@@ -97,9 +97,13 @@ nav {
   color: var(--headerfooter-text-colour);
   align-self: end;
 }
+/* Styling for a tags in right of navigation bar */
+.navbar-right i {
+  margin-right: 10px;
+}
 
 /* Styling for basket a tag when hovering */
-.navbar-right a.basket:hover {
+.navbar-right a i:hover {
   color: white;
   transition: 0.3s ease-in-out;
 }
@@ -237,6 +241,72 @@ nav {
   color: var(--title-colour);
 }
 
+/* Styling for content h4 header */
+.content h4{
+  color: var(--title-colour);
+  margin-bottom: 20px;
+}
+
+/* Styling for labels */
+label{
+  color: var(--title-colour);
+  font-size: smaller;
+}
+
+/* Styling for account conent section */
+#accountContent{
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 100%;
+}
+
+/* Styling for account content input fields */
+#accountContent .input-field{
+  width: 80%;
+}
+
+/* Styling for save buttons */
+.save{
+  background-color: var(--secondary-colour);
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: none;
+}
+
+/* Styling for profile info grid */
+.profile-info{
+  border-right: 1px solid gray;
+  padding: 5px;
+}
+
+/* Styling for password info grid */
+.password-info{
+  padding: 5px;
+}
+
+/* Styling for delete profile grid */
+.delete-profile{
+  padding: 5px;
+  border-left: 1px solid gray;
+}
+
+/* Styling for profile info and delete profiel paragraphs */
+.profile-info p,
+.delete-profile p{
+  color: var(--text-colour);
+  font-size: smaller;
+  margin-bottom: 10px;
+}
+
+/* Styling for delete button */
+.delete{
+  background-color: red;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: none;
+}
+
 /* Styling for member content paragraph */
 #memberContent p{
   margin-top: 10px;
@@ -260,7 +330,7 @@ nav {
   background-color: var(--secondary-colour);
   padding: 10px 15px;
   border-radius: 5px;
-  position: absolute;
+  position: relative;
   margin-top: 20px;
 }
 

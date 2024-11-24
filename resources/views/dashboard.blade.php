@@ -4,7 +4,7 @@
     <!-- Meta tags, title, CSS and JS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="VpYNhu8PDkoaZsSShkP139A7EV5FePg3hlAeekXX">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dashboard</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -55,7 +55,7 @@
                         <a id="orders" class="option" >
                             <i class='bx bx-shopping-bag'></i>My Orders
                         </a>
-                        <a id="account" class="option" href="http://127.0.0.1:8000/profile" >
+                        <a id="account" class="option">
                             <i class='bx bx-cog'></i>My Account
                         </a>
                         <a id="member" class="option">
@@ -82,8 +82,119 @@
                             <p>Your orders will appear here.</p>
                         </div>
                         <div id="accountContent" class="content-section" style="display: none;">
-                            <p>Your account details will appear here.</p>
+                            <div class="profile-info">
+                                <h4>Profile Information</h4>
+                                <section>
+
+                                        <p>
+                                            {{ __("Update your account's profile information and email address.") }}
+                                        </p>
+                                    </header>
+
+                                    <form id="send-verification" method="post" action="{{ route('verification.send') }}">
+                                        @csrf
+                                    </form>
+
+                                    <form method="post" action="{{ route('profile.update') }}">
+                                        @csrf
+                                        @method('patch')
+
+                                        <div>
+                                            <x-input-label for="firstName" :value="__('First Name')" />
+                                            <x-text-input id="firstName" name="firstName" type="text" class="input-field" :value="old('firstName', $user->firstName)" required autofocus autocomplete="given-name" />
+                                            <x-input-error style="color: red; font-size:small; list-style:none;" :messages="$errors->get('firstName')" />
+                                        </div>
+
+                                        <div>
+                                            <x-input-label for="lastName" :value="__('Last Name')" />
+                                            <x-text-input id="lastName" name="lastName" type="text" class="input-field" :value="old('lastName', $user->lastName)" required autocomplete="family-name" />
+                                            <x-input-error style="color: red; font-size:small; list-style:none;" :messages="$errors->get('lastName')" />
+                                        </div>
+
+                                        <div>
+                                            <x-input-label for="email" :value="__('Email')" />
+                                            <x-text-input id="email" name="email" type="email" class="input-field" :value="old('email', $user->email)" required autocomplete="email" />
+                                            <x-input-error style="color: red; font-size:small; list-style:none;":messages="$errors->get('email')" />
+                                        </div>
+
+                                        <div class="flex items-center gap-4">
+                                            <button class="save">{{ __('Save') }}</button>
+
+                                            @if (session('status') === 'profile-updated')
+                                                <p
+                                                    x-data="{ show: true }"
+                                                    x-show="show"
+                                                    x-transition
+                                                    x-init="setTimeout(() => show = false, 2000)"
+                                                    style="color: green; margin-left: 10px"
+                                                >{{ __('Updated Succesfully') }}</p>
+                                            @endif
+                                        </div>
+                                    </form>
+                                </section>
+
+                            </div>
+                            <div class="password-info">
+                                <h4>Update Password</h4>
+                                <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
+                                    @csrf
+                                    @method('put')
+
+                                    <div>
+                                        <x-input-label :value="__('Current Password')" />
+                                        <input type="password" class="input-field" name="current_password" required autocomplete="current-password">
+                                        <x-input-error :messages="$errors->updatePassword->get('current_password')" style="color: red; font-size:small; list-style:none;"/>
+                                    </div>
+
+                                    <div>
+                                        <x-input-label for="update_password_password" :value="__('New Password')" />
+                                        <input type="password" class="input-field" name="password" required autocomplete="new-password" />
+                                        <x-input-error :messages="$errors->updatePassword->get('password')" style="color: red; font-size:small; list-style:none;"/>
+                                    </div>
+
+                                    <div>
+                                        <x-input-label for="update_password_password_confirmation" :value="__('Confirm Password')" />
+                                        <input type="password" class="input-field" name="password_confirmation" required autocomplete="new-password" />
+                                        <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" style="color: red; font-size:small; list-style:none;"/>
+                                    </div>
+
+                                    <div class="flex items-center gap-4">
+                                        <button class="save">{{ __('Save') }}</button>
+
+                                        @if (session('status') === 'password-updated')
+                                            <p
+                                                x-data="{ show: true }"
+                                                x-show="show"
+                                                x-transition
+                                                x-init="setTimeout(() => show = false, 2000)"
+                                                style="color: green; margin-left: 10px"
+                                            >{{ __('Updated Succesfully') }}</p>
+                                        @endif
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="delete-profile">
+                                <form method="post" action="{{ route('profile.destroy') }}">
+                                    @csrf
+                                    @method('PATCH')
+
+                                    <h4>{{ __('Delete your account') }} </h4>
+
+                                    <p>{{ __('Once your account is deleted, all of its resources and data will be permanently deleted. 
+                                        Please enter your password to confirm you would like to permanently delete your account.') }}</p>
+
+                                    <input id="password" name="password" type="password" class="input-field" placeholder="{{ __('Password') }}"/>
+                                    <x-input-error :messages="$errors->userDeletion->get('password')" style="color: red; font-size:small; list-style:none;"/>
+
+                                    <div>
+                                        <button class="delete">
+                                            {{ __('Delete Account') }}
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
+
                         <div id="memberContent" class="content-section" style="display: none;">
                             <h2>Getting deja brew?</h2>
                             <p>Finding yourself running out of beans and ordering often? With our subscription you you’ll never have to make a last-minute dash again. Regular deliveries mean your beans are always fresh, and your cup is always full, without the hassle of reordering. It’s the coffee experience that just keeps on brewing, right to your door!"</p>

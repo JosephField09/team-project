@@ -16,8 +16,9 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
+        return view('dashboard', [
             'user' => $request->user(),
+            'activeTab' => 'account',
         ]);
     }
 
@@ -26,13 +27,21 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $user->update($request->validated());
+        // Validate the input fields
+        $validatedData = $request->validate([
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+        ]);
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
-
-        $request->user()->save();
+        // Update the user's information
+        $user->update([
+            'firstName' => $validatedData['firstName'],
+            'lastName' => $validatedData['lastName'],
+            'email' => $validatedData['email'],
+        ]);
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }

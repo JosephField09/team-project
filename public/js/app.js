@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         activeOption.style.backgroundColor = 'rgb(254, 204, 66)'; 
         activeTitle.style.display = 'block'; 
-        activeContent.style.display = 'block'; 
+        activeContent.style.display = 'grid'; 
     }
 
     // Set the initial active state to "orders"
@@ -41,3 +41,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+// Reequest a fresh CSRF token
+window.axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').content;
