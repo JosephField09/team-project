@@ -7,12 +7,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Function to reset all to inactive state
     function resetActiveState() {
+        // Set all background colours to light grey
         options.forEach(option => {
             option.style.backgroundColor = 'rgba(254, 204, 66, 0.3)'; 
         });
+        // Don't diplay any titles
         titles.forEach(title => {
             title.style.display = 'none'; 
         });
+        // Don't diplay any content
         contents.forEach(content => {
             content.style.display = 'none'; 
         });
@@ -30,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
         activeContent.style.display = 'grid'; 
     }
 
-    // Set the initial active state to "orders"
+    // Set the default active state to "orders"
     setActiveState('orders');
 
     // Add click event listeners to each option

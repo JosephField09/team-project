@@ -61,13 +61,13 @@
                         <a id="member" class="option">
                             <i class='bx bx-reset'></i>My Membership
                         </a>
-                        <form method="POST" action="{{ route('logout') }}">
+                    </div>
+                    <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="logout">
                                 <i class='bx bx-exit'></i>Logout
                             </button>
-                        </form>
-                    </div>
+                    </form>
                 </div>
                 <div class="dash-title-content">
                     <div class="title">
@@ -85,11 +85,9 @@
                             <div class="profile-info">
                                 <h4>Profile Information</h4>
                                 <section>
-
-                                        <p>
-                                            {{ __("Update your account's profile information and email address.") }}
-                                        </p>
-                                    </header>
+                                    <p>
+                                        {{ __("Update your account's profile information and email address.") }}
+                                    </p>
 
                                     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
                                         @csrf
@@ -126,7 +124,7 @@
                                                     x-show="show"
                                                     x-transition
                                                     x-init="setTimeout(() => show = false, 2000)"
-                                                    style="color: green; margin-left: 10px"
+                                                    style="color: green; margin-top:20px; margin-left: 10px"
                                                 >{{ __('Updated Succesfully') }}</p>
                                             @endif
                                         </div>
@@ -167,7 +165,7 @@
                                                 x-show="show"
                                                 x-transition
                                                 x-init="setTimeout(() => show = false, 2000)"
-                                                style="color: green; margin-left: 10px"
+                                                style="color: green; margin-top:20px; margin-left: 10px"
                                             >{{ __('Updated Succesfully') }}</p>
                                         @endif
                                     </div>

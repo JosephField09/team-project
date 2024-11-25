@@ -111,7 +111,7 @@ nav {
 /* Styling for dashboard */
 .dashboard{
   padding: 5% 14.25%;
-  height: 70vh;
+  height: fit-content;
   background-color: var(--light-bg);
 }
 
@@ -130,6 +130,8 @@ nav {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 20px;
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
 }
 
 /* Styling for user section */
@@ -183,7 +185,9 @@ nav {
 
 /* Styling for hovering over dashboard nav buttons */
 .option:hover {
-  background-color: var(--secondary-colour); 
+  scale: 1.1;
+  cursor: pointer;
+  background-color: var(--secondary-colour);
 }
 
 /* Styling for the active dashboard nav buttons */
@@ -198,14 +202,17 @@ nav {
   background-color: var(--secondary-colour);
   border-radius: 5px;
   padding: 10px 20px;
-  margin-bottom: 10px;
   align-items: center;
   width: 70%;
   font-size: smaller;
-  align-self: end;
-  transform: translateY(50px);
+  align-self: flex-end;
   border: none;
-  justify-content: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+.logout:hover{
+  scale: 0.9;
 }
 
 /* Styling for dashboard title/content section */
@@ -271,6 +278,11 @@ label{
   border-radius: 5px;
   margin-top: 10px;
   border: none;
+  cursor: pointer;
+}
+
+.save:hover{
+  scale: 0.9;
 }
 
 /* Styling for profile info grid */
@@ -305,6 +317,11 @@ label{
   border-radius: 5px;
   margin-top: 10px;
   border: none;
+  cursor: pointer;
+}
+
+.delete:hover{
+  scale: 0.9;
 }
 
 /* Styling for member content paragraph */
