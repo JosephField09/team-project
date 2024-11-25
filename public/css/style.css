@@ -211,6 +211,13 @@ nav {
   cursor: pointer;
 }
 
+
+/* Styling for login button icon */
+.logout i{
+  margin-right: 10px;
+}
+
+/* Styling for login button when hovering */
 .logout:hover{
   scale: 0.9;
 }
@@ -281,6 +288,7 @@ label{
   cursor: pointer;
 }
 
+/* Styling for save button when hovering */
 .save:hover{
   scale: 0.9;
 }
@@ -320,6 +328,7 @@ label{
   cursor: pointer;
 }
 
+/* Styling for delete button when hovering */
 .delete:hover{
   scale: 0.9;
 }
@@ -409,6 +418,12 @@ label{
   background: var(--secondary-colour);
   border: none;
   margin: 10px;
+  cursor: pointer;
+}
+
+/* Styling for submit button when hovering */
+.submit-btn:hover{
+  scale: 1.1;
 }
 
 /* Styling for text login/register switch prompts */
