@@ -26,9 +26,15 @@
                     <a class="middle" href="{{ route('blog') }}">Blog</a>
                 </div>
                 <div class="navbar-right">
-                    <a class="login" href="{{ route('login') }}">Login</a>
-                    <p>|</p>
-                    <a class="basket" href="/team-project/resources/views/basket.blade.php"><i class='bx bx-basket'></i></a>
+                    @auth
+                        <a class="account" href="{{ route('dashboard') }}"><i class='bx bx-user'></i></a>
+                        <a class="basket" href="/team-project/resources/views/basket.blade.php"><i class='bx bx-basket'></i></a>
+                    @endauth
+                    @guest
+                        <a class="login" href="{{ route('login') }}">Login</a>
+                        <p>|</p>
+                        <a class="basket" href="/team-project/resources/views/basket.blade.php"><i class='bx bx-basket'></i></a>
+                    @endguest
                 </div>
             </nav>
         </section>

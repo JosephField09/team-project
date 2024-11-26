@@ -2,12 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\BlogController;
+use Illuminate\Support\Facades\Auth;
 
 // Home route
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -21,14 +20,22 @@ Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 // Blog route
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
+// Route to go to dashboard and clear cache to prevent csrf
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $user = Auth::user();  // Get the authenticated user
+    return response(view('dashboard', compact('user')))
+        ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
+        ->header('Pragma', 'no-cache')
+        ->header('Expires', '0');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// Requires the user to be authenticated and verified, calls updaet method to update data then edit method
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/profile.edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile.update', [ProfileController::class, 'update'])->name('profile.update');
 });
+
+// Route to delete the user's profile, no authentication or verification
+Route::patch('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 require __DIR__.'/auth.php';
