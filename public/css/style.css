@@ -918,3 +918,47 @@ footer.bottom {
 .view-button:hover {
     background-color: #e5a86f;
 }
+
+/* Styling for adnin main secion */
+.admin-main{
+  background-color: var(--light-bg);
+}
+
+/* Styling for dashboard sidebar */
+#sidebar {
+  width: 250px;
+  background-color: black;
+  color: white;
+  height: 100vh;
+  position: relative;
+}
+/* Styling for sidebar logo section */
+#sidebar .logo {
+  text-align: center;
+  padding: 20px;
+  background-color: black;
+}
+/* Styling for sidebar img*/
+#sidebar .logo img {
+  width: 100%;
+}
+
+/* Styling for dashboard sidebar menu */
+#sidebar .menu {
+  padding: 20px;
+}
+
+/* Styling for sidebar a tags */
+#sidebar .menu a {
+  color: white;
+  display: block;
+  text-decoration: none;
+  margin-bottom: 40px;
+  font-size: 20px;
+  transition: padding-left 0.3s ease;
+}
+
+/* Styling for sidebar a tags when hovering */
+#sidebar .menu a:hover {
+  padding-left: 10px;
+}

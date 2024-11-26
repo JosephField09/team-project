@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags, title, CSS and JS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>Admin Registration</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -14,13 +13,13 @@
 <body>
     <main>
         <!-- Header Section -->
-       <section id="header">
+        <section id="header">
             <nav>
                 <div class="navbar-left">
                     <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                </div>
                 <div class="navbar-middle">
-                    <a class="middle" href="{{ route('home') }}">Home</a>
+                    <a class="middle option-selected" href="{{ route('home') }}">Home</a>
                     <a class="middle" href="{{ route('products') }}">Products</a>
                     <a class="middle" href="{{ route('about-us') }}">About Us</a>
                     <a class="middle" href="{{ route('blog') }}">Blog</a>
@@ -30,7 +29,7 @@
                         @if(Auth::user()->userType === 'admin')
                             <!-- Admin Dashboard and Basket -->
                             <a class="account" href="{{ route('admin.dashboard') }}">
-                                <i class='bx bx-user'></i>
+                                <i class='bx bx-user'></i> 
                             </a>
                             <a class="basket" href="/team-project/resources/views/basket.blade.php">
                                 <i class='bx bx-basket'></i>
@@ -38,7 +37,7 @@
                         @elseif(Auth::user()->userType === 'user')
                             <!-- User Dashboard and Basket -->
                             <a class="account" href="{{ route('user.dashboard') }}">
-                                <i class='bx bx-user'></i> 
+                                <i class='bx bx-user'></i>
                             </a>
                             <a class="basket" href="/team-project/resources/views/basket.blade.php">
                                 <i class='bx bx-basket'></i>
@@ -56,29 +55,36 @@
             </nav>
         </section>
 
-        <!-- Register form and php section -->
+        <!-- Admin Registration Form -->
         <section class="main">
             <div class="form-box">
-            <h1>Login</h1>
+                <h1>Admin Registration</h1>
                 <div class="form-inner">
-                <form id="login"class="input-group" method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <input type="email" class="input-field" name="email" placeholder="Enter your email" value="{{ old('email') }}" required >
-                    <input type="password" class="input-field" name="password" placeholder="Enter your password" required><br>
-                    @if ($errors->has('email') && $errors->first('email') == 'These credentials do not match our records.')
-                        <p class="error-message" style="color: red; margin-top: 10px;">
-                             Username or password is incorrect.
-                        </p>
-                    @elseif ($errors->has('emai'))
-                        <p class="error-message" style="color: red; margin-top: 10px;">
-                            {{ $errors->first('email') }}
-                        </p>
-                    @endif
-                    <p>Forgot your password? <a href="{{ route('password.request') }}">Reset here</a></p>
-                    <button type="submit" class="submit-btn" value="Login">Login</button>
-                    <input type="hidden" name="register" value="true"/>
+                    <form id="register" class="input-group" action="{{ route('admin.register') }}" method="POST">
+                        @csrf
+                        <div class="form-row">
+                            <input type="text" class="input-field" name="firstName" placeholder="First Name" value="{{ old('firstName') }}" required>
+                            <input type="text" class="input-field" name="lastName" placeholder="Last Name" value="{{ old('lastName') }}" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="email" class="input-field" name="email" placeholder="Email" value="{{ old('email') }}" required>
+                            <input type="tel" class="input-field" name="phone" placeholder="Phone Number" value="{{ old('phone') }}" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="password" class="input-field" name="password" placeholder="Password" required>
+                            <input type="password" class="input-field" name="password_confirmation" placeholder="Confirm Password" required>
+                        </div>
+
+                        <!-- Error Messages -->
+                        @if ($errors->any())
+                            <p class="error-message" style="color: red; margin-top: 10px;">
+                                {{ $errors->first() }}
+                            </p>
+                        @endif
+
+                        <button type="submit" class="submit-btn">Register</button>
                     </form>
-                    <p>Don't have an account? <a href="{{ route('register') }}">Create one here</a></p>
+                    <p>Already an admin? <a href="{{ route('login') }}">Login here</a></p>
                 </div>
             </div>
         </section>
@@ -107,7 +113,8 @@
                     <li><a href="{{ route('products') }}">Products</a></li>
                     <li><a href="{{ route('about-us') }}">About Us </a></li>
                     <li><a href="{{ route('blog') }}">Blog</a></li>
-                    <li><a class="login" href="{{ route('admin.register') }}">Register as Admin</a></li>
+                    <li><a class="login" href="{{ route('admin.register') }}">Admin Register</a></li>
+
                 </ul>
             </div>
 
@@ -148,3 +155,4 @@
         </section>
     </main>
 </body>
+</html>

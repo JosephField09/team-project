@@ -44,6 +44,7 @@ class RegisteredUserController extends Controller
             'phone' => $request->phone,
             'is_subscribed' => false,
             'password' => Hash::make($request->password),
+            'usertYpe' => 'user',
         ]);
 
         event(new Registered($user));

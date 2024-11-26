@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone');
             $table->boolean('is_subscribed')->default(false);
+            $table->string('userType')->default('user');  
             $table->rememberToken();
             $table->timestamps();
         });

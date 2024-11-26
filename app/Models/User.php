@@ -24,6 +24,7 @@ class User extends Authenticatable
         'phone',
         'isSubscribed',
         'password',
+        'userType',
     ];
 
     /**
@@ -48,4 +49,6 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    
 }

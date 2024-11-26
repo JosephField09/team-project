@@ -26,11 +26,33 @@
                     <a class="middle" href="{{ route('blog') }}">Blog</a>
                 </div>
                 <div class="navbar-right">
-                    <a class="login" href="{{ route('login') }}">Login</a>
-                    <p>|</p>
-                    <a class="basket" href="/team-project/resources/views/basket.blade.php"><i class='bx bx-basket'></i></a>
+                    @if(Auth::check())
+                        @if(Auth::user()->userType === 'admin')
+                            <!-- Admin Dashboard and Basket -->
+                            <a class="account" href="{{ route('admin.dashboard') }}">
+                                <i class='bx bx-user'></i>
+                            </a>
+                            <a class="basket" href="/team-project/resources/views/basket.blade.php">
+                                <i class='bx bx-basket'></i>
+                            </a>
+                        @elseif(Auth::user()->userType === 'user')
+                            <!-- User Dashboard and Basket -->
+                            <a class="account" href="{{ route('user.dashboard') }}">
+                                <i class='bx bx-user'></i> 
+                            </a>
+                            <a class="basket" href="/team-project/resources/views/basket.blade.php">
+                                <i class='bx bx-basket'></i>
+                            </a>
+                        @endif
+                    @else
+                        <!-- Guest: Login and Basket -->
+                        <a class="login" href="{{ route('login') }}">Login</a>
+                        <p>|</p>
+                        <a class="basket" href="/team-project/resources/views/basket.blade.php">
+                            <i class='bx bx-basket'></i>
+                        </a>
+                    @endif
                 </div>
-            </nav>
         </section>
 
         <!-- Register form and php section -->
@@ -100,6 +122,7 @@
                     <li><a href="{{ route('products') }}">Products</a></li>
                     <li><a href="{{ route('about-us') }}">About Us </a></li>
                     <li><a href="{{ route('blog') }}">Blog</a></li>
+                    <li><a class="login" href="{{ route('admin.register') }}">Register as Admin</a></li>
                 </ul>
             </div>
 
