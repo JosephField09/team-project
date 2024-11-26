@@ -42,8 +42,12 @@
                     @csrf
                     <input type="email" class="input-field" name="email" placeholder="Enter your email" value="{{ old('email') }}" required >
                     <input type="password" class="input-field" name="password" placeholder="Enter your password" required><br>
-                    @if ($errors->has('email'))
-                        <p class="error-message" style="color: red; font-size: 0.9rem; margin-top: 5px;">
+                    @if ($errors->has('email') && $errors->first('email') == 'These credentials do not match our records.')
+                        <p class="error-message" style="color: red; margin-top: 10px;">
+                             Username or password is incorrect.
+                        </p>
+                    @elseif ($errors->has('emai'))
+                        <p class="error-message" style="color: red; margin-top: 10px;">
                             {{ $errors->first('email') }}
                         </p>
                     @endif

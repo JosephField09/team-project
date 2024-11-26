@@ -52,6 +52,7 @@
                             <input type="password" class="input-field" name="password" placeholder="Password" required>
                             <input type="password" class="input-field" name="password_confirmation" placeholder="Confirm Password" required>
                         </div>
+                        
                         @if ($errors->has('email'))
                             <p class="error-message" style="color: red; margin-top: 10px;">
                             {{ __('This email is already registered. Please log in or use a different email.') }}
