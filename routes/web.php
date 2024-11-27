@@ -39,3 +39,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::patch('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 require __DIR__.'/auth.php';
+
+// Route to display the list of blog posts
+Route::get('/blogs',[BlogController::class, 'index'])->name('blogs.index');
+
+/** 
+ * Both routes require the user to be authenticated
+ * First route displays the blog creation form
+ * Second route stores the blog post that was made
+ * */  
+Route::middleware(['auth'])->group(function() {
+    Route::get('/blogs/create', [BlogController::class, 'create'])->name('blogs.create');
+    Route::post('/blogs', [BlogController::class, 'store'])->name('blogs.store');
+});

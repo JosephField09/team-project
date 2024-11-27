@@ -48,4 +48,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Gets the blogs created by a user and creates a one to many relationship with blogs table
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function blogs(){
+        return $this->hasMany(Blog::class);
+    }
 }

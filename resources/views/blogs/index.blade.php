@@ -4,7 +4,7 @@
     <!-- Meta tags, title, CSS and JS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>The Blog</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -23,7 +23,7 @@
                     <a class="middle" href="{{ route('home') }}">Home</a>
                     <a class="middle" href="{{ route('products') }}">Products</a>
                     <a class="middle" href="{{ route('about-us') }}">About Us</a>
-                    <a class="middle option-selected" href="{{ route('blog') }}">Blog</a>
+                    <a class="middle option-selected" href="{{ route('blogs.index') }}">Blog</a>
                 </div>
                 <div class="navbar-right">
                     @auth
@@ -37,6 +37,43 @@
                     @endguest
                 </div>
             </nav>
+        </section>
+
+        <!-- Main blogs display section -->
+        <section id="blogs-main">
+            <section id="blog-posts">
+                @forelse($blogs as $blog)
+                    <div class="blog-post">
+                        <h4>{{$blog->user->firstName}} {{$blog->user->lastName}}, {{$blog->created_at->format('d M Y')}}</h4>
+                        <h2>{{$blog->title}}</h2>
+                        <p>{{$blog->message}}</p>
+                    </div>
+                    @empty
+                        <h1>No blogs have been posted.</h1>
+                @endforelse
+            </section>
+
+            <!-- Add posts form section -->
+            @auth
+                <div class="create-blog-post">
+                    <form class="blog-form" action="{{ route('blogs.store') }}" method="POST">
+                        <h4>{{Auth::user()->firstName}} {{Auth::user()->lastName }}</h4>
+                        @csrf
+                        <div class="blog-title">
+                            <input type="text" class="input-field" name="title" id="title" placeholder="Enter title" required>
+                        </div>
+                        <div class="blog-message">
+                            <textarea name="message" class="input-field" id="message" rows="7" placeholder="Enter message" required></textarea>
+                        </div>
+                        <button type="submit">Publish Post +</button>
+                    </form>
+                </div>
+            @else
+                <div class="cant-post-blog">
+                    <h3>You must be logged in to create a post.</h3>
+                    <a class="login" href="{{ route('login') }}">Login</a>
+                </div>
+            @endauth
         </section>
 
         <!-- Footer Section -->
