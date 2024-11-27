@@ -33,7 +33,7 @@
                 </div>
                 <div class="navbar-right">
                     <a class="account" href="{{ route('dashboard') }}"><i class='bx bx-user'></i></a>
-                    <a class="basket" href="/team-project/resources/views/basket.blade.php"><i class='bx bx-basket'></i></a>
+                    <a class="basket" href="{{route('basket')}}"><i class='bx bx-basket'></i></a>
                 </div>
             </nav>
         </section>
