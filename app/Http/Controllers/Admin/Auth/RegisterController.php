@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -14,9 +14,25 @@ class RegisterController extends Controller
      * Show the registration form for admins.
      */
     public function create()
-    {
-        return view('admin.auth.register');
+{
+    // Check if the user is logged in
+    if (auth()->check()) {
+        // Get the logged-in user
+        $user = auth()->user();
+
+        // Check if the user is an admin
+        if ($user->userType === 'admin') {
+            // Redirect to the admin dashboard view
+            return redirect()->route('admin.dashboard');
+        }
+
+        // If the user is not an admin, redirect to the home page
+        return redirect()->route('home');
     }
+
+    // If no user is logged in, show the register page
+    return view('admin.auth.register');
+}
 
     /**
      * Handle admin registration.
@@ -41,6 +57,9 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
             'userType' => 'admin', 
         ]);
+
+        // Log in the newly registered admin
+        Auth::login($user);
 
         return redirect()->route('admin.dashboard')->with('success', 'Admin registered successfully.');
     }

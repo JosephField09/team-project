@@ -38,7 +38,7 @@
                             </a>
                         @elseif(Auth::user()->userType === 'user')
                             <!-- User Dashboard and Basket -->
-                            <a class="account" href="{{ route('user.dashboard') }}">
+                            <a class="account" href="{{ route('dashboard') }}">
                                 <i class='bx bx-user'></i>
                             </a>
                             <a class="basket" href="/team-project/resources/views/basket.blade.php">

@@ -315,6 +315,7 @@ label{
 .delete-profile p{
   color: var(--text-colour);
   font-size: smaller;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
@@ -922,43 +923,101 @@ footer.bottom {
 /* Styling for adnin main secion */
 .admin-main{
   background-color: var(--light-bg);
+  height: 70vh;
 }
 
-/* Styling for dashboard sidebar */
-#sidebar {
-  width: 250px;
-  background-color: black;
-  color: white;
-  height: 100vh;
+/* Styling for admin dashboard navbar */
+#admin-nav {
+  width: 71.5%;
+  background-color: #272727;
+  color: var(--text-colour);
+  border-radius: 50px;
+  margin: 3% 14.25%;
+  height: 50px;
+  display: inline-flex;
   position: relative;
-}
-/* Styling for sidebar logo section */
-#sidebar .logo {
-  text-align: center;
-  padding: 20px;
-  background-color: black;
-}
-/* Styling for sidebar img*/
-#sidebar .logo img {
-  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: inset 1px 1px 20px 10px black;
 }
 
-/* Styling for dashboard sidebar menu */
-#sidebar .menu {
-  padding: 20px;
+.admin-user{
+  display: inline-flex;
 }
 
-/* Styling for sidebar a tags */
-#sidebar .menu a {
-  color: white;
-  display: block;
+.name{
+  font-size: 12px;
+  color: var(--headerfooter-text-colour);
+  margin-left: 5px;
+}
+
+.admin-buttons{
+  display: inline-flex;
+}
+
+/* Styling for navigation bar links */
+.admin-buttons a{
+  color: var(--headerfooter-text-colour);
+  font-size: 12px;
   text-decoration: none;
-  margin-bottom: 40px;
-  font-size: 20px;
-  transition: padding-left 0.3s ease;
+  font-weight: 100;
+  position: relative;
+  padding: 0 20px;
+  border-radius: 5px;
+  transition: transform 0.5s linear, color 0.5s linear;
 }
 
-/* Styling for sidebar a tags when hovering */
-#sidebar .menu a:hover {
-  padding-left: 10px;
+/* Styling for admin butons when hovering */
+.admin-buttons a:hover{
+  transform: translateY(-5px);
+}
+
+.admin-logout button{
+  background: var(--secondary-colour);
+  border: none;
+  border-radius: 15px;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px 10px;
+  color: var(--primary-colour);
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.admin-logout button:hover{
+  scale: 1.1;
+}
+
+.admin-logout i{
+  font-size: 15px;
+  margin-right: 15px;
+}
+
+.choice{
+  cursor: pointer;
+}
+
+/* Styling for content section */
+.admin-content{
+  padding: 10px 14.25%;
+}
+
+#allOrdersContent,
+#allUsersContent,
+#settingsContent{
+  background-color: white;
+  border-radius: 15px;
+  height: 200px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+/* Styling for settings conent section */
+#settingsContent{
+  grid-template-columns: 1fr 1fr 1fr;
+  height: fit-content
+}
+
+#settingsContent .input-field{
+  width: 90%;
 }

@@ -30,14 +30,14 @@
                         @if(Auth::user()->userType === 'admin')
                             <!-- Admin Dashboard and Basket -->
                             <a class="account" href="{{ route('admin.dashboard') }}">
-                                <i class='bx bx-user'></i> 
+                                <i class='bx bx-user'></i>
                             </a>
                             <a class="basket" href="/team-project/resources/views/basket.blade.php">
                                 <i class='bx bx-basket'></i>
                             </a>
                         @elseif(Auth::user()->userType === 'user')
                             <!-- User Dashboard and Basket -->
-                            <a class="account" href="{{ route('user.dashboard') }}">
+                            <a class="account" href="{{ route('dashboard') }}">
                                 <i class='bx bx-user'></i>
                             </a>
                             <a class="basket" href="/team-project/resources/views/basket.blade.php">

@@ -37,7 +37,7 @@
                             </a>
                         @elseif(Auth::user()->userType === 'user')
                             <!-- User Dashboard and Basket -->
-                            <a class="account" href="{{ route('user.dashboard') }}">
+                            <a class="account" href="{{ route('dashboard') }}">
                                 <i class='bx bx-user'></i> 
                             </a>
                             <a class="basket" href="/team-project/resources/views/basket.blade.php">
@@ -67,7 +67,7 @@
                     <input type="password" class="input-field" name="password" placeholder="Enter your password" required><br>
                     @if ($errors->has('email') && $errors->first('email') == 'These credentials do not match our records.')
                         <p class="error-message" style="color: red; margin-top: 10px;">
-                             Username or password is incorrect.
+                             Username or password is incorrect
                         </p>
                     @elseif ($errors->has('emai'))
                         <p class="error-message" style="color: red; margin-top: 10px;">
