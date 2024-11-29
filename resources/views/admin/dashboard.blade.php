@@ -69,11 +69,13 @@
                     </div>
                 </div>
                 <div class="admin-buttons">
-                    <a id="home" class="choice">Home</a>
-                    <a id="allOrders" class="choice">Manage Orders</a>
-                    <a id="allUsers" class="choice">Manage Users</a>
-                    <a id="allProducts" class="choice">Categories and Products</a>
-                    <a id="settings" class="choice" >Settings</a>
+                    <div class="admin-buttons">
+                    <a href="{{ route('admin.dashboard', ['tab' => 'home']) }}" id="home" class="choice">Home</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'allOrders']) }}" id="allOrders" class="choice">Manage Orders</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'allUsers']) }}" id="allUsers" class="choice">Manage Users</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'allProducts']) }}" id="allProducts" class="choice">Categories and Products</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'settings']) }}" id="settings" class="choice">Settings</a>
+                </div>
                 </div>
 
                 <div class="admin-logout">
@@ -93,31 +95,42 @@
                 <div id="allOrdersContent" class="admin-section" style="display: none;">
                     <p>All orders will appear here.</p>
                 </div>
-                <div id="allUsersContent" class="admin-section" style="display: none;">
-                    <h1>Admin Dashboard</h1>
-                        <table class="table">
-                            <thead>
+                <div id="allUsersContent" class="admin-section" style="display: none; text-align:center;">
+                    <h2>Users List</h2>
+                    <table class="table" style="transform:translateY(-20%); position:relative; top: 15%; padding: 5% 2% 5% 2%;">
+                        <thead>
+                            <tr style="background-color: var(--secondary-colour); color: var(--primary-colour);">
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($users as $user)
+                            <tr style="background-color: var(--light-bg); border-bottom: 1px solid var(--dark-bg);">
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $user->firstName }}</td>
+                                <td>{{ $user->lastName }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->phone }}</td>
+                                <td>
+                                <form action="{{ route('profile.destroyOther', $user->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('patch')
+                                    <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this user?')"><i class='bx bx-trash'></i></button>
+                                </form>
+                            </td>
+                            </tr>
+                            @empty
                                 <tr>
-                                    <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
+                                    <td colspan="6" style="text-align: center; font-style: italic; padding:10px;">No users found.</td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($users as $user)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $user->firstName }}</td>
-                                        <td>{{ $user->lastName }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->phone }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-
+                            @endforelse
+                        </tbody>
+                    </table>
                 </div>
                 <div id="allProductsContent" class="admin-section" style="display: none;">
                     <p>All Products will appear here.</p>
@@ -140,19 +153,19 @@
 
                                     <div>
                                         <x-input-label for="firstName" :value="__('First Name')" />
-                                        <x-text-input id="firstName" name="firstName" type="text" class="input-field" :value="old('firstName', $user->firstName)" required autofocus autocomplete="given-name" />
+                                        <x-text-input id="firstName" name="firstName" type="text" class="input-field" :value="old('firstName', $admin->firstName)" required autofocus autocomplete="given-name" />
                                         <x-input-error style="color: red; font-size:small; list-style:none;" :messages="$errors->get('firstName')" />
                                     </div>
 
                                     <div>
                                         <x-input-label for="lastName" :value="__('Last Name')" />
-                                        <x-text-input id="lastName" name="lastName" type="text" class="input-field" :value="old('lastName', $user->lastName)" required autocomplete="family-name" />
+                                        <x-text-input id="lastName" name="lastName" type="text" class="input-field" :value="old('lastName', $admin->lastName)" required autocomplete="family-name" />
                                         <x-input-error style="color: red; font-size:small; list-style:none;" :messages="$errors->get('lastName')" />
                                     </div>
 
                                     <div>
                                         <x-input-label for="email" :value="__('Email')" />
-                                        <x-text-input id="email" name="email" type="email" class="input-field" :value="old('email', default: $user->email)" required autocomplete="email" />
+                                        <x-text-input id="email" name="email" type="email" class="input-field" :value="old('email', default: $admin->email)" required autocomplete="email" />
                                         <x-input-error style="color: red; font-size:small; list-style:none;":messages="$errors->get('email')" />
                                     </div>
 
@@ -199,7 +212,6 @@
 
                                 <div class="flex items-center gap-4">
                                     <button class="save">{{ __('Save') }}</button>
-
                                     @if (session('status') === 'password-updated')
                                         <p
                                             x-data="{ show: true }"
@@ -226,7 +238,7 @@
                                 <x-input-error :messages="$errors->userDeletion->get('password')" style="color: red; font-size:small; list-style:none;"/>
 
                                 <div>
-                                    <button class="delete">
+                                    <button class="delete" onclick="return confirm('Are you sure you want to delete this user?')">
                                         {{ __('Delete Account') }}
                                     </button>
                                 </div>

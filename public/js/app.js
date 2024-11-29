@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to reset all to inactive state
     function resetActiveState() {
-        // Reset all links' background colors
+        // Reset all links' styles
         choices.forEach(choice => {
             choice.style.color = 'rgba(255, 255, 255,0.7)';
         });
@@ -69,23 +69,38 @@ document.addEventListener("DOMContentLoaded", function () {
         const activeChoice = document.querySelector(`#${id}`);
         const activeSection = document.querySelector(`#${id}Content`);
 
-        activeChoice.style.color = '#fecc42';
-        activeSection.style.display = 'grid';
+        if (activeChoice && activeSection) {
+            activeChoice.style.color = '#fecc42';
+            activeChoice.style.transform = 'translateY(0)'; 
+            activeSection.style.display = 'grid';
+        } else {
+            console.warn(`No matching elements found for ID: ${id}`);
+        }
     }
 
-    // Set the default active state to "home"
-    setActiveState('home');
+    // Check the query parameter to set the initial active state
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get('tab');
+
+    if (tab) {
+        setActiveState(tab);
+    } else {
+        // Default to "home" tab if no query parameter is provided
+        setActiveState('home');
+    }
 
     // Add click event listeners to each choice
     choices.forEach(choice => {
         choice.addEventListener('click', function () {
             const id = this.id;
             setActiveState(id);
+
+            // Update the URL without refreshing the page
+            const newUrl = `${window.location.pathname}?tab=${id}`;
+            window.history.replaceState(null, '', newUrl);
         });
     });
 });
-
-
 
 // Request a fresh CSRF token
 window.axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').content;

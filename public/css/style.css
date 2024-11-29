@@ -359,6 +359,8 @@ label{
   border-radius: 5px;
   position: relative;
   margin-top: 20px;
+  border: none;
+  cursor: pointer;
 }
 
 /* Styling for Main container */
@@ -923,7 +925,9 @@ footer.bottom {
 /* Styling for adnin main secion */
 .admin-main{
   background-color: var(--light-bg);
-  height: 70vh;
+  height: fit-content;
+  max-height: 100vh;
+  min-height: 70vh;
 }
 
 /* Styling for admin dashboard navbar */
@@ -999,7 +1003,29 @@ footer.bottom {
 
 /* Styling for content section */
 .admin-content{
-  padding: 10px 14.25%;
+  padding: 10px 14.25% 50px 14.25%;
+  max-height: 70%;
+}
+
+#allUsersContent{
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+
+.delete-btn {
+  font-size: 15px;
+  color: black;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.3s ease-in-out;
+  background: none;
+}
+
+.delete-btn:hover{
+  color: red;
 }
 
 #allOrdersContent,
@@ -1007,17 +1033,25 @@ footer.bottom {
 #settingsContent{
   background-color: white;
   border-radius: 15px;
-  height: 200px;
+  height: fit-content;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   padding: 10px;
+  max-height: 60vh;
 }
 
 /* Styling for settings conent section */
 #settingsContent{
   grid-template-columns: 1fr 1fr 1fr;
-  height: fit-content
 }
 
 #settingsContent .input-field{
   width: 90%;
+}
+
+ th, td {
+  border: 1px solid rgba(128, 123, 118, 0.1); /* Sets the border color to black for the table, headers, and cells */
+}
+
+table{
+  border-spacing: 0px;
 }

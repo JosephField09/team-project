@@ -18,35 +18,16 @@ class ProfileController extends Controller
     public function edit(Request $request): View
     {
         $user = $request->user();
-    
-        if ($user->userType === 'admin') {
-            return view('admin.dashboard', [
-                'user' => $user,
-                'activeTab' => 'account',
-            ]);
-        }
-    
+
         return view('dashboard', [
             'user' => $user,
             'activeTab' => 'account',
         ]);
     }
 
-    public function editAdmin(Request $request): RedirectResponse
+    public function editAdmin(): RedirectResponse
     {
-        $user = $request->user();
-
-        if ($user->userType === 'admin') {
-            return redirect()->route('admin.dashboard')->with([
-                'user' => $user,
-                'activeChoice' => 'settings',
-            ]);
-        }
-        
-        return redirect()->route('dashboard')->with([
-            'user' => $user,
-            'activeOption' => 'account',
-        ]);
+        return redirect()->route('admin.dashboard',['tab' => 'settings'])->with('status', 'profile-updated');
     }
 
     /**
@@ -91,7 +72,37 @@ class ProfileController extends Controller
             'email' => $validatedData['email'],
         ]);
 
-        return Redirect::route('profile.editAdmin')->with('status', 'profile-updated');
+        return Redirect::route('profile.editAdmin')->with('status', 'admin-updated');
+    }
+
+    public function subscribe(Request $request): RedirectResponse
+    {
+        $user = $request->user();
+
+        if ($user) {
+            $user->update([
+                'isSubscribed' => true,
+            ]);
+
+            return redirect()->back()->with('status', 'subscribed-successfully');
+        }
+
+        return redirect()->back()->withErrors(['message' => 'Unable to process subscription.']);
+    }
+
+    public function unsubscribe(Request $request): RedirectResponse
+    {
+        $user = $request->user();
+
+        if ($user) {
+            $user->update([
+                'isSubscribed' => false,
+            ]);
+
+            return redirect()->back()->with('status', 'subscribed-successfully');
+        }
+
+        return redirect()->back()->withErrors(['message' => 'Unable to process subscription.']);
     }
 
     /**
@@ -113,5 +124,13 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function destroyOther($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('admin.dashboard', ['tab' => 'allUsers'])->with('success', 'User deleted successfully!');
     }
 }

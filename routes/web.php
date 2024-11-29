@@ -46,6 +46,8 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile.edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile.update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/subscribe', [ProfileController::class, 'subscribe'])->name('subscribe');
+    Route::post('/unsubscribe', [ProfileController::class, 'unsubscribe'])->name('unsubscribe');
 });
 
 // Requires the user to be authenticated and verified, calls update method to update data then edit method
@@ -56,25 +58,23 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 // Route to delete the user's profile, no authentication or verification
 Route::patch('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::patch('/profile/{id}', [ProfileController::class, 'destroyOther'])->name('profile.destroyOther');
 
 Route::prefix('admin')->group(function () {
     Route::get('/auth/register', [RegisterController::class, 'create'])->name('admin.register');
     Route::post('/auth/register', [RegisterController::class, 'register'])->name('admin.register');
 });
 
-// Route to go to dashboard and display all users
 Route::get('admin.dashboard', function () {
-    $user = Auth::user();  // Get the authenticated user
+    $admin = Auth::user(); // Get the authenticated admin
     
     // Get all users except admins
     $users = \App\Models\User::where('userType', '!=', 'admin')->get();
     
-    return response(view('admin.dashboard', compact('user', 'users')))
+    return response(view('admin.dashboard', compact('admin', 'users')))
         ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
         ->header('Pragma', 'no-cache')
         ->header('Expires', '0');
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
-
-
 
 require __DIR__.'/auth.php';

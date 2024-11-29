@@ -204,7 +204,7 @@
                                     <x-input-error :messages="$errors->userDeletion->get('password')" style="color: red; font-size:small; list-style:none;"/>
 
                                     <div>
-                                        <button class="delete">
+                                        <button class="delete" onclick="return confirm('Are you sure you want to delete this user?')">
                                             {{ __('Delete Account') }}
                                         </button>
                                     </div>
@@ -212,11 +212,24 @@
                             </div>
                         </div>
 
-                        <div id="memberContent" class="content-section" style="display: none;">
-                            <h2>Getting deja brew?</h2>
-                            <p>Finding yourself running out of beans and ordering often? With our subscription you you’ll never have to make a last-minute dash again. Regular deliveries mean your beans are always fresh, and your cup is always full, without the hassle of reordering. It’s the coffee experience that just keeps on brewing, right to your door!"</p>
-                            <h4> Subscribe now for only <span>£6.95 </span>a month</h4>
-                            <a class="subscribe">Subscribe</a>
+                        <div id="memberContent" class="content-section">
+                            @if (auth()->check() && auth()->user()->isSubscribed)
+                                <h2>Welcome Back, Coffee Lover!</h2>
+                                <p>You’re already subscribed to our coffee subscription service. Fresh beans are on their way to you regularly—enjoy your hassle-free coffee experience!</p>
+                                <h4>Your subscription is active at <span>£6.95 </span>a month</h4>
+                                <form method="POST" action="{{ route('unsubscribe') }}">
+                                    @csrf
+                                    <button type="submit" class="subscribe">Unsubscribe</button>
+                                </form>
+                            @else
+                                <h2>Getting deja brew?</h2>
+                                <p>Finding yourself running out of beans and ordering often? With our subscription you you’ll never have to make a last-minute dash again. Regular deliveries mean your beans are always fresh, and your cup is always full, without the hassle of reordering. It’s the coffee experience that just keeps on brewing, right to your door!"</p>
+                                <h4>Subscribe now for only <span>£6.95 </span>a month</h4>
+                                <form method="POST" action="{{ route('subscribe') }}">
+                                    @csrf
+                                    <button type="submit" class="subscribe">Subscribe</button>
+                                </form>
+                            @endif
                         </div>
                     </div>
                 </div>
