@@ -16,5 +16,6 @@ class CategoryController extends Controller
 
         $category->save();
 
+        return redirect()->route('admin.dashboard',['tab' => 'allProducts']);
     }
 }

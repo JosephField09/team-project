@@ -132,13 +132,12 @@
                         </tbody>
                     </table>
                 </div>
+
                 <div id="allProductsContent" class="admin-section" style="display: none;">
                     <div class="Categories">
                         <h4>Categories</h4>
                         <form action="{{ url('add_category') }}" method="post">
-
                             @csrf
-
                             <div>
                                 <input class ="input-field" type="text" name="category">
                                 <input type="submit" value="
@@ -149,8 +148,50 @@
                     </div>
                     <div class="Products">
                         <h4>Products</h4>
+                        <form action="{{ route('add_product') }}" method="post">
+                            @csrf
+                            <div>
+                                <label>Product Name:</label>
+                                <input class ="input-field" type="text" name="name">
+                            </div>
+                            
+                            <div>
+                                <label>Product Description:</label>
+                                <textarea class ="input-field" type="text" name="description"></textarea>
+                            </div>
+                            
+                            <div>
+                                <label>Price:</label>
+                                <input type="number" required name="price" min="0" value="0" placeholder="0.00" step="0.01" >
+                            </div>
+
+                            <div>
+                                <label>Size:</label>
+                                <input type="text" name="size" placeholder="Enter size" required>
+                            </div>
+                            
+                            <div>
+                                <label>Stock Count:</label>
+                                <input type="number" name="stock" min="0" placeholder="0" required>                            
+                            </div>
+                            
+                            <div>
+                                <label for="category_id">Category:</label>
+                                <select id="category_id" name="category_id" required>
+                                  <option value="" disabled selected>Select a category</option>
+                                  @foreach($categories as $category)
+                                       <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                  @endforeach
+                                </select>
+                            </div>
+
+                            <div>
+                                <input type="submit"value="Add Product">
+                            </div>
+                        </form>
                     </div>
                 </div>
+
                 <div id="settingsContent" class="admin-section" style="display: none;">
                     <div class="profile-info">
                             <h4>Profile Information</h4>

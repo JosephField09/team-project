@@ -7,7 +7,10 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
+
 
 // Home route
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -25,6 +28,9 @@ Route::get('/dashboard', function () {
     $user = Auth::user();  // Get the authenticated user
 
     $users = \App\Models\User::where('userType', '!=', 'admin')->get();
+
+    // Get all categories
+    $categories = Category::all();
     
     // Check if the user is an admin based on their userType
     if ($user->userType == 'admin') {
@@ -65,13 +71,22 @@ Route::prefix('admin')->group(function () {
     Route::post('/auth/register', [RegisterController::class, 'register'])->name('admin.register');
 });
 
+// Route to add a category
+Route::post('add_category', [CategoryController::class, 'add_category'])->name('add_category');
+
+// Route to add a product
+Route::post('add_product', [ProductsController::class, 'add_product'])->name('add_product');
+
 Route::get('admin.dashboard', function () {
     $admin = Auth::user(); // Get the authenticated admin
     
     // Get all users except admins
     $users = \App\Models\User::where('userType', '!=', 'admin')->get();
+
+    // Get all categories
+    $categories = Category::all();
     
-    return response(view('admin.dashboard', compact('admin', 'users')))
+    return response(view('admin.dashboard', compact('admin', 'users', 'categories')))
         ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
         ->header('Pragma', 'no-cache')
         ->header('Expires', '0');
