@@ -133,7 +133,23 @@
                     </table>
                 </div>
                 <div id="allProductsContent" class="admin-section" style="display: none;">
-                    <p>All Products will appear here.</p>
+                    <div class="Categories">
+                        <h4>Categories</h4>
+                        <form action="{{ url('add_category') }}" method="post">
+
+                            @csrf
+
+                            <div>
+                                <input class ="input-field" type="text" name="category">
+                                <input type="submit" value="
+                                Add category">
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="Products">
+                        <h4>Products</h4>
+                    </div>
                 </div>
                 <div id="settingsContent" class="admin-section" style="display: none;">
                     <div class="profile-info">

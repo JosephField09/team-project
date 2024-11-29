@@ -1030,6 +1030,7 @@ footer.bottom {
 
 #allOrdersContent,
 #allUsersContent,
+#allProductsContent,
 #settingsContent{
   background-color: white;
   border-radius: 15px;
@@ -1054,4 +1055,7 @@ footer.bottom {
 
 table{
   border-spacing: 0px;
+}
+#allProductsContent{
+  grid-template-columns: 1fr 1fr ;
 }
