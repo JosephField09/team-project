@@ -45,7 +45,7 @@
                 <h1 class="basket-header">Your Basket</h1>
 
                 <!-- When the basket is empty-->
-                @if (empty($basket_Items))
+                @if ($basket_Items->isEmpty())
                 <p class="empty-basket">Empty basket. <a href="{{route('products')}}"> Please continue shopping</a>.</p>
                 @else
 
@@ -86,11 +86,14 @@
     
 
             <!-- Basket Summary Section-->
-            <div class="basket-summary">
-                <h3>Total: £{{$basket_Items->sum(fn($item) => $item->product->price * $item->quantity)}}</h3>
-                <a href="{{route('checkout')}}" class="checkout-button">Proceed to Checkout</a>
-            </div>
-        @endif 
+        
+             
+         <!--   <div class="basket-summary">
+             {{--   <h3>Total: £{{$basket_Items->sum(fn($item) => $item->product->price * $item->quantity)}}</h3> --}}
+             {{--   <a href="{{route('checkout')}}" class="checkout-button">Proceed to Checkout</a> --}}
+            </div> -->
+    
+        @endif   
     </div>
 </section>
 
