@@ -134,51 +134,84 @@
                 </div>
 
                 <div id="allProductsContent" class="admin-section" style="display: none;">
-                    <div class="Categories">
-                        <h4>Categories</h4>
+                    <div class="categories">
+                        <h4>Add a Category</h4>
                         <form action="{{ url('add_category') }}" method="post">
                             @csrf
                             <div>
-                                <input class ="input-field" type="text" name="category">
-                                <input type="submit" value="
-                                Add category">
+                                <input class ="input-field" type="text" name="category" placeholder="Enter a Category" required>
+                                <input class="add-cat" type="submit" value="Add category">
                             </div>
                         </form>
 
+                        <table class="table" style="transform:translateY(-40%); position:relative; top: 15%; padding: 5% 2% 5% 2%; width:100%; text-align:center;">
+                            <thead>
+                                <tr style="background-color: var(--secondary-colour); color: var(--primary-colour);">
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($categories as $category)
+                                <tr style="background-color: var(--light-bg); border-bottom: 1px solid var(--dark-bg);">
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td style="padding:5px;">{{ $category->name }}</td>
+                                    <td>
+                                    <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('patch')
+                                        <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this category?')"><i class='bx bx-trash'></i></button>
+                                    </form>
+                                </td>
+                                </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; font-style: italic; padding:10px;">No users found.</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="Products">
-                        <h4>Products</h4>
+                    <div class="products">
+                        <h4>Add a Product</h4>
                         <form action="{{ route('add_product') }}" method="post">
                             @csrf
-                            <div>
+                            <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
                                 <label>Product Name:</label>
-                                <input class ="input-field" type="text" name="name">
+                                <input class ="input-field" type="text" name="name" placeholder="Enter a Name" required>
                             </div>
                             
-                            <div>
+                            <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
                                 <label>Product Description:</label>
-                                <textarea class ="input-field" type="text" name="description"></textarea>
+                                <textarea class ="input-field" type="text" name="description" placeholder="Enter a Description" required></textarea>
                             </div>
                             
-                            <div>
+                            <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
                                 <label>Price:</label>
-                                <input type="number" required name="price" min="0" value="0" placeholder="0.00" step="0.01" >
+                                <input type="number" class ="input-field" name="price" min="0" value="0" placeholder="0.00" step="0.01" style="color: gray;" required>
                             </div>
 
-                            <div>
+                            <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
                                 <label>Size:</label>
-                                <input type="text" name="size" placeholder="Enter size" required>
+                                <select style="color: gray;" id="size" class ="input-field" name="size" required>
+                                  <option value="" disabled selected>Select a Size</option>
+                                    <option value="small">Small</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="large">Large</option>
+                                    <option value="one-size">One-Size</option>
+                                </select>
                             </div>
                             
-                            <div>
-                                <label>Stock Count:</label>
-                                <input type="number" name="stock" min="0" placeholder="0" required>                            
+                            <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
+                                <label>Quantity:</label>
+                                <input type="number" class ="input-field"  name="stock" min="0" step="1" placeholder="0" required>                            
                             </div>
                             
-                            <div>
+                            <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
                                 <label for="category_id">Category:</label>
-                                <select id="category_id" name="category_id" required>
-                                  <option value="" disabled selected>Select a category</option>
+                                <select id="category_id" class ="input-field" name="category_id" style="color: gray;" required>
+                                  <option value="" disabled selected>Select a Category</option>
                                   @foreach($categories as $category)
                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                                   @endforeach
@@ -186,7 +219,16 @@
                             </div>
 
                             <div>
-                                <input type="submit"value="Add Product">
+                                <input class="add-cat" type="submit"value="Add Product" style="margin-left:0;">
+                                @if (session('status') === 'product-added')
+                                    <p 
+                                        x-data="{ show: true }"
+                                        x-show="show"
+                                        x-transition
+                                        x-init="setTimeout(() => show = false, 2000)"
+                                        style="color: green; margin-top:10px; display:inline; margin-left:8px;"
+                                    >{{ __('Product Added Succesfully') }}</p>
+                                @endif
                             </div>
                         </form>
                     </div>

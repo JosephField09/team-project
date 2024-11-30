@@ -126,6 +126,9 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 
+    /**
+     * Delete a specific user's account from admin panel.
+     */
     public function destroyOther($id)
     {
         $user = User::findOrFail($id);

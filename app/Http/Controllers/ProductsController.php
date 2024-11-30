@@ -24,7 +24,7 @@ class ProductsController extends Controller
         $data ->save();
 
         // Redirect or return a response
-        return redirect()->route('admin.dashboard',['tab' => 'allProducts']);
+        return redirect()->route('admin.dashboard',['tab' => 'allProducts'])->with('status', 'product-added');
     }
 
 }

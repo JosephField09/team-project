@@ -71,8 +71,9 @@ Route::prefix('admin')->group(function () {
     Route::post('/auth/register', [RegisterController::class, 'register'])->name('admin.register');
 });
 
-// Route to add a category
+// Route to add and delete category
 Route::post('add_category', [CategoryController::class, 'add_category'])->name('add_category');
+Route::patch('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 // Route to add a product
 Route::post('add_product', [ProductsController::class, 'add_product'])->name('add_product');
