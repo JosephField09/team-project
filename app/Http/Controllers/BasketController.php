@@ -45,7 +45,7 @@ class BasketController extends Controller
         return redirect()->route('basket'); // redirect to the basket page 
     } 
 
-    // Updates the quantity of a specific item in the basket. Uses validation to ensure the quantity its valid 
+    // Updates the quantity of a specific item in the basket. Uses validation to ensure the quantity is valid 
     public function update(Request $request, $id) { 
         // Validate the input data 
         $request->validate(['quantity' => 'required|integer|min:1',]);
