@@ -136,7 +136,7 @@
                 <div id="allProductsContent" class="admin-section" style="display: none;">
                     <div class="categories">
                         <h4>Add a Category</h4>
-                        <form action="{{ url('add_category') }}" method="post">
+                        <form action="{{ url('category.add') }}" method="post">
                             @csrf
                             <div>
                                 <input class ="input-field" type="text" name="category" placeholder="Enter a Category" required>
@@ -149,28 +149,41 @@
                                 <tr style="background-color: var(--secondary-colour); color: var(--primary-colour);">
                                     <th>#</th>
                                     <th>Name</th>
+                                    <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($categories as $category)
-                                <tr style="background-color: var(--light-bg); border-bottom: 1px solid var(--dark-bg);">
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td style="padding:5px;">{{ $category->name }}</td>
-                                    <td>
-                                    <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display:inline;">
-                                        @csrf
-                                        @method('patch')
-                                        <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this category?')"><i class='bx bx-trash'></i></button>
-                                    </form>
-                                </td>
-                                </tr>
+                                    <tr style="background-color: var(--light-bg); border-bottom: 1px solid var(--dark-bg);">
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td style="padding:5px;" ondblclick="editCategoryName(this, '{{ $category->id }}')">
+                                            <span class="category-name">{{ $category->name }}</span>
+                                            <input type="text" class="edit-input" value="{{ $category->name }}" style="display: none; width: 100%;" 
+                                                onblur="saveCategoryName(this, '{{ $category->id }}')"
+                                                onkeydown="if(event.key === 'Enter') saveCategoryName(this, '{{ $category->id }}')">
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <i class="bx bx-edit" style="cursor: pointer;" 
+                                            onclick="editCategoryName(this.closest('td').previousElementSibling, '{{ $category->id }}')"></i>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this category?')">
+                                                    <i class='bx bx-trash'></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" style="text-align: center; font-style: italic; padding:10px;">No users found.</td>
+                                        <td colspan="6" style="text-align: center; font-style: italic; padding:10px;">No categories found.</td>
                                     </tr>
                                 @endforelse
                             </tbody>
+
                         </table>
                     </div>
                     <div class="products">

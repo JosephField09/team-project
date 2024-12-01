@@ -11,7 +11,7 @@ class CategoryController extends Controller
     /**
      * Add a category from admin panel.
      */
-    public function add_category(Request $request)
+    public function add(Request $request)
     {
         $category = new Category;
 
@@ -20,6 +20,22 @@ class CategoryController extends Controller
         $category->save();
 
         return redirect()->route('admin.dashboard',['tab' => 'allProducts']);
+    }
+    
+    /**
+     * Edit the category from admin panel.
+     */
+    public function update(Request $request, $id)
+    {
+    $request->validate([
+        'name' => 'required|string|max:255',
+    ]);
+
+    $category = Category::findOrFail($id);
+    $category->name = $request->name;
+    $category->save();
+
+    return response()->json(['success' => true]);
     }
 
     /**

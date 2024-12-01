@@ -59,7 +59,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Requires the user to be authenticated and verified, calls update method to update data then edit method
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile.editAdmin', [ProfileController::class, 'editAdmin'])->name('profile.editAdmin');
-    Route::patch('/profile.updateAdmin', [ProfileController::class, 'updateAdmin'])->name('profile.updateAdmin');
+    Route::patch('/profile.updateAdmin', [ProfileController::class, 'updateAdmin'])->name(name: 'profile.updateAdmin');
 });
 
 // Route to delete the user's profile, no authentication or verification
@@ -72,7 +72,8 @@ Route::prefix('admin')->group(function () {
 });
 
 // Route to add and delete category
-Route::post('add_category', [CategoryController::class, 'add_category'])->name('add_category');
+Route::post('category.add', [CategoryController::class, 'add'])->name('category.add');
+Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::patch('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 // Route to add a product

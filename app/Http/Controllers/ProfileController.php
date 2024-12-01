@@ -54,6 +54,9 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
+    /**
+     * Update the admin's profile information.
+     */
     public function updateAdmin(ProfileUpdateRequest $request): RedirectResponse
     {
         $user = $request->user();
@@ -75,6 +78,9 @@ class ProfileController extends Controller
         return Redirect::route('profile.editAdmin')->with('status', 'admin-updated');
     }
 
+    /**
+     * Sets users subscribed to true, allows user to subscribe.
+     */
     public function subscribe(Request $request): RedirectResponse
     {
         $user = $request->user();
@@ -90,6 +96,9 @@ class ProfileController extends Controller
         return redirect()->back()->withErrors(['message' => 'Unable to process subscription.']);
     }
 
+    /**
+     * Sets users subscribed to false, allows user to subscribe.
+     */
     public function unsubscribe(Request $request): RedirectResponse
     {
         $user = $request->user();
