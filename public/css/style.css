@@ -18,7 +18,7 @@
 }
 
 /* Styling for the whole navigation bar */
-nav {
+nav#main {
   background: black;
   padding: 1.5% 14.25%;
   display: flex;
@@ -1040,7 +1040,6 @@ footer.bottom {
 /* Styling for all users content section */
 #allUsersContent{
   max-height: 60vh;
-  overflow-y: scroll;
 }
 
 /* Styling for table header and table d*/
@@ -1068,6 +1067,55 @@ table{
 /* Styling for delete button when hovering*/
 .delete-btn:hover{
   color: red;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination li {
+  border: 1px solid rgba(128, 123, 118, 0.3);
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  min-width: 40px;
+  background-color: var(--light-bg);
+}
+
+.pagination li:hover {
+  background-color: var(--secondary-colour);
+}
+
+.pagination li.active {
+  background-color: var(--secondary-colour);
+  color: black;
+}
+
+.pagination li.disabled {
+  color: #999;
+  pointer-events: none;
+}
+
+.pagination li a {
+  color: black;
+  text-decoration: none;
+}
+
+/* Add border-radius to the first and last list items */
+.pagination li:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.pagination li:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 /* Styling for all products content section */

@@ -16,7 +16,7 @@
     <main>
         <!-- Header Section -->
         <section id="header">
-            <nav>
+            <nav id="main">
                 <div class="navbar-left">
                     <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                 </div>
@@ -97,7 +97,7 @@
                 </div>
                 <div id="allUsersContent" class="admin-section" style="display: none; text-align:center;">
                     <h2>Users List</h2>
-                    <table class="table" style="transform:translateY(-20%); position:relative; top: 15%; padding: 5% 2% 5% 2%;">
+                    <table class="table" style="transform:translateY(-20%); position:relative; top: 15%; padding: 5% 2% 1% 2%;">
                         <thead>
                             <tr style="background-color: var(--secondary-colour); color: var(--primary-colour);">
                                 <th>#</th>
@@ -131,6 +131,9 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <div>
+                        {{ $users->links('pagination::bootstrap-4') }}
+                    </div>
                 </div>
 
                 <div id="allProductsContent" class="admin-section" style="display: none;">
@@ -183,8 +186,10 @@
                                     </tr>
                                 @endforelse
                             </tbody>
-
                         </table>
+                        <div>
+                            {{ $categories->links('pagination::bootstrap-4') }}
+                        </div>
                     </div>
                     <div class="products">
                         <h4>Add a Product</h4>

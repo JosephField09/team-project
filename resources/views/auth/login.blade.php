@@ -15,7 +15,7 @@
     <main>
         <!-- Header Section -->
        <section id="header">
-            <nav>
+            <nav id="main">
                 <div class="navbar-left">
                     <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                </div>

@@ -26,11 +26,6 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 Route::get('/dashboard', function () {
     $user = Auth::user();  // Get the authenticated user
-
-    $users = \App\Models\User::where('userType', '!=', 'admin')->get();
-
-    // Get all categories
-    $categories = Category::all();
     
     // Check if the user is an admin based on their userType
     if ($user->userType == 'admin') {
@@ -82,11 +77,12 @@ Route::post('add_product', [ProductsController::class, 'add_product'])->name('ad
 Route::get('admin.dashboard', function () {
     $admin = Auth::user(); // Get the authenticated admin
     
-    // Get all users except admins
-    $users = \App\Models\User::where('userType', '!=', 'admin')->get();
+    // Paginate users with 10 users per page 
+    $users = \App\Models\User::where('userType', '!=', 'admin')->paginate(10)->appends(['tab' => 'allUsers']);
 
-    // Get all categories
-    $categories = Category::all();
+    // Paginate categories with 5 categories per page 
+    $categories = Category::paginate(5)->appends(['tab' => 'allProducts']);
+
     
     return response(view('admin.dashboard', compact('admin', 'users', 'categories')))
         ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
