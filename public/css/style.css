@@ -608,7 +608,7 @@ footer.bottom {
   padding-right: 14.25%;
   padding-top: 5%;
   padding-bottom: 5%;
-  background-color: var(--dark-bg);
+  background-color: var(--light-bg);
 }
 
 /* Styling for the images on about us */
@@ -812,6 +812,7 @@ footer.bottom {
   }
 }
 
+/* Styling for the first and last name section of the contact us form */
 .first-and-last-name{
   display: flex;
   flex-direction: row;
@@ -825,6 +826,7 @@ footer.bottom {
   }
 }
 
+/* Styling for the email and phone number parts of the contact us form */
 .email-and-phone{
   display: flex;
   flex-direction: row;
@@ -838,6 +840,7 @@ footer.bottom {
   }
 }
 
+/* Styling for the message to send box of the contact us form */
 .message-to-send{
   display: flex;
   flex-direction: column;
@@ -845,6 +848,12 @@ footer.bottom {
     width: 620px;
     resize: none;
   }
+}
+
+/* Styling for the error message in the contact form */ 
+#formError{
+  color: red;
+  text-align: center;
 }
 
 /* Styling for submit contact form button */
@@ -919,6 +928,7 @@ footer.bottom {
     background-color: #e5a86f;
 }
 
+/* Styling for the main section of the blogs page */
 #blogs-main{
   background: var(--light-bg);
   display: flex;
@@ -937,6 +947,7 @@ footer.bottom {
   }
 }
 
+/* Styling for the blogs post */
 .blog-posts{
   padding: 10%;
   display: flex;
@@ -984,11 +995,14 @@ footer.bottom {
   }
 }
 
+
+/* Styling for the create blogs post section */
 .create-blog-post{
   flex-direction: column;
   position: relative;
 }
 
+/* Styling for when there is no blog posts */
 .cant-post-blog{
   background: white;
   border-radius: 12px;
@@ -1011,6 +1025,7 @@ footer.bottom {
   }
 }
 
+/* Styling for the form to make a blog */
 .blog-form{
   background: white;
   border-radius: 12px;
@@ -1038,10 +1053,12 @@ footer.bottom {
   }
 }
 
+/* Styling for the blog title */
 .blog-title{
   width: 300px;
 }
 
+/* Styling for the blog message */
 .blog-message{
   display: flex;
   flex-direction: column;
