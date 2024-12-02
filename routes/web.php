@@ -53,6 +53,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 // Requires the user to be authenticated and verified, calls update method to update data then edit method
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/profile.search', [ProfileController::class, 'search'])->name('profile.search');
     Route::get('/profile.editAdmin', [ProfileController::class, 'editAdmin'])->name('profile.editAdmin');
     Route::patch('/profile.updateAdmin', [ProfileController::class, 'updateAdmin'])->name(name: 'profile.updateAdmin');
 });

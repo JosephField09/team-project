@@ -1034,12 +1034,6 @@ footer.bottom {
   height: fit-content;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  max-height: 60vh;
-}
-
-/* Styling for all users content section */
-#allUsersContent{
-  max-height: 60vh;
 }
 
 /* Styling for table header and table d*/
@@ -1064,11 +1058,12 @@ table{
   background: none;
 }
 
-/* Styling for delete button when hovering*/
+/* Styling for delete button when hovering */
 .delete-btn:hover{
   color: red;
 }
 
+/* Styling for whole pagination bar */
 .pagination {
   display: flex;
   list-style: none;
@@ -1078,6 +1073,7 @@ table{
   align-items: center;
 }
 
+/* Styling for pagination item */
 .pagination li {
   border: 1px solid rgba(128, 123, 118, 0.3);
   padding: 8px 16px;
@@ -1088,31 +1084,36 @@ table{
   background-color: var(--light-bg);
 }
 
+/* Styling for pagination item when hovering */
 .pagination li:hover {
   background-color: var(--secondary-colour);
 }
 
+/* Styling for active pagination item */
 .pagination li.active {
   background-color: var(--secondary-colour);
   color: black;
 }
 
+/* Styling for disabled pagination item */
 .pagination li.disabled {
   color: #999;
   pointer-events: none;
 }
 
+/* Styling for pagination item  */
 .pagination li a {
   color: black;
   text-decoration: none;
 }
 
-/* Add border-radius to the first and last list items */
+/* Add border-radius to the first list items */
 .pagination li:first-child {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
 }
 
+/* Add border-radius to the last list items */
 .pagination li:last-child {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;

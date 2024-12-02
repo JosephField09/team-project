@@ -97,7 +97,15 @@
                 </div>
                 <div id="allUsersContent" class="admin-section" style="display: none; text-align:center;">
                     <h2>Users List</h2>
-                    <table class="table" style="transform:translateY(-20%); position:relative; top: 15%; padding: 5% 2% 1% 2%;">
+                    <form action="{{ url('profile.search')}}" method="get" style="width: 50%">
+                        @csrf
+                        <div class="form-row">
+                            <input class="input-field" type="text" name="search" value="{{ request('search') }}" placeholder="Search by First Name or Email"/>
+                            <input type="hidden" name="tab" value="allUsers" />
+                            <button class="add-cat" type="submit">Search</button>
+                        </div>
+                    </form>
+                    <table class="table" style="transform:translateY(-20%); position:relative; top: 15%; padding: 5% 1% 1% 1%;">
                         <thead>
                             <tr style="background-color: var(--secondary-colour); color: var(--primary-colour);">
                                 <th>#</th>

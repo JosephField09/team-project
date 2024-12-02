@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\User;
+use App\Models\Category;
 
 class ProfileController extends Controller
 {
@@ -114,6 +115,38 @@ class ProfileController extends Controller
         return redirect()->back()->withErrors(['message' => 'Unable to process subscription.']);
     }
 
+    /**
+     * Seacrh a specific user by name or email in the database
+     */
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $tab = $request->input('tab'); 
+    
+        // Search where the first name or email is like search given and user is not admin and paginate
+        $users = User::where(function ($query) use ($search) {
+            $query->where('firstName', 'LIKE', '%' . $search . '%')
+                  ->orWhere('email', 'LIKE', '%' . $search . '%');
+        })
+        ->where('userType', '!=', 'admin') 
+        ->paginate(10);
+
+    
+        // Paginate categories
+        $categories = Category::paginate(5);
+    
+        // Get the authenticated admin
+        $admin = Auth::user();
+    
+        // Return the view with the tab, categories and admin
+        return view('admin.dashboard', [
+            'tab' => $tab,  
+            'users' => $users,
+            'categories' => $categories,
+            'admin' => $admin,
+        ]);
+    }
+    
     /**
      * Delete the user's account.
      */
