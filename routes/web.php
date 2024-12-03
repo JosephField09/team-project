@@ -24,11 +24,8 @@ Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 // Blog route
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
-// Basket route  
+// Basket Route
 Route::get('/basket', [BasketController::class,'index'])->name('basket'); 
- 
- 
-
 
 
 
