@@ -32,11 +32,6 @@ Route::get('/basket', [BasketController::class,'index'])->name('basket');
 // Route to go to dashboard and clear cache to prevent csrf
 Route::get('/dashboard', function () {
     $user = Auth::user();  // Get the authenticated user
-
-    $users = \App\Models\User::where('userType', '!=', 'admin')->get();
-
-    // Get all categories
-    $categories = Category::all();
     
     // Check if the user is an admin based on their userType
     if ($user->userType == 'admin') {
@@ -64,8 +59,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 // Requires the user to be authenticated and verified, calls update method to update data then edit method
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/profile.search', [ProfileController::class, 'search'])->name('profile.search');
     Route::get('/profile.editAdmin', [ProfileController::class, 'editAdmin'])->name('profile.editAdmin');
-    Route::patch('/profile.updateAdmin', [ProfileController::class, 'updateAdmin'])->name('profile.updateAdmin');
+    Route::patch('/profile.updateAdmin', [ProfileController::class, 'updateAdmin'])->name(name: 'profile.updateAdmin');
 });
 
 // Route to delete the user's profile, no authentication or verification
@@ -78,7 +74,8 @@ Route::prefix('admin')->group(function () {
 });
 
 // Route to add and delete category
-Route::post('add_category', [CategoryController::class, 'add_category'])->name('add_category');
+Route::post('category.add', [CategoryController::class, 'add'])->name('category.add');
+Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::patch('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 // Route to add a product
@@ -87,11 +84,12 @@ Route::post('add_product', [ProductsController::class, 'add_product'])->name('ad
 Route::get('admin.dashboard', function () {
     $admin = Auth::user(); // Get the authenticated admin
     
-    // Get all users except admins
-    $users = \App\Models\User::where('userType', '!=', 'admin')->get();
+    // Paginate users with 10 users per page 
+    $users = \App\Models\User::where('userType', '!=', 'admin')->paginate(10)->appends(['tab' => 'allUsers']);
 
-    // Get all categories
-    $categories = Category::all();
+    // Paginate categories with 5 categories per page 
+    $categories = Category::paginate(5)->appends(['tab' => 'allProducts']);
+
     
     return response(view('admin.dashboard', compact('admin', 'users', 'categories')))
         ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
@@ -100,3 +98,16 @@ Route::get('admin.dashboard', function () {
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
 
 require __DIR__.'/auth.php';
+
+// Route to display the list of blog posts
+Route::get('/blogs',[BlogController::class, 'index'])->name('blogs.index');
+
+/** 
+ * Both routes require the user to be authenticated
+ * First route displays the blog creation form
+ * Second route stores the blog post that was made
+ * */  
+Route::middleware(['auth'])->group(function() {
+    Route::get('/blogs/create', [BlogController::class, 'create'])->name('blogs.create');
+    Route::post('/blogs', [BlogController::class, 'store'])->name('blogs.store');
+});

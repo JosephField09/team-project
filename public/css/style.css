@@ -18,7 +18,7 @@
 }
 
 /* Styling for the whole navigation bar */
-nav {
+nav#main {
   background: black;
   padding: 1.5% 14.25%;
   display: flex;
@@ -612,7 +612,7 @@ footer.bottom {
   padding-right: 14.25%;
   padding-top: 5%;
   padding-bottom: 5%;
-  background-color: var(--dark-bg);
+  background-color: var(--light-bg);
 }
 
 /* Styling for the images on about us */
@@ -816,6 +816,7 @@ footer.bottom {
   }
 }
 
+/* Styling for the first and last name section of the contact us form */
 .first-and-last-name{
   display: flex;
   flex-direction: row;
@@ -829,6 +830,7 @@ footer.bottom {
   }
 }
 
+/* Styling for the email and phone number parts of the contact us form */
 .email-and-phone{
   display: flex;
   flex-direction: row;
@@ -842,6 +844,7 @@ footer.bottom {
   }
 }
 
+/* Styling for the message to send box of the contact us form */
 .message-to-send{
   display: flex;
   flex-direction: column;
@@ -849,6 +852,12 @@ footer.bottom {
     width: 620px;
     resize: none;
   }
+}
+
+/* Styling for the error message in the contact form */ 
+#formError{
+  color: red;
+  text-align: center;
 }
 
 /* Styling for submit contact form button */
@@ -1034,13 +1043,6 @@ footer.bottom {
   height: fit-content;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  max-height: 60vh;
-}
-
-/* Styling for all users content section */
-#allUsersContent{
-  max-height: 60vh;
-  overflow-y: scroll;
 }
 
 /* Styling for table header and table d*/
@@ -1061,14 +1063,69 @@ table{
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 20px;
   transition: 0.3s ease-in-out;
   background: none;
 }
 
-/* Styling for delete button when hovering*/
+/* Styling for delete button when hovering */
 .delete-btn:hover{
   color: red;
+}
+
+/* Styling for whole pagination bar */
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling for pagination item */
+.pagination li {
+  border: 1px solid rgba(128, 123, 118, 0.3);
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  min-width: 40px;
+  background-color: var(--light-bg);
+}
+
+/* Styling for pagination item when hovering */
+.pagination li:hover {
+  background-color: var(--secondary-colour);
+}
+
+/* Styling for active pagination item */
+.pagination li.active {
+  background-color: var(--secondary-colour);
+  color: black;
+}
+
+/* Styling for disabled pagination item */
+.pagination li.disabled {
+  color: #999;
+  pointer-events: none;
+}
+
+/* Styling for pagination item  */
+.pagination li a {
+  color: black;
+  text-decoration: none;
+}
+
+/* Add border-radius to the first list items */
+.pagination li:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+/* Add border-radius to the last list items */
+.pagination li:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 /* Styling for all products content section */
@@ -1136,4 +1193,144 @@ table{
 /* Styling for settings content input field */
 #settingsContent .input-field{
   width: 90%;
+}
+
+/* Styling for the main section of the blogs page */
+#blogs-main{
+  background: var(--light-bg);
+  display: flex;
+  flex-direction: row; 
+  max-width: 100%;
+  width: 100%;
+  padding-left: 14%;
+  padding-right: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  height: 100%;
+  min-height: 500px;
+  h1{
+    text-align: center;
+    align-self: center;
+  }
+}
+
+/* Styling for the blogs post */
+.blog-posts{
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-post{
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px 0#6f6f6f;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10%;
+  width: 550px;
+  max-width: 550px;
+  position: relative;
+  margin-bottom: 30px;
+  word-wrap: break-word;  
+  overflow-wrap: break-word;  
+  white-space: normal;
+  h4{
+    padding-bottom: 20px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 0;
+    color: var(--text-colour)
+  }
+  h2{
+    position: relative;
+    top:-10px;
+    left: -35px;
+    font-size: 25px;
+    max-width: 500px;
+    padding-bottom: 10px;
+    color: var(--title-colour);
+  }
+  p{
+    position: relative;
+    color: var(--text-colour);
+    max-width: 500px;
+    left: -35px;
+  }
+}
+
+
+/* Styling for the create blogs post section */
+.create-blog-post{
+  flex-direction: column;
+  position: relative;
+}
+
+/* Styling for when there is no blog posts */
+.cant-post-blog{
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px 0#6f6f6f;
+  padding: 5%;
+  width: 400px;
+  margin-left: 10%;
+  text-align: center;
+  height: fit-content;
+  .login {
+    font-size: 25px;
+    color: var(--primary-colour);
+    background: var(--secondary-colour);
+    text-decoration: none;
+    padding: 5px 22px;
+    border-radius: 4px;
+  }
+  h3{
+    margin-bottom: 10%;
+  }
+}
+
+/* Styling for the form to make a blog */
+.blog-form{
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px 0#6f6f6f ;
+  padding: 10%;
+  width: 400px;
+  margin-left: 10%;
+  button{
+    margin: 15px;
+    margin-left: 26%;
+    color: var(--primary-colour);
+    background: var(--secondary-colour);
+    font-weight: bold;
+    padding: 5px 22px;
+    cursor: pointer;
+    max-width: 100%;
+    height: 30px;
+    border: none;
+    font-size: 15px;
+    border-radius: 5px;
+  }
+  h4{
+    padding-bottom: 10px;
+    font-size: larger;
+  }
+}
+
+/* Styling for the blog title */
+.blog-title{
+  width: 300px;
+}
+
+/* Styling for the blog message */
+.blog-message{
+  display: flex;
+  flex-direction: column;
+  .input-field{
+    width: 300px;
+    resize: none;
+  }
 }
