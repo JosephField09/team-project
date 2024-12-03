@@ -8,6 +8,7 @@ use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BasketController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 
@@ -24,6 +25,12 @@ Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 // Blog route
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
+// Basket Route
+Route::get('/basket', [BasketController::class,'index'])->name('basket'); 
+
+
+
+// Route to go to dashboard and clear cache to prevent csrf
 Route::get('/dashboard', function () {
     $user = Auth::user();  // Get the authenticated user
     

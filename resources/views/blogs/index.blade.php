@@ -32,7 +32,7 @@
                             <a class="account" href="{{ route('admin.dashboard') }}">
                                 <i class='bx bx-user'></i>
                             </a>
-                            <a class="basket" href="/team-project/resources/views/basket.blade.php">
+                            <a class="basket" href="{{route('basket')}}">
                                 <i class='bx bx-basket'></i>
                             </a>
                         @elseif(Auth::user()->userType === 'user')
@@ -48,6 +48,8 @@
                         <!-- Guest: Login and Basket -->
                         <a class="login" href="{{ route('login') }}">Login</a>
                         <p>|</p>
+                        <a class="basket" href="{{route('basket')}}"><i class='bx bx-basket'></i></a>
+                    @endguest
                         <a class="basket" href="/team-project/resources/views/basket.blade.php">
                             <i class='bx bx-basket'></i>
                         </a>

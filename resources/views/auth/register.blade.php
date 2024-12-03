@@ -52,6 +52,9 @@
                             <i class='bx bx-basket'></i>
                         </a>
                     @endif
+                    <a class="login" href="{{ route('login') }}">Login</a>
+                    <p>|</p>
+                    <a class="basket" href="{{route('basket')}}"><i class='bx bx-basket'></i></a>
                 </div>
         </section>
 
