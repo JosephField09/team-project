@@ -2,20 +2,23 @@
 
 namespace App\Models;
 
-use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory; 
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'description', 'price', 'size', 'stock', 'category_id'];
+    use HasFactory; 
 
-    /**
-     * Relationship with the Category model.
-     * Each product belongs to one category.
-     */
-    public function category()
-    {
+    // Name of Table products
+    protected $table = 'products'; 
+    
+    // Fields that can be filled 
+    protected $fillable = ['name','description','price','size','stock','category_id',];
+
+    
+    public function category() {
         return $this->belongsTo(Category::class);
-    }
+    } 
+
 
 }
