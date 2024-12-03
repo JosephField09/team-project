@@ -27,5 +27,10 @@ class ProductsController extends Controller
         return redirect()->route('admin.dashboard',['tab' => 'allProducts'])->with('status', 'product-added');
     }
 
+    public function details()
+    {
+        return view('product-details'); // returns the products.blade.php view
+    }
+
 }
 
