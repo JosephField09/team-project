@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Products route
 Route::get('/products', [ProductsController::class, 'index'])->name('products');
+
+// Product details route
+Route::get('/product-details', [ProductsController::class, 'details'])->name('product-details');
 
 // About Us route
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');

@@ -8,5 +8,10 @@ class ProductsController extends Controller
     {
         return view('products'); // returns the products.blade.php view
     }
+
+    public function details()
+    {
+        return view('product-details'); // returns the products.blade.php view
+    }
 }
 

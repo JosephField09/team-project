@@ -52,7 +52,7 @@
                     <h3 class="product-title">Latte</h3>
                     <p class="product-price">From £12</p>
                     <p class="product-description">Rich and creamy, perfect for a relaxing moment.</p>
-                    <button class="view-button">View</button>
+                    <a href="{{ route('product-details') }}" class="view-button">View</a>
                 </div>
                 <div class="product-card">
                     <img src="{{ asset('assets/favicon.png') }}"alt="Cappuccino" class="product-image">
