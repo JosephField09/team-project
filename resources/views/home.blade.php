@@ -56,6 +56,60 @@
             </nav>
         </section>
 
+        <!-- Home Page Section -->
+        <section id="home" style="background-color: black; color: white; display: flex; align-items: center; justify-content: center; padding: 20px;">
+            <div style="flex: 1; padding-right: 1px; padding-left: 160px; text-align: left;">
+                <h1 style="font-size: 2.8em; margin: 0; font-family: Modern">Start Your Day with the</h1>
+                <h1 style="font-size: 2.8em; margin: 0; font-family: Modern">Best Coffee Experience</h1>
+                <br>
+                <p>Indulge in the finest brews, crafted to ignite your senses and</p>
+                <p>fuel your day. Your new and improved coffee journey begins here.</p>
+                <br><br><br>
+                <div style="margin-top: 20px;">
+                    <a href= "{{route('products')}}" style="background-color: rgb(254, 204, 66); color: black; padding: 10px 20px; text-decoration: none; margin-right: 10px; font-weight: bold;">Order Now</a>
+                    <a href= "{{route('about-us')}}" style="background-color: black; color: white; padding: 10px 20px; text-decoration: none; border: 0.25px solid white;">Learn More</a>
+                </div>
+                <br><br>
+            </div>
+            <div style="flex: 1; display: flex; justify-content: left;">
+                <img src="{{ asset('assets/steaming_coffee.jpeg') }}" alt="Steaming Coffee" style="width: 100%; height: auto; max-width: none;">
+            </div>
+        </section>
+
+        <!-- Image Block Sections -->
+        <section id="ImageBlocks">
+            <!-- Our story Section -->
+            <div class="ourstory">
+                <img src= "{{ asset('assets/AdobeStock_723458248.jpeg') }}" alt="Woman picking coffee beans" 
+                class="bigimage" style="float: left;"></img>
+                <div class="aboutustext">
+                    <h3>About Us</h3>
+                    <h1 class="header">Our Mission is to Make Your Mornings Easier</h1>
+                    <p>At E-Spresso, we believe in more than just coffee - we create moments. From our handpicked beans to the perfect brew,
+                        each cup is crafted with love and care. Whether you're here for a quick pick-me-up or to enjoy a relaxing moment, we're
+                        dedicated to making every sip special. Join us in celebrating the art of coffee, brewed to perfection just for you.
+                    </p>
+                    <div class="promise">
+                        <img src= "{{ asset('assets/check_mark.png') }}" height="15px" width="15px"></img>
+                        <h4>Single-origin coffee beans</h4>
+                    </div>
+                    <div class="promise">
+                        <img src= "{{ asset('assets/check_mark.png') }}" height="15px" width="15px"></img>
+                        <h4>Expertly roasted for optimal flavor</h4>
+                    </div>
+                    <div class="promise">
+                        <img src= "{{ asset('assets/check_mark.png') }}" height="15px" width="15px"></img>
+                        <h4>Wide range of blends for every taste</h4>
+                    </div>
+                    <div class="promise">
+                        <img src= "{{ asset('assets/check_mark.png') }}" height="15px" width="15px"></img>
+                        <h4>High-quality, eco-friendly packaging</h4>
+                    </div>
+                    <a href="{{route('about-us')}}"><h4>Read More</h4></a>
+                </div>
+            </div>
+        </section>
+
         <!-- Footer Section -->
         <section id="footer">
             <footer class="top">
