@@ -11,7 +11,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
 </head>
 
-<body>
+<body class="product-details-page">
     <main>
         <!-- Header Section -->
         <section id="header">
@@ -54,6 +54,66 @@
                     @endif
                 </div>
             </nav>
+        </section>
+
+        <!-- Product Details Section -->
+        <section class="product-details">
+            <div class="product-container">
+                <div class="product-image">
+                    <img src="{{ asset('assets/AdobeStock_981401540.jpeg') }}" alt="Latte">
+                </div>
+                <div class="product-info">
+                    <h1>Latte</h1>
+                    <p class="price">£12.00</p>
+                    <p class="description">
+                    Rich and creamy with a smooth finish. A coffee lover's delight.
+                    </p>
+                    <p class="rating">⭐⭐⭐⭐⭐ (124)</p>
+                    <p class="availability">In Stock</p>
+                    <div class="size-options">
+                        <p>Size:</p>
+                        <button>S</button>
+                        <button class="selected">M</button>
+                        <button>L</button>
+                    </div>
+                    <div class="quantity">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" value="1" min="1">
+                    </div>
+                    <button class="add-to-basket">Add to Basket</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommended Products Section -->
+        <section class="recommended-products">
+            <h2>Recommended Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="{{ asset('assets/AdobeStock_114023252.jpeg') }}" alt="Cappuccino">
+                    <h3>Cappuccino</h3>
+                    <p class="price">Price: £12</p>
+                    <p class="description">Bold and foamy with the perfect balance of espresso and milk.</p>
+                    <p class="rating">⭐⭐⭐⭐⭐ (124)</p>
+                    <button class="view-button">View Product</button>
+                </div>
+                <div class="product-card">
+                    <img src="{{ asset('assets/AdobeStock_296765068.jpeg') }}" alt="Americano">
+                    <h3>Americano</h3>
+                    <p class="price">Price: £12</p>
+                    <p class="description">Classic black coffee brewed to perfection.</p>
+                    <p class="rating">⭐⭐⭐⭐⭐ (124)</p>
+                    <button class="view-button">View Product</button>
+                </div>
+                <div class="product-card">
+                    <img src="{{ asset('assets/AdobeStock_919872129.jpeg') }}" alt="Hot Chocolate">
+                    <h3>Hot Chocolate</h3>
+                    <p class="price">Price: £12</p>
+                    <p class="description">A luxurious blend of rich cocoa, sugar, and creamy milk. Perfect for cold days or as a comforting treat any time.</p>
+                    <p class="rating">⭐⭐⭐⭐⭐ (124)</p>
+                    <button class="view-button">View Product</button>
+                </div>
+            </div>
         </section>
         
         <!-- Footer Section -->
