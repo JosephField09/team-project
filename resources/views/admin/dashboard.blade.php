@@ -16,7 +16,7 @@
     <main>
         <!-- Header Section -->
         <section id="header">
-            <nav>
+            <nav id="main">
                 <div class="navbar-left">
                     <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                 </div>
@@ -33,15 +33,15 @@
                             <a class="account" href="{{ route('admin.dashboard') }}">
                                 <i class='bx bx-user'></i>
                             </a>
-                            <a class="basket" href="/team-project/resources/views/basket.blade.php">
+                            <a class="basket" href="{{route('basket')}}">
                                 <i class='bx bx-basket'></i>
                             </a>
                         @elseif(Auth::user()->userType === 'user')
                             <!-- User Dashboard and Basket -->
                             <a class="account" href="{{ route('dashboard') }}">
-                                <i class='bx bx-user'></i>
+                                <i class='bx bx-user'></i> 
                             </a>
-                            <a class="basket" href="/team-project/resources/views/basket.blade.php">
+                            <a class="basket" href="{{route('basket')}}">
                                 <i class='bx bx-basket'></i>
                             </a>
                         @endif
@@ -49,7 +49,7 @@
                         <!-- Guest: Login and Basket -->
                         <a class="login" href="{{ route('login') }}">Login</a>
                         <p>|</p>
-                        <a class="basket" href="/team-project/resources/views/basket.blade.php">
+                        <a class="basket" href="{{route('basket')}}">
                             <i class='bx bx-basket'></i>
                         </a>
                     @endif
