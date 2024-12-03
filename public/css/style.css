@@ -286,6 +286,7 @@ label{
   margin-top: 10px;
   border: none;
   cursor: pointer;
+  transition: scale 0.5s;
 }
 
 /* Styling for save button when hovering */
@@ -315,6 +316,7 @@ label{
 .delete-profile p{
   color: var(--text-colour);
   font-size: smaller;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
@@ -358,6 +360,8 @@ label{
   border-radius: 5px;
   position: relative;
   margin-top: 20px;
+  border: none;
+  cursor: pointer;
 }
 
 /* Styling for Main container */
@@ -849,14 +853,14 @@ footer.bottom {
 
 /* Styling for submit contact form button */
 #submit-form-btn{
-    max-width: 97%;
-    width: auto;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 10px 35px;
-    border-radius: 4px;
-    background: var(--secondary-colour);
-    border: none;
+  max-width: 97%;
+  width: auto;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 35px;
+  border-radius: 4px;
+  background: var(--secondary-colour);
+  border: none;
 }
 
 /* Styling for our submit form */
@@ -865,56 +869,271 @@ footer.bottom {
   text-align: center;
 }
 
-/* Additional CSS for grid layout */
+/* Styling for products grid*/
 .products-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 20px 0;
 }
 
+/* Styling for product card*/
 .product-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 15px;
-    text-align: center;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Styling for products card image*/
 .product-card img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
+/* Styling for product title */
 .product-title {
-    font-size: 18px;
-    margin: 10px 0 5px;
-    font-weight: bold;
+  font-size: 18px;
+  margin: 10px 0 5px;
+  font-weight: bold;
 }
 
+/* Styling for product price text */
 .product-price {
-    color: #444;
-    margin-bottom: 10px;
+  color: #444;
+  margin-bottom: 10px;
 }
 
+/* Styling for product description text */
 .product-description {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 15px;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
 }
 
+/* Styling for pview button */
 .view-button {
-    background-color: #f7c08a;
-    border: none;
-    padding: 10px 20px;
-    color: #fff;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
+  background-color: #f7c08a;
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: scale 0.5s;
 }
 
+/* Styling for pview button */
 .view-button:hover {
-    background-color: #e5a86f;
+  scale: 0.9;
+}
+
+/* Styling for adnin main secion */
+.admin-main{
+  background-color: var(--light-bg);
+  height: fit-content;
+  max-height: 100vh;
+  min-height: 70vh;
+}
+
+/* Styling for admin dashboard navbar */
+#admin-nav {
+  width: 71.5%;
+  background-color: #272727;
+  color: var(--text-colour);
+  border-radius: 50px;
+  margin: 3% 14.25%;
+  height: 50px;
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: inset 1px 1px 20px 10px black;
+}
+
+/* Styling for admin dashboard user section in navbar */
+.admin-user{
+  display: inline-flex;
+}
+
+
+/* Styling for name text */
+.name{
+  font-size: 12px;
+  color: var(--headerfooter-text-colour);
+  margin-left: 5px;
+}
+
+/* Styling for admin buttons */
+.admin-buttons{
+  display: inline-flex;
+}
+
+/* Styling for navigation bar links */
+.admin-buttons a{
+  color: var(--headerfooter-text-colour);
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: 100;
+  position: relative;
+  padding: 0 20px;
+  border-radius: 5px;
+  transition: transform 0.5s linear, color 0.5s linear;
+}
+
+/* Styling for admin butons when hovering */
+.admin-buttons a:hover{
+  transform: translateY(-5px);
+}
+
+/* Styling for admin logout button */
+.admin-logout button{
+  background: var(--secondary-colour);
+  border: none;
+  border-radius: 15px;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px 10px;
+  color: var(--primary-colour);
+  display: inline-flex;
+  cursor: pointer;
+}
+
+/* Styling for admin logout button when hovering */
+.admin-logout button:hover{
+  scale: 1.1;
+}
+
+/* Styling for admin logout icon */
+.admin-logout i{
+  font-size: 15px;
+  margin-right: 15px;
+}
+
+/* Styling for choice class*/
+.choice{
+  cursor: pointer;
+}
+
+/* Styling for content section */
+.admin-content{
+  padding: 10px 14.25% 50px 14.25%;
+  max-height: 70%;
+}
+
+/* Styling for all users, content, products and setting section section */
+#allOrdersContent,
+#allUsersContent,
+#allProductsContent,
+#settingsContent{
+  background-color: white;
+  border-radius: 15px;
+  height: fit-content;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  max-height: 60vh;
+}
+
+/* Styling for all users content section */
+#allUsersContent{
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+
+/* Styling for table header and table d*/
+th, td {
+  border: 1px solid rgba(128, 123, 118, 0.1); 
+}
+
+/* Styling for table */
+table{
+  border-spacing: 0px;
+}
+
+/* Styling for delete button */
+.delete-btn {
+  font-size: 15px;
+  color: black;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.3s ease-in-out;
+  background: none;
+}
+
+/* Styling for delete button when hovering*/
+.delete-btn:hover{
+  color: red;
+}
+
+/* Styling for all products content section */
+#allProductsContent{
+  grid-template-columns: 1fr 1fr ;
+  padding: 20px;
+  gap: 10px;
+}
+
+/* Styling for categories section in admin dashboard */
+.categories{
+  border-right: 1px solid gray;
+}
+
+/* Styling for form in categories */
+.categories form{
+  margin-bottom: 5%;
+}
+
+/* Styling for header 4 in categoreis and products */
+.categories h4,
+.products h4{
+  font-size: 20px;
+  margin-bottom: 3%;
+}
+
+/* Styling for input fields in categories */
+.categories .input-field{
+  width: 70%;
+}
+
+/* Styling for product section in admin dashboard */
+.products{
+  margin-left: 10px;
+}
+
+/* Styling for input fields in products */
+.products .input-field{
+  width: 100%;
+}
+
+/* Styling for add category class */
+.add-cat{
+  padding: 10px 15px;
+  justify-content: center;
+  align-content: center;
+  background-color: var(--secondary-colour);
+  border: none;
+  border-radius: 5px;
+  margin: 8px;
+  transition: scale 0.5s;
+  cursor: pointer;
+}
+
+/* Styling for add category class when hovering */
+.add-cat:hover{
+  scale: 0.9;
+}
+
+/* Styling for settings content section */
+#settingsContent{
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Styling for settings content input field */
+#settingsContent .input-field{
+  width: 90%;
 }

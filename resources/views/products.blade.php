@@ -169,14 +169,14 @@
                     <button class="view-button">View</button>
                 </div>
                 <div class="product-card">
-                    <img src="{{ asset('assets/pod_latte.png') }}" alt="Cappuccino Pods" class="product-image">
+                    <img src="{{ asset('assets/pod_cappucino.png') }}" alt="Cappuccino Pods" class="product-image">
                     <h3 class="product-title">Cappuccino Pods</h3>
                     <p class="product-price">£6 (12 pods)</p>
                     <p class="product-description">Rich and foamy coffee pods.</p>
                     <button class="view-button">View</button>
                 </div>
                 <div class="product-card">
-                    <img src="{{ asset('assets/pod_latte.png') }}" alt="Espresso Pods" class="product-image">
+                    <img src="{{ asset('assets/pod_espresso.png') }}" alt="Espresso Pods" class="product-image">
                     <h3 class="product-title">Espresso Pods</h3>
                     <p class="product-price">£5 (12 pods)</p>
                     <p class="product-description">Intense and aromatic espresso pods.</p>
@@ -247,6 +247,7 @@
                     <li><a href="{{ route('products') }}">Products</a></li>
                     <li><a href="{{ route('about-us') }}">About Us </a></li>
                     <li><a href="{{ route('blog') }}">Blog</a></li>
+                    <li><a class="login" href="{{ route('admin.register') }}">Register as Admin</a></li>
                 </ul>
             </div>
 

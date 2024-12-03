@@ -26,15 +26,32 @@
                     <a class="middle" href="{{ route('blog') }}">Blog</a>
                 </div>
                 <div class="navbar-right">
-                    @auth
-                        <a class="account" href="{{ route('dashboard') }}"><i class='bx bx-user'></i></a>
-                        <a class="basket" href="{{route('basket')}}"><i class='bx bx-basket'></i></a>
-                    @endauth
-                    @guest
+                    @if(Auth::check())
+                        @if(Auth::user()->userType === 'admin')
+                            <!-- Admin Dashboard and Basket -->
+                            <a class="account" href="{{ route('admin.dashboard') }}">
+                                <i class='bx bx-user'></i>
+                            </a>
+                            <a class="basket" href="/team-project/resources/views/basket.blade.php">
+                                <i class='bx bx-basket'></i>
+                            </a>
+                        @elseif(Auth::user()->userType === 'user')
+                            <!-- User Dashboard and Basket -->
+                            <a class="account" href="{{ route('dashboard') }}">
+                                <i class='bx bx-user'></i> 
+                            </a>
+                            <a class="basket" href="/team-project/resources/views/basket.blade.php">
+                                <i class='bx bx-basket'></i>
+                            </a>
+                        @endif
+                    @else
+                        <!-- Guest: Login and Basket -->
                         <a class="login" href="{{ route('login') }}">Login</a>
                         <p>|</p>
-                        <a class="basket" href="{{route('basket')}}"><i class='bx bx-basket'></i></a>
-                    @endguest
+                        <a class="basket" href="/team-project/resources/views/basket.blade.php">
+                            <i class='bx bx-basket'></i>
+                        </a>
+                    @endif
                 </div>
             </nav>
         </section>
@@ -80,7 +97,7 @@
                         <div class="missions">
                             <ul>
                                 <li><p><span class="missionheader">Quality First:</span> We source the best beans from around the world to ensure every sip is a delight</p></li>
-                                <li><p><span class="missionheader">Sustainability:</span> We priotitize eco-friendly practices to support a healthier planet.</p></li>
+                                <li><p><span class="missionheader">Sustainability:</span> We priotitise eco-friendly practices to support a healthier planet.</p></li>
                                 <li><p><span class="missionheader">Community Connection:</span> We aim to be more than just a coffee shop by fostering meaningful relationships with our customers</p></li>
                                 <li><p><span class="missionheader">Continuos Innovation:</span> From classic blends to unique creations, we strive to keep our menu exciting and fresh.</p></li>
                             </ul>
@@ -175,6 +192,7 @@
                     <li><a href="{{ route('products') }}">Products</a></li>
                     <li><a href="{{ route('about-us') }}">About Us </a></li>
                     <li><a href="{{ route('blog') }}">Blog</a></li>
+                    <li><a class="login" href="{{ route('admin.register') }}">Register as Admin</a></li>
                 </ul>
             </div>
 

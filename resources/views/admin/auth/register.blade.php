@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags, title, CSS and JS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basket</title>
+    <title>Admin Registration</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -13,14 +12,14 @@
 
 <body>
     <main>
-       <!-- Header Section -->
-       <section id="header">
+        <!-- Header Section -->
+        <section id="header">
             <nav>
                 <div class="navbar-left">
                     <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                </div>
                 <div class="navbar-middle">
-                    <a class="middle" href="{{ route('home') }}">Home</a>
+                    <a class="middle option-selected" href="{{ route('home') }}">Home</a>
                     <a class="middle" href="{{ route('products') }}">Products</a>
                     <a class="middle" href="{{ route('about-us') }}">About Us</a>
                     <a class="middle" href="{{ route('blog') }}">Blog</a>
@@ -46,15 +45,8 @@
                         @endif
                     @else
                         <!-- Guest: Login and Basket -->
-                    @auth
-                        <a class="account" href="{{ route('dashboard') }}"><i class='bx bx-user'></i></a>
-                        <a class="basket" href="{{route('basket')}}"><i class='bx bx-basket'></i></a>
-                    @endauth
-                    @guest
                         <a class="login" href="{{ route('login') }}">Login</a>
                         <p>|</p>
-                        <a class="basket" href="{{route ('basket')}}"><i class='bx bx-basket'></i></a>
-                    @endguest
                         <a class="basket" href="/team-project/resources/views/basket.blade.php">
                             <i class='bx bx-basket'></i>
                         </a>
@@ -63,67 +55,40 @@
             </nav>
         </section>
 
-        <!-- Basket Section --> 
-        <section id="basket">
-            <div class="container">
-                <h1 class="basket-header">Your Basket</h1>
+        <!-- Admin Registration Form -->
+        <section class="main">
+            <div class="form-box">
+                <h1>Admin Registration</h1>
+                <div class="form-inner">
+                    <form id="register" class="input-group" action="{{ route('admin.register') }}" method="POST">
+                        @csrf
+                        <div class="form-row">
+                            <input type="text" class="input-field" name="firstName" placeholder="First Name" value="{{ old('firstName') }}" required>
+                            <input type="text" class="input-field" name="lastName" placeholder="Last Name" value="{{ old('lastName') }}" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="email" class="input-field" name="email" placeholder="Email" value="{{ old('email') }}" required>
+                            <input type="tel" class="input-field" name="phone" placeholder="Phone Number" value="{{ old('phone') }}" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="password" class="input-field" name="password" placeholder="Password" required>
+                            <input type="password" class="input-field" name="password_confirmation" placeholder="Confirm Password" required>
+                        </div>
 
-                <!-- When the basket is empty-->
-                @if ($basket_Items->isEmpty())
-                <p class="empty-basket">Empty basket. <a href="{{route('products')}}"> Please continue shopping</a>.</p>
-                @else
+                        <!-- Error Messages -->
+                        @if ($errors->any())
+                            <p class="error-message" style="color: red; margin-top: 10px;">
+                                {{ $errors->first() }}
+                            </p>
+                        @endif
 
-                    <!-- Basket Table -->
+                        <button type="submit" class="submit-btn">Register</button>
+                    </form>
+                    <p>Already an admin? <a href="{{ route('login') }}">Login here</a></p>
+                </div>
+            </div>
+        </section>
 
-                    <div class="basket-table">
-                        <table>
-                             <thead>
-                                <tr> 
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th>Actions</th> 
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            <!-- Looping through basket items-->
-
-                            @foreach ($basket_Items as $item) 
-                                <tr>
-                                    <td>
-                                        <div class="product-details">
-                                            <img src="{{asset('storage/' . $item->product->image)}}" alt="{{$item->product->name}}" class="basket_image"> <!-- COMING BACK TO THIS LATER-->
-                                            <span>{{ $item->product->name}}</span>
-                                        </div>
-                                    </td>
-                                    <td>£{{$item->product->price}}</td>
-                                    <td><input type="number" value="{{ $item->quantity}}" min="1" class="basket_quantity"></td>
-                                    <td>£{{$item->product->price * $item->quantity}}</td>
-                                    <td><button class="remove_button" data-id="{{$item->id}}">Remove</button></td>
-                                </tr>
-                                @endforeach 
-                            </tbody>
-                        </table>
-                    </div>
-    
-
-            <!-- Basket Summary Section-->
-        
-             
-         <!--   <div class="basket-summary">
-             {{--   <h3>Total: £{{$basket_Items->sum(fn($item) => $item->product->price * $item->quantity)}}</h3> --}}
-             {{--   <a href="{{route('checkout')}}" class="checkout-button">Proceed to Checkout</a> --}}
-            </div> -->
-    
-        @endif   
-    </div>
-</section>
-
-
-
-        
         <!-- Footer Section -->
         <section id="footer">
             <footer class="top">
@@ -148,7 +113,8 @@
                     <li><a href="{{ route('products') }}">Products</a></li>
                     <li><a href="{{ route('about-us') }}">About Us </a></li>
                     <li><a href="{{ route('blog') }}">Blog</a></li>
-                    <li><a class="login" href="{{ route('admin.register') }}">Register as Admin</a></li>
+                    <li><a class="login" href="{{ route('admin.register') }}">Admin Register</a></li>
+
                 </ul>
             </div>
 
@@ -189,3 +155,4 @@
         </section>
     </main>
 </body>
+</html>

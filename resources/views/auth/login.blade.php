@@ -44,7 +44,7 @@
                     <input type="password" class="input-field" name="password" placeholder="Enter your password" required><br>
                     @if ($errors->has('email') && $errors->first('email') == 'These credentials do not match our records.')
                         <p class="error-message" style="color: red; margin-top: 10px;">
-                             Username or password is incorrect.
+                             Username or password is incorrect
                         </p>
                     @elseif ($errors->has('emai'))
                         <p class="error-message" style="color: red; margin-top: 10px;">
@@ -84,6 +84,7 @@
                     <li><a href="{{ route('products') }}">Products</a></li>
                     <li><a href="{{ route('about-us') }}">About Us </a></li>
                     <li><a href="{{ route('blog') }}">Blog</a></li>
+                    <li><a class="login" href="{{ route('admin.register') }}">Register as Admin</a></li>
                 </ul>
             </div>
 
