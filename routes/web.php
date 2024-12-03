@@ -8,7 +8,6 @@ use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BasketController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
