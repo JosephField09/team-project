@@ -23,7 +23,7 @@
                     <a class="middle" href="{{ route('home') }}">Home</a>
                     <a class="middle" href="{{ route('products') }}">Products</a>
                     <a class="middle" href="{{ route('about-us') }}">About Us</a>
-                    <a class="middle" href="{{ route('blog') }}">Blog</a>
+                    <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
                 </div>
                 <div class="navbar-right">
                     @if(Auth::check())

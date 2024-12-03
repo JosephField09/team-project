@@ -612,7 +612,7 @@ footer.bottom {
   padding-right: 14.25%;
   padding-top: 5%;
   padding-bottom: 5%;
-  background-color: var(--dark-bg);
+  background-color: var(--light-bg);
 }
 
 /* Styling for the images on about us */
@@ -816,6 +816,7 @@ footer.bottom {
   }
 }
 
+/* Styling for the first and last name section of the contact us form */
 .first-and-last-name{
   display: flex;
   flex-direction: row;
@@ -829,6 +830,7 @@ footer.bottom {
   }
 }
 
+/* Styling for the email and phone number parts of the contact us form */
 .email-and-phone{
   display: flex;
   flex-direction: row;
@@ -842,6 +844,7 @@ footer.bottom {
   }
 }
 
+/* Styling for the message to send box of the contact us form */
 .message-to-send{
   display: flex;
   flex-direction: column;
@@ -849,6 +852,12 @@ footer.bottom {
     width: 620px;
     resize: none;
   }
+}
+
+/* Styling for the error message in the contact form */ 
+#formError{
+  color: red;
+  text-align: center;
 }
 
 /* Styling for submit contact form button */

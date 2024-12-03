@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 
 <body>
@@ -23,7 +22,7 @@
                     <a class="middle" href="{{ route('home') }}">Home</a>
                     <a class="middle" href="{{ route('products') }}">Products</a>
                     <a class="middle option-selected" href="{{ route('about-us') }}">About Us</a>
-                    <a class="middle" href="{{ route('blog') }}">Blog</a>
+                    <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
                 </div>
                 <div class="navbar-right">
                     @if(Auth::check())
@@ -135,35 +134,35 @@
                     <div class="first-and-last-name">
                         <div class="first-name">
                             <label for="fName">First Name</label>
-                            <input id ="fName "type ="text" name="fName" placeholder="Enter Your First Name" class="input-field"/>
+                            <input id ="fName "type ="text" name="fName" placeholder="Enter Your First Name" class="input-field" require/>
                         </div>
                         <div class="last-name">
                             <label for="lName">Last Name</label>
-                            <input id ="lName "type ="text" name="lName" placeholder="Enter Your Last Name" class="input-field"/>
+                            <input id ="lName "type ="text" name="lName" placeholder="Enter Your Last Name" class="input-field" require/>
                         </div>
                     </div>
                     <div class="email-and-phone">
                         <div class="email">
                             <label for="email">Email</label>
-                            <input id="email" type="email"  name="email" placeholder="Enter your Email" class="input-field">
+                            <input id="email" type="email"  name="email" placeholder="Enter your Email" class="input-field" require>
                         </div>
                         <div class="phone">
                             <label for="phone">Phone</label>
-                            <input id="phone" type="tel" id="phone" name="phone" placeholder="Enter Your Phone number" class="input-field"/>
+                            <input id="phone" type="text" id="phone" name="phone" placeholder="Enter Your Phone number" class="input-field" require/>
                         </div>
                     </div>
                     <div class="message-to-send">
                         <label for="message">Message</label>
-                        <textarea rows="5" cols="50" id="message" name="message" form="contactusform" class="input-field"
-                        placeholder="Write Message Here..."></textarea>
+                        <textarea rows="5" cols="50" id="uMessage" name="uMessage" form="contactusform" class="input-field"
+                        placeholder="Write Message Here..." require></textarea>
                     </div>
+                    <p class="error-message" id="formError"></p>
                     <div class ="submit-form">
-                        <button type="button" id="submit-form-btn" onclick="validateContactMe()">Submit Now</button>
+                        <button type="submit" id="submit-form-btn">Submit Now</button>
                     </div>
                 </form>
+                <script src="{{ asset('js/contact-us.js') }}" ></script>
             </div>
-
-
         </section>
 
 
