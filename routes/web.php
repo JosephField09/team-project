@@ -34,6 +34,12 @@ Route::get('/basket', [BasketController::class,'index'])->name('basket');
 Route::post('basket.add/{id}', [BasketController::class, 'add'])->name('basket.add')
    ->middleware(['auth', 'verified']);
 
+Route::post('/basket/remove/{id}', [BasketController::class,'remove'])->name('basket.remove')
+    ->middleware(['auth','verified']);
+
+Route::post('/basket/update/{id}', [BasketController::class,'update'])->name('basket.update')
+    ->middleware(['auth','verified']);
+
 // Route to go to dashboard and clear cache to prevent csrf
 Route::get('/dashboard', function () {
     $user = Auth::user();  // Get the authenticated user

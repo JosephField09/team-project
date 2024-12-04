@@ -113,11 +113,17 @@
                                         </td>
                                         <td>£{{ $item->product->price }}</td>
                                         <td>
-                                            <input type="number" value="{{ $item->quantity }}" min="1" class="basket_quantity form-control">
+                                            <form action= "{{route('basket.update', $item->id)}}" method="POST">
+                                                @csrf 
+                                                <input type="number" name="quantity" value="{{$item->quantity}}" min="1" class="basket_quantity form-control" onchange="this.form.submit()">
+                                            </form>
                                         </td>
                                         <td>£{{ $item->product->price * $item->quantity }}</td>
                                         <td>
-                                            <button class="remove_button btn btn-danger" data-id="{{ $item->id }}">Remove</button>
+                                            <form action="{{route('basket.remove', $item->id)}}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="remove_button btn btn-danger">Remove</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
