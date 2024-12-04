@@ -5,13 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basket</title>
-    <title>Basket</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
-
     <style>
         /* Custom Styles */
         .basket-image {
@@ -41,15 +38,15 @@
     <main>
        <!-- Header Section -->
        <section id="header">
-        <nav id="main">
+            <nav id="main">
                 <div class="navbar-left">
-                    <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}" alt="Logo"></a>
-                </div>
+                    <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
+               </div>
                 <div class="navbar-middle">
-                    <a class="middle" href="{{ route('home') }}">Home</a>
+                    <a class="middle option-selected" href="{{ route('home') }}">Home</a>
                     <a class="middle" href="{{ route('products') }}">Products</a>
                     <a class="middle" href="{{ route('about-us') }}">About Us</a>
-                    <a class="middle" href="{{ route('blog') }}">Blog</a>
+                    <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
                 </div>
                 <div class="navbar-right">
                     @if(Auth::check())
