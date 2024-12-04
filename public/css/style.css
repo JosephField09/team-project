@@ -672,7 +672,7 @@ footer.bottom {
   flex-direction: row;
   justify-items: center;
   align-items: center;
-  margin-top: 0;
+  margin-top: 10px;
   padding-bottom: 0;
   height: 30px;
   max-width: 300px;

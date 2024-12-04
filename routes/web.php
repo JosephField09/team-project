@@ -31,8 +31,6 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 // Basket Route
 Route::get('/basket', [BasketController::class,'index'])->name('basket'); 
 
-
-
 // Route to go to dashboard and clear cache to prevent csrf
 Route::get('/dashboard', function () {
     $user = Auth::user();  // Get the authenticated user
@@ -101,8 +99,6 @@ Route::get('admin.dashboard', function () {
         ->header('Expires', '0');
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
 
-require __DIR__.'/auth.php';
-
 // Route to display the list of blog posts
 Route::get('/blogs',[BlogController::class, 'index'])->name('blogs.index');
 
@@ -115,3 +111,5 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/blogs/create', [BlogController::class, 'create'])->name('blogs.create');
     Route::post('/blogs', [BlogController::class, 'store'])->name('blogs.store');
 });
+
+require __DIR__.'/auth.php';
