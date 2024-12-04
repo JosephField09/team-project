@@ -66,19 +66,27 @@
                     <h1>Latte</h1>
                     <p class="price">£12.00</p>
                     <p class="description">
-                    Rich and creamy with a smooth finish. A coffee lover's delight.
+                    A classic and comforting coffee favourite, our latte is a harmonious blend of rich espresso and steamed milk, topped with a light, velvety layer of foam. 
+                    Perfectly balanced for a smooth and creamy experience, it's the ideal choice for those who appreciate a gentle yet robust coffee flavor. 
                     </p>
-                    <p class="rating">⭐⭐⭐⭐⭐ (124)</p>
-                    <p class="availability">In Stock</p>
+                    <div class="rating-availability">
+                        <p class="rating">⭐⭐⭐⭐⭐ (124)</p>
+                        <p class="availability">In Stock</p>
+                    </div>
                     <div class="size-options">
                         <p>Size:</p>
-                        <button>S</button>
-                        <button class="selected">M</button>
-                        <button>L</button>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity">Quantity:</label>
-                        <input type="number" id="quantity" value="1" min="1">
+                        <div class="size-row">
+                            <div class="size-options">
+                                <button class="size">S</button>
+                                <button class="size selected">M</button>
+                                <button class="size">L</button>
+                            </div>
+                            <div class="quantity">
+                                <button class="quantity-btn" id="decrease">−</button>
+                                <input type="number" id="quantity" value="1" min="1"/>
+                                <button class="quantity-btn" id="increase">+</button>
+                            </div>
+                        </div>   
                     </div>
                     <button class="add-to-basket">Add to Basket</button>
                 </div>
