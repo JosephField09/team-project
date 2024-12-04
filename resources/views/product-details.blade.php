@@ -60,35 +60,58 @@
         <section class="product-details">
             <div class="product-container">
                 <div class="product-image">
-                    <img src="{{ asset('assets/AdobeStock_981401540.jpeg') }}" alt="Latte">
+                    <img src="/assets/{{$data->image}}">
                 </div>
                 <div class="product-info">
-                    <h1>Latte</h1>
-                    <p class="price">£12.00</p>
-                    <p class="description">
-                    A classic and comforting coffee favourite, our latte is a harmonious blend of rich espresso and steamed milk, topped with a light, velvety layer of foam. 
-                    Perfectly balanced for a smooth and creamy experience, it's the ideal choice for those who appreciate a gentle yet robust coffee flavor. 
+                    <h1>{{$data->name}}</h1>
+                    <p class="price">{{$data->price}}</p>
+                    <p class="description">{{$data->description}} 
                     </p>
                     <div class="rating-availability">
                         <p class="rating">⭐⭐⭐⭐⭐ (124)</p>
-                        <p class="availability">In Stock</p>
+                        <p class="availability">
+                            @if($data->stock == 0)
+                                Out of Stock
+                            @elseif($data->stock < 10)
+                                Low in Stock
+                            @else
+                                In Stock
+                            @endif
+                        </p>
                     </div>
-                    <div class="size-options">
-                        <p>Size:</p>
-                        <div class="size-row">
-                            <div class="size-options">
-                                <button class="size">S</button>
-                                <button class="size selected">M</button>
-                                <button class="size">L</button>
-                            </div>
-                            <div class="quantity">
-                                <button class="quantity-btn" id="decrease">−</button>
-                                <input type="number" id="quantity" value="1" min="1"/>
-                                <button class="quantity-btn" id="increase">+</button>
-                            </div>
-                        </div>   
-                    </div>
-                    <button class="add-to-basket">Add to Basket</button>
+                    <form action="{{ route('basket.add', $data->id) }}" method="POST">
+                        @csrf
+                        <div class="size-options">
+                            @if($data->size === 'one-size')
+                                <p>One - Size</p>
+                                <div class="quantity" style="display: inline-flex;">
+                                    <button class="quantity-btn" id="decrease">−</button>
+                                    <input type="number" id="quantity" value="1" min="1" max="{{$data->stock}}" />
+                                    <button class="quantity-btn" id="increase">+</button>
+                                </div>
+                            @else
+                                <p>Size:</p>
+                                <div class="size-row">
+                                    <div class="size-options">
+                                        <button class="size">S</button>
+                                        <button class="size selected">M</button>
+                                        <button class="size">L</button>
+                                    </div>
+                                    <div class="quantity">
+                                        <button class="quantity-btn" id="decrease">−</button>
+                                        <input type="number" id="quantity" value="1" min="1" />
+                                        <button class="quantity-btn" id="increase">+</button>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                        <button 
+                            style="margin-top: 30px;"
+                            class="add-to-basket" 
+                            @if($data->stock == 0) disabled @endif>
+                            Add to Basket
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>

@@ -109,7 +109,6 @@
                                         <td>
                                             <div class="product-details">
                                                 <img src="{{ asset('storage/' . $item->product->image) }}" alt="{{ $item->product->name }}" class="basket-image">
-                                                <span>{{ $item->product->name }}</span>
                                             </div>
                                         </td>
                                         <td>£{{ $item->product->price }}</td>
@@ -129,7 +128,7 @@
                     <!-- Basket Summary Section -->
                     <div class="basket-summary">
                         <h3>Total: £{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}</h3>
-                        <a href="{{ route('checkout') }}" class="btn btn-primary">Proceed to Checkout</a>
+                        <a  class="btn btn-primary">Proceed to Checkout</a>
                     </div>
                 @endif
             </div>

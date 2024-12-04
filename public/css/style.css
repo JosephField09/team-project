@@ -1429,6 +1429,10 @@ table{
 }
 
 
+.product-details-page .size-options {
+  margin-bottom: 30px;
+}
+
 .product-details-page .size-options p {
   font-size: 14px;
   font-weight: bold;
@@ -1442,6 +1446,7 @@ table{
   padding: 5px 20px;
   border-radius: 4px;
   margin-right: 10px;
+  margin-bottom: 30px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -1496,11 +1501,17 @@ table{
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-top: 30px;
+  text-decoration: none;
 }
 
-.product-details-page .add-to-basket:hover {
+.product-details-page .add-to-basket:not([disabled]):hover {
   background-color: #e5a500;
+}
+
+.add-to-basket:disabled {
+  background-color: rgba(254, 204, 66, 0.3);
+  color: #666;
+  cursor: not-allowed;
 }
 
 /* Styling for recommended products section */

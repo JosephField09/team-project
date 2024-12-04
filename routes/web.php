@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BasketController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
@@ -20,7 +21,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/products', [ProductsController::class, 'index'])->name('products');
 
 // Product details route
-Route::get('/product-details', [ProductsController::class, 'details'])->name('product-details');
+Route::get('/product-details/{id}', [ProductsController::class, 'details'])->name('product-details');
 
 // About Us route
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
@@ -30,6 +31,8 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 // Basket Route
 Route::get('/basket', [BasketController::class,'index'])->name('basket'); 
+Route::post('basket.add/{id}', [BasketController::class, 'add'])->name('basket.add')
+   ->middleware(['auth', 'verified']);
 
 // Route to go to dashboard and clear cache to prevent csrf
 Route::get('/dashboard', function () {

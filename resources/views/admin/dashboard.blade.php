@@ -207,6 +207,11 @@
                                 <label>Product Name:</label>
                                 <input class ="input-field" type="text" name="name" placeholder="Enter a Name" required>
                             </div>
+
+                            <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
+                                <label>Product Image:</label>
+                                <input class ="input-field" type="file" name="image"required></input>
+                            </div>
                             
                             <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
                                 <label>Product Description:</label>
