@@ -60,7 +60,7 @@
         <section class="product-details">
             <div class="product-container">
                 <div class="product-image">
-                    <img src="/assets/{{$data->image}}">
+                    <img src="{{ asset('assets/' . $data->image) }}" alt="Product Image">
                 </div>
                 <div class="product-info">
                     <h1>{{$data->name}}</h1>

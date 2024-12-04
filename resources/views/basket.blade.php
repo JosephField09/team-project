@@ -108,7 +108,7 @@
                                     <tr>
                                         <td>
                                             <div class="product-details">
-                                                <img src="{{ asset('storage/' . $item->product->image) }}" alt="{{ $item->product->name }}" class="basket-image">
+                                                <img src="{{ asset('assets/' . $item->product->image) }}" alt="{{ $item->product->name }}" class="basket-image">
                                             </div>
                                         </td>
                                         <td>£{{ $item->product->price }}</td>

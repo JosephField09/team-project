@@ -66,7 +66,7 @@
             <div class="products-grid">
                 @foreach ($product as $data)
                 <div class="product-card">
-                    <img src="{{ asset('assets/favicon.png') }}" alt="Latte" class="product-image">
+                    <img src="{{ asset('assets/' . $data->image) }}" alt="Product Image">
                     <h3 class="product-title">{{$data->name}}</h3>
                     <p class="product-price">{{$data->price}}</p>
                     <p class="product-description">{{$data->description}}</p>
