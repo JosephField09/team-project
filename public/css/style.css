@@ -1601,3 +1601,20 @@ table{
 .product-details-page .view-button:hover {
   background-color: #e5a500;
 }
+
+.basket {
+  position: relative;
+}
+
+.basket-count {
+  position: absolute;
+  top: -9px;
+  right: 1px;
+  background-color: var(--secondary-colour);
+  color: black;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 12px;
+  font-weight: bold;
+
+}

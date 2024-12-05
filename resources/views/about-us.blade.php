@@ -27,27 +27,30 @@
                 <div class="navbar-right">
                     @if(Auth::check())
                         @if(Auth::user()->userType === 'admin')
-                            <!-- Admin Dashboard and Basket -->
                             <a class="account" href="{{ route('admin.dashboard') }}">
                                 <i class='bx bx-user'></i>
                             </a>
-                            <a class="basket" href="{{route('basket')}}">
+                            <a class="basket" href="{{ route('basket') }}">
                                 <i class='bx bx-basket'></i>
+                                @if($basketCount > 0)
+                                    <span class="basket-count">{{ $basketCount }}</span>
+                                @endif
                             </a>
                         @elseif(Auth::user()->userType === 'user')
-                            <!-- User Dashboard and Basket -->
                             <a class="account" href="{{ route('dashboard') }}">
-                                <i class='bx bx-user'></i> 
+                                <i class='bx bx-user'></i>
                             </a>
-                            <a class="basket" href="{{route('basket')}}">
+                            <a class="basket" href="{{ route('basket') }}">
                                 <i class='bx bx-basket'></i>
+                                @if($basketCount > 0)
+                                    <span class="basket-count">{{ $basketCount }}</span>
+                                @endif
                             </a>
                         @endif
                     @else
-                        <!-- Guest: Login and Basket -->
                         <a class="login" href="{{ route('login') }}">Login</a>
                         <p>|</p>
-                        <a class="basket" href="{{route('basket')}}">
+                        <a class="basket" href="{{ route('basket') }}">
                             <i class='bx bx-basket'></i>
                         </a>
                     @endif
