@@ -70,19 +70,19 @@
                     </p>
                     <div class="promise">
                         <img src="{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
-                        <h4>Sustainably Sourced Beans</h4>
+                        <h4>Single-origin coffee beans</h4>
                     </div>
                     <div class="promise">
                         <img src="{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
-                        <h4>Sustainably Sourced Beans</h4>
+                        <h4>Expertly roasted for optimal flavor</h4>
                     </div>
                     <div class="promise">
                         <img src="{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
-                        <h4>Sustainably Sourced Beans</h4>
+                        <h4>Wide range of blends for every taste</h4>
                     </div>
                     <div class="promise">
                         <img src="{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
-                        <h4>Sustainably Sourced Beans</h4>
+                        <h4>High-quality, eco-friendly packaging</h4>
                     </div>
                     <a class="contact-us"href="#contact-us"><h4>Contact us</h4></a>
                 </div>

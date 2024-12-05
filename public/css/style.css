@@ -884,6 +884,7 @@ footer.bottom {
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   margin: 20px 0;
+  padding: 20px 14.25%;
 }
 
 /* Styling for product card*/
@@ -894,6 +895,7 @@ footer.bottom {
   text-align: center;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: fit-content;
 }
 
 /* Styling for products card image*/
@@ -901,6 +903,11 @@ footer.bottom {
   max-width: 100%;
   border-radius: 8px;
   margin-bottom: 10px;
+  height: 20%;
+  max-height: 200px;
+  justify-self: center;
+  display: grid
+;
 }
 
 /* Styling for product title */
@@ -1359,13 +1366,17 @@ table{
 .product-details-page .product-image {
   height: 100%;
   flex: 1;
-  margin-right: 40px;
+  margin-right: 10%;
+  display: grid;
 }
 
 .product-details-page .product-image img {
   width: 100%;
   height: 100%;
   border-radius: 8px;
+  max-height: 90%;
+  align-self: center;
+  justify-self: center;
 }
 
 /* Container for product information */
@@ -1551,6 +1562,7 @@ table{
   height: auto;
   border-radius: 8px;
   margin-bottom: 10px;
+  height: 90%;
 }
 
 .product-details-page .product-card h3 {

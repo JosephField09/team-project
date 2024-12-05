@@ -60,18 +60,24 @@
         <section id="products">
             <div class="container">
             <h1 class="products-header">Explore Our Products</h1>
-
-            <!-- Hot Coffee Section -->
-            
             <div class="products-grid">
+                @php
+                    $displayedDrinks = []; // To track which drink types have been displayed
+                @endphp
+
                 @foreach ($product as $data)
-                <div class="product-card">
-                    <img src="{{ asset('assets/' . $data->image) }}" alt="Product Image">
-                    <h3 class="product-title">{{$data->name}}</h3>
-                    <p class="product-price">{{$data->price}}</p>
-                    <p class="product-description">{{$data->description}}</p>
-                    <a href="{{ route('product-details',$data->id)}}" class="view-button">View</a>
-                </div>
+                    @if (!in_array($data->name, $displayedDrinks)) <!-- Check if the product name has been displayed already -->
+                        <div class="product-card">
+                            <img src="{{ asset('assets/' . $data->image) }}" alt="Product Image">
+                            <h3 class="product-title">{{ $data->name }}</h3>
+                            <p class="product-price">{{ $data->price }}</p>
+                            <p class="product-description">{{ $data->description }}</p>
+                            <a href="{{ route('product-details', $data->id) }}" class="view-button">View</a>
+                        </div>
+                        @php
+                            $displayedDrinks[] = $data->name; // Mark this drink type as displayed
+                        @endphp
+                    @endif
                 @endforeach
             </div>
         </section>

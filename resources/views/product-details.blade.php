@@ -121,7 +121,7 @@
             <h2>Recommended Products</h2>
             <div class="products-grid">
                 <div class="product-card">
-                    <img src="{{ asset('assets/AdobeStock_114023252.jpeg') }}" alt="Cappuccino">
+                    <img src="{{ asset('assets/cappuccino.png') }}" alt="Cappuccino">
                     <h3>Cappuccino</h3>
                     <p class="price">Price: £12</p>
                     <p class="description">Bold and foamy with the perfect balance of espresso and milk.</p>
@@ -129,7 +129,7 @@
                     <button class="view-button">View Product</button>
                 </div>
                 <div class="product-card">
-                    <img src="{{ asset('assets/AdobeStock_296765068.jpeg') }}" alt="Americano">
+                    <img src="{{ asset('assets/americano.png') }}" alt="Americano">
                     <h3>Americano</h3>
                     <p class="price">Price: £12</p>
                     <p class="description">Classic black coffee brewed to perfection.</p>
@@ -137,7 +137,7 @@
                     <button class="view-button">View Product</button>
                 </div>
                 <div class="product-card">
-                    <img src="{{ asset('assets/AdobeStock_919872129.jpeg') }}" alt="Hot Chocolate">
+                    <img src="{{ asset('assets/hotchocolate.png') }}" alt="Hot Chocolate">
                     <h3>Hot Chocolate</h3>
                     <p class="price">Price: £12</p>
                     <p class="description">A luxurious blend of rich cocoa, sugar, and creamy milk. Perfect for cold days or as a comforting treat any time.</p>
