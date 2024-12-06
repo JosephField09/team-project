@@ -2,16 +2,65 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 
 class ProductsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $product = Product::all();
-        return view('products',compact('product')); // returns the products.blade.php view
+        $query = Product::query();
+
+        // Filter by category
+        if ($request->filled('category')) {
+            $query->where('category_id', $request->category);
+        }
+
+        // Filter by price range
+        if ($request->filled('min_price') || $request->filled('max_price')) {
+            $query->whereBetween('price', [
+                $request->get('min_price', 0), 
+                $request->get('max_price', PHP_INT_MAX)
+            ]);
+        }
+
+        // Search by product name or category name
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                ->orWhereHas('category', function ($q) use ($search) {
+                    $q->where('name', 'like', '%' . $search . '%');
+                });
+            });
+        }
+
+        // Sort products
+        if ($request->filled('sort')) {
+            switch ($request->sort) {
+                case 'name_asc':
+                    $query->orderBy('name', 'asc');
+                    break;
+                case 'name_desc':
+                    $query->orderBy('name', 'desc');
+                    break;
+                case 'price_asc':
+                    $query->orderBy('price', 'asc');
+                    break;
+                case 'price_desc':
+                    $query->orderBy('price', 'desc');
+                    break;
+            }
+        }
+
+        // Get filtered and sorted products
+        $products = $query->get();
+        $categories = Category::all(); // Retrieve all categories for the dropdown
+
+        return view('products', compact('products', 'categories'));
     }
+
     public function add_product(Request $request)
     {
         $data = new Product();
@@ -46,4 +95,3 @@ class ProductsController extends Controller
     }
 
 }
-

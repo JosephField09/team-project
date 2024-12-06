@@ -62,26 +62,73 @@
         <!-- Products Section -->
         <section id="products">
             <div class="container">
-            <h1 class="products-header">Explore Our Products</h1>
-            <div class="products-grid">
-                @php
-                    $displayedDrinks = []; // To track which drink types have been displayed
-                @endphp
+                <h1 class="products-header">Explore Our Products</h1>
+                
+                <!-- Filter Form -->
+                <form action="{{ route('products') }}" method="GET" class="filter-form">
+                    <div class="filter-group">
+                        <label for="category">Category:</label>
+                        <select name="category" id="category">
+                            <option value="">All Categories</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <!-- Filter by minimum price -->
+                    <div class="filter-group">
+                        <label for="min_price">Min Price:</label>
+                        <input type="number" name="min_price" id="min_price" min="0" value="{{ request('min_price') }}">
+                        
+                    </div>
+                    <!-- Filter by maximum price -->
+                    <div class="filter-group">
+                        <label for="max_price">Max Price:</label>
+                        <input type="number" name="max_price" id="max_price" min= "0" value="{{ request('max_price') }}">
+                    </div>
+                    <!-- Search -->
+                    <div class="filter-group">
+                        <label for="search">Search:</label>
+                        <input type="text" name="search" id="search" value="{{ request('search') }}" placeholder="Search by name or category">
+                    </div>
+                    <!-- Sort section -->
+                    <div class="filter-group">
+                        <label for="sort">Sort By:</label>
+                        <select name="sort" id="sort">
+                            <option value="">All</option>
+                            <option value="name_asc" {{ request('sort') == 'name_asc' ? 'selected' : '' }}>Name: A-Z</option>
+                            <option value="name_desc" {{ request('sort') == 'name_desc' ? 'selected' : '' }}>Name: Z-A</option>
+                            <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Price: Low to High</option>
+                            <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Price: High to Low</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="filter-button">Filter</button>
+                </form>
 
-                @foreach ($product as $data)
-                    @if (!in_array($data->name, $displayedDrinks)) <!-- Check if the product name has been displayed already -->
-                        <div class="product-card">
-                            <img src="{{ asset('assets/' . $data->image) }}" alt="Product Image">
-                            <h3 class="product-title">{{ $data->name }}</h3>
-                            <p class="product-price">{{ $data->price }}</p>
-                            <p class="product-description">{{ $data->description }}</p>
-                            <a href="{{ route('product-details', $data->id) }}" class="view-button">View</a>
-                        </div>
-                        @php
-                            $displayedDrinks[] = $data->name; // Mark this drink type as displayed
-                        @endphp
+                <!-- Full products list -->
+                <div class="products-grid">
+                    <!-- If no product matching request exist -->
+                    @if($products->isEmpty())
+                        <p>No products found. Please adjust your filters.</p>
+                    @else
+                        <!-- If products match -->
+                        @php $displayedDrinks = []; @endphp
+                        @foreach ($products as $data)
+                            @if (!in_array($data->name, $displayedDrinks))
+                                <div class="product-card">
+                                    <img src="{{ asset('assets/' . $data->image) }}" alt="Product Image">
+                                    <h3 class="product-title">{{ $data->name }}</h3>
+                                    <p class="product-price">£{{ number_format($data->price, 2) }}</p>
+                                    <p class="product-description">{{ $data->description }}</p>
+                                    <a href="{{ route('product-details', $data->id) }}" class="view-button">View</a>
+                                </div>
+                                @php $displayedDrinks[] = $data->name; @endphp
+                            @endif
+                        @endforeach
                     @endif
-                @endforeach
+                </div>
             </div>
         </section>
 
@@ -92,9 +139,9 @@
                 <div class="logo">
                     <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                 </div>
-                <p class="desc">At E-spresso, we’re passionate about delivering the perfect coffee experience. 
-                    From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. 
-                    Whether you’re a coffee connoisseur or just beginning your journey, 
+                <p class="desc">At E-spresso, weâ€™re passionate about delivering the perfect coffee experience. 
+                    From premium beans to convenient pods, we offer a selection to satisfy every coffee loverâ€™s taste. 
+                    Whether youâ€™re a coffee connoisseur or just beginning your journey, 
                     Our store is your gateway to a world of rich flavors and aromatic delights.</p>
                 <div class="socials">
                     <ul class="social-links">
@@ -147,7 +194,7 @@
             </footer>
             <footer class="bottom">
             <div class="footer">
-                <p>© E-SPRESSO | All Rights Reserved</p>
+                <p>Â© E-SPRESSO | All Rights Reserved</p>
             </div>
             </footer>
         </section>
