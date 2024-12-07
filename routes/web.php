@@ -21,7 +21,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/products', [ProductsController::class, 'index'])->name('products');
 
 // Product details route
-Route::get('/product-details/{id}', [ProductsController::class, 'details'])->name('product-details');
+Route::get('/product/{id}', [ProductsController::class, 'details'])->name('product-details');
+
 
 // About Us route
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');

@@ -72,7 +72,11 @@
                     </p>
                     <div class="rating-availability">
                         <p class="rating">⭐⭐⭐⭐⭐ (124)</p>
-                        <p class="availability">
+                        <p class="availability 
+                            @if($data->stock == 0) availability-none 
+                            @elseif($data->stock < 10) availability-low 
+                            @else availability-full 
+                            @endif">
                             @if($data->stock == 0)
                                 Out of Stock
                             @elseif($data->stock < 10)
@@ -85,28 +89,22 @@
                     <form action="{{ route('basket.add', $data->id) }}" method="POST">
                         @csrf
                         <div class="size-options">
-                            @if($data->size === 'one-size')
-                                <p>One - Size</p>
-                                <div class="quantity" style="display: inline-flex;">
-                                    <button class="quantity-btn" id="decrease">−</button>
-                                    <input type="number" id="quantity" value="1" min="1" max="{{$data->stock}}" />
-                                    <button class="quantity-btn" id="increase">+</button>
+                            <p>Size:</p>
+                            <div class="size-row">
+                                <div class="size-options">
+                                    @foreach($relatedProducts as $relatedProduct)
+                                        <a href="{{ route('product-details', $relatedProduct->id) }}" 
+                                        class="size @if($relatedProduct->size == $data->size) selected @endif">
+                                            {{ ucfirst($relatedProduct->size) }}
+                                        </a>
+                                    @endforeach
                                 </div>
-                            @else
-                                <p>Size:</p>
-                                <div class="size-row">
-                                    <div class="size-options">
-                                        <button class="size">S</button>
-                                        <button class="size selected">M</button>
-                                        <button class="size">L</button>
-                                    </div>
-                                    <div class="quantity">
-                                        <button class="quantity-btn" id="decrease">−</button>
-                                        <input type="number" id="quantity" value="1" min="1" />
-                                        <button class="quantity-btn" id="increase">+</button>
-                                    </div>
-                                </div>
-                            @endif
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button type="button" class="quantity-btn" id="decrease">−</button>
+                            <input type="number" id="quantity" name="quantity" value="1" min="1" max="{{ $data->stock }}" />
+                            <button type="button" class="quantity-btn" id="increase">+</button>
                         </div>
                         <button 
                             style="margin-top: 30px;"

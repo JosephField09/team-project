@@ -90,8 +90,11 @@ class ProductsController extends Controller
 
     public function details($id)
     {
-        $data = Product::find($id);
-        return view('product-details',compact('data')); // returns the products.blade.php view
+        $data = Product::findOrFail($id);
+        $relatedProducts = Product::where('name', $data->name)->get();
+
+        return view('product-details', compact('data', 'relatedProducts'));
     }
+
 
 }
