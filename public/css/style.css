@@ -958,10 +958,6 @@ footer.bottom {
   scale: 1.1;
 }
 
-.filter-buttons a:nth-child(1){
-  background-image: url({{ assets('assets/favicon.png'}});
-}
-
 .filter-group{
   display: flex;
 }
