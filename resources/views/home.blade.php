@@ -62,20 +62,21 @@
         <!-- Home Page Section -->
         <section id="home" style="background-color: black; color: white; display: flex; align-items: center; justify-content: center; padding: 20px;">
             <div style="flex: 1; padding-right: 1px; padding-left: 160px; text-align: left;">
+                <br><br>
                 <h1 style="font-size: 2.8em; margin: 0; font-family: Modern">Start Your Day with the</h1>
                 <h1 style="font-size: 2.8em; margin: 0; font-family: Modern">Best Coffee Experience</h1>
                 <br>
                 <p>Indulge in the finest brews, crafted to ignite your senses and</p>
-                <p>fuel your day. Your new and improved coffee journey begins here.</p>
+                <p>fuel your day. Your new, improved coffee journey begins here.</p>
                 <br><br><br>
-                <div style="margin-top: 20px;">
+                <div style="margin-top: 20px">
                     <a href= "{{route('products')}}" style="background-color: rgb(254, 204, 66); color: black; padding: 10px 20px; text-decoration: none; margin-right: 10px; font-weight: bold;">Order Now</a>
-                    <a href= "{{route('about-us')}}" style="background-color: black; color: white; padding: 10px 20px; text-decoration: none; border: 0.25px solid white;">Learn More</a>
+                    <a href= "{{route('blog')}}" style="background-color: black; color: white; padding: 10px 20px; text-decoration: none; border: 0.25px solid white;">Learn More</a>
                 </div>
-                <br><br>
+                <br><br><br><br>
             </div>
-            <div style="flex: 1; display: flex; justify-content: left;">
-                <img src="{{ asset('assets/steaming_coffee.jpeg') }}" alt="Steaming Coffee" style="width: 100%; height: auto; max-width: none;">
+            <div style="flex: 1; display: flex; justify-content: center; overflow: hidden; height: 350px;">
+                <img src="{{ asset('assets/steaming_coffee.jpeg') }}" alt="Steaming Coffee" style="width: auto; height: 100%; object-fit: cover; padding-left: 0%; padding-right: 28%;">
             </div>
         </section>
 
@@ -83,15 +84,11 @@
         <section id="ImageBlocks">
             <!-- Our story Section -->
             <div class="ourstory">
-                <img src= "{{ asset('assets/AdobeStock_723458248.jpeg') }}" alt="Woman picking coffee beans" 
-                class="bigimage" style="float: left;"></img>
+                <img src= "{{ asset('assets/coffee_drying.jpeg') }}" alt="Coffee Beans Drying" class="bigimage" style="float: left;"></img>
                 <div class="aboutustext">
                     <h3>About Us</h3>
-                    <h1 class="header">Our Mission is to Make Your Mornings Easier</h1>
-                    <p>At E-Spresso, we believe in more than just coffee - we create moments. From our handpicked beans to the perfect brew,
-                        each cup is crafted with love and care. Whether you're here for a quick pick-me-up or to enjoy a relaxing moment, we're
-                        dedicated to making every sip special. Join us in celebrating the art of coffee, brewed to perfection just for you.
-                    </p>
+                    <h1 class="header">We Want to Make Your Mornings Easier</h1>
+                    <p>Our team is composed of passionate individuals who bring diverse skills and experiences to the table, allowing us to exceed in energising you for the day ahead. We believe in sustainability and ethical practices, ensuring that our operations not only benefit our customers but also contribute positively to the community and the environment.</p>
                     <div class="promise">
                         <img src= "{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
                         <h4>Single-origin coffee beans</h4>
@@ -110,6 +107,73 @@
                     </div>
                     <a href="{{route('about-us')}}"><h4>Read More</h4></a>
                 </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" style="background-color: beige; padding: 40px 20px; text-align: center;">
+            <br><br>
+            <h1 style="font-size: 2.5em; margin: 0;">Our Delicious Services</h1>
+            <p style="font-size: 1em; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto; color: gray;">
+                <strong>We offer a variety of top range products, here are some of our most popular categories for you to browse.</strong>
+            </p>
+            <br><br><br>
+            <div class="services-section">
+                <div class="service-box">
+                    <img src="{{ asset('assets/coffee_cup_symbol.jpeg') }}" alt="Hot Coffee" class="service-image">
+                    <h2>Hot Coffee</h2>
+                    <br>
+                    <p>Enjoy our freshly brewed hot coffee made from the finest beans, perfect for your morning boost.</p>
+                    <br><br>
+                    <a href="{{ route('products') }}" class="view-range">View Range</a>
+                </div>
+                <div class="service-box">
+                    <img src="{{ asset('assets/coffee_bean_symbol.png') }}" alt="Coffee Beans" class="service-image">
+                    <h2>Coffee Beans</h2>
+                    <br>
+                    <p>Explore our selection of premium coffee beans sourced from around the world for the perfect brew.</p>
+                    <br><br>
+                    <a href="{{ route('products') }}" class="view-range">View Range</a>
+                </div>
+                <div class="service-box">
+                    <img src="{{ asset('assets/coffee_pod_symbol.jpeg') }}" alt="Coffee Pods" class="service-image">
+                    <h2>Coffee Pods</h2>
+                    <br>
+                    <p>Convenient and delicious, our coffee pods are designed for a quick and easy coffee experience.</p>
+                    <br><br>
+                    <a href="{{ route('products') }}" class="view-range">View Range</a>
+                </div>
+            </div><br><br>
+        </section>
+
+        <!-- Best Sellers Section -->
+        <section id="best-sellers" style="background-color: white; padding: 40px 20px; text-align: center;">
+            <br><br>
+            <h1 style="font-size: 2.5em; margin: 0;">Best Sellers</h1>
+            <p style="color: gray; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Discover the most popular coffee that our customers just love. These highest sellers are crafted to perfection and are sure to delight your taste buds.
+            </p><br><br><br>
+            <div class="product-carousel" style="margin-top: 20px; display: flex; align-items: center; justify-content: center;">
+                <button class="arrow left-arrow" style="background-color: transparent; border: none; cursor: pointer; font-size: 2em;">&#10094;</button>
+                
+                <div class="products-container">
+                    @foreach ($bestSellers as $product)
+                        <div class="product-box">
+                            <img src="{{ asset('assets/' . $product->image) }}" alt="{{ $product->name }}">
+                            <h3>{{ $product->name }}</h3>
+                            <p class="product-price">{{ $product->price }}</p>
+                            <p class="product-description">{{ $product->description }}</p>
+                            <p class="star-rating">{{ str_repeat('★', $product->rating) }}{{ str_repeat('☆', 5 - $product->rating) }}</p>
+                            <br><a href="{{ route('products') }}" class="view-button" style="background-color: rgb(254, 204, 66); color: black; padding: 10px 15px; text-decoration: none; border-radius: 5px;">View {{ $product->name }}</a>
+                        </div>
+                    @endforeach
+                </div>
+                
+                <button class="arrow right-arrow" style="background-color: transparent; border: none; cursor: pointer; font-size: 2em;">&#10095;</button>
+            </div>
+            <br>
+            <div style="margin-top: 20px;">
+                <a href="{{ route('products') }}" class="best-sellers-button">View All Products</a>
             </div>
         </section>
 
@@ -178,4 +242,5 @@
             </footer>
         </section>
     </main>
+    <script src="{{ asset('js/carousel.js') }}"></script>
 </body>
