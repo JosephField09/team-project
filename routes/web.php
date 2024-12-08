@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 
@@ -22,6 +23,9 @@ Route::get('/products', [ProductsController::class, 'index'])->name('products');
 // Product details route
 Route::get('/product/{id}', [ProductsController::class, 'details'])->name('product-details');
 
+// Checkout page route
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::post('/checkout', [CheckoutController::class, 'add'])->name('checkout.add');
 
 // About Us route
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');

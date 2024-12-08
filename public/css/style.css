@@ -2065,3 +2065,57 @@ table{
   object-fit: cover; 
   border-radius: 5px; 
 }
+
+.checkout-main{
+  background-color: var(--light-bg);
+  padding-top: 5%;
+  padding-bottom: 5%;
+  justify-items: center;
+}
+
+.checkout-form-section{
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px 0#6f6f6f;
+  width: 600px;
+  align-items: center;
+  text-align: center;
+  hr{
+    margin-top: 5px;
+    width: 100%;
+  }
+  h3, h4{
+    text-align: left;
+  }
+  label{
+    text-align: left;
+  }
+}
+
+.shipping{
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+.payment{
+  margin-top: 5%;
+}
+
+.small-numbers{
+  display: flex;
+  flex-direction: row;
+}
+
+.place-order{
+  margin-top: 5%;
+  width: auto;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 35px;
+  border-radius: 4px;
+  background: var(--secondary-colour);
+  border: none;
+}

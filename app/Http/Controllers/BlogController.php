@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth; 
 
 class BlogController extends Controller
 {
@@ -26,10 +26,10 @@ class BlogController extends Controller
         Blog::create([
             'title' => $request->title,
             'message' => $request->message,
-            'user_id' => auth()->id(),
+            'user_id' => Auth::id(),
         ]);
 
         // Returns the user to the blogs page with a success message
-        return redirect()->route('blogs.index')->with('success', 'Blog entry has been posted!');
+        return redirect()->route('blogs.index');
     }
 }
