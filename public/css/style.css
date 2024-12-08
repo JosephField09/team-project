@@ -1606,51 +1606,66 @@ table{
   background-color: #e5a500;
 }
 
+.basket {
+  position: relative;
+}
 
+.basket-count {
+  position: absolute;
+  top: -9px;
+  right: 1px;
+  background-color: var(--secondary-colour);
+  color: black;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 12px;
+  font-weight: bold;
+
+}
 
 .services-section { 
-  display: flex; /* Use flexbox to arrange boxes in a row */ 
-  justify-content: space-between; /* Space out the boxes evenly within the container */ 
-  padding: 0 10%; /* Add padding to the left and right sides of the container */ 
+  display: flex; 
+  justify-content: space-between; 
+  padding: 0 10%; 
 } 
 
 .service-box { 
-  background-color: white; /* White background for the boxes */ 
-  border-radius: 8px; /* Rounded corners */ 
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */ 
-  padding: 20px; /* Padding inside the boxes */ 
-  width: 25%; /* Set width to make them smaller */ 
-  min-height: 250px; /* Set a minimum height for the boxes */ 
-  text-align: center; /* Center text inside the boxes */ 
-  transition: transform 0.3s; /* Add a transition for hover effect */ 
-  margin: 0 10px; /* Add margin to create space between boxes */ 
+  background-color: white; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); 
+  padding: 20px; 
+  width: 25%; 
+  min-height: 250px;
+  text-align: center; 
+  transition: transform 0.3s; 
+  margin: 0 10px; 
 }  
 
 .service-box:hover {
-  transform: translateY(-5px); /* Slight lift on hover */
+  transform: translateY(-5px); 
 }
 
 .service-image {
-  width: 100px; /* Set width for the circular image */
-  height: 100px; /* Set height for the circular image */
-  border-radius: 50%; /* Make the image circular */
-  margin-bottom: 15px; /* Space between image and header */
+  width: 100px; 
+  height: 100px; 
+  border-radius: 50%; 
+  margin-bottom: 15px; 
 }
 
 .service-box p {
-  color: gray; /* Set the text color to gray */
+  color: gray;
 }
 
 .view-range {
-  display: inline-block; /* Make the link a block element */
-  margin-top: 10px; /* Space above the link */
-  color: var(--primary-colour); /* Use primary color for the link */
-  text-decoration: none; /* Remove underline from the link */
-  font-weight: bold; /* Make the link bold */
+  display: inline-block; 
+  margin-top: 10px; 
+  color: var(--primary-colour); 
+  text-decoration: none; 
+  font-weight: bold; 
 }
 
 .view-range:hover {
-  text-decoration: underline; /* Underline on hover */
+  text-decoration: underline;
 }
 
 #best-sellers {
@@ -1675,20 +1690,20 @@ table{
 .products-container {
   display: flex;
   overflow: hidden;
-  width: 80%; /* Adjust this width as needed */
-  justify-content: flex-start; /* Align items to the start */
-  transition: transform 0.3s ease; /* Smooth transition for sliding */
+  width: 80%; 
+  justify-content: flex-start; 
+  transition: transform 0.3s ease; 
 }
 
 .product-box {
   background-color: beige;
   border-radius: 10px;
   padding: 20px;
-  width: 30%; /* Adjust as needed */
+  width: 30%; 
   margin: 0 10px;
   text-align: center;
-  min-height: 350px; /* Set a minimum height to ensure uniformity */
-  box-sizing: border-box; /* Include padding and border in the element's total width */
+  min-height: 350px; 
+  box-sizing: border-box; 
 }
 
 .arrow {
@@ -1696,7 +1711,7 @@ table{
   border: none;
   cursor: pointer;
   font-size: 2em;
-  z-index: 1; /* Ensure arrows are above the products */
+  z-index: 1; 
 }
 
 .left-arrow {
@@ -1710,8 +1725,8 @@ table{
 }
 
 .product-box img {
-  width: 100%; /* Make the image take the full width of the product box */
-  height: 200px; /* Set a fixed height for all images */
-  object-fit: cover; /* Ensure the image covers the area without distortion */
-  border-radius: 5px; /* Optional: Keep the border radius for aesthetics */
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover; 
+  border-radius: 5px; 
 }
