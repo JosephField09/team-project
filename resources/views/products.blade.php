@@ -241,7 +241,7 @@
             </footer>
             <footer class="bottom">
             <div class="footer">
-                <p>Â© E-SPRESSO | All Rights Reserved</p>
+                <p>© E-SPRESSO | All Rights Reserved</p>
             </div>
             </footer>
         </section>
