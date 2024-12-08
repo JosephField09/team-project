@@ -83,7 +83,7 @@
                         </div>
                         @foreach ($categories as $category)
                             <div class="category-wrapper">
-                                <a href="{{ route('products', array_merge(request()->except('category'), ['category' => $category->id])) }}" 
+                                <a href="{{ route('products.filter', array_merge(request()->except('category'), ['category' => $category->id])) }}" 
                                 class="category-button {{ request('category') == $category->id ? 'active' : '' }}"
                                 style="background-image: url('{{ asset('assets/' . $category->image) }}'); background-position: center; background-size: contain; background-repeat: no-repeat;">
                                 </a>
@@ -99,74 +99,86 @@
 
         <!-- Products Section -->
         <section id="products">
-            <div class="container">
-                <h1 class="products-header">Explore Our Products</h1>
-                
-                <!-- Filter Form -->
-                <form action="{{ route('products') }}" method="GET" class="filter-form">
-                    <div class="filter-group">
-                        <label for="category">Category:</label>
-                        <select name="category" id="category">
-                            <option value="">All Categories</option>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
-                                    {{ $category->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <!-- Filter by minimum price -->
-                    <div class="filter-group">
-                        <label for="min_price">Min Price:</label>
-                        <input type="number" name="min_price" id="min_price" min="0" value="{{ request('min_price') }}">
-                        
-                    </div>
-                    <!-- Filter by maximum price -->
-                    <div class="filter-group">
-                        <label for="max_price">Max Price:</label>
-                        <input type="number" name="max_price" id="max_price" min= "0" value="{{ request('max_price') }}">
-                    </div>
-                    <!-- Search -->
-                    <div class="filter-group">
-                        <label for="search">Search:</label>
-                        <input type="text" name="search" id="search" value="{{ request('search') }}" placeholder="Search by name or category">
-                    </div>
-                    <!-- Sort section -->
-                    <div class="filter-group">
-                        <label for="sort">Sort By:</label>
-                        <select name="sort" id="sort">
-                            <option value="">All</option>
-                            <option value="name_asc" {{ request('sort') == 'name_asc' ? 'selected' : '' }}>Name: A-Z</option>
-                            <option value="name_desc" {{ request('sort') == 'name_desc' ? 'selected' : '' }}>Name: Z-A</option>
-                            <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Price: Low to High</option>
-                            <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Price: High to Low</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="filter-button">Filter</button>
-                </form>
-
-                <!-- Full products list -->
-                <div class="products-grid">
-                    <!-- If no product matching request exist -->
-                    @if($products->isEmpty())
-                        <p>No products found. Please adjust your filters.</p>
-                    @else
-                        <!-- If products match -->
-                        @php $displayedDrinks = []; @endphp
-                        @foreach ($products as $data)
-                            @if (!in_array($data->name, $displayedDrinks))
-                                <div class="product-card">
-                                    <img src="{{ asset('assets/' . $data->image) }}" alt="Product Image">
-                                    <h3 class="product-title">{{ $data->name }}</h3>
-                                    <p class="product-price">£{{ number_format($data->price, 2) }}</p>
-                                    <p class="product-description">{{ $data->description }}</p>
-                                    <a href="{{ route('product-details', $data->id) }}" class="view-button">View</a>
-                                </div>
-                                @php $displayedDrinks[] = $data->name; @endphp
-                            @endif
-                        @endforeach
-                    @endif
+            <div class="search-sort-filter">
+                <!-- Search -->
+                <div class="search">
+                    <form action="{{ route('products.filter') }}#products" method="GET" class="filter-form">
+                        <input type="text" name="search" id="search" value="{{ request('search') }}" placeholder="Search by name or category...">
+                    </form>
                 </div>
+                <div class="sort-filter">
+                    <!-- Sort section -->
+                    <form action="{{ route('products.filter') }}#products" method="GET" class="filter-form">
+                        <div class="filter-group">
+                            <select name="sort" id="sort" onchange="this.form.submit()">
+                                <option value="" disabled selected>Sort by</option>
+                                <option value="name">Name: A-Z</option>
+                                <option value="name_desc">Name: Z-A</option>
+                                <option value="price_asc">Price: Low to High</option>
+                                <option value="price_desc">Price: High to Low</option>
+                            </select>
+                        </div>
+                    </form>
+                    <!-- Filter Dropdown -->
+                    <div class="filter-container">
+                        <button class="filter-button" onclick="toggleFilterDropdown()" type="button">
+                            Filter <i class='bx bx-filter-alt'></i>
+                        </button>
+                        <div id="filter-dropdown" class="filter-dropdown hidden">
+                            <form action="{{ route('products.filter') }}#products" method="GET" class="filter-form">
+                                <!-- Filter by category -->
+                                <div class="filter-group">
+                                    <label for="category">Filter by:</label>
+                                    <select name="category" id="category">
+                                        <option value="">All Categories</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
+                                                {{ $category->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <!-- Filter by minimum price -->
+                                <div class="filter-group">
+                                    <label for="min_price">Min Price:</label>
+                                    <input type="number" name="min_price" id="min_price" min="0" value="{{ request('min_price') }}">
+                                </div>
+                                <!-- Filter by maximum price -->
+                                <div class="filter-group">
+                                    <label for="max_price">Max Price:</label>
+                                    <input type="number" name="max_price" id="max_price" min="0" value="{{ request('max_price') }}">
+                                </div>
+                                <!-- Apply Filters Button -->
+                                <button type="submit" class="apply-filter-button">Apply Filters</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Full products list -->
+            <div class="products-grid">
+                <!-- If no product matching request exist -->
+                @if($products->isEmpty())
+                    <p style="justify-self:center; margin: 10px;">No products found. Please adjust your filters.</p>
+                @else
+                    <!-- If products match -->
+                    @php $displayedDrinks = []; @endphp
+                    @foreach ($products as $data)
+                        @if (!in_array($data->name, $displayedDrinks))
+                            <div class="product-card">
+                                <img src="{{ asset('assets/' . $data->image) }}" alt="Product Image">
+                                <div class="product-row" style="display:inline-flex">
+                                    <h3 class="product-title">{{ $data->name }}</h3>
+                                    <p class="product-price">from <span>£{{ number_format($data->price, 2) }}</span></p>    
+                                </div>
+                                <p class="product-description">{{ $data->description }}</p>
+                                <a href="{{ route('product-details', $data->id) }}" class="view-button">View</a>
+                            </div>
+                            @php $displayedDrinks[] = $data->name; @endphp
+                        @endif
+                    @endforeach
+                @endif
             </div>
         </section>
 

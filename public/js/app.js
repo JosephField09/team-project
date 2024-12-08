@@ -220,5 +220,10 @@ function saveCategoryName(input, id) {
     });
 }
 
+function toggleFilterDropdown() {
+    const dropdown = document.getElementById('filter-dropdown');
+    dropdown.classList.toggle('hidden');
+}
+
 // Request a fresh CSRF token
 window.axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').content;

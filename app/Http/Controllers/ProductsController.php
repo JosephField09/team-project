@@ -10,6 +10,14 @@ class ProductsController extends Controller
 {
     public function index(Request $request)
     {
+        $products = Product::all();
+        $categories = Category::all(); // Retrieve all categories for the dropdown
+
+        return view('products', compact('products', 'categories'));
+    }
+
+    public function filter(Request $request)
+    {
         $query = Product::query();
 
         // Filter by category
@@ -60,6 +68,7 @@ class ProductsController extends Controller
 
         return view('products', compact('products', 'categories'));
     }
+    
 
     public function add_product(Request $request)
     {
