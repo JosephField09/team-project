@@ -1,0 +1,2246 @@
+/* Storing reused colours as variables */
+:root {
+  --primary-colour: rgb(0, 0, 0);
+  --secondary-colour: #fecc42;
+  --light-bg: rgb(255, 234, 197,0.2);
+  --dark-bg: rgba(255, 219, 181, 0.25);
+  --headerfooter-text-colour:rgba(255, 255, 255,0.7);
+  --title-colour:rgb(51,51,51);
+  --text-colour:rgb(128,123,118);
+}
+
+/* Reset default margin, padding, and box-sizing for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Trebuchet MS';
+}
+
+/* Styling for the whole navigation bar */
+nav#main {
+  background: black;
+  padding: 1.5% 14.25%;
+  display: flex;
+  position: sticky;
+  justify-content: space-between;
+  height: 70px;
+  z-index: 2001;
+  align-items: center;
+}
+
+/* Styling for left section of navigation bar */
+.navbar-left{
+  align-items: center;
+  display: grid;
+}
+
+/* Styling for navigation bar image */
+.navbar-left img{
+  max-width: 182px;
+  max-height: 46px;
+  scale: 1;
+  transform: translateY(4px);
+}
+
+/* Styling for navigation bar links */
+.navbar-middle a{
+  color: var(--headerfooter-text-colour);
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: 100;
+  position: relative;
+  padding: 0 20px;
+  border-radius: 5px;
+  transition: font-size 0.5s linear, color 0.5s linear;
+}
+
+/* Styling for navigation bar links when hovered over or selected */
+.navbar-middle a.option-selected,
+.navbar-middle a:hover{
+  color: var(--secondary-colour);
+  font-size: 15px;
+}
+
+/* Styling for right section of navigation bar */
+.navbar-right{
+  display: inline-flex;
+}
+
+
+/* Styling for login button */
+.navbar-right a.login {
+  font-size: 14px;
+  color: var(--primary-colour);
+  background: var(--secondary-colour);
+  text-decoration: none;
+  padding: 5px 22px;
+  border-radius: 4px;
+}
+
+/* Styling for login button when hovering over */
+.login:hover {
+  scale: 1.1;
+}
+
+/* Styling for paragraph text in right of navigation bar */
+.navbar-right p{
+  font-size: 20px;
+  margin-left: 18px;
+  margin-right: 18px;
+  color: var(--text-colour);
+}
+
+/* Styling for a tags in right of navigation bar */
+.navbar-right a {
+  font-size: 20px;
+  color: var(--headerfooter-text-colour);
+  align-self: end;
+}
+/* Styling for a tags in right of navigation bar */
+.navbar-right i {
+  margin-right: 10px;
+}
+
+/* Styling for basket a tag when hovering */
+.navbar-right a i:hover {
+  color: white;
+  transition: 0.3s ease-in-out;
+}
+
+/* Styling for dashboard */
+.dashboard{
+  padding: 5% 14.25%;
+  height: fit-content;
+  background-color: var(--light-bg);
+}
+
+/* Styling for inner dashboard area */
+.dash-inner{
+  display: grid;
+  grid-template-columns: 1.5fr 4fr;
+  height: 100%;
+  width: 100%;
+  gap: 10px;
+}
+
+/* Styling for dashboard navigation */
+.dash-nav{
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 20px;
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
+}
+
+/* Styling for user section */
+.user{
+  padding: 10px 0px 28px 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+  display: grid;
+  margin-bottom: 20px;
+  grid-template-columns: 1fr 2fr;
+}
+
+/* Styling for second user paragrpah text */
+.user p:nth-child(2){
+  color: gray;
+  font-size: 10px;
+  margin-top: 5px
+}
+
+/* Styling for user icon */
+.user i{
+  justify-self: center;
+  align-content: center;
+  height: 100%;
+  font-size: 37px;
+}
+
+/* Styling for dashboard button icons */
+.dash-buttons i{
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+/* Styling for dashboard form in navigation */
+.dash-nav form{
+  display: flex;
+  justify-content: center;
+}
+
+/* Styling for default dashboard nav buttons */
+.option{
+  display: flex;
+  background-color: #fff6cc;
+  width: 100%;
+  border-radius: 5px;
+  padding:10px 20px;
+  margin-bottom: 10px;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+}
+
+/* Styling for hovering over dashboard nav buttons */
+.option:hover {
+  scale: 1.1;
+  cursor: pointer;
+  background-color: var(--secondary-colour);
+}
+
+/* Styling for the active dashboard nav buttons */
+.option.active {
+  font-weight: bold;
+  background-color: var(--secondary-colour); 
+}
+
+/* Styling for login button */
+.logout{
+  display: flex;
+  background-color: var(--secondary-colour);
+  border-radius: 5px;
+  padding: 10px 20px;
+  align-items: center;
+  width: 70%;
+  font-size: smaller;
+  align-self: flex-end;
+  border: none;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+
+/* Styling for login button icon */
+.logout i{
+  margin-right: 10px;
+}
+
+/* Styling for login button when hovering */
+.logout:hover{
+  scale: 0.9;
+}
+
+/* Styling for dashboard title/content section */
+.dash-title-content{
+  display: grid;
+  grid-template-rows: 1fr 8fr;
+  gap: 10px;
+}
+
+/* Styling for title section */
+.title{
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  align-content: center;
+  padding-left: 15px;
+  color: var(--text-colour);
+}
+
+/* Styling for content section */
+.content{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 15px;
+}
+
+/* Styling for content h2 header */
+.content h2{
+  color: var(--title-colour);
+}
+
+/* Styling for content h4 header */
+.content h4{
+  color: var(--title-colour);
+  margin-bottom: 20px;
+}
+
+/* Styling for labels */
+label{
+  color: var(--title-colour);
+  font-size: smaller;
+}
+
+/* Styling for account conent section */
+#accountContent{
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 100%;
+}
+
+/* Styling for account content input fields */
+#accountContent .input-field{
+  width: 80%;
+}
+
+/* Styling for save buttons */
+.save{
+  background-color: var(--secondary-colour);
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  transition: scale 0.5s;
+}
+
+/* Styling for save button when hovering */
+.save:hover{
+  scale: 0.9;
+}
+
+/* Styling for profile info grid */
+.profile-info{
+  border-right: 1px solid gray;
+  padding: 5px;
+}
+
+/* Styling for password info grid */
+.password-info{
+  padding: 5px;
+}
+
+/* Styling for delete profile grid */
+.delete-profile{
+  padding: 5px;
+  border-left: 1px solid gray;
+}
+
+/* Styling for profile info and delete profiel paragraphs */
+.profile-info p,
+.delete-profile p{
+  color: var(--text-colour);
+  font-size: smaller;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Styling for delete button */
+.delete{
+  background-color: red;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Styling for delete button when hovering */
+.delete:hover{
+  scale: 0.9;
+}
+
+/* Styling for member content paragraph */
+#memberContent p{
+  margin-top: 10px;
+  color: var(--text-colour);
+}
+
+/* Styling for member content h4 header */
+#memberContent h4{
+  color: var(--title-colour);
+  margin-top: 20px;
+}
+
+/* Styling for content span */
+#memberContent span{
+  color: var(--title-colour);
+  font-size: 30px;
+}
+
+/* Styling for subscribe button */
+.content .subscribe{
+  background-color: var(--secondary-colour);
+  padding: 10px 15px;
+  border-radius: 5px;
+  position: relative;
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Styling for Main container */
+.main {
+  height: 70vh;
+  background-color: var(--light-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling for form box */
+.form-box {
+  width: 630px;
+  background: white;
+  padding: 20px 100px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+/* Styling for form box header */
+.form-box h1{
+  color: var(--title-colour);
+  padding: 20px;
+  font-size: 30px;
+}
+
+/* Styling for inner form container */
+.form-inner {
+  padding: 10px ;
+}
+
+/* Styling for form rows */
+.form-row{
+  display: flex;
+}
+
+/* Styling for form input fields */
+.input-field{
+  background-color: rgba(211, 211, 211,0.3);
+  padding: 10px;
+  width: 100%;
+  padding: 10px;
+  margin: 8px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+/* Styling for form form submit buttons */
+.submit-btn{
+  width: 46%;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 35px;
+  border-radius: 4px;
+  background: var(--secondary-colour);
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+}
+
+/* Styling for submit button when hovering */
+.submit-btn:hover{
+  scale: 1.1;
+}
+
+/* Styling for text login/register switch prompts */
+.form-inner p,
+.form-inner a{
+  font-size: 13px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Styling for inner form container paragraph text */
+.form-inner p {
+  color: grey;
+}
+
+/* Styling for inner form container a tag */
+.form-inner a {
+  color: var(--secondary-colour);
+  text-decoration: none;
+}
+
+/* Styling for footer */
+footer {
+  display: inline-flex;
+}
+
+/* Styling for whole footer section */
+#footer {
+  font-size: 13px;
+  z-index: -1;
+  top: 50px;
+}
+  
+/* Styling for top footer section */
+footer.top {
+  background-color: black;
+  height: fit-content;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  align-items: flex-start;
+  position: relative;
+  padding: 3% 14.25%;
+}
+
+/* Styling for footer border splitter */
+footer.top::after {
+  content: '';
+  position: absolute;
+  bottom: 0; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  width: 71.75%; 
+  border-bottom: 1px solid #333333;
+}
+
+/* Styling for logo/description/sociallinks grid */
+.logo-desc-soc {
+  display: grid;
+  grid-template-rows: 31% 65% 10%;
+  height: 100%;
+  margin-right: 10%;
+}
+
+/* Styling for logo image */
+.logo img {
+  max-width: 182px;
+  max-height: 57px;
+  transform: translateY(-10px);
+}
+
+/* Styling for description */
+.desc {
+  color: var(--headerfooter-text-colour);
+}
+
+/* Styling for social link icons */
+.social-links i{
+  color: white;
+  font-size: 25px;
+  margin: 5px 5px 0px 0px
+}
+
+/* Styling for social link icons when hovering*/
+.social-links i:hover{
+  color: var(--secondary-colour);
+}
+
+/* Styling for footer headers */
+footer.top h3{
+  color: white;
+  font-size: 20px;
+}
+
+/* Styling for all list groups */
+footer.top .quick-links ul,
+footer.top .information ul,
+footer.top .contact-information ul {
+  list-style: none;
+  color: white;
+  margin-top: 30px;
+}
+
+/* Styling for all list elements */
+footer.top .quick-links ul li,
+footer.top .information ul li, 
+footer.top .contact-information ul li{
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+/* Styling for first contact info list */
+footer.top .contact-information ul li:nth-child(1){
+  display: flex;
+}
+
+/* Styling for all link text */
+footer.top .quick-links ul li a,
+footer.top .information ul li a, 
+footer.top .contact-information ul li a{
+  color: var(--headerfooter-text-colour);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+/* Styling for all link text when hovering */
+footer.top .quick-links ul li a:hover,
+footer.top .information ul li a:hover, 
+footer.top .contact-information ul li a:hover{
+  color: var(--secondary-colour);
+}
+
+/* Styling for contact list elements */
+footer.top .contact-information ul li:nth-child(2),
+footer.top .contact-information ul li:nth-child(3),
+footer.top .contact-information ul li:nth-child(4) {
+  display: flex;
+  margin-top: 5px;
+}
+
+/* Styling for contact info icons */
+footer.top .contact-information li i {
+  color: var(--secondary-colour);
+  font-size: 19px;
+  margin-right: 10px;
+  transform: translateY(-4px);
+  margin-bottom: 12px;
+}
+
+/* Styling for bottom footer section */
+footer.bottom {
+  padding: 20px;
+  background: var(--primary-colour);
+  color: white;
+  width: 100%;
+}
+
+/* Styling for footer center alignment */
+#footer .footer {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Styling for footer copyright */
+#footer .footer p {
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+/* Styling for our story section on about us */
+#ourstory{
+  display: flex;
+  flex-direction: row;
+}
+
+/* Styling for image blocks ona bout us */
+#ImageBlocks {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-left: 14.25%;
+  padding-right: 14.25%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background-color: var(--light-bg);
+}
+
+/* Styling for the images on about us */
+#ImageBlocks img{
+  border-radius: 15px;
+  margin: 3%;
+}
+
+.bigimage{
+  max-height: 400px;
+  width: 35%;
+  height: 35%;
+}
+
+/* Styling for text on about us */
+.aboutustext{
+  h1{
+    font-size: 40px;
+  }
+  display: flex;
+  flex-direction: column
+}
+
+/* Styling for our story on about us */
+.ourstory{
+  max-width: 100%;
+  p{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 500px;
+    width: 100% auto;
+  }
+  a{
+    margin: 15px;
+    font-size: 14px;
+    color: var(--primary-colour);
+    background: var(--secondary-colour);
+    text-decoration: none;
+    padding: 5px 22px;
+    cursor: pointer;
+    width: 150px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+  }
+  h3{
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: gray;
+  }
+}
+
+/* Styling for the promises on about us */
+.promise{
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+  margin-top: 10px;
+  padding-bottom: 0;
+  height: 30px;
+  max-width: 300px;
+  width: auto;
+  white-space: nowrap;
+}
+
+
+/* Styling for our missions on about us */
+.ourmission{
+  max-width: 100%;
+  padding-top: 75px;
+  padding-left: 5%;
+  display: flex;
+  flex-direction: row;
+  p{
+    padding-top: 15px;
+    max-width: 525px;
+    width: 100% auto;
+  }
+  a{
+    margin: 15px;
+    margin-left: 0px;
+    font-size: 14px;
+    color: var(--primary-colour);
+    background: var(--secondary-colour);
+    text-decoration: none;
+    padding: 5px 22px;
+    cursor: pointer;
+    max-width: 100%;
+    height: 50px;
+    border: none;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-top: 100px;
+  }
+  h1{
+    padding-top: 50px;
+  }
+}
+
+
+/* Styling for individual missions on about us */
+.missions{
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  width: auto;
+  padding-left: 3%;
+  p{
+    padding-top: 10px;
+  }
+}
+
+/* Styling for headers for missions and visions on about us */
+.missionheader{
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+/* Styling for our vision section on about us */
+.ourvision{
+  max-width: 100%;
+  padding-top: 60px;
+  padding-left: 5%;
+  display: flex;
+  flex-direction: row;
+  p{
+    padding-top: 15px;
+    max-width: 525px;
+  }
+  a{
+    margin: 15px;
+    margin-left: 0px;
+    margin-top: 100px;
+    font-size: 14px;
+    color: var(--primary-colour);
+    background: var(--secondary-colour);
+    text-decoration: none;
+    padding: 5px 22px;
+    cursor: pointer;
+    max-width: 525px;
+    width: auto;
+    height: 50px;
+    border: none;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 5px;
+  }
+  h1{
+    padding-top: 50px;
+  }
+}
+
+/* Styling for our contact us section on about us */
+#ContactUs{
+  max-width: 100%;
+  padding-left: 14.25%;
+  padding-right: 14.25%;
+  padding-bottom: 50px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--dark-bg);
+  h1{
+    color: var(--title-colour);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    padding-bottom: 40px;
+  }
+  img{
+    border-radius: 15px;
+    max-width: 400px;
+    width: 35%;
+    height: 35%;
+  }
+}
+
+/* Styling for contact us form on about us */
+.contact-us-form{
+  margin-left: 5px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  width: 100%;
+  .input-field{
+    width: 300px;
+    background-color: var(--light-bg);
+  }
+  label{
+    margin-left: 10px;
+  }
+}
+
+/* Styling for the first and last name section of the contact us form */
+.first-and-last-name{
+  display: flex;
+  flex-direction: row;
+  .first-name{
+    display: flex;
+    flex-direction: column;
+  }
+  .last-name{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Styling for the email and phone number parts of the contact us form */
+.email-and-phone{
+  display: flex;
+  flex-direction: row;
+  .email{
+    display: flex;
+    flex-direction: column;
+  }
+  .phone{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Styling for the message to send box of the contact us form */
+.message-to-send{
+  display: flex;
+  flex-direction: column;
+  .input-field{
+    width: 620px;
+    resize: none;
+  }
+}
+
+/* Styling for the error message in the contact form */ 
+#formError{
+  color: red;
+  text-align: center;
+}
+
+/* Styling for submit contact form button */
+#submit-form-btn{
+  max-width: 97%;
+  width: auto;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 35px;
+  border-radius: 4px;
+  background: var(--secondary-colour);
+  border: none;
+}
+
+/* Styling for our submit form */
+.submit-form{
+  padding: 15px;
+  text-align: center;
+}
+
+/* Styling for the products */
+#products{
+  padding: 0px 14.25%;
+}
+
+/* Styling for the cta text */
+#cta{
+  width: 100%;
+  height: 80vh;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+}
+
+/* Styling for the cta text */
+#cta::after{
+  margin-left: auto;
+  content: "";
+  position: absolute;
+  top: 70px;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 80vh;
+}
+
+/* Styling for the cta text */
+.cta-text{
+  justify-content: center;
+  align-self: center;
+  display: grid;
+  color: white;
+  z-index: 2000;
+  position:relative;
+  width: 100%;
+  text-align: center;
+}
+
+/* Styling for the cta text */
+.cta-text p{
+  font-size: 20px;
+}
+
+/* Styling for the cta text */
+.cta-text h3{
+  font-size: 30px;
+  margin-top: 10px
+}
+
+/* Styling for the cta text */
+.cta-text p:nth-child(3){
+  font-size: 10px;
+  margin-top: 10px;
+  color: whitesmoke;
+  letter-spacing: 1px;
+}
+
+/* Styling for the shop banner */
+#shop-banner{
+  padding: 50px 14.25%;
+  background-color: var(--light-bg);
+  height: fit-content;
+  color: #31312f;
+}
+
+/* Styling for the shop banner */
+#shop-banner h2{
+  letter-spacing: 1px;
+  font-size: 30px;
+}
+
+/* Styling for the filter buttons */
+.filter-buttons{
+  margin-top: 10px;
+}
+
+/* Styling for the filter buttons */
+.filter-buttons a {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 10px;
+  text-decoration: none;
+  border: 1px solid var(--primary-colour);
+  border-radius: 100px;
+  color: #000;
+  background-color: white;
+  transition: all 0.3s;
+}
+
+/* Styling for hovering the filter buttons */
+.filter-buttons a:hover {
+  scale: 1.1;
+}
+
+/* Styling for the filter group */
+.filter-group{
+  display: flex;
+  height: 100%;
+}
+
+/* Styling for the categories */
+.category-wrapper{
+  color: #31312f;
+  text-align: center;
+  font-size: 15;
+  font-weight: bold;
+}
+
+/* Styling for searching the sort filter */
+.search-sort-filter{
+  display: inline-flex;
+  width: 100%;
+  margin: 30px 0 30px 0;
+  padding-right: 30px;
+}
+
+/* Styling for the sort filter */
+.sort-filter{
+  display: inline-flex;
+  margin-left: auto;
+  gap: 20px;
+}
+
+/* Styling for the search bar */
+#search{
+  width: 15vw;
+  padding: 10px;
+  border: 1px solid var(--primary-colour);
+  background-color: var(--light-bg);
+  border-radius: 25px;
+  margin-right: auto;
+  color: var(--primary-colour);
+}
+
+/* Styling for the sort */
+#sort{
+  width: fit-content;
+  padding: 10px;
+  border: 1px solid var(--primary-colour);
+  background-color: var(--light-bg);
+  padding: 0px 20px;
+  cursor: pointer;
+}
+
+/* Styling for the filter container */
+.filter-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Styling for the filter button */
+.filter-button {
+  width: fit-content;
+  height: 100%;
+  padding: 10px;
+  border: 1px solid var(--primary-colour);
+  background-color: var(--light-bg);
+  padding: 0px 40px;
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+  gap: 20%;
+}
+
+/* Styling for the filter dropdown */
+.filter-dropdown {
+  position: absolute;
+  top: 131%;
+  background-color: rgb(255,251,243);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc;
+  width: 200px;
+  padding: 15px;
+  z-index: 100;
+}
+
+/* Styling for the filter dropdown */
+.filter-dropdown .filter-group {
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  align-items: center;
+}
+
+/* Styling for the filter dropdown */
+.filter-dropdown .filter-group{
+  font-size: smaller;
+}
+
+/* Styling for applying the filter */
+.apply-filter-button {
+  background-color: var(--secondary-colour);
+  color: var(--primary-colour);
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  width: 60%;
+  justify-self: center;
+  display: block;
+}
+
+/* Styling for if its hidden */
+.hidden {
+  display: none;
+}
+
+
+/* Styling for products grid*/
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Styling for product card*/
+.product-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  background-color: var(--light-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+}
+
+/* Styling for products card image*/
+.product-card img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  height: 20%;
+  max-height: 113px;
+  justify-self: center;
+  display: grid;
+}
+
+/* Styling for the product row */
+.product-row{
+  width: 100%;
+  align-items: center;
+}
+
+/* Styling for product title */
+.product-title {
+  font-size: 12px;
+  margin: 10px auto 10px 0;
+  font-weight: bold;
+  margin-right: auto;
+}
+
+/* Styling for the product price */
+.product-price{
+  font-size: smaller;
+  color: #444;
+}
+
+/* Styling for product price text */
+.product-price span{
+  font-size: larger;
+  color: #444;
+}
+
+/* Styling for product description text */
+.product-description {
+  font-size: 10px;
+  color: #666;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+/* Styling for view button */
+.view-button {
+  background-color: var(--secondary-colour);
+  border: none;
+  padding: 10px 30px;
+  color: var(--primary-colour);
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: scale 0.5s;
+  text-decoration: none;
+  width: 100%;
+  display: block;
+  font-size: smaller;
+  font-weight: bold;
+}
+
+/* Styling for pview button */
+.view-button:hover {
+  scale: 0.9;
+}
+
+/* Styling for adnin main secion */
+.admin-main{
+  background-color: var(--light-bg);
+  height: fit-content;
+  max-height: 100vh;
+  min-height: 70vh;
+}
+
+/* Styling for admin dashboard navbar */
+#admin-nav {
+  width: 71.5%;
+  background-color: #272727;
+  color: var(--text-colour);
+  border-radius: 50px;
+  margin: 3% 14.25%;
+  height: 50px;
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: inset 1px 1px 20px 10px black;
+}
+
+/* Styling for admin dashboard user section in navbar */
+.admin-user{
+  display: inline-flex;
+}
+
+
+/* Styling for name text */
+.name{
+  font-size: 12px;
+  color: var(--headerfooter-text-colour);
+  margin-left: 5px;
+}
+
+/* Styling for admin buttons */
+.admin-buttons{
+  display: inline-flex;
+}
+
+/* Styling for navigation bar links */
+.admin-buttons a{
+  color: var(--headerfooter-text-colour);
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: 100;
+  position: relative;
+  padding: 0 20px;
+  border-radius: 5px;
+  transition: transform 0.5s linear, color 0.5s linear;
+}
+
+/* Styling for admin butons when hovering */
+.admin-buttons a:hover{
+  transform: translateY(-5px);
+}
+
+/* Styling for admin logout button */
+.admin-logout button{
+  background: var(--secondary-colour);
+  border: none;
+  border-radius: 15px;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px 10px;
+  color: var(--primary-colour);
+  display: inline-flex;
+  cursor: pointer;
+}
+
+/* Styling for admin logout button when hovering */
+.admin-logout button:hover{
+  scale: 1.1;
+}
+
+/* Styling for admin logout icon */
+.admin-logout i{
+  font-size: 15px;
+  margin-right: 15px;
+}
+
+/* Styling for choice class*/
+.choice{
+  cursor: pointer;
+}
+
+/* Styling for content section */
+.admin-content{
+  padding: 10px 14.25% 50px 14.25%;
+  max-height: 70%;
+}
+
+/* Styling for all users, content, products and setting section section */
+#allUsersContent,
+#allProductsContent,
+#settingsContent{
+  background-color: white;
+  border-radius: 15px;
+  height: fit-content;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+/* Styling for the orders table */
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+/* Styling for the orders table */
+.orders-table th, .orders-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+/* Styling for orders table */
+.orders-table th {
+  border: none;
+  background-color: transparent;
+  color: #333;
+  font-weight: bold;
+  border-bottom: 1px solid grey;
+}
+
+/* Styling for hovering the table */
+.orders-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Styling for the orderd table table */
+.orders-table td {
+  border: none;
+  border-bottom: 1px solid #dee2e6;
+  color: #555;
+}
+
+/* Styling for the orders table status badge */
+.orders-table td .status-badge {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Styling for table header and table d*/
+th, td {
+  border: 1px solid rgba(128, 123, 118, 0.1); 
+}
+
+/* Styling for table */
+table{
+  border-spacing: 0px;
+}
+
+/* Styling for delete button */
+.delete-btn {
+  font-size: 15px;
+  color: black;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  background: none;
+}
+
+/* Styling for delete button when hovering */
+.delete-btn:hover{
+  color: red;
+}
+
+/* Styling for whole pagination bar */
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling for pagination item */
+.pagination li {
+  border: 1px solid rgba(128, 123, 118, 0.3);
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  min-width: 40px;
+  background-color: var(--light-bg);
+}
+
+/* Styling for pagination item when hovering */
+.pagination li:hover {
+  background-color: var(--secondary-colour);
+}
+
+/* Styling for active pagination item */
+.pagination li.active {
+  background-color: var(--secondary-colour);
+  color: black;
+}
+
+/* Styling for disabled pagination item */
+.pagination li.disabled {
+  color: #999;
+  pointer-events: none;
+}
+
+/* Styling for pagination item  */
+.pagination li a {
+  color: black;
+  text-decoration: none;
+}
+
+/* Add border-radius to the first list items */
+.pagination li:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+/* Add border-radius to the last list items */
+.pagination li:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* Styling for all products content section */
+#allProductsContent{
+  grid-template-columns: 1fr 1fr ;
+  padding: 20px;
+  gap: 10px;
+}
+
+/* Styling for categories section in admin dashboard */
+.categories{
+  border-right: 1px solid gray;
+}
+
+/* Styling for form in categories */
+.categories form{
+  margin-bottom: 5%;
+}
+
+/* Styling for header 4 in categoreis and products */
+.categories h4,
+.products h4{
+  font-size: 20px;
+  margin-bottom: 3%;
+}
+
+/* Styling for input fields in categories */
+.categories .input-field{
+  width: 70%;
+}
+
+/* Styling for product section in admin dashboard */
+.products{
+  margin-left: 10px;
+}
+
+/* Styling for input fields in products */
+.products .input-field{
+  width: 100%;
+}
+
+/* Styling for add category class */
+.add-cat{
+  padding: 10px 15px;
+  justify-content: center;
+  align-content: center;
+  background-color: var(--secondary-colour);
+  border: none;
+  border-radius: 5px;
+  margin: 8px;
+  transition: scale 0.5s;
+  cursor: pointer;
+}
+
+/* Styling for add category class when hovering */
+.add-cat:hover{
+  scale: 0.9;
+}
+
+/* Styling for settings content section */
+#settingsContent{
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Styling for settings content input field */
+#settingsContent .input-field{
+  width: 90%;
+}
+
+/* Styling for the main section of the blogs page */
+#blogs-main{
+  background: var(--light-bg);
+  display: flex;
+  flex-direction: row; 
+  max-width: 100%;
+  width: 100%;
+  padding-left: 14%;
+  padding-right: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  height: 100%;
+  min-height: 500px;
+  h1{
+    text-align: center;
+    align-self: center;
+  }
+}
+
+/* Styling for the blogs post */
+.blog-posts{
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styling for the blog post */
+.blog-post{
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px 0#6f6f6f;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10%;
+  width: 550px;
+  max-width: 550px;
+  position: relative;
+  margin-bottom: 30px;
+  word-wrap: break-word;  
+  overflow-wrap: break-word;  
+  white-space: normal;
+  h4{
+    padding-bottom: 20px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 0;
+    color: var(--text-colour)
+  }
+  h2{
+    position: relative;
+    top:-10px;
+    left: -35px;
+    font-size: 25px;
+    max-width: 500px;
+    padding-bottom: 10px;
+    color: var(--title-colour);
+  }
+  p{
+    position: relative;
+    color: var(--text-colour);
+    max-width: 500px;
+    left: -35px;
+  }
+}
+
+
+/* Styling for the create blogs post section */
+.create-blog-post{
+  flex-direction: column;
+  position: relative;
+}
+
+/* Styling for when there is no blog posts */
+.cant-post-blog{
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px 0#6f6f6f;
+  padding: 5%;
+  width: 400px;
+  margin-left: 10%;
+  text-align: center;
+  height: fit-content;
+  .login {
+    font-size: 25px;
+    color: var(--primary-colour);
+    background: var(--secondary-colour);
+    text-decoration: none;
+    padding: 5px 22px;
+    border-radius: 4px;
+  }
+  h3{
+    margin-bottom: 10%;
+  }
+}
+
+/* Styling for the form to make a blog */
+.blog-form{
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px 0#6f6f6f ;
+  padding: 10%;
+  width: 400px;
+  margin-left: 10%;
+  button{
+    margin: 15px;
+    margin-left: 26%;
+    color: var(--primary-colour);
+    background: var(--secondary-colour);
+    font-weight: bold;
+    padding: 5px 22px;
+    cursor: pointer;
+    max-width: 100%;
+    height: 30px;
+    border: none;
+    font-size: 15px;
+    border-radius: 5px;
+  }
+  h4{
+    padding-bottom: 10px;
+    font-size: larger;
+  }
+}
+
+/* Styling for the blog title */
+.blog-title{
+  width: 300px;
+}
+
+/* Styling for the blog message */
+.blog-message{
+  display: flex;
+  flex-direction: column;
+  .input-field{
+    width: 300px;
+    resize: none;
+  }
+}
+
+/* Styling for product details page */
+.product-details-page {
+  background-color: var(--light-bg);
+}
+
+/* Styling for the product details page product details */
+.product-details-page .product-details {
+  padding: 5% 14.25%;
+  background-color: var(--light-bg);
+  align-content: center;
+}
+
+/* Styling for the product details product container */
+.product-container{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 100%;
+  height: 100%;
+  scale: 0.9;
+}
+
+/* Container for product image */
+.product-details-page .product-image {
+  height: 100%;
+  flex: 1;
+  margin-right: 10%;
+  display: grid;
+}
+
+/* Styling for the product details product image */
+.product-details-page .product-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  max-height: 90%;
+  align-self: center;
+  justify-self: center;
+}
+
+/* Container for product information */
+.product-details-page .product-info {
+  flex: 1;
+  padding: 10px 0 10px 10px ;
+}
+
+/* Styling for product title */
+.product-details-page .product-info h1 {
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--primary-colour);
+  margin-bottom: 20px;
+}
+
+/* Styling for product price */
+.product-details-page .product-info .price {
+  font-size: 25px;
+  font-weight: bold;
+  color: var(--title-colour);
+  margin-bottom: 20px;
+}
+
+/* Styling for product description */
+.product-details-page .product-info .description {
+  font-size: 16px;
+  color: var(--text-colour);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Styling for the product details availability */
+.rating-availability{
+  display: inline-flex;
+  align-items: baseline;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* Styling for product rating */
+.product-details-page .product-info .rating {
+  font-size: 14px;
+  color: #ffc107;
+}
+
+/* Styling for availability status */
+.product-details-page .product-info .availability {
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Styling for the product details availability colours */
+.product-details-page .product-info .availability-none {
+  color: red;
+}
+.product-details-page .product-info .availability-low  {
+  color: var(--secondary-colour);
+}
+.product-details-page .product-info .availability-full  {
+  color: green;
+}
+
+/* Styling for the product details size options */
+.product-details-page .size-options .size-row{
+  display: flex;
+  width: 100%;
+}
+
+/* Styling for the product details size option text */
+.product-details-page .size-options p {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--title-colour);
+  margin-bottom: 15px;
+}
+
+/* Styling for the product details size option */
+.product-details-page .size-options .size {
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  padding: 5px 20px;
+  border-radius: 4px;
+  margin-right: 10px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: black;
+  text-decoration: none;
+}
+
+/* Styling for the product details */
+.product-details-page .size-options .size:hover,
+.product-details-page .size-options .size.selected  {
+  background-color: var(--secondary-colour);
+}
+
+/* Styling for the quantity */
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: fit-content;
+  margin-top: 20px;
+}
+
+/* Styling for the quantity button */
+.quantity-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px;
+  color: #333;
+}
+
+/* Styling for the quantity */
+#quantity {
+  text-align: center;
+  width: 40px;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+/* Styling for add to basket button */
+.product-details-page .add-to-basket {
+  background-color: var(--secondary-colour);
+  color: var(--primary-colour);
+  padding: 10px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+/* Styling for when the add to basket button isnt disabled */
+.product-details-page .add-to-basket:not([disabled]):hover {
+  background-color: #e5a500;
+}
+
+/* Styling for when the add to basket button is disabled */
+.add-to-basket:disabled {
+  background-color: rgba(254, 204, 66, 0.3);
+  color: #666;
+  cursor: not-allowed;
+}
+
+/* Styling for recommended products section */
+.product-details-page .recommended-products {
+  padding: 40px 14.25%;
+  background-color: #fff;
+}
+
+/* Styling for the product details recommended products header 2 */
+.product-details-page .recommended-products h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--title-colour);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Styling for product cards grid */
+.product-details-page .products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Product card styles */
+.product-details-page .product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+/* Styling for hovering the product card */
+.product-details-page .product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Styling for the product detail product card */
+.product-details-page .product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  height: 90%;
+}
+
+/* Styling for the product details product card heading 3 */
+.product-details-page .product-card h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--title-colour);
+  margin-bottom: 5px;
+}
+
+/* Styling for the product card price */
+.product-details-page .product-card .product-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--secondary-colour);
+  margin-bottom: 10px;
+}
+
+/* Styling for the product card description */
+.product-details-page .product-card .product-description {
+  font-size: 14px;
+  color: var(--text-colour);
+  margin-bottom: 20px;
+}
+
+/* Styling for view product button */
+.product-details-page .view-button {
+  background-color: var(--secondary-colour);
+  color: var(--primary-colour);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+/* Styling for hovering the voew button on product details */
+.product-details-page .view-button:hover {
+  background-color: #e5a500;
+}
+
+/* Styling for the basket icon */
+.basket {
+  position: relative;
+}
+
+/* Styling for the count in the basket */
+.basket-count {
+  position: absolute;
+  top: -9px;
+  right: 1px;
+  background-color: var(--secondary-colour);
+  color: black;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Styling for the main basket section */
+.basket-main{
+  background-color: var(--light-bg);
+  padding-left: 20%;
+  padding-right: 24%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+/* Styling for the basket and checkout */
+.basket-and-checkout{
+  display: flex;
+  flex-direction: row;
+  height: 550px;
+}
+
+/* Styling for the empty basket */
+.empty-basket{
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px 0#6f6f6f;
+  padding: 10%;
+  width: 700px;
+  h1{
+    font-size: 35px;
+    padding-bottom: 20px;
+    top: -70px;
+    left: -50px;
+    position: relative;
+    padding: 0;
+  }
+  hr{
+    top: -60px;
+    left: -50px;
+    position: relative;
+    padding: 0;
+    width: 125%;
+  }
+}
+
+
+/* Styling for the the basket summary */
+.basket-summary{
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px 0#6f6f6f;
+  padding: 5%;
+  height: 300px;
+  width: 300px;
+  justify-content: space-between;
+  align-items: center;
+  h2{
+    text-align: left;
+    font-size: 25px;
+    padding-bottom: 20px;
+    padding: 0;
+    margin-top: -20%;
+    position: relative;
+  }
+  h4{
+    text-align: left;
+    position: relative;
+    margin-right: auto;
+  }
+  hr{
+    position: relative;
+    width: 140%;
+  }
+  button, a{
+    position: relative;
+    width: 300px;
+    top: 30%;
+    background-color: var(--secondary-colour);
+    border-radius: 0px 0px 12px 12px;
+    padding: 15px;
+    cursor: pointer;
+    border: none;
+    font-size: 15px;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    align-items: center;
+  }
+}
+
+/* Styling for the basket total */
+.total{
+  top: 15%;
+}
+
+/* Styling for the costs */
+.costs{
+  display: flex;
+  display: row;
+  align-items: none;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  margin-right: auto;
+}
+
+/* Styling for the items in the basket */
+.items-in-basket{
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px 0#6f6f6f;
+  padding: 2%;
+  width: 700px;
+  height: fit-content;
+  h1{
+    font-size: 35px;
+    padding-bottom: 20px;
+    position: relative;
+    padding: 0;
+  }
+  hr{
+    position: relative;
+    padding: 0;
+    width: 100%;
+  }
+  img{
+    width:60px;
+    height: 60px;
+    padding: 5%;
+  }
+  table{
+    padding-top: 2%;
+    width: 100%;
+    text-align: center;
+
+    button{
+      background-color: var(--secondary-colour);
+      color: black;
+      border: none;
+      padding: 3%;
+      border-radius: 3px;
+    }
+  }
+}
+
+/* Styling for the service ssection */
+.services-section { 
+  display: flex; 
+  justify-content: space-between; 
+  padding: 0 10%; 
+} 
+
+/* Styling for the service box */
+.service-box { 
+  background-color: white; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); 
+  padding: 20px; 
+  width: 25%; 
+  min-height: 250px;
+  text-align: center; 
+  transition: transform 0.3s; 
+  margin: 0 10px; 
+}  
+
+/* Styling for when hovering the service box */
+.service-box:hover {
+  transform: translateY(-5px); 
+}
+
+/* Styling for the service image */
+.service-image {
+  width: 100px; 
+  height: 100px; 
+  border-radius: 50%; 
+  margin-bottom: 15px; 
+}
+
+/* Styling for the service box text */
+.service-box p {
+  color: gray;
+}
+
+/* Styling for the view range */
+.view-range {
+  display: inline-block; 
+  margin-top: 10px; 
+  color: var(--primary-colour); 
+  text-decoration: none; 
+  font-weight: bold; 
+}
+
+/* Styling for hovering the view range */
+.view-range:hover {
+  text-decoration: underline;
+}
+
+/* Styling for the best sellers section */
+#best-sellers {
+  background-color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Styling for the best sellers button */
+.best-sellers-button {
+  background-color: rgb(254, 204, 66);
+  color: black;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+/* Styling for the products carousel */
+.product-carousel {
+  position: relative;
+}
+
+/* Styling for the products container */
+.products-container {
+  display: flex;
+  overflow: hidden;
+  width: 80%; 
+  justify-content: flex-start; 
+  transition: transform 0.3s ease; 
+}
+
+/* Styling for the product box */
+.product-box {
+  background-color: var(--dark-bg);
+  border-radius: 10px;
+  padding: 20px;
+  width: 30%; 
+  margin: 0 10px;
+  text-align: center;
+  min-height: 350px; 
+  box-sizing: border-box; 
+}
+
+/* Styling for the arrows */
+.arrow {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 2em;
+  z-index: 1; 
+}
+
+/* Styling for the right arrow */
+.left-arrow {
+  position: absolute;
+  left: 10px;
+}
+
+/* Styling for the right arrow */
+.right-arrow {
+  position: absolute;
+  right: 10px;
+}
+
+/* Styling for the product box image */
+.product-box img {
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover; 
+  border-radius: 5px; 
+}
+
+/* Styling for the main checkout section */
+.checkout-main{
+  background-color: var(--light-bg);
+  padding-top: 5%;
+  padding-bottom: 5%;
+  justify-items: center;
+}
+
+/* Styling for the checkout form */
+.checkout-form-section{
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px 0#6f6f6f;
+  width: 600px;
+  align-items: center;
+  text-align: center;
+  hr{
+    margin-top: 5px;
+    width: 100%;
+  }
+  h3, h4{
+    text-align: left;
+  }
+  label{
+    text-align: left;
+  }
+}
+
+/* Styling for the shipping section */
+.shipping{
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+/* Styling for the payment section */
+.payment{
+  margin-top: 5%;
+}
+
+/* Styling for the small credit card numbers */
+.small-numbers{
+  display: flex;
+  flex-direction: row;
+}
+
+/* Styling for the place order button */
+.place-order{
+  margin-top: 5%;
+  width: auto;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 35px;
+  border-radius: 4px;
+  background: var(--secondary-colour);
+  border: none;
+}
