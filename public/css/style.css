@@ -879,10 +879,12 @@ footer.bottom {
   text-align: center;
 }
 
+/* Styling for the products */
 #products{
   padding: 0px 14.25%;
 }
 
+/* Styling for the cta text */
 #cta{
   width: 100%;
   height: 80vh;
@@ -891,6 +893,7 @@ footer.bottom {
   display: flex;
 }
 
+/* Styling for the cta text */
 #cta::after{
   margin-left: auto;
   content: "";
@@ -902,6 +905,7 @@ footer.bottom {
   height: 80vh;
 }
 
+/* Styling for the cta text */
 .cta-text{
   justify-content: center;
   align-self: center;
@@ -913,15 +917,18 @@ footer.bottom {
   text-align: center;
 }
 
+/* Styling for the cta text */
 .cta-text p{
   font-size: 20px;
 }
 
+/* Styling for the cta text */
 .cta-text h3{
   font-size: 30px;
   margin-top: 10px
 }
 
+/* Styling for the cta text */
 .cta-text p:nth-child(3){
   font-size: 10px;
   margin-top: 10px;
@@ -929,6 +936,7 @@ footer.bottom {
   letter-spacing: 1px;
 }
 
+/* Styling for the shop banner */
 #shop-banner{
   padding: 50px 14.25%;
   background-color: var(--light-bg);
@@ -936,15 +944,18 @@ footer.bottom {
   color: #31312f;
 }
 
+/* Styling for the shop banner */
 #shop-banner h2{
   letter-spacing: 1px;
   font-size: 30px;
 }
 
+/* Styling for the filter buttons */
 .filter-buttons{
   margin-top: 10px;
 }
 
+/* Styling for the filter buttons */
 .filter-buttons a {
   width: 100px;
   height: 100px;
@@ -959,15 +970,18 @@ footer.bottom {
   transition: all 0.3s;
 }
 
+/* Styling for hovering the filter buttons */
 .filter-buttons a:hover {
   scale: 1.1;
 }
 
+/* Styling for the filter group */
 .filter-group{
   display: flex;
   height: 100%;
 }
 
+/* Styling for the categories */
 .category-wrapper{
   color: #31312f;
   text-align: center;
@@ -975,6 +989,7 @@ footer.bottom {
   font-weight: bold;
 }
 
+/* Styling for searching the sort filter */
 .search-sort-filter{
   display: inline-flex;
   width: 100%;
@@ -982,12 +997,14 @@ footer.bottom {
   padding-right: 30px;
 }
 
+/* Styling for the sort filter */
 .sort-filter{
   display: inline-flex;
   margin-left: auto;
   gap: 20px;
 }
 
+/* Styling for the search bar */
 #search{
   width: 15vw;
   padding: 10px;
@@ -998,6 +1015,7 @@ footer.bottom {
   color: var(--primary-colour);
 }
 
+/* Styling for the sort */
 #sort{
   width: fit-content;
   padding: 10px;
@@ -1007,11 +1025,13 @@ footer.bottom {
   cursor: pointer;
 }
 
+/* Styling for the filter container */
 .filter-container {
   position: relative;
   display: inline-block;
 }
 
+/* Styling for the filter button */
 .filter-button {
   width: fit-content;
   height: 100%;
@@ -1025,6 +1045,7 @@ footer.bottom {
   gap: 20%;
 }
 
+/* Styling for the filter dropdown */
 .filter-dropdown {
   position: absolute;
   top: 131%;
@@ -1036,6 +1057,7 @@ footer.bottom {
   z-index: 100;
 }
 
+/* Styling for the filter dropdown */
 .filter-dropdown .filter-group {
   margin-bottom: 10px;
   display: grid;
@@ -1043,10 +1065,12 @@ footer.bottom {
   align-items: center;
 }
 
+/* Styling for the filter dropdown */
 .filter-dropdown .filter-group{
   font-size: smaller;
 }
 
+/* Styling for applying the filter */
 .apply-filter-button {
   background-color: var(--secondary-colour);
   color: var(--primary-colour);
@@ -1058,6 +1082,7 @@ footer.bottom {
   display: block;
 }
 
+/* Styling for if its hidden */
 .hidden {
   display: none;
 }
@@ -1093,6 +1118,7 @@ footer.bottom {
   display: grid;
 }
 
+/* Styling for the product row */
 .product-row{
   width: 100%;
   align-items: center;
@@ -1106,6 +1132,7 @@ footer.bottom {
   margin-right: auto;
 }
 
+/* Styling for the product price */
 .product-price{
   font-size: smaller;
   color: #444;
@@ -1251,17 +1278,20 @@ footer.bottom {
   padding: 10px;
 }
 
+/* Styling for the orders table */
 .orders-table {
   width: 100%;
   border-collapse: collapse;
   font-family: Arial, sans-serif;
 }
 
+/* Styling for the orders table */
 .orders-table th, .orders-table td {
   padding: 12px 15px;
   text-align: left;
 }
 
+/* Styling for orders table */
 .orders-table th {
   border: none;
   background-color: transparent;
@@ -1270,16 +1300,19 @@ footer.bottom {
   border-bottom: 1px solid grey;
 }
 
+/* Styling for hovering the table */
 .orders-table tr:hover {
   background-color: #f1f1f1;
 }
 
+/* Styling for the orderd table table */
 .orders-table td {
   border: none;
   border-bottom: 1px solid #dee2e6;
   color: #555;
 }
 
+/* Styling for the orders table status badge */
 .orders-table td .status-badge {
   padding: 5px 10px;
   border-radius: 5px;
@@ -1465,6 +1498,7 @@ table{
   flex-direction: column;
 }
 
+/* Styling for the blog post */
 .blog-post{
   background: white;
   border-radius: 12px;
@@ -1584,12 +1618,14 @@ table{
   background-color: var(--light-bg);
 }
 
+/* Styling for the product details page product details */
 .product-details-page .product-details {
   padding: 5% 14.25%;
   background-color: var(--light-bg);
   align-content: center;
 }
 
+/* Styling for the product details product container */
 .product-container{
   display: grid;
   grid-template-columns: 50% 50%;
@@ -1606,6 +1642,7 @@ table{
   display: grid;
 }
 
+/* Styling for the product details product image */
 .product-details-page .product-image img {
   width: 100%;
   height: 100%;
@@ -1645,7 +1682,7 @@ table{
   margin-bottom: 20px;
 }
 
-
+/* Styling for the product details availability */
 .rating-availability{
   display: inline-flex;
   align-items: baseline;
@@ -1667,6 +1704,7 @@ table{
   margin-right: auto;
 }
 
+/* Styling for the product details availability colours */
 .product-details-page .product-info .availability-none {
   color: red;
 }
@@ -1677,11 +1715,13 @@ table{
   color: green;
 }
 
+/* Styling for the product details size options */
 .product-details-page .size-options .size-row{
   display: flex;
   width: 100%;
 }
 
+/* Styling for the product details size option text */
 .product-details-page .size-options p {
   font-size: 14px;
   font-weight: bold;
@@ -1689,6 +1729,7 @@ table{
   margin-bottom: 15px;
 }
 
+/* Styling for the product details size option */
 .product-details-page .size-options .size {
   background-color: #f7f7f7;
   border: 1px solid #ddd;
@@ -1702,11 +1743,13 @@ table{
   text-decoration: none;
 }
 
+/* Styling for the product details */
 .product-details-page .size-options .size:hover,
 .product-details-page .size-options .size.selected  {
   background-color: var(--secondary-colour);
 }
 
+/* Styling for the quantity */
 .quantity {
   display: flex;
   align-items: center;
@@ -1718,6 +1761,7 @@ table{
   margin-top: 20px;
 }
 
+/* Styling for the quantity button */
 .quantity-btn {
   background: none;
   border: none;
@@ -1727,6 +1771,7 @@ table{
   color: #333;
 }
 
+/* Styling for the quantity */
 #quantity {
   text-align: center;
   width: 40px;
@@ -1750,10 +1795,12 @@ table{
   text-decoration: none;
 }
 
+/* Styling for when the add to basket button isnt disabled */
 .product-details-page .add-to-basket:not([disabled]):hover {
   background-color: #e5a500;
 }
 
+/* Styling for when the add to basket button is disabled */
 .add-to-basket:disabled {
   background-color: rgba(254, 204, 66, 0.3);
   color: #666;
@@ -1766,6 +1813,7 @@ table{
   background-color: #fff;
 }
 
+/* Styling for the product details recommended products header 2 */
 .product-details-page .recommended-products h2 {
   font-size: 24px;
   font-weight: bold;
@@ -1793,10 +1841,12 @@ table{
   transition: transform 0.3s;
 }
 
+/* Styling for hovering the product card */
 .product-details-page .product-card:hover {
   transform: translateY(-5px);
 }
 
+/* Styling for the product detail product card */
 .product-details-page .product-card img {
   width: 100%;
   height: auto;
@@ -1805,6 +1855,7 @@ table{
   height: 90%;
 }
 
+/* Styling for the product details product card heading 3 */
 .product-details-page .product-card h3 {
   font-size: 18px;
   font-weight: bold;
@@ -1812,6 +1863,7 @@ table{
   margin-bottom: 5px;
 }
 
+/* Styling for the product card price */
 .product-details-page .product-card .product-price {
   font-size: 16px;
   font-weight: bold;
@@ -1819,6 +1871,7 @@ table{
   margin-bottom: 10px;
 }
 
+/* Styling for the product card description */
 .product-details-page .product-card .product-description {
   font-size: 14px;
   color: var(--text-colour);
@@ -1838,14 +1891,17 @@ table{
   transition: background-color 0.3s;
 }
 
+/* Styling for hovering the voew button on product details */
 .product-details-page .view-button:hover {
   background-color: #e5a500;
 }
 
+/* Styling for the basket icon */
 .basket {
   position: relative;
 }
 
+/* Styling for the count in the basket */
 .basket-count {
   position: absolute;
   top: -9px;
@@ -1858,6 +1914,7 @@ table{
   font-weight: bold;
 }
 
+/* Styling for the main basket section */
 .basket-main{
   background-color: var(--light-bg);
   padding-left: 20%;
@@ -1866,12 +1923,14 @@ table{
   padding-bottom: 3%;
 }
 
+/* Styling for the basket and checkout */
 .basket-and-checkout{
   display: flex;
   flex-direction: row;
   height: 550px;
 }
 
+/* Styling for the empty basket */
 .empty-basket{
   display: flex;
   flex-direction: column;
@@ -1897,6 +1956,8 @@ table{
   }
 }
 
+
+/* Styling for the the basket summary */
 .basket-summary{
   margin-left: 5%;
   display: flex;
@@ -1944,10 +2005,12 @@ table{
   }
 }
 
+/* Styling for the basket total */
 .total{
   top: 15%;
 }
 
+/* Styling for the costs */
 .costs{
   display: flex;
   display: row;
@@ -1957,6 +2020,7 @@ table{
   margin-right: auto;
 }
 
+/* Styling for the items in the basket */
 .items-in-basket{
   display: flex;
   flex-direction: column;
@@ -1996,12 +2060,15 @@ table{
     }
   }
 }
+
+/* Styling for the service ssection */
 .services-section { 
   display: flex; 
   justify-content: space-between; 
   padding: 0 10%; 
 } 
 
+/* Styling for the service box */
 .service-box { 
   background-color: white; 
   border-radius: 8px; 
@@ -2014,10 +2081,12 @@ table{
   margin: 0 10px; 
 }  
 
+/* Styling for when hovering the service box */
 .service-box:hover {
   transform: translateY(-5px); 
 }
 
+/* Styling for the service image */
 .service-image {
   width: 100px; 
   height: 100px; 
@@ -2025,10 +2094,12 @@ table{
   margin-bottom: 15px; 
 }
 
+/* Styling for the service box text */
 .service-box p {
   color: gray;
 }
 
+/* Styling for the view range */
 .view-range {
   display: inline-block; 
   margin-top: 10px; 
@@ -2037,16 +2108,19 @@ table{
   font-weight: bold; 
 }
 
+/* Styling for hovering the view range */
 .view-range:hover {
   text-decoration: underline;
 }
 
+/* Styling for the best sellers section */
 #best-sellers {
   background-color: white;
   padding: 40px 20px;
   text-align: center;
 }
 
+/* Styling for the best sellers button */
 .best-sellers-button {
   background-color: rgb(254, 204, 66);
   color: black;
@@ -2056,10 +2130,12 @@ table{
   font-weight: bold;
 }
 
+/* Styling for the products carousel */
 .product-carousel {
   position: relative;
 }
 
+/* Styling for the products container */
 .products-container {
   display: flex;
   overflow: hidden;
@@ -2068,6 +2144,7 @@ table{
   transition: transform 0.3s ease; 
 }
 
+/* Styling for the product box */
 .product-box {
   background-color: var(--dark-bg);
   border-radius: 10px;
@@ -2079,6 +2156,7 @@ table{
   box-sizing: border-box; 
 }
 
+/* Styling for the arrows */
 .arrow {
   background-color: transparent;
   border: none;
@@ -2087,16 +2165,19 @@ table{
   z-index: 1; 
 }
 
+/* Styling for the right arrow */
 .left-arrow {
   position: absolute;
   left: 10px;
 }
 
+/* Styling for the right arrow */
 .right-arrow {
   position: absolute;
   right: 10px;
 }
 
+/* Styling for the product box image */
 .product-box img {
   width: 100%; 
   height: 200px; 
@@ -2104,6 +2185,7 @@ table{
   border-radius: 5px; 
 }
 
+/* Styling for the main checkout section */
 .checkout-main{
   background-color: var(--light-bg);
   padding-top: 5%;
@@ -2111,6 +2193,7 @@ table{
   justify-items: center;
 }
 
+/* Styling for the checkout form */
 .checkout-form-section{
   padding: 3%;
   display: flex;
@@ -2133,20 +2216,24 @@ table{
   }
 }
 
+/* Styling for the shipping section */
 .shipping{
   padding-top: 3%;
   padding-bottom: 3%;
 }
 
+/* Styling for the payment section */
 .payment{
   margin-top: 5%;
 }
 
+/* Styling for the small credit card numbers */
 .small-numbers{
   display: flex;
   flex-direction: row;
 }
 
+/* Styling for the place order button */
 .place-order{
   margin-top: 5%;
   width: auto;
