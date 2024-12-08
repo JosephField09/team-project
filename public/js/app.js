@@ -220,22 +220,5 @@ function saveCategoryName(input, id) {
     });
 }
 
-document.getElementById('applyFilter').addEventListener('click', function () {
-    // Get category and all prduct cards
-    const selectedCategory = document.getElementById('categoryFilter').value; 
-    const productCards = document.querySelectorAll('.product-card');
-
-    productCards.forEach(card => {
-        const productCategory = card.getAttribute('data-category'); // Get product category from data attribute
-
-        // Show or hide based on selected category
-        if (selectedCategory === '' || productCategory === selectedCategory) {
-            card.style.display = 'block'; // Show product
-        } else {
-            card.style.display = 'none'; // Hide product
-        }
-    });
-});
-
 // Request a fresh CSRF token
 window.axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').content;

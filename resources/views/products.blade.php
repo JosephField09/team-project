@@ -59,6 +59,44 @@
             </nav>
         </section>
 
+        <!-- Call to Action Section -->
+        <section id="cta" style="background-image: url({{ asset('assets/AdobeStock_262772087.jpeg') }});" >
+            <div class="cta-text">
+                <p>Our Products</p>
+                <h3>Discover the Perfect Fit</h3>
+                <p>Explore a Wide Range of Products Tailored to Meet Your Needs</p>
+            </div>
+        </section>
+
+        <!-- Shop Banner Section -->
+        <section id="shop-banner">
+            <h2>SHOP E-SPRESSO</h2>
+            <div class="filter-buttons">
+                <form action="{{ route('products') }}" method="GET" class="filter-form">
+                    <div class="filter-group">   
+                        <div class="category-wrapper">
+                            <a href="{{ route('products', array_merge(request()->except('category'), ['category' => ''])) }}" 
+                            class="category-button {{ request('category') == '' ? 'active' : '' }}"
+                            style="background-image: url({{ asset('assets/favicon.png') }}); background-position: center; background-size: cover;" >
+                            </a>
+                            <div class="category-name">Shop All</div>
+                        </div>
+                        @foreach ($categories as $category)
+                            <div class="category-wrapper">
+                                <a href="{{ route('products', array_merge(request()->except('category'), ['category' => $category->id])) }}" 
+                                class="category-button {{ request('category') == $category->id ? 'active' : '' }}"
+                                style="background-image: url('{{ asset('assets/' . $category->image) }}'); background-position: center; background-size: contain; background-repeat: no-repeat;">
+                                </a>
+                                <p>{{ $category->name }}</p>
+                            </div>
+                        @endforeach
+                    </div>
+                </form>    
+            </div>
+
+        </section>
+
+
         <!-- Products Section -->
         <section id="products">
             <div class="container">
