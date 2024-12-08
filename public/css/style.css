@@ -1846,14 +1846,14 @@ table{
   h1{
     font-size: 35px;
     padding-bottom: 20px;
-    top: -80px;
-    left: -60px;
+    top: -70px;
+    left: -50px;
     position: relative;
     padding: 0;
   }
   hr{
-    top: -70px;
-    left: -60px;
+    top: -60px;
+    left: -50px;
     position: relative;
     padding: 0;
     width: 125%;
@@ -1871,27 +1871,27 @@ table{
   height: 300px;
   width: 300px;
   justify-content: space-between;
+  align-items: center;
   h2{
+    text-align: left;
     font-size: 25px;
     padding-bottom: 20px;
     padding: 0;
     margin-top: -20%;
-    margin-left: -15%;
     position: relative;
   }
   h4{
-    margin-left: -15%;
+    text-align: left;
     position: relative;
+    margin-right: auto;
   }
   hr{
     position: relative;
     width: 140%;
-    left: -20%;
   }
   button, a{
     position: relative;
     width: 300px;
-    margin-left: -27.5%;
     top: 30%;
     background-color: var(--secondary-colour);
     border-radius: 0px 0px 12px 12px;
@@ -1903,6 +1903,7 @@ table{
     color: black;
     text-decoration: none;
     font-weight: bold;
+    align-items: center;
   }
 }
 
@@ -1913,10 +1914,10 @@ table{
 .costs{
   display: flex;
   display: row;
-  justify-content: space-between;
-  text-align: left;
+  align-items: none;
   padding-top: 5%;
   padding-bottom: 5%;
+  margin-right: auto;
 }
 
 .items-in-basket{
