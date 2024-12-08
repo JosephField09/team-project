@@ -111,7 +111,7 @@
         </section>
 
         <!-- Services Section -->
-        <section id="services" style="background-color: beige; padding: 40px 20px; text-align: center;">
+        <section id="services" style="background-color: var(--dark-bg); padding: 40px 20px; text-align: center;">
             <br><br>
             <h1 style="font-size: 2.5em; margin: 0;">Our Delicious Services</h1>
             <p style="font-size: 1em; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto; color: gray;">

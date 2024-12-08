@@ -1894,7 +1894,7 @@ table{
 }
 
 .product-box {
-  background-color: beige;
+  background-color: var(--dark-bg);
   border-radius: 10px;
   padding: 20px;
   width: 30%; 
