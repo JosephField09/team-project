@@ -4,7 +4,6 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\BlogController;
@@ -92,6 +91,8 @@ Route::patch('/category/{id}', [CategoryController::class, 'destroy'])->name('ca
 
 // Route to add a product
 Route::post('add_product', [ProductsController::class, 'add_product'])->name('add_product');
+Route::get('products.filter', [ProductsController::class, 'filter'])->name('products.filter');
+
 
 Route::get('admin.dashboard', function () {
     $admin = Auth::user(); // Get the authenticated admin

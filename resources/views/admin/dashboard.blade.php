@@ -181,7 +181,7 @@
                                         <td>
                                             <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display:inline;">
                                                 @csrf
-                                                @method('delete')
+                                                @method('patch')
                                                 <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this category?')">
                                                     <i class='bx bx-trash'></i>
                                                 </button>
@@ -195,13 +195,13 @@
                                 @endforelse
                             </tbody>
                         </table>
-                        <div>
+                        <div style="margin-top: 20px">
                             {{ $categories->links('pagination::bootstrap-4') }}
                         </div>
                     </div>
                     <div class="products">
                         <h4>Add a Product</h4>
-                        <form action="{{ route('add_product') }}" method="post">
+                        <form action="{{ route('add_product') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
                                 <label>Product Name:</label>

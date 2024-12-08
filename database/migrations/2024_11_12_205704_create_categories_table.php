@@ -15,16 +15,17 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
 
         // Insert sample data automatically after migration
         DB::table('categories')->insert([
-            ['name' => 'Drinks', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Pods', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Beans', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Pastries', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Sweet Treats', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Drinks', 'image' => 'latte.png', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Pods','image' => 'pod_espresso.png', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Beans', 'image' => 'bag_jamaican.png', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Pastries','image' => 'chocolate_twist.png', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Sweet Treats','image' => 'brownie.png', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 

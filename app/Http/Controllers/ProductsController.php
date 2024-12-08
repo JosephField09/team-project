@@ -10,6 +10,14 @@ class ProductsController extends Controller
 {
     public function index(Request $request)
     {
+        $products = Product::all();
+        $categories = Category::all(); // Retrieve all categories for the dropdown
+
+        return view('products', compact('products', 'categories'));
+    }
+
+    public function filter(Request $request)
+    {
         $query = Product::query();
 
         // Filter by category
@@ -60,6 +68,7 @@ class ProductsController extends Controller
 
         return view('products', compact('products', 'categories'));
     }
+    
 
     public function add_product(Request $request)
     {
@@ -72,13 +81,14 @@ class ProductsController extends Controller
         $data->stock = $request->stock;
         $data->category_id = $request->category_id;
 
-        $image = $request -> image;
-        if($image)
-        {
-            $imagename = time(). '.'.$image->getClientOriginalExtension();
-
-            $request->image->move('products', $imagename);
-
+        if ($request->hasFile('image')) {
+            $image = $request->file('image'); 
+    
+            $imagename = $image->getClientOriginalName();
+    
+            // Save the file to the 'public/assets' folder
+            $image->move(public_path('assets'), $imagename);
+    
             $data->image = $imagename;
         }
 
