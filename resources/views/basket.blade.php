@@ -75,7 +75,7 @@
                             <hr width="100%" size="2">
                             <div class="costs">
                                 <h4>Total Products:</h4>
-                                <h4>£{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}</h4>
+                                <h4 c>£{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}</h4>
                             </div>
                             <div class="costs">
                                 <h4>Shipping costs:</h4>
