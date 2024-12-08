@@ -9,29 +9,6 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
-    <style>
-        /* Custom Styles */
-        .basket-image {
-            width: 50px;
-            height: auto;
-        }
-        .basket-summary {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-        .remove_button {
-            padding: 5px 10px;
-            font-size: 14px;
-        }
-        .empty-basket {
-            text-align: center;
-            font-size: 18px;
-        }
-        .empty-basket a {
-            text-decoration: none;
-            color: #007bff;
-        }
-    </style>
 </head>
 
 <body>
@@ -43,7 +20,7 @@
                     <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                </div>
                 <div class="navbar-middle">
-                    <a class="middle option-selected" href="{{ route('home') }}">Home</a>
+                    <a class="middle" href="{{ route('home') }}">Home</a>
                     <a class="middle" href="{{ route('products') }}">Products</a>
                     <a class="middle" href="{{ route('about-us') }}">About Us</a>
                     <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
@@ -84,62 +61,94 @@
 
         <!-- Basket Section -->
         <section id="basket">
-            <div class="container">
-                <h1 class="basket-header">Your Basket</h1>
+            <div class="basket-main">
+                <div class="basket-and-checkout">
+                    <!-- When the basket is empty -->
+                    @if (empty($basket_Items) || $basket_Items->isEmpty())
+                        <div class="empty-basket">
+                            <h1>Basket</h1>
+                            <hr width="90%" size="2"></hr>
+                            <h3>Your basket is empty. <a href="{{ route('products') }}">Please continue shopping</a>.</h2>
+                        </div>
+                        <div class="basket-summary">
+                            <h2>Summary</h2>
+                            <hr width="100%" size="2">
+                            <div class="costs">
+                                <h4>Total Products:</h4>
+                                <h4>£{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}</h4>
+                            </div>
+                            <div class="costs">
+                                <h4>Shipping costs:</h4>
+                                <h4>FREE</h4>
+                            </div>
+                            <hr width="100%" size="2">
+                            <h4 class="total">Total: £{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}</h3>
+                            <button class="btn btn-primary" @if(empty($basket_Items) || $basket_Items->isEmpty()) disabled @endif>Checkout</button>
+                        </div>
+                    @else
+                        <!-- Basket Table -->
+                        <div class="items-in-basket">
+                            <div class="basket-table">
+                                <h1>Basket</h1>
+                                <hr width="90%" size="2"></hr>
+                                <table class="table table-bordered">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Looping through basket items -->
+                                        @foreach ($basket_Items as $item)
+                                            <tr>
+                                                <td>
+                                                    <div class="product-details">
+                                                        <img src="{{ asset('assets/' . $item->product->image) }}" alt="{{ $item->product->name }}" class="basket-image">
+                                                    </div>
+                                                </td>
+                                                <td>£{{ $item->product->price }}</td>
+                                                <td>
+                                                    <form action= "{{route('basket.update', $item->id)}}" method="POST">
+                                                        @csrf 
+                                                        <input type="number" name="quantity" value="{{$item->quantity}}" min="1" class="basket_quantity form-control" onchange="this.form.submit()">
+                                                    </form>
+                                                </td>
+                                                <td>£{{ $item->product->price * $item->quantity }}</td>
+                                                <td>
+                                                    <form action="{{route('basket.remove', $item->id)}}" method="POST">
+                                                        @csrf
+                                                        <button type="submit" class="remove_button btn btn-danger">Remove</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
 
-                <!-- When the basket is empty -->
-                @if (empty($basket_Items) || $basket_Items->isEmpty())
-                    <p class="empty-basket">
-                        Your basket is empty. <a href="{{ route('products') }}">Please continue shopping</a>.
-                    </p>
-                @else
-                    <!-- Basket Table -->
-                    <div class="basket-table">
-                        <table class="table table-bordered">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Looping through basket items -->
-                                @foreach ($basket_Items as $item)
-                                    <tr>
-                                        <td>
-                                            <div class="product-details">
-                                                <img src="{{ asset('assets/' . $item->product->image) }}" alt="{{ $item->product->name }}" class="basket-image">
-                                            </div>
-                                        </td>
-                                        <td>£{{ $item->product->price }}</td>
-                                        <td>
-                                            <form action= "{{route('basket.update', $item->id)}}" method="POST">
-                                                @csrf 
-                                                <input type="number" name="quantity" value="{{$item->quantity}}" min="1" class="basket_quantity form-control" onchange="this.form.submit()">
-                                            </form>
-                                        </td>
-                                        <td>£{{ $item->product->price * $item->quantity }}</td>
-                                        <td>
-                                            <form action="{{route('basket.remove', $item->id)}}" method="POST">
-                                                @csrf
-                                                <button type="submit" class="remove_button btn btn-danger">Remove</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- Basket Summary Section -->
-                    <div class="basket-summary">
-                        <h3>Total: £{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}</h3>
-                        <a  class="btn btn-primary">Proceed to Checkout</a>
-                    </div>
-                @endif
+                        <!-- Basket Summary Section -->
+                        <div class="basket-summary">
+                            <h2>Summary</h2>
+                            <hr width="100%" size="2">
+                            <div class="costs">
+                                <h4>Total Products:</h4>
+                                <h4>£{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}</h4>
+                            </div>
+                            <div class="costs">
+                                <h4>Shipping costs:</h4>
+                                <h4>FREE</h4>
+                            </div>
+                            <hr width="100%" size="2">
+                            <h4 class="total">Total: £{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}</h3>
+                            <a href="{{ route('checkout') }}"> Checkout </a>
+                        </div>
+                    @endif
+                </div>
             </div>
         </section>
 
