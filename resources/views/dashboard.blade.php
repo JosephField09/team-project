@@ -101,7 +101,38 @@
                     <div class="content">
                         <!-- Content -->
                         <div id="ordersContent" class="content-section" style="display: none;">
-                            <p>Your orders will appear here.</p>
+                            @if ($orders->isEmpty())
+                                <p>You have not placed any orders yet.</p>
+                            @else
+                                <table class="orders-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Order</th>
+                                            <th>Date Placed</th>
+                                            <th>Status</th>
+                                            <th>Total</th>
+                                            <th>Items</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($orders as $order)
+                                            <tr>
+                                                <td>{{ $order->id }}</td>
+                                                <td>{{ $order->created_at->format('d M, Y') }}</td>
+                                                <td>{{ $order->status }}</td>
+                                                <td>£{{ number_format($order->total_cost, 2) }}</td>
+                                                <td>
+                                                    <ul style="list-style:none">
+                                                        @foreach ($order->orderItems as $item)
+                                                            <li>{{ $item->product->name }} (x{{ $item->quantity }})</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @endif
                         </div>
                         <div id="accountContent" class="content-section" style="display: none;">
                             <div class="profile-info">

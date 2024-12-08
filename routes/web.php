@@ -12,6 +12,7 @@ use App\Http\Controllers\BasketController;
 use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
+use App\Models\Order;
 
 
 // Home route
@@ -47,6 +48,11 @@ Route::post('/basket/update/{id}', [BasketController::class,'update'])->name('ba
 // Route to go to dashboard and clear cache to prevent csrf
 Route::get('/dashboard', function () {
     $user = Auth::user();  // Get the authenticated user
+
+    // Pass users orders and the items within
+    $orders = Order::where('user_id', Auth::id())
+        ->with('orderItems.product') 
+        ->get();
     
     // Check if the user is an admin based on their userType
     if ($user->userType == 'admin') {
@@ -57,7 +63,7 @@ Route::get('/dashboard', function () {
     }
     
     // Return the regular dashboard for non-admin users
-    return response(view('dashboard', compact('user')))
+    return response(view('dashboard', compact('user','orders')))
         ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
         ->header('Pragma', 'no-cache')
         ->header('Expires', '0');

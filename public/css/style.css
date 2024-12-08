@@ -1240,8 +1240,7 @@ footer.bottom {
   max-height: 70%;
 }
 
-/* Styling for all users, content, products and setting section section */
-#allOrdersContent,
+/* Styling for all users, content, products and setting section section */,
 #allUsersContent,
 #allProductsContent,
 #settingsContent{
@@ -1250,6 +1249,44 @@ footer.bottom {
   height: fit-content;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   padding: 10px;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+.orders-table th, .orders-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.orders-table th {
+  border: none;
+  background-color: transparent;
+  color: #333;
+  font-weight: bold;
+  border-bottom: 1px solid grey;
+}
+
+.orders-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.orders-table td {
+  border: none;
+  border-bottom: 1px solid #dee2e6;
+  color: #555;
+}
+
+.orders-table td .status-badge {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
 }
 
 /* Styling for table header and table d*/
