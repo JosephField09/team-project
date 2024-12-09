@@ -34,7 +34,12 @@
                             </a>
                             <a class="basket" href="{{route('basket')}}">
                                 <i class='bx bx-basket'></i>
+                                @if($basketCount > 0)
+                                    <span class="basket-count">{{ $basketCount }}</span>
+                                @endif
                             </a>
+                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
+                            <script src="{{ asset('js/dark-mode.js') }}"></script>
                         @elseif(Auth::user()->userType === 'user')
                             <!-- User Dashboard and Basket -->
                             <a class="account" href="{{ route('dashboard') }}">
@@ -42,7 +47,12 @@
                             </a>
                             <a class="basket" href="{{route('basket')}}">
                                 <i class='bx bx-basket'></i>
+                                @if($basketCount > 0)
+                                    <span class="basket-count">{{ $basketCount }}</span>
+                                @endif
                             </a>
+                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
+                            <script src="{{ asset('js/dark-mode.js') }}"></script>
                         @endif
                     @else
                         <!-- Guest: Login and Basket -->
@@ -50,7 +60,12 @@
                         <p>|</p>
                         <a class="basket" href="{{route('basket')}}">
                             <i class='bx bx-basket'></i>
+                            @if($basketCount > 0)
+                                    <span class="basket-count">{{ $basketCount }}</span>
+                            @endif
                         </a>
+                        <button id="toggleMode"><i class='bx bxs-moon'></i></button>
+                        <script src="{{ asset('js/dark-mode.js') }}"></script>
                     @endif
                 </div>
             </nav>

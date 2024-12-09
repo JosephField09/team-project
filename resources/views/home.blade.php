@@ -37,6 +37,8 @@
                                     <span class="basket-count">{{ $basketCount }}</span>
                                 @endif
                             </a>
+                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
+                            <script src="{{ asset('js/dark-mode.js') }}"></script>
                         @elseif(Auth::user()->userType === 'user')
                             <a class="account" href="{{ route('dashboard') }}">
                                 <i class='bx bx-user'></i>
@@ -47,6 +49,8 @@
                                     <span class="basket-count">{{ $basketCount }}</span>
                                 @endif
                             </a>
+                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
+                            <script src="{{ asset('js/dark-mode.js') }}"></script>
                         @endif
                     @else
                         <a class="login" href="{{ route('login') }}">Login</a>
@@ -54,6 +58,8 @@
                         <a class="basket" href="{{ route('basket') }}">
                             <i class='bx bx-basket'></i>
                         </a>
+                        <button id="toggleMode"><i class='bx bxs-moon'></i></button>
+                        <script src="{{ asset('js/dark-mode.js') }}"></script>
                     @endif
                 </div>
             </nav>
@@ -111,7 +117,7 @@
         </section>
 
         <!-- Services Section -->
-        <section id="services" style="background-color: var(--dark-bg); padding: 40px 20px; text-align: center;">
+        <section id="services" style="padding: 40px 20px; text-align: center;">
             <br><br>
             <h1 style="font-size: 2.5em; margin: 0;">Our Delicious Services</h1>
             <p style="font-size: 1em; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto; color: gray;">
@@ -147,10 +153,10 @@
         </section>
 
         <!-- Best Sellers Section -->
-        <section id="best-sellers" style="background-color: white; padding: 40px 20px; text-align: center;">
+        <section id="best-sellers" style="padding: 40px 20px; text-align: center;">
             <br><br>
             <h1 style="font-size: 2.5em; margin: 0;">Best Sellers</h1>
-            <p style="color: gray; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <p style="margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
                 Discover the most popular coffee that our customers just love. These highest sellers are crafted to perfection and are sure to delight your taste buds.
             </p><br><br><br>
             <div class="product-carousel" style="margin-top: 20px; display: flex; align-items: center; justify-content: center;">

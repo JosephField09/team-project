@@ -38,6 +38,8 @@
                                     <span class="basket-count">{{ $basketCount }}</span>
                                 @endif
                             </a>
+                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
+                            <script src="{{ asset('js/dark-mode.js') }}"></script>
                         @elseif(Auth::user()->userType === 'user')
                             <a class="account" href="{{ route('dashboard') }}">
                                 <i class='bx bx-user'></i>
@@ -48,6 +50,8 @@
                                     <span class="basket-count">{{ $basketCount }}</span>
                                 @endif
                             </a>
+                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
+                            <script src="{{ asset('js/dark-mode.js') }}"></script>
                         @endif
                     @else
                         <a class="login" href="{{ route('login') }}">Login</a>
@@ -55,6 +59,8 @@
                         <a class="basket" href="{{ route('basket') }}">
                             <i class='bx bx-basket'></i>
                         </a>
+                        <button id="toggleMode"><i class='bx bxs-moon'></i></button>
+                        <script src="{{ asset('js/dark-mode.js') }}"></script>
                     @endif
                 </div>
             </nav>
