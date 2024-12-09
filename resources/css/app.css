@@ -108,6 +108,12 @@ nav {
   align-self: center;
 }
 
+.navbar-right button{
+  border: none;
+  color: var(--text-colour);
+  background-color: black ;
+}
+
 /* Styling for basket a tag when hovering */
 .navbar-right a.basket:hover {
   color: white;

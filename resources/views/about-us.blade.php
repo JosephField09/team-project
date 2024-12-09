@@ -41,7 +41,8 @@
                                     <span class="basket-count">{{ $basketCount }}</span>
                                 @endif
                             </a>
-                        <!-- If user is user -->
+                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
+                            <script src="{{ asset('js/dark-mode.js') }}"></script>
                         @elseif(Auth::user()->userType === 'user')
                             <a class="account" href="{{ route('dashboard') }}">
                                 <i class='bx bx-user'></i>
@@ -52,6 +53,8 @@
                                     <span class="basket-count">{{ $basketCount }}</span>
                                 @endif
                             </a>
+                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
+                            <script src="{{ asset('js/dark-mode.js') }}"></script>
                         @endif
                     <!-- If user is not logged in -->
                     @else
@@ -60,6 +63,8 @@
                         <a class="basket" href="{{ route('basket') }}">
                             <i class='bx bx-basket'></i>
                         </a>
+                        <button id="toggleMode"><i class='bx bxs-moon'></i></button>
+                        <script src="{{ asset('js/dark-mode.js') }}"></script>
                     @endif
                 </div>
             </nav>
@@ -142,7 +147,7 @@
             <img src="{{ asset('assets/AdobeStock_1026464614.jpeg') }}"></img>
             <div class="contact-us-form">
                 <form id="contact-us">
-                    <h1>Contact Us</h1>
+                    <h1 id="contact-us-heading">Contact Us</h1>
                     <div class="first-and-last-name">
                         <div class="first-name">
                             <label for="fName">First Name</label>
