@@ -7,6 +7,8 @@
   --headerfooter-text-colour:rgba(255, 255, 255,0.7);
   --title-colour:rgb(51,51,51);
   --text-colour:rgb(128,123,118);
+  --dm-light-bg: rgb(74, 74, 74);
+  --dm-dark-bg: rgb(34, 34, 34);
 }
 
 /* Reset default margin, padding, and box-sizing for all elements */
@@ -28,6 +30,7 @@ nav#main {
   z-index: 2001;
   align-items: center;
 }
+
 
 /* Styling for left section of navigation bar */
 .navbar-left{
@@ -78,6 +81,7 @@ nav#main {
   border-radius: 4px;
 }
 
+
 /* Styling for login button when hovering over */
 .login:hover {
   scale: 1.1;
@@ -102,6 +106,19 @@ nav#main {
   margin-right: 10px;
 }
 
+.navbar-right #toggleMode{
+  color: var(--headerfooter-text-colour);
+  background-color: black;
+  font-size: 20px;
+  border: none;
+}
+
+.navbar-right #toggleMode:hover{
+  color: white;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
 /* Styling for basket a tag when hovering */
 .navbar-right a i:hover {
   color: white;
@@ -113,6 +130,11 @@ nav#main {
   padding: 5% 14.25%;
   height: fit-content;
   background-color: var(--light-bg);
+}
+
+/* Dark mode for dashboard */
+body.dark-mode .dashboard{
+  background-color: var(--dm-light-bg);
 }
 
 /* Styling for inner dashboard area */
@@ -132,6 +154,12 @@ nav#main {
   padding: 20px;
   display: grid;
   grid-template-rows: 1fr 2fr 1fr;
+}
+
+/* Dark mode for dashboard navigation */
+body.dark-mode .dash-nav{
+  background-color: var(--dm-dark-bg);
+  color: white;
 }
 
 /* Styling for user section */
@@ -212,6 +240,7 @@ nav#main {
 }
 
 
+
 /* Styling for login button icon */
 .logout i{
   margin-right: 10px;
@@ -248,6 +277,43 @@ nav#main {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 15px;
+}
+
+/* Dark mode for content section */
+body.dark-mode .content{
+  background-color: var(--dm-dark-bg);
+  color: white;
+  p, h4, h2, span{
+    color: white;
+  }
+}
+
+/* Dark mode for orders-table */
+body.dark-mode .orders-table{
+  td, th{
+    color: white;
+  }
+}
+
+/* Dark mode for titles */
+body.dark-mode .title{
+  background-color: var(--dm-dark-bg);
+  color: white;
+}
+
+/* Dark mode for members content text */
+body.dark-mode #memberContent p{
+  color: white;
+}
+
+/* Dark mode for members content headings */
+body.dark-mode #memberContent h4{
+  color: white;
+}
+
+/* Dark mode for members content span */
+body.dark-mode #memberContent span{
+  color: white;
 }
 
 /* Styling for content h2 header */
@@ -328,6 +394,11 @@ label{
   margin-top: 10px;
   border: none;
   cursor: pointer;
+}
+
+/* Dark mode for delete button */
+body.dark-mode .delete {
+  color: white;
 }
 
 /* Styling for delete button when hovering */
@@ -615,6 +686,12 @@ footer.bottom {
   background-color: var(--light-bg);
 }
 
+/* Dark mode for image blocks on about us */
+body.dark-mode #ImageBlocks{
+  background-color: var(--dm-light-bg);
+  color: white;
+}
+
 /* Styling for the images on about us */
 #ImageBlocks img{
   border-radius: 15px;
@@ -663,6 +740,13 @@ footer.bottom {
     padding-top: 25px;
     padding-bottom: 25px;
     color: gray;
+  }
+}
+
+/* Dark mode for our story section on about us */
+body.dark-mode .ourstory{
+  h3{
+    color: white;
   }
 }
 
@@ -798,6 +882,11 @@ footer.bottom {
   }
 }
 
+/* Dark mode for contact us section */
+body.dark-mode #ContactUs{
+  background-color: var(--dm-dark-bg);
+}
+
 /* Styling for contact us form on about us */
 .contact-us-form{
   margin-left: 5px;
@@ -815,6 +904,24 @@ footer.bottom {
   label{
     margin-left: 10px;
   }
+}
+
+/* Dark mode for contact us form */
+body.dark-mode .contact-us-form{
+  .input-field{
+    background-color: white;
+  }
+  color: white;
+}
+
+/* Dark mode for labels */
+body.dark-mode label{
+  color: white;
+}
+
+/* Dark mode for contact us heading */
+body.dark-mode #contact-us-heading{
+  color: white;
 }
 
 /* Styling for the first and last name section of the contact us form */
@@ -884,6 +991,16 @@ footer.bottom {
   padding: 0px 14.25%;
 }
 
+/* Dark mode for products section */
+body.dark-mode #products{
+  background-color: var(--dm-dark-bg);
+}
+
+/* Dark mode for main */
+body.dark-mode main{
+  background-color: var(--dm-dark-bg);
+}
+
 /* Styling for the cta text */
 #cta{
   width: 100%;
@@ -944,6 +1061,15 @@ footer.bottom {
   color: #31312f;
 }
 
+/* Dark mode for shop banner */
+body.dark-mode #shop-banner{
+  background-color: var(--dm-dark-bg);
+  color: white;
+  p, .category-name{
+    color: white;
+  }
+}
+
 /* Styling for the shop banner */
 #shop-banner h2{
   letter-spacing: 1px;
@@ -968,6 +1094,16 @@ footer.bottom {
   color: #000;
   background-color: white;
   transition: all 0.3s;
+}
+
+/* Dark mode for filter buttons */
+body.dark-mode .filter-buttons{
+  background-color: var(--dm-dark-bg);
+  color: white;
+  a{
+    background-color: var(--dm-light-bg);
+    border: 1px solid white;
+  }
 }
 
 /* Styling for hovering the filter buttons */
@@ -1015,6 +1151,13 @@ footer.bottom {
   color: var(--primary-colour);
 }
 
+/* Dark mode for search */
+body.dark-mode #search{
+  background-color: var(--dm-light-bg);
+  border: 1px solid white;
+  color: white;
+}
+
 /* Styling for the sort */
 #sort{
   width: fit-content;
@@ -1023,6 +1166,13 @@ footer.bottom {
   background-color: var(--light-bg);
   padding: 0px 20px;
   cursor: pointer;
+}
+
+/* Dark mode for sort */
+body.dark-mode #sort{
+  background-color: var(--dm-light-bg);
+  border: 1px solid white;
+  color: white;
 }
 
 /* Styling for the filter container */
@@ -1045,6 +1195,13 @@ footer.bottom {
   gap: 20%;
 }
 
+/* Dark mode for filter buttons */
+body.dark-mode .filter-button{
+  background-color: var(--dm-light-bg);
+  color: white;
+  border: 1px solid white;
+}
+
 /* Styling for the filter dropdown */
 .filter-dropdown {
   position: absolute;
@@ -1055,6 +1212,11 @@ footer.bottom {
   width: 200px;
   padding: 15px;
   z-index: 100;
+}
+
+/* Dark mode for filter dropdown */
+body.dark-mode .filter-dropdown{
+  background-color: var(--dm-light-bg);
 }
 
 /* Styling for the filter dropdown */
@@ -1105,6 +1267,15 @@ footer.bottom {
   background-color: var(--light-bg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: fit-content;
+}
+
+/* Dark mode for product card */
+body.dark-mode .product-card {
+  background-color: var(--dm-light-bg);
+  color: white;
+  p, span{
+    color: white;
+  }
 }
 
 /* Styling for products card image*/
@@ -1182,6 +1353,11 @@ footer.bottom {
   min-height: 70vh;
 }
 
+/* Dark mode for admin main section */
+body.dark-mode .admin-main{
+  background-color: var(--dm-light-bg);
+}
+
 /* Styling for admin dashboard navbar */
 #admin-nav {
   width: 71.5%;
@@ -1195,6 +1371,13 @@ footer.bottom {
   align-items: center;
   justify-content: space-evenly;
   box-shadow: inset 1px 1px 20px 10px black;
+}
+
+/* Dark mode for admin navigation */
+body.dark-mode #admin-nav{
+  background-color: #888;
+  box-shadow: inset 1px 1px 20px 10px #333;
+  color: #000;
 }
 
 /* Styling for admin dashboard user section in navbar */
@@ -1226,6 +1409,7 @@ footer.bottom {
   border-radius: 5px;
   transition: transform 0.5s linear, color 0.5s linear;
 }
+
 
 /* Styling for admin butons when hovering */
 .admin-buttons a:hover{
@@ -1277,6 +1461,7 @@ footer.bottom {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   padding: 10px;
 }
+
 
 /* Styling for the orders table */
 .orders-table {
@@ -1491,6 +1676,14 @@ table{
   }
 }
 
+/* Dark mode for blogs main section */
+body.dark-mode #blogs-main{
+  background-color: var(--dm-light-bg);
+  h1{
+    color: white;
+  }
+}
+
 /* Styling for the blogs post */
 .blog-posts{
   padding: 10%;
@@ -1540,6 +1733,14 @@ table{
   }
 }
 
+/* Dark mode for the blog posts */
+body.dark-mode .blog-post{
+  background-color: var(--dm-dark-bg);
+  h4, h2, p{
+    color: white;
+  }
+}
+
 
 /* Styling for the create blogs post section */
 .create-blog-post{
@@ -1570,6 +1771,12 @@ table{
   }
 }
 
+/* Dark mode for when you cant post a blog */
+body.dark-mode .cant-post-blog{
+  background-color: var(--dm-dark-bg);
+  color: white;
+}
+
 /* Styling for the form to make a blog */
 .blog-form{
   background: white;
@@ -1598,6 +1805,17 @@ table{
   }
 }
 
+/* Dark mode for the blog form */
+body.dark-mode .blog-form{
+  background-color: var(--dm-dark-bg);
+  color: white;
+}
+
+/* Dark mode for input field */
+body.dark-mode .input-field{
+  color: white;
+}
+
 /* Styling for the blog title */
 .blog-title{
   width: 300px;
@@ -1618,11 +1836,22 @@ table{
   background-color: var(--light-bg);
 }
 
+/* Dark mode for product details page */
+body.dark-mode .product-details-page{
+  background-color: var(--dm-light-bg);
+  color: white;
+}
+
 /* Styling for the product details page product details */
 .product-details-page .product-details {
   padding: 5% 14.25%;
   background-color: var(--light-bg);
   align-content: center;
+}
+
+/* Dark mode for product details */
+body.dark-mode .product-details{
+  background-color: var(--dm-light-bg);
 }
 
 /* Styling for the product details product container */
@@ -1664,6 +1893,13 @@ table{
   font-weight: bold;
   color: var(--primary-colour);
   margin-bottom: 20px;
+}
+
+/* Dark mode for product info */
+body.dark-mode .product-info{
+  h1, .price, .description {
+    color: white;
+  }
 }
 
 /* Styling for product price */
@@ -1813,6 +2049,14 @@ table{
   background-color: #fff;
 }
 
+/* Dark mode for reccomended products */
+body.dark-mode .recommended-products{
+  background-color: gray;
+  h2{
+    color: white;
+  }
+}
+
 /* Styling for the product details recommended products header 2 */
 .product-details-page .recommended-products h2 {
   font-size: 24px;
@@ -1839,6 +2083,7 @@ table{
   text-align: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
+
 }
 
 /* Styling for hovering the product card */
@@ -1914,6 +2159,7 @@ table{
   font-weight: bold;
 }
 
+
 /* Styling for the main basket section */
 .basket-main{
   background-color: var(--light-bg);
@@ -1921,6 +2167,11 @@ table{
   padding-right: 24%;
   padding-top: 3%;
   padding-bottom: 3%;
+}
+
+/* Dark mode for main section of basket */
+body.dark-mode .basket-main{
+  background-color: var(--dm-light-bg);
 }
 
 /* Styling for the basket and checkout */
@@ -1956,6 +2207,14 @@ table{
   }
 }
 
+/* Dark mode for an empty basket */
+body.dark-mode .empty-basket{
+  background-color: var(--dm-dark-bg);
+  color: white;
+  a{
+    color: var(--secondary-colour);
+  }
+}
 
 /* Styling for the the basket summary */
 .basket-summary{
@@ -2003,6 +2262,12 @@ table{
     font-weight: bold;
     align-items: center;
   }
+}
+
+/* Dark mode for basket summary */
+body.dark-mode .basket-summary{
+  background: var(--dm-dark-bg);
+  color: white;
 }
 
 /* Styling for the basket total */
@@ -2061,6 +2326,15 @@ table{
   }
 }
 
+/* Dark mode for items in basket */
+body.dark-mode .items-in-basket{
+  background-color: var(--dm-dark-bg);
+  color: white;
+  .product-details{
+    background-color: var(--dm-dark-bg);
+  }
+}
+
 /* Styling for the service ssection */
 .services-section { 
   display: flex; 
@@ -2081,9 +2355,30 @@ table{
   margin: 0 10px; 
 }  
 
+/* Dark mode for service box */
+body.dark-mode .service-box{
+  background-color: var(--dm-light-bg);
+  color: white;
+  img{background-color: white;}
+  p, a{
+    color: white;
+  }
+}
+
 /* Styling for when hovering the service box */
 .service-box:hover {
   transform: translateY(-5px); 
+}
+
+#services{
+  background-color: var(--dark-bg);
+}
+
+/* Dark mode for services section */
+body.dark-mode #services{
+  background-color: var(--dm-dark-bg);
+  color: white;
+  strong{color: white;}
 }
 
 /* Styling for the service image */
@@ -2118,6 +2413,16 @@ table{
   background-color: white;
   padding: 40px 20px;
   text-align: center;
+  p{color: gray;}
+}
+
+/* Dark mode for best sellers section */
+body.dark-mode #best-sellers{
+  color: white;
+  background-color: var(--dm-light-bg);
+  p{
+    color: white;
+  }
 }
 
 /* Styling for the best sellers button */
@@ -2154,6 +2459,15 @@ table{
   text-align: center;
   min-height: 350px; 
   box-sizing: border-box; 
+}
+
+/* Dark mode for product box */
+body.dark-mode .product-box{
+  background-color: #31312f;
+  color: white;
+  p{
+    color: white;
+  }
 }
 
 /* Styling for the arrows */
@@ -2193,6 +2507,11 @@ table{
   justify-items: center;
 }
 
+/* Dark mode for main section of checkout */
+body.dark-mode .checkout-main{
+  background-color: var(--dm-light-bg);
+}
+
 /* Styling for the checkout form */
 .checkout-form-section{
   padding: 3%;
@@ -2214,6 +2533,12 @@ table{
   label{
     text-align: left;
   }
+}
+
+/* Dark mode for check out form */
+body.dark-mode .checkout-form-section{
+  background-color: var(--dm-dark-bg);
+  color: white;
 }
 
 /* Styling for the shipping section */
