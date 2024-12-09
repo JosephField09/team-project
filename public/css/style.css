@@ -111,6 +111,7 @@ nav#main {
   background-color: black;
   font-size: 20px;
   border: none;
+  align-self: flex-end;
 }
 
 .navbar-right #toggleMode:hover{
