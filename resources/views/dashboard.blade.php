@@ -17,17 +17,22 @@
         <!-- Header Section -->
         <section id="header">
             <nav id="main">
+                <!-- Left navbar section -->
                 <div class="navbar-left">
                     <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
-                </div>
+               </div>
+               <!-- Middle navbar section -->
                 <div class="navbar-middle">
                     <a class="middle" href="{{ route('home') }}">Home</a>
                     <a class="middle" href="{{ route('products') }}">Products</a>
                     <a class="middle" href="{{ route('about-us') }}">About Us</a>
                     <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
                 </div>
+                <!-- Right navbar section -->
                 <div class="navbar-right">
+                    <!-- If user is logged in -->
                     @if(Auth::check())
+                        <!-- If user is admin -->
                         @if(Auth::user()->userType === 'admin')
                             <a class="account" href="{{ route('admin.dashboard') }}">
                                 <i class='bx bx-user'></i>
@@ -40,6 +45,7 @@
                             </a>
                             <button id="toggleMode"><i class='bx bxs-moon'></i></button>
                             <script src="{{ asset('js/dark-mode.js') }}"></script>
+                        <!-- If user is user -->
                         @elseif(Auth::user()->userType === 'user')
                             <a class="account" href="{{ route('dashboard') }}">
                                 <i class='bx bx-user'></i>
@@ -53,6 +59,7 @@
                             <button id="toggleMode"><i class='bx bxs-moon'></i></button>
                             <script src="{{ asset('js/dark-mode.js') }}"></script>
                         @endif
+                    <!-- If user is not logged in -->
                     @else
                         <a class="login" href="{{ route('login') }}">Login</a>
                         <p>|</p>
@@ -140,6 +147,8 @@
                                 </table>
                             @endif
                         </div>
+
+                        <!-- Account Content button -->
                         <div id="accountContent" class="content-section" style="display: none;">
                             <div class="profile-info">
                                 <h4>Profile Information</h4>
@@ -156,18 +165,21 @@
                                         @csrf
                                         @method('patch')
 
+                                        <!--First Name row -->
                                         <div>
                                             <x-input-label for="firstName" :value="__('First Name')" />
                                             <x-text-input id="firstName" name="firstName" type="text" class="input-field" :value="old('firstName', $user->firstName)" required autofocus autocomplete="given-name" />
                                             <x-input-error style="color: red; font-size:small; list-style:none;" :messages="$errors->get('firstName')" />
                                         </div>
 
+                                        <!--Last Name row -->
                                         <div>
                                             <x-input-label for="lastName" :value="__('Last Name')" />
                                             <x-text-input id="lastName" name="lastName" type="text" class="input-field" :value="old('lastName', $user->lastName)" required autocomplete="family-name" />
                                             <x-input-error style="color: red; font-size:small; list-style:none;" :messages="$errors->get('lastName')" />
                                         </div>
 
+                                        <!--Email row -->
                                         <div>
                                             <x-input-label for="email" :value="__('Email')" />
                                             <x-text-input id="email" name="email" type="email" class="input-field" :value="old('email', $user->email)" required autocomplete="email" />
@@ -191,24 +203,28 @@
                                 </section>
 
                             </div>
+                            <!-- Edit password information -->
                             <div class="password-info">
                                 <h4>Update Password</h4>
                                 <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
                                     @csrf
                                     @method('put')
 
+                                    <!-- Current password row -->
                                     <div>
                                         <x-input-label :value="__('Current Password')" />
                                         <input type="password" class="input-field" name="current_password" required autocomplete="current-password">
                                         <x-input-error :messages="$errors->updatePassword->get('current_password')" style="color: red; font-size:small; list-style:none;"/>
                                     </div>
 
+                                    <!-- New password row -->
                                     <div>
                                         <x-input-label for="update_password_password" :value="__('New Password')" />
                                         <input type="password" class="input-field" name="password" required autocomplete="new-password" />
                                         <x-input-error :messages="$errors->updatePassword->get('password')" style="color: red; font-size:small; list-style:none;"/>
                                     </div>
 
+                                    <!-- Confirm new password row -->
                                     <div>
                                         <x-input-label for="update_password_password_confirmation" :value="__('Confirm Password')" />
                                         <input type="password" class="input-field" name="password_confirmation" required autocomplete="new-password" />
@@ -230,6 +246,8 @@
                                     </div>
                                 </form>
                             </div>
+
+                            <!-- Delete profile section -->
                             <div class="delete-profile">
                                 <form method="post" action="{{ route('profile.destroy') }}">
                                     @csrf
@@ -252,6 +270,7 @@
                             </div>
                         </div>
 
+                        <!-- Subscribe/Unsubscribe member section -->
                         <div id="memberContent" class="content-section">
                             @if (auth()->check() && auth()->user()->isSubscribed)
                                 <h2>Welcome Back, Coffee Lover!</h2>
@@ -278,66 +297,70 @@
         
         <!-- Footer Section -->
         <section id="footer">
-                    <footer class="top">
-                    <div class="logo-desc-soc">
-                        <div class="logo">
-                            <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
-                        </div>
-                        <p class="desc">At E-spresso, we’re passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. Whether you’re a coffee connoisseur or just beginning your journey, Our store is your gateway to a world of rich flavors and aromatic delights.</p>
-                        <div class="socials">
-                            <ul class="social-links">
-                                <i class='bx bxl-facebook-circle'></i>
-                                <i class='bx bxl-instagram-alt' ></i>
-                                <i class='bx bxl-linkedin-square' ></i>
-                                <i class='bx bxl-pinterest' ></i>
-                            </ul>
-                        </div>
+            <footer class="top">
+                <!-- Logo description and social links -->
+                <div class="logo-desc-soc">
+                    <div class="logo">
+                        <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                     </div>
-                    <div class="quick-links">
-                        <h3>Quick Links</h3>
-                        <ul class="links">
-                            <li><a href="{{ route('home') }}">Home</a></li>
-                            <li><a href="{{ route('products') }}">Products</a></li>
-                            <li><a href="{{ route('about-us') }}">About Us </a></li>
-                            <li><a href="{{ route('blog') }}">Blog</a></li>
-                            <li><a class="login" href="{{ route('admin.register') }}">Register as Admin</a></li>
+                    <p class="desc">At E-spresso, we’re passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. Whether you’re a coffee connoisseur or just beginning your journey, Our store is your gateway to a world of rich flavors and aromatic delights.</p>
+                    <div class="socials">
+                        <ul class="social-links">
+                            <i class='bx bxl-facebook-circle'></i>
+                            <i class='bx bxl-instagram-alt' ></i>
+                            <i class='bx bxl-linkedin-square' ></i>
+                            <i class='bx bxl-pinterest' ></i>
                         </ul>
                     </div>
+                </div>
+                <!-- Quick Links Section -->
+                <div class="quick-links">
+                    <h3>Quick Links</h3>
+                    <ul class="links">
+                        <li><a href="{{ route('home') }}">Home</a></li>
+                        <li><a href="{{ route('products') }}">Products</a></li>
+                        <li><a href="{{ route('about-us') }}">About Us </a></li>
+                        <li><a href="{{ route('blog') }}">Blog</a></li>
+                        <li><a class="login" href="{{ route('admin.register') }}">Admin Register</a></li>
 
-                    <div class="information">
-                        <h3>Information</h3>
-                        <ul class="details">
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="contact-information">
-                        <h3>Contact Info</h3>
-                        <ul class="info">
-                            <li>
-                                <i class="bx bx-phone"></i
-                                ><a href="tel:+44 1234 567890">+44 1234 567890</a>
-                            </li>
-                            <li>
-                                <i class="bx bx-envelope"></i
-                                ><a href="mailto:espressoadmin@gmail.com" :
-                                >espressoadmin@gmail.com</a
-                                >
-                            </li>
-                            <li>
-                                <i class="bx bx-building"></i>
-                                <a href="https://maps.app.goo.gl/acBvLWsSNhHqHQcG7">Aston University, Aston St, Birmingham B4 7ET</a>
-                            </li>
-                        </ul>
-                    </div>
-                    </footer>
-                    <footer class="bottom">
-                    <div class="footer">
-                        <p>© E-SPRESSO | All Rights Reserved</p>
-                    </div>
-                    </footer>
+                    </ul>
+                </div>
+                <!-- Information Section -->
+                <div class="information">
+                    <h3>Information</h3>
+                    <ul class="details">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Information Section -->
+                <div class="contact-information">
+                    <h3>Contact Info</h3>
+                    <ul class="info">
+                        <li>
+                            <i class="bx bx-phone"></i
+                            ><a href="tel:+44 1234 567890">+44 1234 567890</a>
+                        </li>
+                        <li>
+                            <i class="bx bx-envelope"></i
+                            ><a href="mailto:espressoadmin@gmail.com" :
+                            >espressoadmin@gmail.com</a
+                            >
+                        </li>
+                        <li>
+                            <i class="bx bx-building"></i>
+                            <a href="https://maps.app.goo.gl/acBvLWsSNhHqHQcG7">Aston University, Aston St, Birmingham B4 7ET</a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+            <!-- Lower footer section -->
+            <footer class="bottom">
+                <div class="footer">
+                    <p>© E-SPRESSO | All Rights Reserved</p>
+                </div>
+            </footer>
         </section>
     </main>
 </body>
