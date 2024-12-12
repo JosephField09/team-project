@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\User;
+use App\Models\Order;
 use App\Models\Category;
 
 class ProfileController extends Controller
@@ -19,9 +20,14 @@ class ProfileController extends Controller
     public function edit(Request $request): View
     {
         $user = $request->user();
+        // Pass users orders and the items within
+        $orders = Order::where('user_id', Auth::id())
+        ->with('orderItems.product') 
+        ->get();
 
         return view('dashboard', [
             'user' => $user,
+            'orders' => $orders,
             'activeTab' => 'account',
         ]);
     }
