@@ -126,6 +126,79 @@ nav#main {
   transition: 0.3s ease-in-out;
 }
 
+#home-cta{
+  background-color: black; 
+  color: white; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  max-height: 90vh;
+}
+
+.home-cta-container{
+  display: grid;
+  grid-template-columns: 40% 60%;
+  height: 100%;
+}
+
+.home-cta-left{
+  align-content: center;
+  overflow-x: visible;
+}
+
+.home-cta-text{
+  padding-left: 35%;
+  width: 800px;
+  position: relative;
+}
+
+.home-cta-text p{
+  color: var(--text-colour);
+  font-size: 15px;
+  margin: 5% 0 5% 0;
+}
+
+.home-cta-buttons{
+  margin-top: 40px;
+}
+
+.home-cta-text .order-now{
+  background-color: var(--secondary-colour); 
+  color: var(--primary-colour); 
+  padding: 10px 20px;
+  text-decoration: none; 
+  margin-right: 10px; 
+  font-weight: bold;
+  margin-top: 20px;
+  transition: background-color 0.5s;
+}
+
+.home-cta-text .order-now:hover{
+  background-color: #b99531;
+}
+
+.home-cta-text .learn-more{
+  background-color: var(--primary-colour); 
+  color: white; 
+  padding: 10px 20px; 
+  text-decoration: none;
+  border: 0.25px solid white;
+}
+
+.home-cta-text .learn-more:hover{
+  background-color: white;
+  color: var(--primary-colour);
+}
+
+.cta-img{
+  height: 100%;
+}
+
+.cta-img img{
+  height: 100%;
+  width: 100%;
+}
+
 /* Styling for dashboard */
 .dashboard{
   padding: 5% 14.25%;

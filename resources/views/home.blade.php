@@ -74,24 +74,24 @@
         </section>
 
         <!-- Home Page Section -->
-        <section id="home" style="background-color: black; color: white; display: flex; align-items: center; justify-content: center; padding: 20px;">
-            <div style="flex: 1; padding-right: 1px; padding-left: 160px; text-align: left;">
-                <br><br>
-                <h1 style="font-size: 2.8em; margin: 0; font-family: Modern">Start Your Day with the</h1>
-                <h1 style="font-size: 2.8em; margin: 0; font-family: Modern">Best Coffee Experience</h1>
-                <br>
-                <p>Indulge in the finest brews, crafted to ignite your senses and</p>
-                <p>fuel your day. Your new, improved coffee journey begins here.</p>
-                <br><br><br>
-                <div style="margin-top: 20px">
-                    <a href= "{{route('products')}}" style="background-color: rgb(254, 204, 66); color: black; padding: 10px 20px; text-decoration: none; margin-right: 10px; font-weight: bold;">Order Now</a>
-                    <a href= "{{route('blog')}}" style="background-color: black; color: white; padding: 10px 20px; text-decoration: none; border: 0.25px solid white;">Learn More</a>
+        <section id="home-cta">
+            <div class="home-cta-container">
+                <div class="home-cta-left">
+                    <div class="home-cta-text">
+                        <h1 style="font-size: 2.8em; margin: 0; font-family: Modern">Start Your Day with the</h1>
+                        <h1 style="font-size: 2.8em; margin: 0; font-family: Modern">Best Coffee Experience</h1>
+                        <p>Indulge in the finest brews, crafted to ignite your senses and fuel your day. Your new, improved coffee journey begins here.</p>
+                        <div class="home-cta-buttons">
+                            <a class="order-now" href= "{{route('products')}}">Order Now</a>
+                            <a class="learn-more" href= "{{route('about-us')}}">Learn More</a>
+                        </div>
+                    </div>
                 </div>
-                <br><br><br><br>
+                <div class="cta-img">
+                        <img src="{{ asset('assets/steaming_coffee.jpeg') }}" alt="Steaming Coffee" >
+                </div>
             </div>
-            <div style="flex: 1; display: flex; justify-content: center; overflow: hidden; height: 350px;">
-                <img src="{{ asset('assets/steaming_coffee.jpeg') }}" alt="Steaming Coffee" style="width: auto; height: 100%; object-fit: cover; padding-left: 0%; padding-right: 28%;">
-            </div>
+           
         </section>
 
         <!-- Image Block Sections -->
