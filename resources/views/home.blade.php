@@ -24,7 +24,73 @@
                <!-- Middle navbar section -->
                 <div class="navbar-middle">
                     <a class="middle option-selected" href="{{ route('home') }}">Home</a>
-                    <a class="middle" href="{{ route('products') }}">Products</a>
+                    <div id="product-nav" class="middle" style="display: contents;">
+                        <a href="{{ route('products') }}">Products</a>
+                        <ul class="dropdown">
+                            <!-- Drinks Category -->
+                            <li>
+                                <a href="#" class="category">Drinks</a>
+                                <ul>
+                                    <li><a href="#" class="product">Americano</a></li>
+                                    <li><a href="#" class="product">Cappuccino</a></li>
+                                    <li><a href="#" class="product">Espresso</a></li>
+                                    <li><a href="#" class="product">Flat White</a></li>
+                                    <li><a href="#" class="product">Hot Chocolate</a></li>
+                                    <li><a href="#" class="product">Latte</a></li>
+                                    <li><a href="#" class="product">Macchiato</a></li>
+                                    <li><a href="#" class="product">Mocha</a></li>
+                                </ul>
+                            </li>
+                            <!-- Pods Category -->
+                            <li>
+                                <a  href="#" class="category">Pods</a>
+                                <ul>
+                                    <li><a href="#" class="product">Americano Pods</a></li>
+                                    <li><a href="#" class="product">Cappuccino Pods</a></li>
+                                    <li><a href="#" class="product">Espresso Pods</a></li>
+                                    <li><a href="#" class="product">Flat White Pods</a></li>
+                                    <li><a href="#" class="product">Hot Chocolate Pods</a></li>
+                                    <li><a href="#" class="product">Latte Pods</a></li>
+                                    <li><a href="#" class="product">Macchiato Pods</a></li>
+                                    <li><a href="#" class="product">Mocha Pods</a></li>
+                                </ul>
+                            </li>
+                            <!-- Beans Category -->
+                            <li>
+                                <a href="#" class="category">Beans</a>
+                                <ul>
+                                    <li><a href="#" class="product">Brazilian Beans</a></li>
+                                    <li><a href="#" class="product">Colombian Beans</a></li>
+                                    <li><a href="#" class="product">Ethiopian Beans</a></li>
+                                    <li><a href="#" class="product">Jamaican Beans</a></li>
+                                    <li><a href="#" class="product">Kenyan Beans</a></li>
+                                </ul>
+                            </li>
+                            <!-- Pastries Category -->
+                            <li>
+                                <a href="#" class="category">Pastries</a>
+                                <ul>
+                                    <li><a href="#" class="product">Chocolate Twist</a></li>
+                                    <li><a href="#" class="product">Croissant</a></li>
+                                    <li><a href="#"class="product">Cinnamon Roll</a></li>
+                                    <li><a href="#" class="product">Pain au Chocolat</a></li>
+                                    <li><a href="#" class="product">Pie</a></li>
+                                </ul>
+                            </li>
+                            <!-- Sweet Treats Category -->
+                            <li>
+                                <a href="#" class="category">Sweet Treats</a>
+                                <ul>
+                                    <li><a href="#" class="product">Blueberry Muffin</a></li>
+                                    <li><a href="#" class="product">Chocolate Brownie</a></li>
+                                    <li><a href="#" class="product">Chocolate Muffin</a></li>
+                                    <li><a href="#" class="product">Pink Iced Dougnut</a></li>
+                                    <li><a href="#" class="product">Sugar Ring Doughnut</a></li>
+                                    <li><a href="#" class="product">Vanilla Cake</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                     <a class="middle" href="{{ route('about-us') }}">About Us</a>
                     <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
                 </div>
@@ -109,7 +175,7 @@
                     </div>
                     <div class="promise">
                         <img src= "{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
-                        <h4>Expertly roasted for optimal flavor</h4>
+                        <h4>Expertly roasted for optimal flavour</h4>
                     </div>
                     <div class="promise">
                         <img src= "{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
