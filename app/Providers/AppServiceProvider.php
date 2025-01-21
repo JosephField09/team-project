@@ -25,11 +25,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Pass the basket count to all views
+        // Pass the basket count and categories to all views
         view()->composer('*', function ($view) {
             $basketCount = BasketController::getBasketCount();
-            $view->with('basketCount', $basketCount);
+            $categories = \App\Models\Category::all(); // Fetch all categories
+            $view->with([
+                'basketCount' => $basketCount,
+                'categories' => $categories,
+            ]);
         });
     }
+
 }
 

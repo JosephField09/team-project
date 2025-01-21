@@ -27,68 +27,27 @@
                     <div id="product-nav" class="middle" style="display: contents;">
                         <a href="{{ route('products') }}">Products</a>
                         <ul class="dropdown">
-                            <!-- Drinks Category -->
-                            <li>
-                                <a href="#" class="category">Drinks</a>
-                                <ul>
-                                    <li><a href="#" class="product">Americano</a></li>
-                                    <li><a href="#" class="product">Cappuccino</a></li>
-                                    <li><a href="#" class="product">Espresso</a></li>
-                                    <li><a href="#" class="product">Flat White</a></li>
-                                    <li><a href="#" class="product">Hot Chocolate</a></li>
-                                    <li><a href="#" class="product">Latte</a></li>
-                                    <li><a href="#" class="product">Macchiato</a></li>
-                                    <li><a href="#" class="product">Mocha</a></li>
-                                </ul>
-                            </li>
-                            <!-- Pods Category -->
-                            <li>
-                                <a  href="#" class="category">Pods</a>
-                                <ul>
-                                    <li><a href="#" class="product">Americano Pods</a></li>
-                                    <li><a href="#" class="product">Cappuccino Pods</a></li>
-                                    <li><a href="#" class="product">Espresso Pods</a></li>
-                                    <li><a href="#" class="product">Flat White Pods</a></li>
-                                    <li><a href="#" class="product">Hot Chocolate Pods</a></li>
-                                    <li><a href="#" class="product">Latte Pods</a></li>
-                                    <li><a href="#" class="product">Macchiato Pods</a></li>
-                                    <li><a href="#" class="product">Mocha Pods</a></li>
-                                </ul>
-                            </li>
-                            <!-- Beans Category -->
-                            <li>
-                                <a href="#" class="category">Beans</a>
-                                <ul>
-                                    <li><a href="#" class="product">Brazilian Beans</a></li>
-                                    <li><a href="#" class="product">Colombian Beans</a></li>
-                                    <li><a href="#" class="product">Ethiopian Beans</a></li>
-                                    <li><a href="#" class="product">Jamaican Beans</a></li>
-                                    <li><a href="#" class="product">Kenyan Beans</a></li>
-                                </ul>
-                            </li>
-                            <!-- Pastries Category -->
-                            <li>
-                                <a href="#" class="category">Pastries</a>
-                                <ul>
-                                    <li><a href="#" class="product">Chocolate Twist</a></li>
-                                    <li><a href="#" class="product">Croissant</a></li>
-                                    <li><a href="#"class="product">Cinnamon Roll</a></li>
-                                    <li><a href="#" class="product">Pain au Chocolat</a></li>
-                                    <li><a href="#" class="product">Pie</a></li>
-                                </ul>
-                            </li>
-                            <!-- Sweet Treats Category -->
-                            <li>
-                                <a href="#" class="category">Sweet Treats</a>
-                                <ul>
-                                    <li><a href="#" class="product">Blueberry Muffin</a></li>
-                                    <li><a href="#" class="product">Chocolate Brownie</a></li>
-                                    <li><a href="#" class="product">Chocolate Muffin</a></li>
-                                    <li><a href="#" class="product">Pink Iced Dougnut</a></li>
-                                    <li><a href="#" class="product">Sugar Ring Doughnut</a></li>
-                                    <li><a href="#" class="product">Vanilla Cake</a></li>
-                                </ul>
-                            </li>
+                            @php $displayedProducts = []; @endphp
+                            @foreach ($categories as $category)
+                                <!-- Category Dropdown -->
+                                <li>
+                                    <a href="{{ route('products.filter', ['category' => $category->id]) }}" class="category">
+                                        {{ $category->name }}
+                                    </a>
+                                    <ul>
+                                        @foreach ($category->products as $product)
+                                            @if (!in_array($product->name, $displayedProducts))
+                                                <li>
+                                                    <a href="{{ route('product-details', ['id' => $product->id]) }}" class="product">
+                                                        {{ $product->name }}
+                                                    </a>
+                                                </li>
+                                                @php $displayedProducts[] = $product->name; @endphp
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                     <a class="middle" href="{{ route('about-us') }}">About Us</a>

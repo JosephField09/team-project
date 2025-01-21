@@ -23,7 +23,32 @@
                <!-- Middle navbar section -->
                 <div class="navbar-middle">
                     <a class="middle" href="{{ route('home') }}">Home</a>
-                    <a class="middle" href="{{ route('products') }}">Products</a>
+                    <div id="product-nav" class="middle" style="display: contents;">
+                        <a href="{{ route('products') }}">Products</a>
+                        <ul class="dropdown">
+                            @php $displayedProducts = []; @endphp
+                            @foreach ($categories as $category)
+                                <!-- Category Dropdown -->
+                                <li>
+                                    <a href="{{ route('products.filter', ['category' => $category->id]) }}" class="category">
+                                        {{ $category->name }}
+                                    </a>
+                                    <ul>
+                                        @foreach ($category->products as $product)
+                                            @if (!in_array($product->name, $displayedProducts))
+                                                <li>
+                                                    <a href="{{ route('product-details', ['id' => $product->id]) }}" class="product">
+                                                        {{ $product->name }}
+                                                    </a>
+                                                </li>
+                                                @php $displayedProducts[] = $product->name; @endphp
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                     <a class="middle" href="{{ route('about-us') }}">About Us</a>
                     <a class="middle option-selected" href="{{ route('blogs.index') }}">Blog</a>
                 </div>
