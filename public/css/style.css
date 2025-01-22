@@ -46,6 +46,10 @@ nav#main {
   transform: translateY(4px);
 }
 
+.navbar-middle{
+  display: inline-flex;
+}
+
 /* Styling for navigation bar links */
 .navbar-middle a{
   color: var(--headerfooter-text-colour);
@@ -64,6 +68,24 @@ nav#main {
   color: var(--secondary-colour);
 }
 
+#product-nav:hover .dropdown,
+#product-nav:hover .dropdown-arrow{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  opacity: 1;
+}
+
+.dropdown-content{
+  position: absolute;
+  transform: translateY(14px);
+}
+
+.dropdown-arrow{
+  display: none;
+  position: relative;
+  transform: translateX(103px);
+}
+
 .dropdown{
   width: 750px;
   background: rgb(255,251,243);
@@ -77,15 +99,13 @@ nav#main {
   border-radius: 5px;
   transform: translateX(-25%);
   border: 1px solid gray;
+  border-top: none;
+  opacity: 0;
+  transition:  opacity 3s;
 }
 
 .dropdown li{
   display: block;
-}
-
-#product-nav:hover .dropdown{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
 .dropdown .category{
@@ -98,11 +118,11 @@ nav#main {
 .dropdown ul{
   margin-top: 7px;
   border-right: 1px solid rgba(128, 128, 128, 0.5);
-  height: 180px;
+  height: 230px;
 }
 
 .dropdown ul li{
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .dropdown .product{
@@ -146,6 +166,58 @@ nav#main {
   color: var(--headerfooter-text-colour);
   align-self: end;
 }
+
+#account-nav:hover .account-dropdown,
+.dropdown-content:hover .account-dropdown,
+#account-nav:hover .account-dropdown-arrow{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.account-dropdown-content{
+  position: absolute;
+  transform: translateY(22px);
+}
+
+.account-dropdown-arrow{
+  display: none;
+  position: relative;
+}
+
+.account-dropdown{
+  width: max-content;
+  background: white;
+  position: absolute;
+  z-index: 999;
+  justify-self: center;
+  display: none;
+  top: 100;
+  height: fit-content;
+  padding: 15px;
+  border-radius: 5px;
+  transform: translateX(-25%);
+  border-top: none;
+}
+
+.button-row{
+  margin: 10px 0 10px 0;
+}
+
+.account-dropdown i{
+  color: #000;
+  font-size: 22px;
+}
+
+.account-dropdown a{
+  color: gray;
+  font-size: 12px;
+  display: contents;
+}
+
+.account-dropdown a:hover{
+  color: var(--secondary-colour);
+}
+
 /* Styling for a tags in right of navigation bar */
 .navbar-right i {
   margin-right: 10px;
@@ -498,6 +570,7 @@ label{
 
 /* Styling for profile info and delete profiel paragraphs */
 .profile-info p,
+.password-info p,
 .delete-profile p{
   color: var(--text-colour);
   font-size: smaller;

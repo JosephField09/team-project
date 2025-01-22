@@ -26,29 +26,32 @@
                     <a class="middle" href="{{ route('home') }}">Home</a>
                     <div id="product-nav" class="middle" style="display: contents;">
                         <a href="{{ route('products') }}">Products</a>
-                        <ul class="dropdown">
-                            @php $displayedProducts = []; @endphp
-                            @foreach ($categories as $category)
-                                <!-- Category Dropdown -->
-                                <li>
-                                    <a href="{{ route('products.filter', ['category' => $category->id]) }}" class="category">
-                                        {{ $category->name }}
-                                    </a>
-                                    <ul>
-                                        @foreach ($category->products as $product)
-                                            @if (!in_array($product->name, $displayedProducts))
-                                                <li>
-                                                    <a href="{{ route('product-details', ['id' => $product->id]) }}" class="product">
-                                                        {{ $product->name }}
-                                                    </a>
-                                                </li>
-                                                @php $displayedProducts[] = $product->name; @endphp
-                                            @endif
-                                        @endforeach
-                                    </ul>
-                                </li>
-                            @endforeach
-                        </ul>
+                        <div class="dropdown-content">
+                            <div class="dropdown-arrow" style="width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid rgb(255,251,243); ;"></div>
+                            <ul class="dropdown">
+                                @php $displayedProducts = []; @endphp
+                                @foreach ($categories as $category)
+                                    <!-- Category Dropdown -->
+                                    <li>
+                                        <a href="{{ route('products.filter', ['category' => $category->id]) }}" class="category">
+                                            {{ $category->name }}
+                                        </a>
+                                        <ul>
+                                            @foreach ($category->products as $product)
+                                                @if (!in_array($product->name, $displayedProducts))
+                                                    <li>
+                                                        <a href="{{ route('product-details', ['id' => $product->id]) }}" class="product">
+                                                            {{ $product->name }}
+                                                        </a>
+                                                    </li>
+                                                    @php $displayedProducts[] = $product->name; @endphp
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                     <a class="middle" href="{{ route('about-us') }}">About Us</a>
                     <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
@@ -72,9 +75,31 @@
                             <script src="{{ asset('js/dark-mode.js') }}"></script>
                         <!-- If user is user -->
                         @elseif(Auth::user()->userType === 'user')
-                            <a class="account" href="{{ route('dashboard') }}">
-                                <i class='bx bx-user'></i>
-                            </a>
+                            <div id="account-nav"  style="display: contents;">
+                                <a class="account" href="{{ route('dashboard') }}">
+                                    <i class='bx bx-user'></i>
+                                </a>
+                                <div class="account-dropdown-content">
+                                    <div class="account-dropdown-arrow" style="width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid white ;"></div>
+                                    <ul class="account-dropdown">
+                                    <div class="button-row" style="display:inline-flex;">
+                                        <a href="{{ route('dashboard') }}?tab=orders">
+                                            <i class='bx bx-shopping-bag'></i>My Orders
+                                        </a>
+                                    </div>
+                                    <div class="button-row" style="display:inline-flex;">
+                                        <a href="{{ route('dashboard') }}?tab=account">
+                                            <i class='bx bx-cog'></i>My Account
+                                        </a>
+                                    </div>
+                                    <div class="button-row" style="display:inline-flex;">
+                                        <a href="{{ route('dashboard') }}?tab=member">
+                                            <i class='bx bx-reset'></i>My Membership
+                                        </a>
+                                    </div>
+                                    </ul>
+                                </div>
+                            </div>
                             <a class="basket" href="{{ route('basket') }}">
                                 <i class='bx bx-basket'></i>
                                 @if($basketCount > 0)
@@ -179,7 +204,7 @@
                                 <h4>Profile Information</h4>
                                 <section>
                                     <p>
-                                        {{ __("Update your account's profile information and email address.") }}
+                                        {{ __("Update your account's profile information and email address") }}
                                     </p>
 
                                     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
@@ -231,6 +256,10 @@
                             <!-- Edit password information -->
                             <div class="password-info">
                                 <h4>Update Password</h4>
+                                <p>
+                                    {{ __("Update your account's password") }}
+                                </p>
+
                                 <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
                                     @csrf
                                     @method('put')

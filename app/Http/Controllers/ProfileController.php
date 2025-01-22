@@ -139,7 +139,7 @@ class ProfileController extends Controller
 
     
         // Paginate categories
-        $categories = Category::paginate(5);
+        $allcategories = Category::paginate(5);
     
         // Get the authenticated admin
         $admin = Auth::user();
@@ -148,7 +148,7 @@ class ProfileController extends Controller
         return view('admin.dashboard', [
             'tab' => $tab,  
             'users' => $users,
-            'categories' => $categories,
+            'allcategories' => $allcategories,
             'admin' => $admin,
         ]);
     }

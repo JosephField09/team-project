@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", function() {
         options.forEach(option => {
             option.style.backgroundColor = 'rgba(254, 204, 66, 0.3)'; 
         });
-        // Don't diplay any titles
+        // Don't display any titles
         titles.forEach(title => {
             title.style.display = 'none'; 
         });
-        // Don't diplay any content
+        // Don't display any content
         contents.forEach(content => {
             content.style.display = 'none'; 
         });
@@ -28,13 +28,18 @@ document.addEventListener("DOMContentLoaded", function() {
         const activeTitle = document.querySelector(`#${id}Title`);
         const activeContent = document.querySelector(`#${id}Content`);
 
-        activeOption.style.backgroundColor = '#fecc42'; 
-        activeTitle.style.display = 'block'; 
-        activeContent.style.display = 'grid'; 
+        if (activeOption) activeOption.style.backgroundColor = '#fecc42'; 
+        if (activeTitle) activeTitle.style.display = 'block'; 
+        if (activeContent) activeContent.style.display = 'grid'; 
     }
 
-    // Set the default active state to "orders"
-    setChosenNav('orders');
+    // Check for a query parameter to set the initial state
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get('tab');
+
+    // If a query parameter exists, use it; otherwise, default to "orders"
+    const defaultTab = tab || 'orders';
+    setChosenNav(defaultTab);
 
     // Add click event listeners to each option
     options.forEach(option => {
@@ -70,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const activeSection = document.querySelector(`#${id}Content`);
 
         if (activeChoice && activeSection) {
-            activeChoice.style.color = '#fecc42';
+            activeChoice.style.backgroundColor = '#fecc42';
             activeChoice.style.transform = 'translateY(0)'; 
             activeSection.style.display = 'grid';
         } else {

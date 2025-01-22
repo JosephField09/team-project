@@ -111,10 +111,10 @@ Route::get('admin.dashboard', function () {
     $users = \App\Models\User::where('userType', '!=', 'admin')->paginate(10)->appends(['tab' => 'allUsers']);
 
     // Paginate categories with 5 categories per page 
-    $categories = Category::paginate(5)->appends(['tab' => 'allProducts']);
+    $allcategories = Category::paginate(5)->appends(['tab' => 'allProducts']);
 
     
-    return response(view('admin.dashboard', compact('admin', 'users', 'categories')))
+    return response(view('admin.dashboard', compact('admin', 'users', 'allcategories')))
         ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
         ->header('Pragma', 'no-cache')
         ->header('Expires', '0');
