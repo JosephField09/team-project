@@ -131,7 +131,7 @@
                 <!-- All product information -->
                 <div class="product-info">
                     <h1>{{$data->name}}</h1>
-                    <p class="price">{{$data->price}}</p>
+                    <p class="price">£{{$data->price}}</p>
                     <p class="description">{{$data->description}} 
                     </p>
                     <div class="rating-availability">
