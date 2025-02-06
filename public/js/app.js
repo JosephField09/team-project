@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const activeTitle = document.querySelector(`#${id}Title`);
         const activeContent = document.querySelector(`#${id}Content`);
 
-        if (activeOption) activeOption.style.backgroundColor = '#fecc42'; 
+        if (activeOption) activeOption.style.color = '#fecc42'; 
         if (activeTitle) activeTitle.style.display = 'block'; 
         if (activeContent) activeContent.style.display = 'grid'; 
     }
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const activeSection = document.querySelector(`#${id}Content`);
 
         if (activeChoice && activeSection) {
-            activeChoice.style.backgroundColor = '#fecc42';
+            activeChoice.style.color = '#fecc42';
             activeChoice.style.transform = 'translateY(0)'; 
             activeSection.style.display = 'grid';
         } else {
