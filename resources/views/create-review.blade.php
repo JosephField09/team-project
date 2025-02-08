@@ -4,14 +4,15 @@
     <!-- Meta tags, title, CSS and JS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details</title>
+    <title>Home</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/carousel.js') }}"></script>
 </head>
 
-<body class="product-details-page">
+<body>
     <main>
         <!-- Header Section -->
         <section id="header">
@@ -21,10 +22,10 @@
                     <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                </div>
                <!-- Middle navbar section -->
-               <div class="navbar-middle">
-                    <a class="middle" href="{{ route('home') }}">Home</a>
+                <div class="navbar-middle">
+                    <a class="middle option-selected" href="{{ route('home') }}">Home</a>
                     <div id="product-nav" class="middle" style="display: contents;">
-                        <a href="{{ route('products') }}">Products</a>
+                        <a class="egg" href="{{ route('products') }}">Products</a>
                         <div class="dropdown-content">
                             <div class="dropdown-arrow" style="width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid rgb(255,251,243); ;"></div>
                             <ul class="dropdown">
@@ -122,123 +123,39 @@
             </nav>
         </section>
 
-        <!-- Product Details Section -->
-        <section class="product-details">
-            <div class="product-container">
-                <div class="product-image">
-                    <img src="{{ asset('assets/' . $data->image) }}" alt="Product Image">
-                </div>
-                <!-- All product information -->
-                <div class="product-info">
-                    <h1>{{$data->name}}</h1>
-                    <p class="price">£{{$data->price}}</p>
-                    <p class="description">{{$data->description}} 
-                    </p>
-                    <div class="rating-availability">
-                        @if($data->reviews->count() > 0)
-                            @php $average = round($data->averageRating()); @endphp
-                            <p>
-                            @for ($i = 1; $i <= 5; $i++)
-                                @if ($i <= $average)
-                                    ⭐
-                                @endif
-                            @endfor
-                            </p>
-                        @else
-                            <p>No reviews yet.</p>
-                        @endif
-                        <p class="availability 
-                            @if($data->stock == 0) availability-none 
-                            @elseif($data->stock < 10) availability-low 
-                            @else availability-full 
-                            @endif">
-                            @if($data->stock == 0)
-                                Out of Stock
-                            @elseif($data->stock < 10)
-                                Low in Stock
-                            @else
-                                In Stock
-                            @endif
-                        </p>
-                    </div>
-                    <form action="{{ route('basket.add', $data->id) }}" method="POST">
+        <!-- Create a Review Section -->
+        <section>
+            @auth
+                <div class="create-review">
+                    <form class="review-form" action="{{ route('reviews.add', $id) }}" method="POST">
                         @csrf
-                        <!-- Quantity button -->
-                        <div class="size-options">
-                            <p>Size:</p>
-                            <div class="size-row">
-                                <div class="size-options">
-                                    @foreach($relatedProducts as $relatedProduct)
-                                        <a href="{{ route('product-details', $relatedProduct->id) }}" 
-                                        class="size @if($relatedProduct->size == $data->size) selected @endif">
-                                            {{ ucfirst($relatedProduct->size) }}
-                                        </a>
-                                    @endforeach
-                                </div>
-                            </div>
+                        <h3>Write A Review for {{\App\Models\Product::find($id)->name}}</h3>
+                        <div class=stars>
+                            <select name="rating" id="rating">
+                                <option value="5">⭐⭐⭐⭐⭐</option>
+                                <option value="4">⭐⭐⭐⭐</option>
+                                <option value="3">⭐⭐⭐</option>
+                                <option value="2">⭐⭐</option>
+                                <option value="1">⭐</option>
+                            </select>
                         </div>
-                        <!-- Quantity button -->
-                        <div class="quantity">
-                            <button type="button" class="quantity-btn" id="decrease">−</button>
-                            <input type="number" id="quantity" name="quantity" value="1" min="1" max="{{ $data->stock }}" />
-                            <button type="button" class="quantity-btn" id="increase">+</button>
+                        <div class="review-title">
+                            <input type="text" class="input-field" name="title" id="title" placeholder="Enter title" required>
                         </div>
-                        <button 
-                            style="margin-top: 30px;"
-                            class="add-to-basket" 
-                            @if($data->stock == 0) disabled @endif>
-                            Add to Basket
-                        </button>
+                        <div class="review-message">
+                            <textarea name="message" class="input-field" id="message" rows="7" placeholder="Enter message" required></textarea>
+                        </div>
+                        <button type="submit">Publish Review +</button>
                     </form>
                 </div>
-            </div>
+            @else
+                <div class="cant-post-review">
+                    <h3>You must be logged in to create a review.</h3>
+                    <a class="login" href="{{ route('login') }}">Login</a>
+                </div>
+            @endauth
         </section>
 
-        <!-- Product Reviews Section -->
-        <section class="product-reviews">
-            <a href="{{ route('reviews.create', $data->id) }}">Add a Review</a>
-
-            @foreach($data->reviews as $review)
-                <div class="review-body">
-                    <h3 class="review-title">{{ $review->title }}</h3>
-                    <h4 class="review-rating">{{ str_repeat('⭐', $review->rating)}}</h4>
-                    <p class="review-message">{{ $review->message}}</p>
-                    <p class="review-by">{{ $review->user->firstName }} {{ $review->user->lastName }}, {{$review->created_at->format('d M Y')}}</p>
-                </div>
-            @endforeach
-        </section>
-
-        <!-- Recommended Products Section -->
-        <section class="recommended-products">
-            <h2>Recommended Products</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <img src="{{ asset('assets/cappuccino.png') }}" alt="Cappuccino">
-                    <h3>Cappuccino</h3>
-                    <p class="price">Price: £12</p>
-                    <p class="description">Bold and foamy with the perfect balance of espresso and milk.</p>
-                    <p class="rating">⭐⭐⭐⭐⭐ (124)</p>
-                    <button class="view-button">View Product</button>
-                </div>
-                <div class="product-card">
-                    <img src="{{ asset('assets/americano.png') }}" alt="Americano">
-                    <h3>Americano</h3>
-                    <p class="price">Price: £12</p>
-                    <p class="description">Classic black coffee brewed to perfection.</p>
-                    <p class="rating">⭐⭐⭐⭐⭐ (124)</p>
-                    <button class="view-button">View Product</button>
-                </div>
-                <div class="product-card">
-                    <img src="{{ asset('assets/hotchocolate.png') }}" alt="Hot Chocolate">
-                    <h3>Hot Chocolate</h3>
-                    <p class="price">Price: £12</p>
-                    <p class="description">A luxurious blend of rich cocoa, sugar, and creamy milk. Perfect for cold days or as a comforting treat any time.</p>
-                    <p class="rating">⭐⭐⭐⭐⭐ (124)</p>
-                    <button class="view-button">View Product</button>
-                </div>
-            </div>
-        </section>
-        
         <!-- Footer Section -->
         <section id="footer">
             <footer class="top">
