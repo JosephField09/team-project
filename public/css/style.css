@@ -2066,9 +2066,9 @@ body.dark-mode .product-details{
 /* Styling for the product details product image */
 .product-details-page .product-image img {
   width: 100%;
-  height: 100%;
   border-radius: 8px;
-  max-height: 90%;
+  max-width: 500px;
+  max-height: 500px;
   align-self: center;
   justify-self: center;
 }
@@ -2233,6 +2233,55 @@ body.dark-mode .product-info{
   background-color: rgba(254, 204, 66, 0.3);
   color: #666;
   cursor: not-allowed;
+}
+
+/* Styling for the products review section */
+.product-reviews{
+  padding: 40px 14.25%;
+  background-color:var(--dark-bg);
+  a{
+    padding-bottom: 50px;
+    color: var(--primary-colour);
+    background: var(--secondary-colour);
+    font-weight: bold;
+    padding: 5px 22px;
+    cursor: pointer;
+    max-width: 100%;
+    height: 50px;
+    border: none;
+    font-size: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+}
+
+/* Styling for the products review body */
+.review-body{
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px 0#6f6f6f;
+  display: flex;
+  flex-direction: column;
+  padding: 1%;
+  width: 60%;
+  position: relative;
+  margin-bottom: 5px;
+  margin-top: 40px;
+  word-wrap: break-word;  
+  overflow-wrap: break-word;  
+  white-space: normal;
+  h3, h4, p{
+    margin-bottom: 5px;
+  }
+  .review-rating{
+    text-shadow: 1px 1px #6f6f6f;
+  }
+  .review-message{
+    font-size: 18px;
+  }
+  .review-by{
+    color: var(--text-colour);
+  }
 }
 
 /* Styling for recommended products section */
@@ -2760,4 +2809,56 @@ body.dark-mode .checkout-form-section{
   border-radius: 4px;
   background: var(--secondary-colour);
   border: none;
+}
+
+/* Styling for the create a review main page */
+.create-review{
+  background-color: var(--light-bg);
+  display: flex;
+  flex-direction: column; 
+  max-width: 100%;
+  width: 100%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  height: 100%;
+  min-height: 500px;
+}
+
+/* Styling for the create a review form */
+.review-form{
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px 0#6f6f6f ;
+  padding: 5%;
+  width: 1000px;
+  align-self: center;
+  display: flex ;
+  flex-direction: column;
+  button{
+    color: var(--primary-colour);
+    background: var(--secondary-colour);
+    font-weight: bold;
+    padding: 5px 22px;
+    cursor: pointer;
+    max-width: 100%;
+    height: 30px;
+    border: none;
+    font-size: 15px;
+    align-self: center;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  h3{
+    padding-bottom: 15px;
+    font-size: xx-large;
+    
+  }
+  .stars select{
+    margin-left: 10px;
+    padding: 5px;
+    height: auto;
+    width: 200px;
+    font-size: larger;
+    border-radius: 5px;
+  }
 }
