@@ -272,7 +272,7 @@ nav#main {
 .home-cta-text p{
   color: var(--text-colour);
   font-size: 15px;
-  margin: 5% 0 5% 0;
+  margin: 5% 16% 5% 0;
 }
 
 .home-cta-buttons{
@@ -871,10 +871,7 @@ footer.bottom {
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding-left: 14.25%;
-  padding-right: 14.25%;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding: 10% 14.25%;
   background-color: var(--light-bg);
 }
 
@@ -887,19 +884,15 @@ body.dark-mode #ImageBlocks{
 /* Styling for the images on about us */
 #ImageBlocks img{
   border-radius: 15px;
-  margin: 3%;
-}
-
-.bigimage{
-  max-height: 400px;
-  width: 35%;
-  height: 35%;
+  height: 100%;
+  width: 90%;
 }
 
 /* Styling for text on about us */
 .aboutustext{
-  h1{
-    font-size: 40px;
+  h2{
+    font-size: 35px;
+    color: var(--title-colour);
   }
   display: flex;
   flex-direction: column
@@ -907,30 +900,35 @@ body.dark-mode #ImageBlocks{
 
 /* Styling for our story on about us */
 .ourstory{
-  max-width: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
   p{
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 15px 0 ;
     max-width: 500px;
     width: 100% auto;
+    color: var(--text-colour);
   }
   a{
-    margin: 15px;
-    font-size: 14px;
+    margin: 30px 0;
+    font-size: 15px;
     color: var(--primary-colour);
     background: var(--secondary-colour);
     text-decoration: none;
-    padding: 5px 22px;
+    padding: 13px 60px;
     cursor: pointer;
-    width: 150px;
-    height: 30px;
     border: none;
     border-radius: 5px;
     text-align: center;
+    width: fit-content;
+    font-weight: bold;
+    transition: scale 0.5s;
+  }
+  a:hover{
+    scale: 0.9;
   }
   h3{
-    padding-top: 25px;
-    padding-bottom: 25px;
+    margin-bottom: 25px;
     color: gray;
   }
 }
@@ -948,12 +946,15 @@ body.dark-mode .ourstory{
   flex-direction: row;
   justify-items: center;
   align-items: center;
-  margin-top: 10px;
-  padding-bottom: 0;
+  margin-top: 20px;
   height: 30px;
   max-width: 300px;
   width: auto;
   white-space: nowrap;
+  img{
+    width: 20%;
+    margin-right: 10px
+  }
 }
 
 
@@ -987,6 +988,7 @@ body.dark-mode .ourstory{
     font-size: 18px;
     border-radius: 5px;
     margin-top: 100px;
+  }
   }
   h1{
     padding-top: 50px;

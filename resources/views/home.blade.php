@@ -148,25 +148,28 @@
         <section id="ImageBlocks">
             <!-- Our story Section -->
             <div class="ourstory">
-                <img src= "{{ asset('assets/coffee_drying.jpeg') }}" alt="Coffee Beans Drying" class="bigimage" style="float: left;"></img>
+                <div class="ourstory-img">
+                    <img src= "{{ asset('assets/our_story_home.png') }}" alt="Coffee Beans Drying" class="bigimage"></img>
+                </div>
                 <div class="aboutustext">
                     <h3>About Us</h3>
-                    <h1 class="header">We Want to Make Your Mornings Easier</h1>
-                    <p>Our team is composed of passionate individuals who bring diverse skills and experiences to the table, allowing us to exceed in energising you for the day ahead. We believe in sustainability and ethical practices, ensuring that our operations not only benefit our customers but also contribute positively to the community and the environment.</p>
+                    <h2 class="header">Our Story, Your Coffee</h2>
+                    <h2>Experience</h2>
+                    <p>At E-spresso, we believe in more than just coffee - we create moments. From our handpicked beans to the perfect brew, each cup is crafted with love and care. Whether you're here for a quick pick-me-up or to enjoy a relaxing moment, we're dedicated to making every sip special. Join us in celebrating the art of coffee, brewed to perfection just for you.</p>
                     <div class="promise">
-                        <img src= "{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
+                        <img style="width: 10%;" src= "{{ asset('assets/check-mark.png') }}"></img>
                         <h4>Single-origin coffee beans</h4>
                     </div>
                     <div class="promise">
-                        <img src= "{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
+                        <img src= "{{ asset('assets/check-mark.png') }}"></img>
                         <h4>Expertly roasted for optimal flavour</h4>
                     </div>
                     <div class="promise">
-                        <img src= "{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
+                        <img src= "{{ asset('assets/check-mark.png') }}"></img>
                         <h4>Wide range of blends for every taste</h4>
                     </div>
                     <div class="promise">
-                        <img src= "{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
+                        <img src= "{{ asset('assets/check-mark.png') }}"></img>
                         <h4>High-quality, eco-friendly packaging</h4>
                     </div>
                     <a href="{{route('about-us')}}"><h4>Read More</h4></a>

@@ -136,13 +136,11 @@
                 </div>
                 <!-- Admin tab buttons -->
                 <div class="admin-buttons">
-                    <div class="admin-buttons">
                     <a href="{{ route('admin.dashboard', ['tab' => 'home']) }}" id="home" class="choice">Home</a>
                     <a href="{{ route('admin.dashboard', ['tab' => 'allOrders']) }}" id="allOrders" class="choice">Manage Orders</a>
                     <a href="{{ route('admin.dashboard', ['tab' => 'allUsers']) }}" id="allUsers" class="choice">Manage Users</a>
                     <a href="{{ route('admin.dashboard', ['tab' => 'allProducts']) }}" id="allProducts" class="choice">Categories and Products</a>
                     <a href="{{ route('admin.dashboard', ['tab' => 'settings']) }}" id="settings" class="choice">Settings</a>
-                </div>
                 </div>
 
                 <div class="admin-logout">
