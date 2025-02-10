@@ -81,21 +81,29 @@
                                 <div class="account-dropdown-content">
                                     <div class="account-dropdown-arrow" style="width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid white ;"></div>
                                     <ul class="account-dropdown">
-                                    <div class="button-row" style="display:inline-flex;">
-                                        <a href="{{ route('dashboard') }}?tab=orders">
-                                            <i class='bx bx-shopping-bag'></i>My Orders
-                                        </a>
-                                    </div>
-                                    <div class="button-row" style="display:inline-flex;">
-                                        <a href="{{ route('dashboard') }}?tab=account">
-                                            <i class='bx bx-cog'></i>My Account
-                                        </a>
-                                    </div>
-                                    <div class="button-row" style="display:inline-flex;">
-                                        <a href="{{ route('dashboard') }}?tab=member">
-                                            <i class='bx bx-reset'></i>My Membership
-                                        </a>
-                                    </div>
+                                        <div class="button-row" style="display:inline-flex; border-bottom:1px solid gray; margin-bottom: 0px;">
+                                            <i class='bx bx-user'><p style="font-size: 13px; display:inline-flex; transform: translateY(-5px);">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }}</p> </i>
+                                        </div>
+                                        <div class="button-row" style="display:inline-flex;">
+                                            <a href="{{ route('dashboard') }}?tab=orders">
+                                                <i class='bx bx-shopping-bag'></i>My Orders
+                                            </a>
+                                        </div>
+                                        <div class="button-row" style="display:inline-flex;">
+                                            <a href="{{ route('dashboard') }}?tab=account">
+                                                <i class='bx bx-cog'></i>My Account
+                                            </a>
+                                        </div>
+                                        <div class="button-row" style="display:inline-flex;">
+                                            <a href="{{ route('dashboard') }}?tab=member">
+                                                <i class='bx bx-reset'></i>My Membership
+                                            </a>
+                                        </div>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <button type="submit" style="cursor:pointer; background:#fecc42;border:none;font-size: 10px;padding: 5px 10px;border-radius: 5px;width: 50%;display: flow;justify-self: center;margin-top: 5px;">Logout
+                                                </button>
+                                        </form>
                                     </ul>
                                 </div>
                             </div>

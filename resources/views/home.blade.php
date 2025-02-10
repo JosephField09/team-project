@@ -82,21 +82,29 @@
                                 <div class="account-dropdown-content">
                                     <div class="account-dropdown-arrow" style="width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid white ;"></div>
                                     <ul class="account-dropdown">
-                                    <div class="button-row" style="display:inline-flex;">
-                                        <a href="{{ route('dashboard') }}?tab=orders">
-                                            <i class='bx bx-shopping-bag'></i>My Orders
-                                        </a>
-                                    </div>
-                                    <div class="button-row" style="display:inline-flex;">
-                                        <a href="{{ route('dashboard') }}?tab=account">
-                                            <i class='bx bx-cog'></i>My Account
-                                        </a>
-                                    </div>
-                                    <div class="button-row" style="display:inline-flex;">
-                                        <a href="{{ route('dashboard') }}?tab=member">
-                                            <i class='bx bx-reset'></i>My Membership
-                                        </a>
-                                    </div>
+                                        <div class="button-row" style="display:inline-flex; border-bottom:1px solid gray; margin-bottom: 0px;">
+                                            <i class='bx bx-user'><p style="font-size: 13px; display:inline-flex; transform: translateY(-5px);">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }}</p> </i>
+                                        </div>
+                                        <div class="button-row" style="display:inline-flex;">
+                                            <a href="{{ route('dashboard') }}?tab=orders">
+                                                <i class='bx bx-shopping-bag'></i>My Orders
+                                            </a>
+                                        </div>
+                                        <div class="button-row" style="display:inline-flex;">
+                                            <a href="{{ route('dashboard') }}?tab=account">
+                                                <i class='bx bx-cog'></i>My Account
+                                            </a>
+                                        </div>
+                                        <div class="button-row" style="display:inline-flex;">
+                                            <a href="{{ route('dashboard') }}?tab=member">
+                                                <i class='bx bx-reset'></i>My Membership
+                                            </a>
+                                        </div>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <button type="submit" style="cursor:pointer; background:#fecc42;border:none;font-size: 10px;padding: 5px 10px;border-radius: 5px;width: 50%;display: flow;justify-self: center;margin-top: 5px;">Logout
+                                                </button>
+                                        </form>
                                     </ul>
                                 </div>
                             </div>
@@ -128,8 +136,7 @@
             <div class="home-cta-container">
                 <div class="home-cta-left">
                     <div class="home-cta-text">
-                        <h1 style="font-size: 2.8em; margin: 0; font-family: Modern">Start Your Day with the</h1>
-                        <h1 style="font-size: 2.8em; margin: 0; font-family: Modern">Best Coffee Experience</h1>
+                        <h1 style="font-size: 2.8em; margin: 0; font-family: Modern">Start Your Day with the Best Coffee Experience</h1>
                         <p>Indulge in the finest brews, crafted to ignite your senses and fuel your day. Your new, improved coffee journey begins here.</p>
                         <div class="home-cta-buttons">
                             <a class="order-now" href= "{{route('products')}}">Order Now</a>
@@ -175,74 +182,115 @@
                     <a href="{{route('about-us')}}"><h4>Read More</h4></a>
                 </div>
             </div>
+            <div style="width: 100%;height: 100%;position: absolute;" class="floating-beans">
+                <img style="justify-self: right;display: flex;transform: translateY(34vh);width: 50vw;height: 60vh; opacity:0.7;" src="{{ asset('assets/floating-beans.png') }}">
+            </div>
         </section>
 
         <!-- Services Section -->
-        <section id="services" style="padding: 40px 20px; text-align: center;">
-            <br><br>
-            <h1 style="font-size: 2.5em; margin: 0;">Our Delicious Services</h1>
-            <p style="font-size: 1em; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto; color: gray;">
+        <section id="services" style="text-align: center;">
+            <h1>Our Delicious Services</h1>
+            <p style="font-size: 1em; margin: 10px auto 0; width:56%; color: var(--text-colour);">
                 <strong>We offer a variety of top range products, here are some of our most popular categories for you to browse.</strong>
             </p>
-            <br><br><br>
             <div class="services-section">
-                <div class="service-box">
-                    <img src="{{ asset('assets/coffee_cup_symbol.jpeg') }}" alt="Hot Coffee" class="service-image">
-                    <h2>Hot Coffee</h2>
+                <div class="service-card">
+                    <div class="service-icon-circle">
+                        <img src="{{ asset('assets/donut-icon.svg') }}">
+                    </div>
+                    <h3>Sweet Treats</h3>
                     <br>
                     <p>Enjoy our freshly brewed hot coffee made from the finest beans, perfect for your morning boost.</p>
                     <br><br>
-                    <a href="{{ route('products') }}" class="view-range">View Range</a>
+                    <a href="{{ route('products.filter', array_merge(request()->except('category'), ['category' => 5])) }}" class="view-range"> View Range</a>
                 </div>
-                <div class="service-box">
-                    <img src="{{ asset('assets/coffee_bean_symbol.png') }}" alt="Coffee Beans" class="service-image">
-                    <h2>Coffee Beans</h2>
+                <div class="service-card">
+                    <div class="service-icon-circle">
+                        <img style="width: 100%; height: 100%;" src="{{ asset('assets/bean-icon.svg') }}">
+                    </div>
+                    <h3>Different Beans</h3>
                     <br>
                     <p>Explore our selection of premium coffee beans sourced from around the world for the perfect brew.</p>
                     <br><br>
-                    <a href="{{ route('products') }}" class="view-range">View Range</a>
+                    <a href="{{ route('products.filter', array_merge(request()->except('category'), ['category' => 3])) }}" class="view-range"> View Range</a>
                 </div>
-                <div class="service-box">
-                    <img src="{{ asset('assets/coffee_pod_symbol.jpeg') }}" alt="Coffee Pods" class="service-image">
-                    <h2>Coffee Pods</h2>
+                <div class="service-card">
+                    <div class="service-icon-circle">
+                        <img src="{{ asset('assets/coffee-icon.svg') }}">
+                    </div>
+                    <h3>Hot Coffee</h3>
                     <br>
                     <p>Convenient and delicious, our coffee pods are designed for a quick and easy coffee experience.</p>
                     <br><br>
-                    <a href="{{ route('products') }}" class="view-range">View Range</a>
+                    <a href="{{ route('products.filter', array_merge(request()->except('category'), ['category' => 1])) }}" class="view-range"> View Range</a>
                 </div>
-            </div><br><br>
+            </div>
+            <div style="position: absolute;" class="floating-beans">
+                <img style="justify-self: left;display: flex;  transform: translateX(-17vw) translateY(-16vh) rotate(-25deg); width: 38vw; height: 70vh; opacity: 1;" src="{{ asset('assets/floating-beans-flipped.png') }}">
+            </div>
         </section>
 
         <!-- Best Sellers Section -->
-        <section id="best-sellers" style="padding: 40px 20px; text-align: center;">
-            <br><br>
-            <h1 style="font-size: 2.5em; margin: 0;">Best Sellers</h1>
+        <section id="best-sellers">
+            <h1>Best Sellers</h1>
             <p style="margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
                 Discover the most popular coffee that our customers just love. These highest sellers are crafted to perfection and are sure to delight your taste buds.
-            </p><br><br><br>
-            <div class="product-carousel" style="margin-top: 20px; display: flex; align-items: center; justify-content: center;">
-                <button class="arrow left-arrow" style="background-color: transparent; border: none; cursor: pointer; font-size: 2em;">&#10094;</button>
-                
-                <div class="products-container">
-                    @foreach ($bestSellers as $product)
-                        <div class="product-box">
-                            <img src="{{ asset('assets/' . $product->image) }}" alt="{{ $product->name }}">
-                            <h3>{{ $product->name }}</h3>
-                            <p class="product-price">{{ $product->price }}</p>
-                            <p class="product-description">{{ $product->description }}</p>
-                            <p class="star-rating">{{ str_repeat('★', $product->rating) }}{{ str_repeat('☆', 5 - $product->rating) }}</p>
-                            <br><a href="{{ route('products') }}" class="view-button" style="background-color: rgb(254, 204, 66); color: black; padding: 10px 15px; text-decoration: none; border-radius: 5px;">View {{ $product->name }}</a>
+            </p>
+            <div class="products-container">
+                @php
+                    // Fetch the products by their IDs. 
+                    // Preferably, you do this in the controller and pass as $products.
+                    $products = \App\Models\Product::whereIn('id', [7, 29, 44])->get();
+                @endphp
+
+                @foreach($products as $product)
+                    <div class="product-card" style="background-color:white;">
+                        <img src="{{ asset('assets/' . $product->image) }}" alt="Product Image">
+                        <div class="product-row" style="display: inline-flex;">
+                            <h3 class="product-title">{{ $product->name }}</h3>
+                            <p class="product-price">from <span>£{{ number_format($product->price, 2) }}</span></p>
                         </div>
-                    @endforeach
-                </div>
-                
-                <button class="arrow right-arrow" style="background-color: transparent; border: none; cursor: pointer; font-size: 2em;">&#10095;</button>
+                        <p class="product-description">{{ $product->description }}</p>
+                        <a href="{{ route('product-details', $product->id) }}" class="view-button">View</a>
+                    </div>
+                @endforeach
             </div>
-            <br>
-            <div style="margin-top: 20px;">
-                <a href="{{ route('products') }}" class="best-sellers-button">View All Products</a>
+            <a href="{{ route('products') }}" class="best-sellers-button">View All Products</a>
+        </section>
+
+        <!-- Coffee Fix Section -->
+        <section id="coffee-fix">
+            <div id="coffee-fix-container">
+                <div id="coffee-text">
+                    <h1>Need a Coffee Fix?</h1>
+                    <p>Become a member today and enjoy exclusive access to freshly roasted coffee beans delivered right to your door.</p>
+                    @if(Auth::check())
+                        {{-- If the logged-in user is an admin --}}
+                        @if(Auth::user()->userType === 'admin')
+                            <a id="become-member-button" href="{{ route('admin.dashboard') }}">
+                                Go to admin dashboard
+                            </a>
+                        @else
+                            {{-- For any other authenticated user type (e.g., a regular user) --}}
+                            <a id="become-member-button" href="{{ route('dashboard') }}?tab=member">
+                                Subscribe
+                            </a>
+                        @endif
+                    @else
+                        {{-- If the user is not logged in at all --}}
+                        <a id="become-member-button" href="{{ route('register') }}">
+                            Become a Member
+                        </a>
+                    @endif
+                </div>
+                <div id="bean-bags">
+                    <img class="bag bag1" src="{{ asset('assets/single_bag_ethiopian.png') }}">
+                    <img class="bag bag2" src="{{ asset('assets/single_bag_brazilian.png') }}">
+                    <img class="bag bag3" src="{{ asset('assets/single_bag_kenyan.png') }}">
+                </div>
             </div>
         </section>
+        <div style="height:10vh; background-color:var(--light-bg)"></div>
 
         <!-- Footer Section -->
         <section id="footer">

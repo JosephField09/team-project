@@ -80,21 +80,29 @@
                                 <div class="account-dropdown-content">
                                     <div class="account-dropdown-arrow" style="width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid white ;"></div>
                                     <ul class="account-dropdown">
-                                    <div class="button-row" style="display:inline-flex;">
-                                        <a href="{{ route('dashboard') }}?tab=orders">
-                                            <i class='bx bx-shopping-bag'></i>My Orders
-                                        </a>
-                                    </div>
-                                    <div class="button-row" style="display:inline-flex;">
-                                        <a href="{{ route('dashboard') }}?tab=account">
-                                            <i class='bx bx-cog'></i>My Account
-                                        </a>
-                                    </div>
-                                    <div class="button-row" style="display:inline-flex;">
-                                        <a href="{{ route('dashboard') }}?tab=member">
-                                            <i class='bx bx-reset'></i>My Membership
-                                        </a>
-                                    </div>
+                                        <div class="button-row" style="display:inline-flex; border-bottom:1px solid gray; margin-bottom: 0px;">
+                                            <i class='bx bx-user'><p style="font-size: 13px; display:inline-flex; transform: translateY(-5px);">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }}</p> </i>
+                                        </div>
+                                        <div class="button-row" style="display:inline-flex;">
+                                            <a href="{{ route('dashboard') }}?tab=orders">
+                                                <i class='bx bx-shopping-bag'></i>My Orders
+                                            </a>
+                                        </div>
+                                        <div class="button-row" style="display:inline-flex;">
+                                            <a href="{{ route('dashboard') }}?tab=account">
+                                                <i class='bx bx-cog'></i>My Account
+                                            </a>
+                                        </div>
+                                        <div class="button-row" style="display:inline-flex;">
+                                            <a href="{{ route('dashboard') }}?tab=member">
+                                                <i class='bx bx-reset'></i>My Membership
+                                            </a>
+                                        </div>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <button type="submit" style="cursor:pointer; background:#fecc42;border:none;font-size: 10px;padding: 5px 10px;border-radius: 5px;width: 50%;display: flow;justify-self: center;margin-top: 5px;">Logout
+                                                </button>
+                                        </form>
                                     </ul>
                                 </div>
                             </div>
@@ -135,29 +143,30 @@
                         dedicated to making every sip special. Join us in celebrating the art of coffee, brewed to perfection just for you.
                     </p>
                     <div class="promise">
-                        <img src="{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
+                        <img src="{{ asset('assets/check-mark.png') }}" style="width: 10%;"></img>
                         <h4>Single-origin coffee beans</h4>
                     </div>
                     <div class="promise">
-                        <img src="{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
+                        <img src="{{ asset('assets/check-mark.png') }}" ></img>
                         <h4>Expertly roasted for optimal flavor</h4>
                     </div>
                     <div class="promise">
-                        <img src="{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
+                        <img src="{{ asset('assets/check-mark.png') }}"></img>
                         <h4>Wide range of blends for every taste</h4>
                     </div>
                     <div class="promise">
-                        <img src="{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
+                        <img src="{{ asset('assets/check-mark.png') }}"></img>
                         <h4>High-quality, eco-friendly packaging</h4>
                     </div>
                     <a class="contact-us"href="#contact-us"><h4>Contact us</h4></a>
                 </div>
             </div>
+
             <!-- Our mission Section -->
             <div class="ourmission">
                 <div class="aboutustext">
                         <h1 class="header">Our Mission</h1>
-                        <p>At E-Spresso, our mission is to create a welcoming space where coffe lovers can gather,
+                        <p>At E-Spresso, our mission is to create a welcoming space where coffee lovers can gather,
                             connect, and enjoy the finest brews. We are committed to delivering exceptional experiences, one cup at a time.
                         </p>
                         <div class="missions">
@@ -172,6 +181,7 @@
                 </div>
                 <img src="{{ asset('assets/AdobeStock_814649831.jpeg') }}" style="float: right;" class="bigimage"></img>
             </div>
+            
             <!-- Our vision Section -->
             <div class="ourvision">
                 <img src="{{ asset('assets/AdobeStock_859686298.jpeg') }}" class="bigimage"></img>

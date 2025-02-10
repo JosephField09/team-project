@@ -256,6 +256,7 @@ nav#main {
   display: grid;
   grid-template-columns: 40% 60%;
   height: 100%;
+  padding: 5vh 0;
 }
 
 .home-cta-left{
@@ -265,7 +266,7 @@ nav#main {
 
 .home-cta-text{
   padding-left: 35%;
-  width: 800px;
+  width: 120%;
   position: relative;
 }
 
@@ -890,12 +891,13 @@ body.dark-mode #ImageBlocks{
 
 /* Styling for text on about us */
 .aboutustext{
+  display: flex;
+  flex-direction: column;
+  z-index:1;
   h2{
     font-size: 35px;
     color: var(--title-colour);
   }
-  display: flex;
-  flex-direction: column
 }
 
 /* Styling for our story on about us */
@@ -957,14 +959,12 @@ body.dark-mode .ourstory{
   }
 }
 
-
 /* Styling for our missions on about us */
 .ourmission{
-  max-width: 100%;
-  padding-top: 75px;
-  padding-left: 5%;
-  display: flex;
-  flex-direction: row;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding-top: 60px;
   p{
     padding-top: 15px;
     max-width: 525px;
@@ -990,10 +990,6 @@ body.dark-mode .ourstory{
     margin-top: 100px;
   }
   }
-  h1{
-    padding-top: 50px;
-  }
-}
 
 
 /* Styling for individual missions on about us */
@@ -1017,11 +1013,10 @@ body.dark-mode .ourstory{
 
 /* Styling for our vision section on about us */
 .ourvision{
-  max-width: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
   padding-top: 60px;
-  padding-left: 5%;
-  display: flex;
-  flex-direction: row;
   p{
     padding-top: 15px;
     max-width: 525px;
@@ -2578,43 +2573,14 @@ body.dark-mode .items-in-basket{
   }
 }
 
-/* Styling for the service ssection */
-.services-section { 
-  display: flex; 
-  justify-content: space-between; 
-  padding: 0 10%; 
-} 
-
-/* Styling for the service box */
-.service-box { 
-  background-color: white; 
-  border-radius: 8px; 
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); 
-  padding: 20px; 
-  width: 25%; 
-  min-height: 250px;
-  text-align: center; 
-  transition: transform 0.3s; 
-  margin: 0 10px; 
-}  
-
-/* Dark mode for service box */
-body.dark-mode .service-box{
-  background-color: var(--dm-light-bg);
-  color: white;
-  img{background-color: white;}
-  p, a{
-    color: white;
-  }
-}
-
-/* Styling for when hovering the service box */
-.service-box:hover {
-  transform: translateY(-5px); 
-}
-
 #services{
   background-color: var(--dark-bg);
+  padding: 5% 14.25% 10% 14.25%;
+  h1{
+    font-size: 2.5em;
+    margin: 0;
+    color: var(--title-colour);
+  }
 }
 
 /* Dark mode for services section */
@@ -2624,26 +2590,68 @@ body.dark-mode #services{
   strong{color: white;}
 }
 
-/* Styling for the service image */
-.service-image {
-  width: 100px; 
-  height: 100px; 
-  border-radius: 50%; 
-  margin-bottom: 15px; 
-}
+/* Styling for the service ssection */
+.services-section { 
+  display: flex; 
+  justify-content: space-between; 
+  margin-top: 5%;
+} 
 
-/* Styling for the service box text */
-.service-box p {
-  color: gray;
-}
+/* Styling for the service card */
+.service-card { 
+  background-color: white; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 20px 3px rgba(0, 0, 0, 0.2); 
+  padding: 20px; 
+  width: 25%; 
+  min-height: 250px;
+  text-align: center; 
+  transition: transform 0.3s; 
+  margin: 0 10px; 
+  .service-icon-circle{
+    width: 90px;
+    height: 90px;
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    background-color: var(--dark-bg);
+    margin: 10px;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: 0.3s;
+    align-content: center;
+    justify-content: center;
+  }
+  img {
+    filter: saturate(1);
+    width: 60%;
+    height: 60%;
+  }
+  h3{
+    color: var(--title-colour);
+  }
+  p{
+    justify-self: center;
+    color: var(--text-colour);
+    width: 85%;
+  }
+  .view-range{
+    display: inline-block; 
+    margin-top: 10px; 
+    color: var(--primary-colour); 
+    text-decoration: none; 
+    font-weight: bold; 
+    font-size: smaller;
+  }
+}  
 
-/* Styling for the view range */
-.view-range {
-  display: inline-block; 
-  margin-top: 10px; 
-  color: var(--primary-colour); 
-  text-decoration: none; 
-  font-weight: bold; 
+/* Dark mode for service card */
+body.dark-mode .service-card{
+  background-color: var(--dm-light-bg);
+  color: white;
+  img{background-color: white;}
+  p, a{
+    color: white;
+  }
 }
 
 /* Styling for hovering the view range */
@@ -2653,10 +2661,16 @@ body.dark-mode #services{
 
 /* Styling for the best sellers section */
 #best-sellers {
-  background-color: white;
-  padding: 40px 20px;
+  background-color: var(--light-bg);
+  padding: 5% 14.25%;
   text-align: center;
-  p{color: gray;}
+  h1{
+    font-size: 2.5em; 
+    color: var(--title-colour);
+  }
+  p{
+    color: gray;
+  }
 }
 
 /* Dark mode for best sellers section */
@@ -2668,40 +2682,12 @@ body.dark-mode #best-sellers{
   }
 }
 
-/* Styling for the best sellers button */
-.best-sellers-button {
-  background-color: rgb(254, 204, 66);
-  color: black;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 25px;
-  font-weight: bold;
-}
-
-/* Styling for the products carousel */
-.product-carousel {
-  position: relative;
-}
-
 /* Styling for the products container */
 .products-container {
-  display: flex;
-  overflow: hidden;
-  width: 80%; 
-  justify-content: flex-start; 
-  transition: transform 0.3s ease; 
-}
-
-/* Styling for the product box */
-.product-box {
-  background-color: var(--dark-bg);
-  border-radius: 10px;
-  padding: 20px;
-  width: 30%; 
-  margin: 0 10px;
-  text-align: center;
-  min-height: 350px; 
-  box-sizing: border-box; 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 5% 0;
 }
 
 /* Dark mode for product box */
@@ -2713,34 +2699,102 @@ body.dark-mode .product-box{
   }
 }
 
-/* Styling for the arrows */
-.arrow {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 2em;
-  z-index: 1; 
+/* Styling for the best sellers button */
+.best-sellers-button {
+  background-color: rgb(254, 204, 66);
+  color: black;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.5s;
 }
 
-/* Styling for the right arrow */
-.left-arrow {
+.best-sellers-button:hover{
+  background-color: hsl(44, 62%, 42%);
+}
+
+#coffee-fix{
+  background-color: var(--dark-bg);
+  padding: 5% 14.25%;
+  #coffee-fix-container{
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    height: 100%;
+  }
+  #coffee-text{
+    align-self: center;
+    h1{
+      color: var(--title-colour);
+      font-size: 2.5rem;
+    }
+    p{
+      color:var(--text-colour);
+      margin: 7% 0;
+      width: 80%;
+    }
+    #become-member-button{
+      font-size: 14px;
+      color: var(--primary-colour);
+      background: var(--secondary-colour);
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 4px;
+      scale: 1;
+      transition: background 0.5s;
+    }
+    #become-member-button:hover{
+      background:hsl(44, 62%, 42%);
+    }
+  }
+}
+
+/* Container styles */
+#bean-bags {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin-left: 50%;
+}
+
+/* Shared styles for all images */
+#bean-bags img {
   position: absolute;
-  left: 10px;
+  height: 100%;
+  object-fit: contain;
+  transition: 0.5s;
 }
 
-/* Styling for the right arrow */
-.right-arrow {
-  position: absolute;
-  right: 10px;
+/* Default or "resting" transforms */
+.bag1 {
+  z-index: 3;
+  transform: rotate(21deg);
 }
 
-/* Styling for the product box image */
-.product-box img {
-  width: 100%; 
-  height: 200px; 
-  object-fit: cover; 
-  border-radius: 5px; 
+.bag2 {
+  z-index: 2;
+  /* If you need a default transform, add it here */
 }
+
+.bag3 {
+  z-index: 1;
+  transform: rotate(-18deg);
+}
+
+/* When hover of #bean-bags move each bag */
+#bean-bags:hover .bag1 {
+  transform: translateX(-120px) rotate(-11deg);
+}
+
+#bean-bags:hover .bag2 {
+  transform: translateY(-15px) translateX(-30px) rotate(5deg);
+}
+
+#bean-bags:hover .bag3 {
+  transform: translateY(-5px) translateX(50px) rotate(15deg);
+}
+
 
 /* Styling for the main checkout section */
 .checkout-main{
