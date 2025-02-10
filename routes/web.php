@@ -10,6 +10,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Order;
@@ -23,6 +24,12 @@ Route::get('/products', [ProductsController::class, 'index'])->name('products');
 
 // Product details route
 Route::get('/product/{id}', [ProductsController::class, 'details'])->name('product-details');
+
+// Product reviews routes
+Route::get('/product/{id}/review',[ReviewController::class, 'create_review'])->name('reviews.create')
+    ->middleware(['auth','verified']);
+Route::post('/product/{id}/review', [ReviewController::class, 'add_review'])->name('reviews.add')
+    ->middleware(['auth','verified']);
 
 // Checkout page route
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
