@@ -50,57 +50,51 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Get all the navigation links
-    const eggs = document.querySelectorAll('.admin-buttons .choice');
-    // Get all the content sections
+    const choices = document.querySelectorAll('.admin-buttons .choice');
     const sections = document.querySelectorAll('.admin-content .admin-section');
 
-    // Function to reset all to inactive state
+    // Hide all sections immediately on page load
+    sections.forEach(section => section.style.display = 'none');
+
     function resetChosenAdminNav() {
-        // Reset all links' styles
-        eggs.forEach(choice => {
-            choice.style.color = 'rgba(255, 255, 255,0.7)';
-        });
-        // Hide all content sections
-        sections.forEach(section => {
-            section.style.display = 'none';
-        });
+        choices.forEach(choice => choice.style.color = 'rgba(255, 255, 255, 0.7)');
+        sections.forEach(section => section.style.display = 'none');
     }
 
-    // Function to set the active state based on the button pressed
-    function setChosenAdminNav(id) {
+    function setChosenAdminNav(id, updateURL = true) {
         resetChosenAdminNav();
         const activeChoice = document.querySelector(`.admin-buttons #${id}`);
         const activeSection = document.querySelector(`#${id}Content`);
-    
+
         if (activeChoice && activeSection) {
             activeChoice.style.color = '#fecc42';
             activeChoice.style.transform = 'translateY(0)';
             activeSection.style.display = 'grid';
+
+            // Update URL without refreshing the page
+            if (updateURL) {
+                const newTab = id.replace('admin-', ''); // Remove "admin-" for cleaner URLs
+                const newUrl = `${window.location.pathname}?tab=${newTab}`;
+                window.history.replaceState(null, '', newUrl);
+            }
         } else {
             console.warn(`No matching elements found for ID: ${id}`);
         }
     }
 
-    // Check the query parameter to set the initial active state
+    // Get tab from URL
     const urlParams = new URLSearchParams(window.location.search);
     const tab = urlParams.get('tab');
+
     if (tab) {
-        setChosenAdminNav(`admin-${tab}`); // Prefix admin tabs
-    }else {
-        // Default to "home" tab if no query parameter is provided
-        setChosenAdminNav('home');
+        setChosenAdminNav(`admin-${tab}`, false); // Don't update URL on page load
+    } else {
+        setChosenAdminNav('admin-home', false); // Default tab without updating URL
     }
 
-    // Add click event listeners to each choice
     choices.forEach(choice => {
         choice.addEventListener('click', function () {
-            const id = this.id;
-            setChosenAdminNav(id);
-
-            // Update the URL without refreshing the page
-            const newUrl = `${window.location.pathname}?tab=${id}`;
-            window.history.replaceState(null, '', newUrl);
+            setChosenAdminNav(this.id); // Calls function and updates URL
         });
     });
 });

@@ -222,7 +222,9 @@
             
             <!-- Our vision Section -->
             <div class="ourvision">
-                <img src="{{ asset('assets/AdobeStock_859686298.jpeg') }}" class="bigimage"></img>
+                <div class="side-img">
+                    <img src="{{ asset('assets/AdobeStock_859686298.jpeg') }}" class="bigimage"></img>
+                </div>    
                 <div class="aboutustext">
                     <h2>Our Vision</h2>
                     <p>At E-Spresso, we strive to create a world where coffee inspires connections, fules creativity, and promotes sustainability. 

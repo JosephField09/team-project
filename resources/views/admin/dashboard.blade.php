@@ -144,11 +144,11 @@
                 </div>
                 <!-- Admin Buttons -->
                 <div class="admin-buttons">
-                    <a href="{{ route('admin.dashboard', ['tab' => 'admin-home']) }}" id="admin-home" class="choice">Home</a>
-                    <a href="{{ route('admin.dashboard', ['tab' => 'admin-allOrders']) }}" id="admin-allOrders" class="choice">Manage Orders</a>
-                    <a href="{{ route('admin.dashboard', ['tab' => 'admin-allUsers']) }}" id="admin-allUsers" class="choice">Manage Users</a>
-                    <a href="{{ route('admin.dashboard', ['tab' => 'admin-allProducts']) }}" id="admin-allProducts" class="choice">Categories and Products</a>
-                    <a href="{{ route('admin.dashboard', ['tab' => 'admin-settings']) }}" id="admin-settings" class="choice">Settings</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'home']) }}" id="admin-home" class="choice">Home</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'allOrders']) }}" id="admin-allOrders" class="choice">Manage Orders</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'allUsers']) }}" id="admin-allUsers" class="choice">Manage Users</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'allProducts']) }}" id="admin-allProducts" class="choice">Categories and Products</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'settings']) }}" id="admin-settings" class="choice">Settings</a>
                 </div>
 
                 <div class="admin-logout">
@@ -355,7 +355,6 @@
 
                 <!-- Settings section -->
                 <div id="admin-settingsContent" class="admin-section" style="display: none;">
-
                     <!-- Profile information section -->
                     <div class="profile-info">
                             <h4>Profile Information</h4>

@@ -149,7 +149,7 @@
                         <div class="category-wrapper">
                             <a href="{{ route('products', array_merge(request()->except('category'), ['category' => ''])) }}" 
                             class="category-button {{ request('category') == '' ? 'active' : '' }}"
-                            style="background-image: url({{ asset('assets/favicon.png') }}); background-position: center; background-size: cover;" >
+                            style="background-image: url({{ asset('assets/favicon.png') }}); background-position: center; background-size: cover;background-repeat: no-repeat; background-origin: content-box;" >
                             </a>
                             <div class="category-name">Shop All</div>
                         </div>
@@ -158,7 +158,7 @@
                             <div class="category-wrapper">
                                 <a href="{{ route('products.filter', array_merge(request()->except('category'), ['category' => $category->id])) }}" 
                                 class="category-button {{ request('category') == $category->id ? 'active' : '' }}"
-                                style="background-image: url('{{ asset('assets/' . $category->image) }}'); background-position: center; background-size: contain; background-repeat: no-repeat;">
+                                style="background-image: url('{{ asset('assets/' . $category->image) }}'); background-position: center; background-size: contain; background-repeat: no-repeat; background-origin: content-box;">
                                 </a>
                                 <p>{{ $category->name }}</p>
                             </div>

@@ -1701,6 +1701,7 @@ body.dark-mode .product-card {
   max-height: 113px;
   justify-self: center;
   display: grid;
+  filter: drop-shadow(7px 13px 10px gray);
 }
 
 /* Styling for the product row */
@@ -2067,7 +2068,7 @@ table{
 }
 
 /* Styling for settings content input field */
-#settingsContent .input-field{
+#admin-settingsContent .input-field{
   width: 90%;
 }
 
@@ -2989,6 +2990,10 @@ body.dark-mode .product-box{
   height: 100%;
   object-fit: contain;
   transition: 0.5s;
+}
+
+.bag{
+  filter: drop-shadow(11px 8px 13px black);
 }
 
 /* Default or "resting" transforms */
