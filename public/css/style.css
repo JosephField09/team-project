@@ -867,6 +867,10 @@ footer.bottom {
   flex-direction: row;
 }
 
+.side-img{
+  align-self: center;
+}
+
 /* Styling for image blocks ona bout us */
 #ImageBlocks {
   align-items: center;

@@ -133,8 +133,9 @@
         <section id="ImageBlocks">
             <!-- Our story Section -->
             <div class="ourstory">
-                <img src="{{ asset('assets/AdobeStock_835212991.jpeg') }}" alt="Woman picking coffee beans" 
-                class="bigimage" style="float: left;"></img>
+                <div class="side-img">
+                    <img src="{{ asset('assets/AdobeStock_835212991.jpeg') }}" alt="Woman picking coffee beans" ></img>
+                </div>
                 <div class="aboutustext">
                     <h3>About Us</h3>
                     <h1 class="header">Our Story, Your Coffee Experience</h1>
@@ -179,7 +180,9 @@
                         </div>
                         <a class="contact-us" href="{{ route('products') }}"><h4>Explore Our menu</h4></a>
                 </div>
-                <img src="{{ asset('assets/AdobeStock_814649831.jpeg') }}" style="float: right;" class="bigimage"></img>
+                <div class="side-img">
+                    <img src="{{ asset('assets/AdobeStock_814649831.jpeg') }}"></img>
+                </div>
             </div>
             
             <!-- Our vision Section -->
@@ -205,7 +208,9 @@
 
         <!-- Contact Us Section -->
         <section id="ContactUs">
-            <img src="{{ asset('assets/AdobeStock_1026464614.jpeg') }}"></img>
+            <div class="side-img">
+                <img src="{{ asset('assets/AdobeStock_1026464614.jpeg') }}"></img>
+            </div>
             <div class="contact-us-form">
                 <form id="contact-us">
                     <h1 id="contact-us-heading">Contact Us</h1>

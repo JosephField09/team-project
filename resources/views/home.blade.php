@@ -148,14 +148,13 @@
                         <img src="{{ asset('assets/steaming_coffee.jpeg') }}" alt="Steaming Coffee" >
                 </div>
             </div>
-           
         </section>
 
         <!-- Image Block Sections -->
         <section id="ImageBlocks">
             <!-- Our story Section -->
             <div class="ourstory">
-                <div class="ourstory-img">
+                <div class="side-img">
                     <img src= "{{ asset('assets/our_story_home.png') }}" alt="Coffee Beans Drying" class="bigimage"></img>
                 </div>
                 <div class="aboutustext">
