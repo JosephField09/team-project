@@ -131,7 +131,7 @@
         </section>
 
         <!-- Call to Action Section -->
-        <section id="cta" style="background-image: url({{ asset('assets/AdobeStock_262772087.jpeg') }});" >
+        <section id="cta" style="background-image: url({{ asset('assets/AdobeStock_262772087.jpg') }});" >
             <div class="cta-text">
                 <p>Our Products</p>
                 <h3>Discover the Perfect Fit</h3>

@@ -138,7 +138,7 @@
                 </div>
                 <div class="aboutustext">
                     <h3>About Us</h3>
-                    <h1 class="header">Our Story, Your Coffee Experience</h1>
+                    <h2>Our Story, Your Coffee Experience</h2>
                     <p>At E-Spresso, we believe in more than just coffee - we create moments. From our handpicked beans to the perfect brew,
                         each cup is crafted with love and care. Whether you're here for a quick pick-me-up or to enjoy a relaxing moment, we're
                         dedicated to making every sip special. Join us in celebrating the art of coffee, brewed to perfection just for you.
@@ -163,12 +163,48 @@
                 </div>
             </div>
 
+            <div id="our-history">
+                <h2 class="header">Our History</h2>
+                <div class="our-history-container">
+                <div class="timeline" style="--items: 3">
+                    <ul>
+                    <li style="--index: 1">
+                        <h3>2020</h3>
+                        <h2>From Quarantine to Caffeine</h2>
+                        <p>
+                        In the midst of lockdown, when stepping outside was nearly impossible where coffee cravings collided with closed shops and stay-at-home orders, 
+                        E-spresso was born to keep coffee lovers fueled at home. 
+                        </p>
+                    </li>
+                    <li style="--index: 2">
+                        <h3>2023</h3>
+                        <h2>Brewing Success</h2>
+                        <p>
+                        As the world returned to pre-covid ways, our commitment to delivering fresh, ethically sourced coffee right to your door only grew stronger. 
+                        What started as a lockdown necessity became a trusted favorite, leading to soaring demand, new product offerings, and expanded delivery networks.
+                        </p>
+                    </li>
+                    <li style="--index: 3">
+                        <h3>2025</h3>
+                        <h2>A Latte to Come</h2>
+                        <p>
+                        As we look to the future, we’re expanding globally, 
+                        deepening our commitment to sustainable sourcing, and embracing new brewing innovations. 
+                        Driven by our passion for exceptional coffee, we aim to connect communities and fuel dreams—one cup at a time.
+                        </p>
+                    </li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+
             <!-- Our mission Section -->
             <div class="ourmission">
                 <div class="aboutustext">
-                        <h1 class="header">Our Mission</h1>
-                        <p>At E-Spresso, our mission is to create a welcoming space where coffee lovers can gather,
-                            connect, and enjoy the finest brews. We are committed to delivering exceptional experiences, one cup at a time.
+                        <h2>Our Mission</h2>
+                        <p>At E-Spresso, we strive to create a warm and inviting space where coffee lovers can gather, connect, and share meaningful moments 
+                            and enjoy the finest brews. We are committed to delivering exceptional experiences.
+                            
                         </p>
                         <div class="missions">
                             <ul>
@@ -178,10 +214,9 @@
                                 <li><p><span class="missionheader">Continuos Innovation:</span> From classic blends to unique creations, we strive to keep our menu exciting and fresh.</p></li>
                             </ul>
                         </div>
-                        <a class="contact-us" href="{{ route('products') }}"><h4>Explore Our menu</h4></a>
                 </div>
                 <div class="side-img">
-                    <img src="{{ asset('assets/AdobeStock_814649831.jpeg') }}"></img>
+                    <img style="margin-left: 10px; justify-self: center; display: block;" src="{{ asset('assets/AdobeStock_814649831.jpeg') }}"></img>
                 </div>
             </div>
             
@@ -189,7 +224,7 @@
             <div class="ourvision">
                 <img src="{{ asset('assets/AdobeStock_859686298.jpeg') }}" class="bigimage"></img>
                 <div class="aboutustext">
-                    <h1 class="header">Our Vision</h1>
+                    <h2>Our Vision</h2>
                     <p>At E-Spresso, we strive to create a world where coffee inspires connections, fules creativity, and promotes sustainability. 
                     Our goal is to redefine the coffee experience and make a positive impact on both our community and the environment.
                     </p>

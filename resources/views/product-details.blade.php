@@ -187,9 +187,7 @@
                         </div>
                         <!-- Quantity button -->
                         <div class="quantity">
-                            <button type="button" class="quantity-btn" id="decrease">−</button>
                             <input type="number" id="quantity" name="quantity" value="1" min="1" max="{{ $data->stock }}" />
-                            <button type="button" class="quantity-btn" id="increase">+</button>
                         </div>
                         <button 
                             style="margin-top: 30px;"

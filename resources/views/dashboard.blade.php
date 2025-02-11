@@ -145,13 +145,13 @@
                         </div>
                     </div>
                     <div class="dash-buttons">
-                        <a id="orders" class="option" >
+                        <a id="dash-orders" class="option">
                             <i class='bx bx-shopping-bag'></i>My Orders
                         </a>
-                        <a id="account" class="option">
+                        <a id="dash-account" class="option">
                             <i class='bx bx-cog'></i>My Account
                         </a>
-                        <a id="member" class="option">
+                        <a id="dash-member" class="option">
                             <i class='bx bx-reset'></i>My Membership
                         </a>
                     </div>
@@ -165,13 +165,13 @@
                 <div class="dash-title-content">
                     <div class="title">
                         <!-- Titles -->
-                        <div id="ordersTitle" class="title-section">My Orders</div>
-                        <div id="accountTitle" class="title-section" style="display: none;">My Account</div>
-                        <div id="memberTitle" class="title-section" style="display: none;">My Membership</div>
+                        <div id="dash-ordersTitle" class="title-section">My Orders</div>
+                        <div id="dash-accountTitle" class="title-section" style="display: none;">My Account</div>
+                        <div id="dash-memberTitle" class="title-section" style="display: none;">My Membership</div>
                     </div>
                     <div class="content">
                         <!-- Content -->
-                        <div id="ordersContent" class="content-section" style="display: none;">
+                        <div id="dash-ordersContent" class="content-section" style="display: none;">
                             @if ($orders->isEmpty())
                                 <p>You have not placed any orders yet.</p>
                             @else
@@ -207,7 +207,7 @@
                         </div>
 
                         <!-- Account Content button -->
-                        <div id="accountContent" class="content-section" style="display: none;">
+                        <div id="dash-accountContent" class="content-section" style="display: none;">
                             <div class="profile-info">
                                 <h4>Profile Information</h4>
                                 <section>
@@ -333,7 +333,7 @@
                         </div>
 
                         <!-- Subscribe/Unsubscribe member section -->
-                        <div id="memberContent" class="content-section">
+                        <div id="dash-memberContent" class="content-section">
                             @if (auth()->check() && auth()->user()->isSubscribed)
                                 <h2>Welcome Back, Coffee Lover!</h2>
                                 <p>You’re already subscribed to our coffee subscription service. Fresh beans are on their way to you regularly—enjoy your hassle-free coffee experience!</p>

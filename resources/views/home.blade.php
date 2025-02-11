@@ -132,20 +132,13 @@
         </section>
 
         <!-- Home Page Section -->
-        <section id="home-cta">
-            <div class="home-cta-container">
-                <div class="home-cta-left">
-                    <div class="home-cta-text">
-                        <h1 style="font-size: 2.8em; margin: 0; font-family: Modern">Start Your Day with the Best Coffee Experience</h1>
-                        <p>Indulge in the finest brews, crafted to ignite your senses and fuel your day. Your new, improved coffee journey begins here.</p>
-                        <div class="home-cta-buttons">
-                            <a class="order-now" href= "{{route('products')}}">Order Now</a>
-                            <a class="learn-more" href= "{{route('about-us')}}">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="cta-img">
-                        <img src="{{ asset('assets/steaming_coffee.jpeg') }}" alt="Steaming Coffee" >
+        <section id="home-cta" style="background-image: url({{ asset('assets/AdobeStock_1042756763.jpg') }});">
+            <div class="home-cta-text">
+                <h1 style="font-size: 2.8em; margin: 0; font-family: Modern">Start Your Day with the Best Coffee Experience</h1>
+                <p>Indulge in the finest brews, crafted to ignite your senses and fuel your day. Your new, improved coffee journey begins here.</p>
+                <div class="home-cta-buttons">
+                    <a class="order-now" href= "{{route('products')}}">Order Now</a>
+                    <a class="learn-more" href= "{{route('about-us')}}">Learn More</a>
                 </div>
             </div>
         </section>
@@ -199,7 +192,7 @@
                     </div>
                     <h3>Sweet Treats</h3>
                     <br>
-                    <p>Enjoy our freshly brewed hot coffee made from the finest beans, perfect for your morning boost.</p>
+                    <p>Enjoy our deliciously baked sweet treats, made from the finest ingredients — perfect for a delightful pick-me-up</p>
                     <br><br>
                     <a href="{{ route('products.filter', array_merge(request()->except('category'), ['category' => 5])) }}" class="view-range"> View Range</a>
                 </div>
@@ -219,7 +212,7 @@
                     </div>
                     <h3>Hot Coffee</h3>
                     <br>
-                    <p>Convenient and delicious, our coffee pods are designed for a quick and easy coffee experience.</p>
+                    <p>Enjoy our freshly brewed hot coffee made from the finest beans, perfect for your morning boost.</p>
                     <br><br>
                     <a href="{{ route('products.filter', array_merge(request()->except('category'), ['category' => 1])) }}" class="view-range"> View Range</a>
                 </div>

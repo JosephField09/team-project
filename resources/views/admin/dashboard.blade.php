@@ -142,13 +142,13 @@
                     @endif
                     </div>
                 </div>
-                <!-- Admin tab buttons -->
+                <!-- Admin Buttons -->
                 <div class="admin-buttons">
-                    <a href="{{ route('admin.dashboard', ['tab' => 'home']) }}" id="home" class="choice">Home</a>
-                    <a href="{{ route('admin.dashboard', ['tab' => 'allOrders']) }}" id="allOrders" class="choice">Manage Orders</a>
-                    <a href="{{ route('admin.dashboard', ['tab' => 'allUsers']) }}" id="allUsers" class="choice">Manage Users</a>
-                    <a href="{{ route('admin.dashboard', ['tab' => 'allProducts']) }}" id="allProducts" class="choice">Categories and Products</a>
-                    <a href="{{ route('admin.dashboard', ['tab' => 'settings']) }}" id="settings" class="choice">Settings</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'admin-home']) }}" id="admin-home" class="choice">Home</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'admin-allOrders']) }}" id="admin-allOrders" class="choice">Manage Orders</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'admin-allUsers']) }}" id="admin-allUsers" class="choice">Manage Users</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'admin-allProducts']) }}" id="admin-allProducts" class="choice">Categories and Products</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'admin-settings']) }}" id="admin-settings" class="choice">Settings</a>
                 </div>
 
                 <div class="admin-logout">
@@ -164,15 +164,15 @@
             <!-- Admin Content container -->
             <div class="admin-content">
                 <!-- Home Content container -->
-                <div id="homeContent" class="admin-section" style="display:none;">
+                <div id="admin-homeContent" class="admin-section" style="display:none;">
                     <p>This is the main dashboard screen</p>
                 </div>
                 <!-- Order Content container -->
-                <div id="allOrdersContent" class="admin-section" style="display: none;">
+                <div id="admin-allOrdersContent" class="admin-section" style="display: none;">
                     <p>All orders will appear here.</p>
                 </div>
                 <!-- User Content container -->
-                <div id="allUsersContent" class="admin-section" style="display: none; text-align:center;">
+                <div id="admin-allUsersContent" class="admin-section" style="display: none; text-align:center;">
                     <h2>Users List</h2>
                     <form action="{{ url('profile.search')}}" method="get" style="width: 50%">
                         @csrf
@@ -222,7 +222,7 @@
                 </div>
 
                 <!-- Categories and Products container -->
-                <div id="allProductsContent" class="admin-section" style="display: none;">
+                <div id="admin-allProductsContent" class="admin-section" style="display: none;">
                     <!-- Categories section -->
                     <div class="categories">
                         <h4>Add a Category</h4>
@@ -354,7 +354,7 @@
                 </div>
 
                 <!-- Settings section -->
-                <div id="settingsContent" class="admin-section" style="display: none;">
+                <div id="admin-settingsContent" class="admin-section" style="display: none;">
 
                     <!-- Profile information section -->
                     <div class="profile-info">

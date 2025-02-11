@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const contents = document.querySelectorAll('.content-section');
 
     // Function to reset all to inactive state
-    function resetChosenNav() {
+    function resetChosenDashNav() {
         // Set all background colours to light grey
         options.forEach(option => {
             option.style.backgroundColor = 'rgba(254, 204, 66, 0.3)'; 
@@ -22,15 +22,15 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Function to set the active state based on the button pressed
-    function setChosenNav(id) {
-        resetChosenNav();
-        const activeOption = document.querySelector(`#${id}`);
+    function setChosenDashNav(id) {
+        resetChosenDashNav();
+        const activeOption = document.querySelector(`.dash-buttons #${id}`);
         const activeTitle = document.querySelector(`#${id}Title`);
         const activeContent = document.querySelector(`#${id}Content`);
-
-        if (activeOption) activeOption.style.color = '#fecc42'; 
-        if (activeTitle) activeTitle.style.display = 'block'; 
-        if (activeContent) activeContent.style.display = 'grid'; 
+    
+        if (activeOption) activeOption.style.backgroundColor = '#fecc42';
+        if (activeTitle) activeTitle.style.display = 'block';
+        if (activeContent) activeContent.style.display = 'grid';
     }
 
     // Check for a query parameter to set the initial state
@@ -39,27 +39,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // If a query parameter exists, use it; otherwise, default to "orders"
     const defaultTab = tab || 'orders';
-    setChosenNav(defaultTab);
-
+    setChosenDashNav(`dash-${defaultTab}`); // Prefix dashboard tabs
     // Add click event listeners to each option
     options.forEach(option => {
         option.addEventListener('click', function() {
             const id = this.id;
-            setChosenNav(id);
+            setChosenDashNav(id);
         });
     });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
     // Get all the navigation links
-    const choices = document.querySelectorAll('.admin-buttons .choice');
+    const eggs = document.querySelectorAll('.admin-buttons .choice');
     // Get all the content sections
     const sections = document.querySelectorAll('.admin-content .admin-section');
 
     // Function to reset all to inactive state
-    function resetChosenNav() {
+    function resetChosenAdminNav() {
         // Reset all links' styles
-        choices.forEach(choice => {
+        eggs.forEach(choice => {
             choice.style.color = 'rgba(255, 255, 255,0.7)';
         });
         // Hide all content sections
@@ -69,14 +68,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Function to set the active state based on the button pressed
-    function setChosenNav(id) {
-        resetChosenNav();
-        const activeChoice = document.querySelector(`#${id}`);
+    function setChosenAdminNav(id) {
+        resetChosenAdminNav();
+        const activeChoice = document.querySelector(`.admin-buttons #${id}`);
         const activeSection = document.querySelector(`#${id}Content`);
-
+    
         if (activeChoice && activeSection) {
             activeChoice.style.color = '#fecc42';
-            activeChoice.style.transform = 'translateY(0)'; 
+            activeChoice.style.transform = 'translateY(0)';
             activeSection.style.display = 'grid';
         } else {
             console.warn(`No matching elements found for ID: ${id}`);
@@ -86,19 +85,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // Check the query parameter to set the initial active state
     const urlParams = new URLSearchParams(window.location.search);
     const tab = urlParams.get('tab');
-
     if (tab) {
-        setChosenNav(tab);
-    } else {
+        setChosenAdminNav(`admin-${tab}`); // Prefix admin tabs
+    }else {
         // Default to "home" tab if no query parameter is provided
-        setChosenNav('home');
+        setChosenAdminNav('home');
     }
 
     // Add click event listeners to each choice
     choices.forEach(choice => {
         choice.addEventListener('click', function () {
             const id = this.id;
-            setChosenNav(id);
+            setChosenAdminNav(id);
 
             // Update the URL without refreshing the page
             const newUrl = `${window.location.pathname}?tab=${id}`;

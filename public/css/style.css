@@ -249,35 +249,40 @@ nav#main {
   display: flex; 
   align-items: center; 
   justify-content: center; 
-  max-height: 90vh;
+  min-height: 90vh;
+  background-position: center;
+  background-size: cover;
 }
 
-.home-cta-container{
-  display: grid;
-  grid-template-columns: 40% 60%;
-  height: 100%;
-  padding: 5vh 0;
-}
-
-.home-cta-left{
-  align-content: center;
-  overflow-x: visible;
+#home-cta:after{
+  margin-left: auto;
+  content: "";
+  position: absolute;
+  top: 70px;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 90vh;
 }
 
 .home-cta-text{
-  padding-left: 35%;
-  width: 120%;
+  justify-items: left;
+  width: 60%;
   position: relative;
+  z-index: 1;
+  padding: 0 14.25%;
+  display: block;
+  margin-right: auto;
 }
 
 .home-cta-text p{
   color: var(--text-colour);
   font-size: 15px;
-  margin: 5% 16% 5% 0;
+  margin: 10% 0;
 }
 
 .home-cta-buttons{
-  margin-top: 40px;
+  margin-top: 10%;
 }
 
 .home-cta-text .order-now{
@@ -296,7 +301,6 @@ nav#main {
 }
 
 .home-cta-text .learn-more{
-  background-color: var(--primary-colour); 
   color: white; 
   padding: 10px 20px; 
   text-decoration: none;
@@ -526,13 +530,13 @@ label{
 }
 
 /* Styling for account conent section */
-#accountContent{
+#dash-accountContent{
   grid-template-columns: 1fr 1fr 1fr;
   height: 100%;
 }
 
 /* Styling for account content input fields */
-#accountContent .input-field{
+#dash-accountContent .input-field{
   width: 80%;
 }
 
@@ -600,19 +604,19 @@ body.dark-mode .delete {
 }
 
 /* Styling for member content paragraph */
-#memberContent p{
+#dash-memberContent p{
   margin-top: 10px;
   color: var(--text-colour);
 }
 
 /* Styling for member content h4 header */
-#memberContent h4{
+#dash-memberContent h4{
   color: var(--title-colour);
   margin-top: 20px;
 }
 
 /* Styling for content span */
-#memberContent span{
+#dash-memberContent span{
   color: var(--title-colour);
   font-size: 30px;
 }
@@ -963,16 +967,229 @@ body.dark-mode .ourstory{
   }
 }
 
+#our-history {
+  width: 100%;
+  font-size: 18px;
+  padding: 5% 0 5% 0;
+  position: relative;
+  z-index: -1;
+}
+
+#our-history h2.header {
+  color: var(--title-colour);
+  padding-bottom: 10px;
+  font-size: 35px;
+  margin-bottom: 20px;
+  position: absolute;
+  z-index: -1;
+  justify-self: anchor-center;
+}
+
+/* Styling for the heading underline effect */
+#our-history h2.header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--secondary-colour);
+}
+
+#our-history .our-history-container {
+  margin-top: 40px;
+}
+
+.timeline {
+  --accent: #fecc42;
+  --text: rgb(51,51,51);
+  --line: #c4c4c4;
+  background: var(--background);
+  color: var(--text);
+  padding: 30px 0 30px 0;
+}
+
+.timeline h1 {
+  border-left: 4px solid var(--accent);
+  padding: 10px 12px 10px;
+}
+
+.timeline ul {
+  list-style: none;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--items), 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.timeline ul:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  border-top: 3px solid var(--primary-colour);
+  left: 11px;
+}
+
+.timeline ul:after {
+  content: "\f04b";
+  font-weight: 900;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 1px;
+  right: -15px;
+  font-size: 25px;
+  color: var(--accent);
+}
+
+.timeline ul li {
+  --circle-size: 15px;
+  grid-column: var(--index);
+  overflow: hidden;
+  position: relative;
+  height: calc(100% + var(--circle-size) * 0.5);
+}
+
+.timeline ul li:after {
+  content: "";
+  width: var(--circle-size);
+  height: var(--circle-size);
+  background: var(--line);
+  position: absolute;
+  bottom: 0;
+  left: var(--circle-size);
+  border-radius: 100px;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.timeline ul li:nth-child(even):after {
+  bottom: auto;
+  top: 0;
+}
+
+.timeline ul li:nth-child(even) {
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 40px;
+  margin-top: calc(var(--circle-size) * -0.45);
+}
+
+.timeline ul li:nth-child(odd) p:after,
+.timeline ul li:nth-child(even) h3:before {
+  content: "";
+  display: block;
+  border-left: 2px dashed var(--text);
+  height: 100vh;
+  margin-top: 10px;
+  position: absolute;
+  left: calc(var(--circle-size) - 1px);
+}
+
+.timeline ul li:nth-child(even) h3:before {
+  bottom: 100%;
+  margin-bottom: 5px;
+}
+
+.timeline ul li > * {
+  padding-left: calc(var(--circle-size) * 0.4);
+}
+
+.timeline ul li h3 {
+  color: var(--accent);
+  margin: 0;
+  margin-bottom: 15px;
+  font-size: 1.6em;
+  position: relative;
+}
+
+.timeline ul li img{
+  width: 70%;
+}
+
+.timeline ul li h2 {
+  color: var(--primary-colour);
+  font-size: 1.7rem;
+}
+
+.timeline ul li p {
+  margin-bottom: 15px;
+  padding-top: 15px;
+  position: relative;
+  text-wrap: pretty;
+  color: var(--text-colour);
+  font-size: 17px;
+}
+
+@media (max-width: 568px) {
+  .timeline ul {
+    display: flex;
+    flex-direction: column;
+  }
+  .timeline ul li {
+    grid-column: 1 !important;
+    grid-row: var(--index) !important;
+    height: 100%;
+    padding-bottom: 30px;
+    padding-top: 10px;
+  }
+  .timeline ul:before,
+  .timeline ul:after,
+  .timeline ul li:after,
+  .timeline ul li:nth-child(even) h3:before,
+  .timeline ul li:last-child p:after {
+    display: none;
+  }
+  .timeline ul li:first-child {
+    padding-top: 0;
+  }
+  .timeline ul li:nth-child(even) {
+    margin-top: 0;
+    padding-top: 10px;
+  }
+  .timeline ul li p:after {
+    content: "";
+    display: block;
+    border-left: 2px dashed var(--text);
+    height: 100vh;
+    margin-top: 10px;
+    position: absolute;
+    left: calc(var(--circle-size) - 1px);
+  }
+}
+
 /* Styling for our missions on about us */
 .ourmission{
   width: 100%;
   display: grid;
   grid-template-columns: 50% 50%;
-  padding-top: 60px;
+  padding:5%;
+  background-color: var(--dark-bg);
+  border-radius: 15px;
+  ul{
+    list-style: none;
+  }
+  span{
+    color: var(--primary-colour);
+  }
   p{
     padding-top: 15px;
     max-width: 525px;
     width: 100% auto;
+    color: var(--text-colour);
   }
   a{
     margin: 15px;
@@ -993,19 +1210,19 @@ body.dark-mode .ourstory{
     border-radius: 5px;
     margin-top: 100px;
   }
-  }
+}
 
 
 /* Styling for individual missions on about us */
 .missions{
-  padding-top: 15px;
+  padding-top: 10%;
   display: flex;
   flex-direction: column;
   max-width: 600px;
   width: auto;
-  padding-left: 3%;
   p{
-    padding-top: 10px;
+    padding-top: 2%;
+    padding-bottom: 2%;
   }
 }
 
@@ -1021,9 +1238,13 @@ body.dark-mode .ourstory{
   display: grid;
   grid-template-columns: 50% 50%;
   padding-top: 60px;
+  span{
+    color: var(--primary-colour);
+  }
   p{
     padding-top: 15px;
     max-width: 525px;
+    color: var(--text-colour);
   }
   a{
     margin: 15px;
@@ -1645,9 +1866,9 @@ body.dark-mode #admin-nav{
 }
 
 /* Styling for all users, content, products and setting section section */
-#allUsersContent,
-#allProductsContent,
-#settingsContent{
+#admin-allUsersContent,
+#admin-allProductsContent,
+#admin-settingsContent{
   background-color: white;
   border-radius: 15px;
   height: fit-content;
@@ -1784,7 +2005,7 @@ table{
 }
 
 /* Styling for all products content section */
-#allProductsContent{
+#admin-allProductsContent{
   grid-template-columns: 1fr 1fr ;
   padding: 20px;
   gap: 10px;
@@ -1841,7 +2062,7 @@ table{
 }
 
 /* Styling for settings content section */
-#settingsContent{
+#admin-settingsContent{
   grid-template-columns: 1fr 1fr 1fr;
 }
 
@@ -2184,8 +2405,8 @@ body.dark-mode .product-info{
   align-items: center;
   justify-content: center;
   background-color: white;
+  padding: 5px 10px;
   border: 1px solid #ddd;
-  border-radius: 8px;
   width: fit-content;
   margin-top: 20px;
 }
