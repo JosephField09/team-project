@@ -224,20 +224,31 @@
             <div class="ourvision">
                 <div class="side-img">
                     <img src="{{ asset('assets/AdobeStock_859686298.jpeg') }}" class="bigimage"></img>
-                </div>    
-                <div class="aboutustext">
+                </div>  
+                <div class="our-vision-body"> 
                     <h2>Our Vision</h2>
-                    <p>At E-Spresso, we strive to create a world where coffee inspires connections, fules creativity, and promotes sustainability. 
-                    Our goal is to redefine the coffee experience and make a positive impact on both our community and the environment.
-                    </p>
-                    <div class="missions">
-                        <ul>
-                            <li><p><span class="missionheader">Connecting People:</span> Bringing communities together through coffee.</p></li>
-                            <li><p><span class="missionheader">Sustainability:</span> Prioritising eco-friendly practices for a better planet.</p></li>
-                            <li><p><span class="missionheader">Quality:</span>  Serving the finest coffee with care and precision.</p></li>
-                            <li><p><span class="missionheader">Innovation:</span> Continuosly evolving to offer unique experiences</p></li>
-                        </ul>
-                    </div>
+                    <div class="our-vision-text">
+                        <div class="connecting-people">
+                            <i class='bx bxs-universal-access' ></i>
+                            <p><span class="missionheader">Connecting People</span></p>
+                            <p>Bringing communities together through coffee.</p>
+                        </div>
+                        <div class="sustainability">
+                            <i class='bx bxs-leaf'></i>
+                            <p><span class="missionheader">Sustainability</span></p>
+                            <p>Prioritising eco-friendly practices for a better planet.</p>
+                        </div>
+                        <div class="quality">
+                            <i class='bx bxs-coffee-bean'></i>
+                            <p><span class="missionheader">Quality</span></p>
+                            <p>Serving the finest coffee with care and precision.</p>
+                        </div>
+                        <div class="innovation">
+                            <i class='bx bxs-brain' ></i>
+                            <p><span class="missionheader">Innovation</span></p>
+                            <p>Continuosly evolving to offer unique experiences</p>
+                        </div>
+                    </div> 
                     <a class="contact-us" href="{{ route('products') }}"><h4>Discover Our Product</h4></a>
                 </div>
             </div>

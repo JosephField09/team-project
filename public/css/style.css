@@ -1172,6 +1172,7 @@ body.dark-mode .ourstory{
 }
 
 /* Styling for our missions on about us */
+/* Styling for our missions on about us */
 .ourmission{
   width: 100%;
   display: grid;
@@ -1237,19 +1238,14 @@ body.dark-mode .ourstory{
   width: 100%;
   display: grid;
   grid-template-columns: 50% 50%;
+  justify-content: space-between;
+  grid-template-columns: 50% 50%;
   padding-top: 60px;
   span{
     color: var(--primary-colour);
   }
-  p{
-    padding-top: 15px;
-    max-width: 525px;
-    color: var(--text-colour);
-  }
   a{
-    margin: 15px;
-    margin-left: 0px;
-    margin-top: 100px;
+    margin-top: 40px;
     font-size: 14px;
     color: var(--primary-colour);
     background: var(--secondary-colour);
@@ -1266,8 +1262,42 @@ body.dark-mode .ourstory{
     font-size: 18px;
     border-radius: 5px;
   }
-  h1{
-    padding-top: 50px;
+  .side-img{
+    max-width: 600px;
+    justify-self: center;
+  }
+}
+
+.our-vision-body{
+  display: flex;
+  flex-direction: column;
+  h2{
+    font-size: 35px;
+    padding-bottom: 10px;
+  }
+}
+
+.our-vision-text{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.connecting-people, .sustainability, .quality, .innovation{
+  padding: 5%;
+  max-width: 300px;
+  i{
+    background-color: var(--dark-bg);
+    font-size: 35px;
+    padding: 10px;
+    border-radius: 12px;
+    color: var(--secondary-colour);
+  }
+  p{
+    margin-top: 10px;
+  }
+  .missionheader{
+    font-size: x-large;
+    margin-bottom: 3px;
   }
 }
 
@@ -1291,8 +1321,6 @@ body.dark-mode .ourstory{
   img{
     border-radius: 15px;
     max-width: 400px;
-    width: 35%;
-    height: 35%;
   }
 }
 
