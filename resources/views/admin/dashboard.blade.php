@@ -169,7 +169,44 @@
                 </div>
                 <!-- Order Content container -->
                 <div id="admin-allOrdersContent" class="admin-section" style="display: none;">
-                    <p>All orders will appear here.</p>
+                    @if ($orders->isEmpty())
+                        <p colspan="6" style="text-align: center; font-style: italic; padding:10px;">No orders have been placed yet.</p>
+                    @else
+                        <table class="table" style="transform:translateY(-20%); position:relative; top: 15%; padding: 5% 1% 1% 1%; text-align: center;">
+                            <thead>
+                                <tr style="background-color: var(--secondary-colour); color: var(--primary-colour);">
+                                    <th>Order #</th>
+                                    <th>Placed By</th>
+                                    <th>Date Placed</th>
+                                    <th>Status</th>
+                                    <th>Total</th>
+                                    <th>Items</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($orders as $order)
+                                    <tr style="background-color: var(--light-bg); border-bottom: 1px solid var(--dark-bg);">
+                                        <td>{{ $order->id }}</td>
+                                        <!-- Display the user who placed the order -->
+                                        <td>
+                                            {{ $order->user->firstName }} {{ $order->user->lastName }} ({{ $order->user->email }})
+                                        </td>
+                                        <!-- Format the date as you prefer -->
+                                        <td>{{ $order->created_at->format('d M, Y') }}</td>
+                                        <td>{{ $order->status }}</td>
+                                        <td>£{{ number_format($order->total_cost, 2) }}</td>
+                                        <td>
+                                            <ul style="list-style:none; padding: 0;">
+                                                @foreach ($order->orderItems as $item)
+                                                    <li>{{ $item->product->name }} (x{{ $item->quantity }})</li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
                 </div>
                 <!-- User Content container -->
                 <div id="admin-allUsersContent" class="admin-section" style="display: none; text-align:center;">

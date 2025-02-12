@@ -1894,7 +1894,13 @@ body.dark-mode #admin-nav{
   max-height: 70%;
 }
 
+#admin-homeContent{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
 /* Styling for all users, content, products and setting section section */
+#admin-allOrdersContent,
 #admin-allUsersContent,
 #admin-allProductsContent,
 #admin-settingsContent{
@@ -1953,6 +1959,7 @@ body.dark-mode #admin-nav{
 /* Styling for table header and table d*/
 th, td {
   border: 1px solid rgba(128, 123, 118, 0.1); 
+  padding: 5px 10px;
 }
 
 /* Styling for table */
