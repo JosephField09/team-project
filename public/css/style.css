@@ -1274,6 +1274,7 @@ body.dark-mode .ourstory{
   h2{
     font-size: 35px;
     padding-bottom: 10px;
+    color: var(--title-colour);
   }
 }
 
