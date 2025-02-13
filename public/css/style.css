@@ -1732,6 +1732,11 @@ body.dark-mode .product-card {
   justify-self: center;
   display: grid;
   filter: drop-shadow(7px 13px 10px gray);
+  transition: 0.5s;
+}
+
+.product-card img:hover{
+  scale: 1.1;
 }
 
 /* Styling for the product row */
@@ -2587,20 +2592,6 @@ body.dark-mode .recommended-products{
 
 }
 
-/* Styling for hovering the product card */
-.product-details-page .product-card:hover {
-  transform: translateY(-5px);
-}
-
-/* Styling for the product detail product card */
-.product-details-page .product-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  height: 90%;
-}
-
 /* Styling for the product details product card heading 3 */
 .product-details-page .product-card h3 {
   font-size: 18px;
@@ -2622,24 +2613,6 @@ body.dark-mode .recommended-products{
   font-size: 14px;
   color: var(--text-colour);
   margin-bottom: 20px;
-}
-
-/* Styling for view product button */
-.product-details-page .view-button {
-  background-color: var(--secondary-colour);
-  color: var(--primary-colour);
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-
-/* Styling for hovering the voew button on product details */
-.product-details-page .view-button:hover {
-  background-color: #e5a500;
 }
 
 /* Styling for the basket icon */
