@@ -346,6 +346,7 @@ nav#main {
 }
 
 
+
 .currency-selector:focus{
   outline: none;
   -moz-outline: none;
@@ -2151,13 +2152,12 @@ table{
 
 /* Styling for the main section of the blogs page */
 #blogs-main{
+  justify-content: center;
   background: var(--light-bg);
   display: flex;
   flex-direction: row; 
   max-width: 100%;
   width: 100%;
-  padding-left: 14%;
-  padding-right: 10%;
   padding-top: 5%;
   padding-bottom: 5%;
   height: 100%;
