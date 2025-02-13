@@ -70,6 +70,12 @@
                                     <span class="basket-count">{{ $basketCount }}</span>
                                 @endif
                             </a>
+                            <select id="currency-selector" class="currency-selector">
+                                <option value="GBP">£</option>
+                                <option value="USD">$</option>
+                                <option value="EUR">€</option>
+                            </select>
+                            <script src="{{ asset('js/currency.js') }}"></script>
                             <button id="toggleMode"><i class='bx bxs-moon'></i></button>
                             <script src="{{ asset('js/dark-mode.js') }}"></script>
                         <!-- If user is user -->
@@ -113,6 +119,12 @@
                                     <span class="basket-count">{{ $basketCount }}</span>
                                 @endif
                             </a>
+                            <select id="currency-selector" class="currency-selector">
+                                <option value="GBP">£</option>
+                                <option value="USD">$</option>
+                                <option value="EUR">€</option>
+                            </select>
+                            <script src="{{ asset('js/currency.js') }}"></script>
                             <button id="toggleMode"><i class='bx bxs-moon'></i></button>
                             <script src="{{ asset('js/dark-mode.js') }}"></script>
                         @endif
@@ -123,6 +135,12 @@
                         <a class="basket" href="{{ route('basket') }}">
                             <i class='bx bx-basket'></i>
                         </a>
+                        <select id="currency-selector" class="currency-selector">
+                            <option value="GBP">£</option>
+                            <option value="USD">$</option>
+                            <option value="EUR">€</option>
+                        </select>
+                        <script src="{{ asset('js/currency.js') }}"></script>
                         <button id="toggleMode"><i class='bx bxs-moon'></i></button>
                         <script src="{{ asset('js/dark-mode.js') }}"></script>
                     @endif
@@ -139,7 +157,7 @@
                 <!-- All product information -->
                 <div class="product-info">
                     <h1>{{$data->name}}</h1>
-                    <p class="price">£{{$data->price}}</p>
+                    <p class="price" data-gbp="{{ $data->price }}">£{{ $data->price }}</p>
                     <p class="description">{{$data->description}} 
                     </p>
                     <div class="rating-availability">
@@ -230,7 +248,7 @@
                         <img src="{{ asset('assets/' . $product->image) }}" alt="Product Image">
                         <div class="product-row" style="display: inline-flex;">
                             <h3 class="product-title">{{ $product->name }}</h3>
-                            <p class="product-price">from <span>£{{ number_format($product->price, 2) }}</span></p>
+                            <p class="product-price" data-gbp="{{ $data->price }}">from <span>£{{ number_format($product->price, 2) }}</span></p>
                         </div>
                         <p class="product-description">{{ $product->description }}</p>
                         <a href="{{ route('product-details', $product->id) }}" class="view-button">View</a>

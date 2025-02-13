@@ -321,6 +321,41 @@ nav#main {
   width: 100%;
 }
 
+.currency-selector{
+  background: none;
+  transition: 0.3s ease-in-out;
+  color: var(--headerfooter-text-colour);
+  border: none;
+  appearance: none;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1;
+  padding-right: 10px;
+  text-align: center;
+  align-content: center;
+  width: 30px;
+}
+
+.currency-selector *{
+  offset: 10px;
+  background-color: black;
+  border-radius: none;
+  color: var(--headerfooter-text-colour);
+  align-self: center;
+  text-align: center;
+}
+
+
+.currency-selector:focus{
+  outline: none;
+  -moz-outline: none;
+}
+
+.currency-selector:hover{
+  transition: 0.3s ease-in-out;
+  color: white;
+}
+
 /* Styling for dashboard */
 .dashboard{
   padding: 5% 14.25%;
