@@ -13,12 +13,19 @@ class Product extends Model
     protected $table = 'products'; 
     
     // Fields that can be filled 
-    protected $fillable = ['name','description','price','size','stock','category_id',];
+    protected $fillable = ['name','image', 'description','price','size','stock','category_id',];
 
     
     public function category() {
         return $this->belongsTo(Category::class);
     } 
 
+    public function reviews(){
+        return $this->hasMany(Review::class);
+    }
 
+    public function averageRating()
+    {
+        return $this->reviews()->avg('rating') ?? 0;
+    }
 }

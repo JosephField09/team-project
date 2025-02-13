@@ -4,14 +4,16 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
+use App\Models\Order;
 
 
 // Home route
@@ -21,7 +23,17 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/products', [ProductsController::class, 'index'])->name('products');
 
 // Product details route
-Route::get('/product-details', [ProductsController::class, 'details'])->name('product-details');
+Route::get('/product/{id}', [ProductsController::class, 'details'])->name('product-details');
+
+// Product reviews routes
+Route::get('/product/{id}/review',[ReviewController::class, 'create_review'])->name('reviews.create')
+    ->middleware(['auth','verified']);
+Route::post('/product/{id}/review', [ReviewController::class, 'add_review'])->name('reviews.add')
+    ->middleware(['auth','verified']);
+
+// Checkout page route
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::post('/checkout', [CheckoutController::class, 'add'])->name('checkout.add');
 
 // About Us route
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
@@ -31,12 +43,23 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 // Basket Route
 Route::get('/basket', [BasketController::class,'index'])->name('basket'); 
+Route::post('basket.add/{id}', [BasketController::class, 'add'])->name('basket.add')
+   ->middleware(['auth', 'verified']);
 
+Route::post('/basket/remove/{id}', [BasketController::class,'remove'])->name('basket.remove')
+    ->middleware(['auth','verified']);
 
+Route::post('/basket/update/{id}', [BasketController::class,'update'])->name('basket.update')
+    ->middleware(['auth','verified']);
 
 // Route to go to dashboard and clear cache to prevent csrf
 Route::get('/dashboard', function () {
     $user = Auth::user();  // Get the authenticated user
+
+    // Pass users orders and the items within
+    $orders = Order::where('user_id', Auth::id())
+        ->with('orderItems.product') 
+        ->get();
     
     // Check if the user is an admin based on their userType
     if ($user->userType == 'admin') {
@@ -47,7 +70,7 @@ Route::get('/dashboard', function () {
     }
     
     // Return the regular dashboard for non-admin users
-    return response(view('dashboard', compact('user')))
+    return response(view('dashboard', compact('user','orders')))
         ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
         ->header('Pragma', 'no-cache')
         ->header('Expires', '0');
@@ -85,24 +108,27 @@ Route::patch('/category/{id}', [CategoryController::class, 'destroy'])->name('ca
 
 // Route to add a product
 Route::post('add_product', [ProductsController::class, 'add_product'])->name('add_product');
+Route::get('products.filter', [ProductsController::class, 'filter'])->name('products.filter');
+
 
 Route::get('admin.dashboard', function () {
     $admin = Auth::user(); // Get the authenticated admin
     
     // Paginate users with 10 users per page 
-    $users = \App\Models\User::where('userType', '!=', 'admin')->paginate(10)->appends(['tab' => 'allUsers']);
+    $users = \App\Models\User::where('userType', '!=', 'admin')->paginate(10)->appends(['tab' => 'admin-allUsers']);
+
+    // Paginate orders with 10 categories per page 
+    $orders = Order::paginate(10)->appends(['tab' => 'admin-allOrders']);
 
     // Paginate categories with 5 categories per page 
-    $categories = Category::paginate(5)->appends(['tab' => 'allProducts']);
+    $allcategories = Category::paginate(5)->appends(['tab' => 'admin-allProducts']);
 
     
-    return response(view('admin.dashboard', compact('admin', 'users', 'categories')))
+    return response(view('admin.dashboard', compact('admin', 'users','orders', 'allcategories')))
         ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
         ->header('Pragma', 'no-cache')
         ->header('Expires', '0');
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
-
-require __DIR__.'/auth.php';
 
 // Route to display the list of blog posts
 Route::get('/blogs',[BlogController::class, 'index'])->name('blogs.index');
@@ -116,3 +142,5 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/blogs/create', [BlogController::class, 'create'])->name('blogs.create');
     Route::post('/blogs', [BlogController::class, 'store'])->name('blogs.store');
 });
+
+require __DIR__.'/auth.php';

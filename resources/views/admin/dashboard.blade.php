@@ -17,41 +17,115 @@
         <!-- Header Section -->
         <section id="header">
             <nav id="main">
+                <!-- Left navbar section -->
                 <div class="navbar-left">
                     <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
-                </div>
-                <div class="navbar-middle">
+               </div>
+               <!-- Middle navbar section -->
+               <div class="navbar-middle">
                     <a class="middle" href="{{ route('home') }}">Home</a>
-                    <a class="middle" href="{{ route('products') }}">Products</a>
+                    <div id="product-nav" class="middle" style="display: contents;">
+                        <a href="{{ route('products') }}">Products</a>
+                        <div class="dropdown-content">
+                            <div class="dropdown-arrow" style="width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid rgb(255,251,243); ;"></div>
+                            <ul class="dropdown">
+                                @php $displayedProducts = []; @endphp
+                                @foreach ($categories as $category)
+                                    <!-- Category Dropdown -->
+                                    <li>
+                                        <a href="{{ route('products.filter', ['category' => $category->id]) }}" class="category">
+                                            {{ $category->name }}
+                                        </a>
+                                        <ul>
+                                            @foreach ($category->products as $product)
+                                                @if (!in_array($product->name, $displayedProducts))
+                                                    <li>
+                                                        <a href="{{ route('product-details', ['id' => $product->id]) }}" class="product">
+                                                            {{ $product->name }}
+                                                        </a>
+                                                    </li>
+                                                    @php $displayedProducts[] = $product->name; @endphp
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
                     <a class="middle" href="{{ route('about-us') }}">About Us</a>
-                    <a class="middle" href="{{ route('blog') }}">Blog</a>
+                    <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
                 </div>
+                <!-- Right navbar section -->
                 <div class="navbar-right">
+                    <!-- If user is logged in -->
                     @if(Auth::check())
+                        <!-- If user is admin -->
                         @if(Auth::user()->userType === 'admin')
-                            <!-- Admin Dashboard and Basket -->
                             <a class="account" href="{{ route('admin.dashboard') }}">
                                 <i class='bx bx-user'></i>
                             </a>
-                            <a class="basket" href="{{route('basket')}}">
+                            <a class="basket" href="{{ route('basket') }}">
                                 <i class='bx bx-basket'></i>
+                                @if($basketCount > 0)
+                                    <span class="basket-count">{{ $basketCount }}</span>
+                                @endif
                             </a>
+                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
+                            <script src="{{ asset('js/dark-mode.js') }}"></script>
+                        <!-- If user is user -->
                         @elseif(Auth::user()->userType === 'user')
-                            <!-- User Dashboard and Basket -->
-                            <a class="account" href="{{ route('dashboard') }}">
-                                <i class='bx bx-user'></i> 
-                            </a>
-                            <a class="basket" href="{{route('basket')}}">
+                            <div id="account-nav"  style="display: contents;">
+                                <a class="account" href="{{ route('dashboard') }}">
+                                    <i class='bx bx-user'></i>
+                                </a>
+                                <div class="account-dropdown-content">
+                                    <div class="account-dropdown-arrow" style="width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid white ;"></div>
+                                    <ul class="account-dropdown">
+                                        <div class="button-row" style="display:inline-flex; border-bottom:1px solid gray; margin-bottom: 0px;">
+                                            <i class='bx bx-user'><p style="font-size: 13px; display:inline-flex; transform: translateY(-5px);">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }}</p> </i>
+                                        </div>
+                                        <div class="button-row" style="display:inline-flex;">
+                                            <a href="{{ route('dashboard') }}?tab=orders">
+                                                <i class='bx bx-shopping-bag'></i>My Orders
+                                            </a>
+                                        </div>
+                                        <div class="button-row" style="display:inline-flex;">
+                                            <a href="{{ route('dashboard') }}?tab=account">
+                                                <i class='bx bx-cog'></i>My Account
+                                            </a>
+                                        </div>
+                                        <div class="button-row" style="display:inline-flex;">
+                                            <a href="{{ route('dashboard') }}?tab=member">
+                                                <i class='bx bx-reset'></i>My Membership
+                                            </a>
+                                        </div>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <button type="submit" style="cursor:pointer; background:#fecc42;border:none;font-size: 10px;padding: 5px 10px;border-radius: 5px;width: 50%;display: flow;justify-self: center;margin-top: 5px;">Logout
+                                                </button>
+                                        </form>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a class="basket" href="{{ route('basket') }}">
                                 <i class='bx bx-basket'></i>
+                                @if($basketCount > 0)
+                                    <span class="basket-count">{{ $basketCount }}</span>
+                                @endif
                             </a>
+                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
+                            <script src="{{ asset('js/dark-mode.js') }}"></script>
                         @endif
+                    <!-- If user is not logged in -->
                     @else
-                        <!-- Guest: Login and Basket -->
                         <a class="login" href="{{ route('login') }}">Login</a>
                         <p>|</p>
-                        <a class="basket" href="{{route('basket')}}">
+                        <a class="basket" href="{{ route('basket') }}">
                             <i class='bx bx-basket'></i>
                         </a>
+                        <button id="toggleMode"><i class='bx bxs-moon'></i></button>
+                        <script src="{{ asset('js/dark-mode.js') }}"></script>
                     @endif
                 </div>
             </nav>
@@ -68,14 +142,13 @@
                     @endif
                     </div>
                 </div>
+                <!-- Admin Buttons -->
                 <div class="admin-buttons">
-                    <div class="admin-buttons">
-                    <a href="{{ route('admin.dashboard', ['tab' => 'home']) }}" id="home" class="choice">Home</a>
-                    <a href="{{ route('admin.dashboard', ['tab' => 'allOrders']) }}" id="allOrders" class="choice">Manage Orders</a>
-                    <a href="{{ route('admin.dashboard', ['tab' => 'allUsers']) }}" id="allUsers" class="choice">Manage Users</a>
-                    <a href="{{ route('admin.dashboard', ['tab' => 'allProducts']) }}" id="allProducts" class="choice">Categories and Products</a>
-                    <a href="{{ route('admin.dashboard', ['tab' => 'settings']) }}" id="settings" class="choice">Settings</a>
-                </div>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'home']) }}" id="admin-home" class="choice">Home</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'allOrders']) }}" id="admin-allOrders" class="choice">Manage Orders</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'allUsers']) }}" id="admin-allUsers" class="choice">Manage Users</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'allProducts']) }}" id="admin-allProducts" class="choice">Categories and Products</a>
+                    <a href="{{ route('admin.dashboard', ['tab' => 'settings']) }}" id="admin-settings" class="choice">Settings</a>
                 </div>
 
                 <div class="admin-logout">
@@ -88,14 +161,55 @@
                 </div>
             </div>
 
+            <!-- Admin Content container -->
             <div class="admin-content">
-                <div id="homeContent" class="admin-section" style="display:none;">
+                <!-- Home Content container -->
+                <div id="admin-homeContent" class="admin-section" style="display:none;">
                     <p>This is the main dashboard screen</p>
                 </div>
-                <div id="allOrdersContent" class="admin-section" style="display: none;">
-                    <p>All orders will appear here.</p>
+                <!-- Order Content container -->
+                <div id="admin-allOrdersContent" class="admin-section" style="display: none;">
+                    @if ($orders->isEmpty())
+                        <p colspan="6" style="text-align: center; font-style: italic; padding:10px;">No orders have been placed yet.</p>
+                    @else
+                        <table class="table" style="transform:translateY(-20%); position:relative; top: 15%; padding: 5% 1% 1% 1%; text-align: center;">
+                            <thead>
+                                <tr style="background-color: var(--secondary-colour); color: var(--primary-colour);">
+                                    <th>Order #</th>
+                                    <th>Placed By</th>
+                                    <th>Date Placed</th>
+                                    <th>Status</th>
+                                    <th>Total</th>
+                                    <th>Items</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($orders as $order)
+                                    <tr style="background-color: var(--light-bg); border-bottom: 1px solid var(--dark-bg);">
+                                        <td>{{ $order->id }}</td>
+                                        <!-- Display the user who placed the order -->
+                                        <td>
+                                            {{ $order->user->firstName }} {{ $order->user->lastName }} ({{ $order->user->email }})
+                                        </td>
+                                        <!-- Format the date as you prefer -->
+                                        <td>{{ $order->created_at->format('d M, Y') }}</td>
+                                        <td>{{ $order->status }}</td>
+                                        <td>£{{ number_format($order->total_cost, 2) }}</td>
+                                        <td>
+                                            <ul style="list-style:none; padding: 0;">
+                                                @foreach ($order->orderItems as $item)
+                                                    <li>{{ $item->product->name }} (x{{ $item->quantity }})</li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
                 </div>
-                <div id="allUsersContent" class="admin-section" style="display: none; text-align:center;">
+                <!-- User Content container -->
+                <div id="admin-allUsersContent" class="admin-section" style="display: none; text-align:center;">
                     <h2>Users List</h2>
                     <form action="{{ url('profile.search')}}" method="get" style="width: 50%">
                         @csrf
@@ -144,7 +258,9 @@
                     </div>
                 </div>
 
-                <div id="allProductsContent" class="admin-section" style="display: none;">
+                <!-- Categories and Products container -->
+                <div id="admin-allProductsContent" class="admin-section" style="display: none;">
+                    <!-- Categories section -->
                     <div class="categories">
                         <h4>Add a Category</h4>
                         <form action="{{ url('category.add') }}" method="post">
@@ -165,7 +281,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($categories as $category)
+                                @forelse ($allcategories as $category)
                                     <tr style="background-color: var(--light-bg); border-bottom: 1px solid var(--dark-bg);">
                                         <td>{{ $loop->iteration }}</td>
                                         <td style="padding:5px;" ondblclick="editCategoryName(this, '{{ $category->id }}')">
@@ -181,7 +297,7 @@
                                         <td>
                                             <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display:inline;">
                                                 @csrf
-                                                @method('delete')
+                                                @method('patch')
                                                 <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this category?')">
                                                     <i class='bx bx-trash'></i>
                                                 </button>
@@ -195,29 +311,41 @@
                                 @endforelse
                             </tbody>
                         </table>
-                        <div>
-                            {{ $categories->links('pagination::bootstrap-4') }}
+                        <div style="margin-top: 20px">
+                            {{ $allcategories->links('pagination::bootstrap-4') }}
                         </div>
                     </div>
+
+                    <!-- Products section -->
                     <div class="products">
                         <h4>Add a Product</h4>
-                        <form action="{{ route('add_product') }}" method="post">
+                        <form action="{{ route('add_product') }}" method="post" enctype="multipart/form-data">
                             @csrf
+                            <!-- Name row -->
                             <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
                                 <label>Product Name:</label>
                                 <input class ="input-field" type="text" name="name" placeholder="Enter a Name" required>
                             </div>
+
+                            <!-- Image row -->
+                            <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
+                                <label>Product Image:</label>
+                                <input class ="input-field" type="file" name="image"required></input>
+                            </div>
                             
+                            <!-- Description row -->
                             <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
                                 <label>Product Description:</label>
                                 <textarea class ="input-field" type="text" name="description" placeholder="Enter a Description" required></textarea>
                             </div>
                             
+                            <!-- Price row -->
                             <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
                                 <label>Price:</label>
                                 <input type="number" class ="input-field" name="price" min="0" value="0" placeholder="0.00" step="0.01" style="color: gray;" required>
                             </div>
 
+                            <!-- Size row -->
                             <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
                                 <label>Size:</label>
                                 <select style="color: gray;" id="size" class ="input-field" name="size" required>
@@ -229,11 +357,13 @@
                                 </select>
                             </div>
                             
+                            <!-- Quantity row -->
                             <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
                                 <label>Quantity:</label>
                                 <input type="number" class ="input-field"  name="stock" min="0" step="1" placeholder="0" required>                            
                             </div>
                             
+                            <!-- Category row -->
                             <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
                                 <label for="category_id">Category:</label>
                                 <select id="category_id" class ="input-field" name="category_id" style="color: gray;" required>
@@ -260,7 +390,9 @@
                     </div>
                 </div>
 
-                <div id="settingsContent" class="admin-section" style="display: none;">
+                <!-- Settings section -->
+                <div id="admin-settingsContent" class="admin-section" style="display: none;">
+                    <!-- Profile information section -->
                     <div class="profile-info">
                             <h4>Profile Information</h4>
                             <section>
@@ -311,6 +443,8 @@
                             </section>
 
                         </div>
+
+                        <!-- Update password section -->
                         <div class="password-info">
                             <h4>Update Password</h4>
                             <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
@@ -349,6 +483,8 @@
                                 </div>
                             </form>
                         </div>
+
+                        <!-- Delete profile section -->
                         <div class="delete-profile">
                             <form method="post" action="{{ route('profile.destroy') }}">
                                 @csrf
@@ -376,7 +512,8 @@
 
         <!-- Footer Section -->
         <section id="footer">
-                <footer class="top">
+            <footer class="top">
+                <!-- Logo description and social links -->
                 <div class="logo-desc-soc">
                     <div class="logo">
                         <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
@@ -391,6 +528,7 @@
                         </ul>
                     </div>
                 </div>
+                <!-- Quick Links Section -->
                 <div class="quick-links">
                     <h3>Quick Links</h3>
                     <ul class="links">
@@ -398,10 +536,11 @@
                         <li><a href="{{ route('products') }}">Products</a></li>
                         <li><a href="{{ route('about-us') }}">About Us </a></li>
                         <li><a href="{{ route('blog') }}">Blog</a></li>
-                        <li><a class="login" href="{{ route('admin.register') }}">Register as Admin</a></li>
+                        <li><a class="login" href="{{ route('admin.register') }}">Admin Register</a></li>
+
                     </ul>
                 </div>
-
+                <!-- Information Section -->
                 <div class="information">
                     <h3>Information</h3>
                     <ul class="details">
@@ -410,7 +549,7 @@
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
-
+                <!-- Contact Information Section -->
                 <div class="contact-information">
                     <h3>Contact Info</h3>
                     <ul class="info">
@@ -430,8 +569,9 @@
                         </li>
                     </ul>
                 </div>
-                </footer>
-                <footer class="bottom">
+            </footer>
+            <!-- Lower footer section -->
+            <footer class="bottom">
                 <div class="footer">
                     <p>© E-SPRESSO | All Rights Reserved</p>
                 </div>
