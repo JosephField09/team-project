@@ -9,7 +9,6 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/carousel.js') }}"></script>
 </head>
 
 <body>
@@ -25,7 +24,7 @@
                 <div class="navbar-middle">
                     <a class="middle option-selected" href="{{ route('home') }}">Home</a>
                     <div id="product-nav" class="middle" style="display: contents;">
-                        <a class="egg" href="{{ route('products') }}">Products</a>
+                        <a class="middle" href="{{ route('products') }}">Products</a>
                         <div class="dropdown-content">
                             <div class="dropdown-arrow" style="width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid rgb(255,251,243); ;"></div>
                             <ul class="dropdown">
