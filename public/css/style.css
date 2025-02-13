@@ -1492,9 +1492,18 @@ table{
 /* Styling for recommended products section */
 .product-details-page .recommended-products {
   padding: 40px 14.25%;
-  background-color: #fff;
+  background-color: var(--light-bg);
 }
 
+/* Dark mode for reccomended products */
+body.dark-mode .recommended-products{
+  background-color: gray;
+  h2{
+    color: white;
+  }
+}
+
+/* Styling for the product details recommended products header 2 */
 .product-details-page .recommended-products h2 {
   font-size: 24px;
   font-weight: bold;
@@ -1524,13 +1533,6 @@ table{
 
 .product-details-page .product-card:hover {
   transform: translateY(-5px);
-}
-
-.product-details-page .product-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 10px;
 }
 
 .product-details-page .product-card h3 {

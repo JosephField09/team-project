@@ -88,32 +88,27 @@
         <!-- Recommended Products Section -->
         <section class="recommended-products">
             <h2>Recommended Products</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <img src="{{ asset('assets/AdobeStock_114023252.jpeg') }}" alt="Cappuccino">
-                    <h3>Cappuccino</h3>
-                    <p class="price">Price: £12</p>
-                    <p class="description">Bold and foamy with the perfect balance of espresso and milk.</p>
-                    <p class="rating">⭐⭐⭐⭐⭐ (124)</p>
-                    <button class="view-button">View Product</button>
-                </div>
-                <div class="product-card">
-                    <img src="{{ asset('assets/AdobeStock_296765068.jpeg') }}" alt="Americano">
-                    <h3>Americano</h3>
-                    <p class="price">Price: £12</p>
-                    <p class="description">Classic black coffee brewed to perfection.</p>
-                    <p class="rating">⭐⭐⭐⭐⭐ (124)</p>
-                    <button class="view-button">View Product</button>
-                </div>
-                <div class="product-card">
-                    <img src="{{ asset('assets/AdobeStock_919872129.jpeg') }}" alt="Hot Chocolate">
-                    <h3>Hot Chocolate</h3>
-                    <p class="price">Price: £12</p>
-                    <p class="description">A luxurious blend of rich cocoa, sugar, and creamy milk. Perfect for cold days or as a comforting treat any time.</p>
-                    <p class="rating">⭐⭐⭐⭐⭐ (124)</p>
-                    <button class="view-button">View Product</button>
-                </div>
+            <p style="margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <div class="products-container">
+                @php
+                    // Fetch the products by their IDs. 
+                    // Preferably, you do this in the controller and pass as $products.
+                    $products = \App\Models\Product::whereIn('id', [4, 28, 43])->get();
+                @endphp
+
+                @foreach($products as $product)
+                    <div class="product-card" style="background-color:white;">
+                        <img src="{{ asset('assets/' . $product->image) }}" alt="Product Image">
+                        <div class="product-row" style="display: inline-flex;">
+                            <h3 class="product-title">{{ $product->name }}</h3>
+                            <p class="product-price">from <span>£{{ number_format($product->price, 2) }}</span></p>
+                        </div>
+                        <p class="product-description">{{ $product->description }}</p>
+                        <a href="{{ route('product-details', $product->id) }}" class="view-button">View</a>
+                    </div>
+                @endforeach
             </div>
+            <a href="{{ route('products') }}" class="best-sellers-button" style="justify-self:center; display:flex;" >View All Products</a>
         </section>
         
         <!-- Footer Section -->
