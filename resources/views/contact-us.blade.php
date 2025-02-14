@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <a class="middle" href="{{ route('about-us') }}">About Us</a>
-                    <a class="middle" href="{{ route('contact-us') }}">Contact Us</a>
+                    <a class="middle option-selected" href="{{ route('contact-us') }}">Contact Us</a>
                     <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
                 </div>
                 <!-- Right navbar section -->
