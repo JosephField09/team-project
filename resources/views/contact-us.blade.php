@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags, title, CSS and JS -->
+    <!-- Meta tags, title, CSS, and JS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>Basket</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 
 <body>
     <main>
-        <!-- Header Section -->
+       <!-- Header Section -->
        <section id="header">
             <nav id="main">
                 <!-- Left navbar section -->
@@ -51,7 +52,7 @@
                             </ul>
                         </div>
                     </div>
-                    <a class="middle option-selected" href="{{ route('about-us') }}">About Us</a>
+                    <a class="middle" href="{{ route('about-us') }}">About Us</a>
                     <a class="middle" href="{{ route('contact-us') }}">Contact Us</a>
                     <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
                 </div>
@@ -148,128 +149,45 @@
             </nav>
         </section>
 
-        <!-- Image Block Sections -->
-        <section id="ImageBlocks">
-            <!-- Our story Section -->
-            <div class="ourstory">
-                <div class="side-img">
-                    <img src="{{ asset('assets/AdobeStock_835212991.jpeg') }}" alt="Woman picking coffee beans" ></img>
-                </div>
-                <div class="aboutustext">
-                    <h3>About Us</h3>
-                    <h2>Our Story, Your Coffee Experience</h2>
-                    <p>At E-Spresso, we believe in more than just coffee - we create moments. From our handpicked beans to the perfect brew,
-                        each cup is crafted with love and care. Whether you're here for a quick pick-me-up or to enjoy a relaxing moment, we're
-                        dedicated to making every sip special. Join us in celebrating the art of coffee, brewed to perfection just for you.
-                    </p>
-                    <div class="promise">
-                        <img src="{{ asset('assets/check-mark.png') }}" style="width: 10%;"></img>
-                        <h4>Single-origin coffee beans</h4>
-                    </div>
-                    <div class="promise">
-                        <img src="{{ asset('assets/check-mark.png') }}" ></img>
-                        <h4>Expertly roasted for optimal flavor</h4>
-                    </div>
-                    <div class="promise">
-                        <img src="{{ asset('assets/check-mark.png') }}"></img>
-                        <h4>Wide range of blends for every taste</h4>
-                    </div>
-                    <div class="promise">
-                        <img src="{{ asset('assets/check-mark.png') }}"></img>
-                        <h4>High-quality, eco-friendly packaging</h4>
-                    </div>
-                    <a class="contact-us"href="#contact-us"><h4>Contact us</h4></a>
-                </div>
+         <!-- Contact Us Section -->
+         <section id="ContactUs">
+            <div class="side-img">
+                <img src="{{ asset('assets/AdobeStock_1026464614.jpeg') }}"></img>
             </div>
-
-            <div id="our-history">
-                <h2 class="header">Our History</h2>
-                <div class="our-history-container">
-                <div class="timeline" style="--items: 3">
-                    <ul>
-                    <li style="--index: 1">
-                        <h3>2020</h3>
-                        <h2>From Quarantine to Caffeine</h2>
-                        <p>
-                        In the midst of lockdown, when stepping outside was nearly impossible where coffee cravings collided with closed shops and stay-at-home orders, 
-                        E-spresso was born to keep coffee lovers fueled at home. 
-                        </p>
-                    </li>
-                    <li style="--index: 2">
-                        <h3>2023</h3>
-                        <h2>Brewing Success</h2>
-                        <p>
-                        As the world returned to pre-covid ways, our commitment to delivering fresh, ethically sourced coffee right to your door only grew stronger. 
-                        What started as a lockdown necessity became a trusted favorite, leading to soaring demand, new product offerings, and expanded delivery networks.
-                        </p>
-                    </li>
-                    <li style="--index: 3">
-                        <h3>2025</h3>
-                        <h2>A Latte to Come</h2>
-                        <p>
-                        As we look to the future, we’re expanding globally, 
-                        deepening our commitment to sustainable sourcing, and embracing new brewing innovations. 
-                        Driven by our passion for exceptional coffee, we aim to connect communities and fuel dreams—one cup at a time.
-                        </p>
-                    </li>
-                    </ul>
-                </div>
-                </div>
-            </div>
-
-            <!-- Our mission Section -->
-            <div class="ourmission">
-                <div class="aboutustext">
-                        <h2>Our Mission</h2>
-                        <p>At E-Spresso, we strive to create a warm and inviting space where coffee lovers can gather, connect, and share meaningful moments 
-                            and enjoy the finest brews. We are committed to delivering exceptional experiences.
-                            
-                        </p>
-                        <div class="missions">
-                            <ul>
-                                <li><p><span class="missionheader">Quality First:</span> We source the best beans from around the world to ensure every sip is a delight</p></li>
-                                <li><p><span class="missionheader">Sustainability:</span> We priotitise eco-friendly practices to support a healthier planet.</p></li>
-                                <li><p><span class="missionheader">Community Connection:</span> We aim to be more than just a coffee shop by fostering meaningful relationships with our customers</p></li>
-                                <li><p><span class="missionheader">Continuos Innovation:</span> From classic blends to unique creations, we strive to keep our menu exciting and fresh.</p></li>
-                            </ul>
+            <div class="contact-us-form">
+                <form id="contact-us">
+                    <h1 id="contact-us-heading">Contact Us</h1>
+                    <div class="first-and-last-name">
+                        <div class="first-name">
+                            <label for="fName">First Name</label>
+                            <input id ="fName "type ="text" name="fName" placeholder="Enter Your First Name" class="input-field" require/>
                         </div>
-                </div>
-                <div class="side-img">
-                    <img style="margin-left: 10px; justify-self: center; display: block;" src="{{ asset('assets/AdobeStock_814649831.jpeg') }}"></img>
-                </div>
-            </div>
-            
-            <!-- Our vision Section -->
-            <div class="ourvision">
-                <div class="side-img">
-                    <img src="{{ asset('assets/AdobeStock_859686298.jpeg') }}" class="bigimage"></img>
-                </div>  
-                <div class="our-vision-body"> 
-                    <h2>Our Vision</h2>
-                    <div class="our-vision-text">
-                        <div class="connecting-people">
-                            <i class='bx bxs-universal-access' ></i>
-                            <p><span class="missionheader">Connecting People</span></p>
-                            <p>Bringing communities together through coffee.</p>
+                        <div class="last-name">
+                            <label for="lName">Last Name</label>
+                            <input id ="lName "type ="text" name="lName" placeholder="Enter Your Last Name" class="input-field" require/>
                         </div>
-                        <div class="sustainability">
-                            <i class='bx bxs-leaf'></i>
-                            <p><span class="missionheader">Sustainability</span></p>
-                            <p>Prioritising eco-friendly practices for a better planet.</p>
+                    </div>
+                    <div class="email-and-phone">
+                        <div class="email">
+                            <label for="email">Email</label>
+                            <input id="email" type="email"  name="email" placeholder="Enter your Email" class="input-field" require>
                         </div>
-                        <div class="quality">
-                            <i class='bx bxs-coffee-bean'></i>
-                            <p><span class="missionheader">Quality</span></p>
-                            <p>Serving the finest coffee with care and precision.</p>
+                        <div class="phone">
+                            <label for="phone">Phone</label>
+                            <input id="phone" type="text" id="phone" name="phone" placeholder="Enter Your Phone number" class="input-field" require/>
                         </div>
-                        <div class="innovation">
-                            <i class='bx bxs-brain' ></i>
-                            <p><span class="missionheader">Innovation</span></p>
-                            <p>Continuosly evolving to offer unique experiences</p>
-                        </div>
-                    </div> 
-                    <a class="contact-us" href="{{ route('products') }}"><h4>Discover Our Product</h4></a>
-                </div>
+                    </div>
+                    <div class="message-to-send">
+                        <label for="message">Message</label>
+                        <textarea rows="5" cols="50" id="uMessage" name="uMessage" form="contactusform" class="input-field"
+                        placeholder="Write Message Here..." require></textarea>
+                    </div>
+                    <p class="error-message" id="formError"></p>
+                    <div class ="submit-form">
+                        <button type="submit" id="submit-form-btn">Submit Now</button>
+                    </div>
+                </form>
+                <script src="{{ asset('js/contact-us.js') }}" ></script>
             </div>
         </section>
 
@@ -298,6 +216,7 @@
                         <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="{{ route('products') }}">Products</a></li>
                         <li><a href="{{ route('about-us') }}">About Us </a></li>
+                        <li><a href="{{ route('contact-us') }}">Contact Us </a></li>
                         <li><a href="{{ route('blog') }}">Blog</a></li>
                         <li><a class="login" href="{{ route('admin.register') }}">Admin Register</a></li>
 
@@ -342,3 +261,4 @@
         </section>
     </main>
 </body>
+</html>

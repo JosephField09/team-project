@@ -14,7 +14,7 @@
 <body class="product-details-page">
     <main>
         <!-- Header Section -->
-        <section id="header">
+       <section id="header">
             <nav id="main">
                 <!-- Left navbar section -->
                 <div class="navbar-left">
@@ -53,6 +53,7 @@
                         </div>
                     </div>
                     <a class="middle" href="{{ route('about-us') }}">About Us</a>
+                    <a class="middle" href="{{ route('contact-us') }}">Contact Us</a>
                     <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
                 </div>
                 <!-- Right navbar section -->
@@ -266,7 +267,7 @@
                     <div class="logo">
                         <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                     </div>
-                    <p class="desc">At E-spresso, we’re passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. Whether you’re a coffee connoisseur or just beginning your journey, Our store is your gateway to a world of rich flavors and aromatic delights.</p>
+                    <p class="desc">At E-spresso, we're passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. Whether you’re a coffee connoisseur or just beginning your journey, Our store is your gateway to a world of rich flavors and aromatic delights.</p>
                     <div class="socials">
                         <ul class="social-links">
                             <i class='bx bxl-facebook-circle'></i>
@@ -283,6 +284,7 @@
                         <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="{{ route('products') }}">Products</a></li>
                         <li><a href="{{ route('about-us') }}">About Us </a></li>
+                        <li><a href="{{ route('contact-us') }}">Contact Us </a></li>
                         <li><a href="{{ route('blog') }}">Blog</a></li>
                         <li><a class="login" href="{{ route('admin.register') }}">Admin Register</a></li>
 

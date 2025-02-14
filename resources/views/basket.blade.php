@@ -71,6 +71,12 @@
                                     <span class="basket-count">{{ $basketCount }}</span>
                                 @endif
                             </a>
+                            <select id="currency-selector" class="currency-selector">
+                                <option value="GBP">£</option>
+                                <option value="USD">$</option>
+                                <option value="EUR">€</option>
+                            </select>
+                            <script src="{{ asset('js/currency.js') }}"></script>
                             <button id="toggleMode"><i class='bx bxs-moon'></i></button>
                             <script src="{{ asset('js/dark-mode.js') }}"></script>
                         <!-- If user is user -->
@@ -114,6 +120,12 @@
                                     <span class="basket-count">{{ $basketCount }}</span>
                                 @endif
                             </a>
+                            <select id="currency-selector" class="currency-selector">
+                                <option value="GBP">£</option>
+                                <option value="USD">$</option>
+                                <option value="EUR">€</option>
+                            </select>
+                            <script src="{{ asset('js/currency.js') }}"></script>
                             <button id="toggleMode"><i class='bx bxs-moon'></i></button>
                             <script src="{{ asset('js/dark-mode.js') }}"></script>
                         @endif
@@ -124,6 +136,12 @@
                         <a class="basket" href="{{ route('basket') }}">
                             <i class='bx bx-basket'></i>
                         </a>
+                        <select id="currency-selector" class="currency-selector">
+                            <option value="GBP">£</option>
+                            <option value="USD">$</option>
+                            <option value="EUR">€</option>
+                        </select>
+                        <script src="{{ asset('js/currency.js') }}"></script>
                         <button id="toggleMode"><i class='bx bxs-moon'></i></button>
                         <script src="{{ asset('js/dark-mode.js') }}"></script>
                     @endif

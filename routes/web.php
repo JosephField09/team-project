@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
@@ -37,6 +38,9 @@ Route::post('/checkout', [CheckoutController::class, 'add'])->name('checkout.add
 
 // About Us route
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
+
+// Contact Us route
+Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us');
 
 // Blog route
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');

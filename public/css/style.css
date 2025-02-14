@@ -1465,7 +1465,6 @@ body.dark-mode #contact-us-heading{
   text-align: center;
 }
 
-
 /* Styling for the products */
 #products{
   padding: 0px 14.25%;
@@ -1622,7 +1621,7 @@ body.dark-mode .filter-buttons{
 
 /* Styling for the search bar */
 #search{
-  width: 15vw;
+  width: 130%;
   padding: 10px;
   border: 1px solid var(--primary-colour);
   background-color: var(--light-bg);
@@ -1768,13 +1767,15 @@ body.dark-mode .product-card {
   justify-self: center;
   display: grid;
   filter: drop-shadow(7px 13px 10px gray);
-  transition: 0.5s;
 }
 
-.product-card img:hover{
-  scale: 1.1;
+/* Styling for the product card price */
+.product-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--secondary-colour);
+  margin-bottom: 10px;
 }
-
 /* Styling for the product row */
 .product-row{
   width: 100%;
@@ -1792,19 +1793,20 @@ body.dark-mode .product-card {
 /* Styling for the product price */
 .product-price{
   font-size: smaller;
-  color: #444;
+  color: var(--secondary-colour);
 }
 
 /* Styling for product price text */
 .product-price span{
-  font-size: larger;
-  color: #444;
+  font-size: 16px;
+  color: var(--title-colour);
+  font-weight: bold;
 }
 
 /* Styling for product description text */
 .product-description {
-  font-size: 10px;
-  color: #666;
+  font-size: 11px;
+  color: var(--text-colour);
   margin-bottom: 15px;
   text-align: left;
 }
@@ -2627,6 +2629,11 @@ body.dark-mode .recommended-products{
 
 }
 
+/* Styling for hovering the product card */
+.product-details-page .product-card:hover {
+  transform: translateY(-5px);
+}
+
 /* Styling for the product details product card heading 3 */
 .product-details-page .product-card h3 {
   font-size: 18px;
@@ -2635,19 +2642,29 @@ body.dark-mode .recommended-products{
   margin-bottom: 5px;
 }
 
-/* Styling for the product card price */
-.product-details-page .product-card .product-price {
-  font-size: 16px;
-  font-weight: bold;
-  color: var(--secondary-colour);
-  margin-bottom: 10px;
-}
-
 /* Styling for the product card description */
 .product-details-page .product-card .product-description {
   font-size: 14px;
   color: var(--text-colour);
   margin-bottom: 20px;
+}
+
+/* Styling for view product button */
+.product-details-page .view-button {
+  background-color: var(--secondary-colour);
+  color: var(--primary-colour);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+/* Styling for hovering the voew button on product details */
+.product-details-page .view-button:hover {
+  background-color: #e5a500;
 }
 
 /* Styling for the basket icon */
@@ -2874,7 +2891,7 @@ body.dark-mode #services{
   border-radius: 8px; 
   box-shadow: 0 2px 20px 3px rgba(0, 0, 0, 0.2); 
   padding: 20px; 
-  width: 28%; 
+  width: 25%; 
   min-height: 250px;
   text-align: center; 
   transition: transform 0.3s; 
