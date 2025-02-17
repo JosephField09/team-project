@@ -2956,9 +2956,6 @@ body.dark-mode .service-card{
     font-size: 2.5em; 
     color: var(--title-colour);
   }
-  p{
-    color: gray;
-  }
 }
 
 /* Dark mode for best sellers section */

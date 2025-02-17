@@ -249,7 +249,7 @@
                         <img src="{{ asset('assets/' . $product->image) }}" alt="Product Image">
                         <div class="product-row" style="display: inline-flex;">
                             <h3 class="product-title">{{ $product->name }}</h3>
-                            <p class="product-price" data-gbp="{{ $data->price }}">from <span>£{{ number_format($product->price, 2) }}</span></p>
+                            <p class="product-price" data-gbp="{{ $product->price }}">from <span>£{{ number_format($product->price, 2) }}</span></p>
                         </div>
                         <p class="product-description">{{ $product->description }}</p>
                         <a href="{{ route('product-details', $product->id) }}" class="view-button">View</a>

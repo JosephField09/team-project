@@ -243,7 +243,7 @@
         <!-- Best Sellers Section -->
         <section id="best-sellers">
             <h1>Best Sellers</h1>
-            <p style="margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <p style="margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto; color:gray;">
                 Discover the most popular coffee that our customers just love. These highest sellers are crafted to perfection and are sure to delight your taste buds.
             </p>
             <div class="products-container">
