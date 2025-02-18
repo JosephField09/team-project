@@ -2777,34 +2777,42 @@ body.dark-mode .basket-main{
 
 /* Styling for the basket and checkout */
 .basket-and-checkout{
-  display: flex;
+  display: grid;
+  grid-template-columns: 75% 23%;
   flex-direction: row;
   height: 550px;
+  gap: 2%;
+  width: 100%;
 }
 
 /* Styling for the empty basket */
 .empty-basket{
-  display: flex;
+  display: grid;
   flex-direction: column;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 2px 6px 0#6f6f6f;
-  padding: 10%;
-  width: 700px;
+  box-shadow: 0 2px 6px 0 #6f6f6f;
+  padding: 2%;
+  color: var(--title-colour);
+  height: 100%;
+  grid-template-rows: 1fr 3fr 5fr;
   h1{
     font-size: 35px;
-    padding-bottom: 20px;
-    top: -70px;
-    left: -50px;
+    margin-bottom: 2%;
     position: relative;
     padding: 0;
   }
   hr{
-    top: -60px;
-    left: -50px;
-    position: relative;
     padding: 0;
-    width: 125%;
+    width: 100%;
+  }
+  p{
+    font-size: 20px;
+    justify-self: center;
+    color: var(--text-colour);
+  }
+  a{
+    color: var(--secondary-colour);
   }
 }
 
@@ -2819,33 +2827,31 @@ body.dark-mode .empty-basket{
 
 /* Styling for the the basket summary */
 .basket-summary{
-  margin-left: 5%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   background: white;
   border-radius: 12px;
   box-shadow: 0 2px 6px 0#6f6f6f;
   padding: 5%;
-  height: 300px;
-  width: 300px;
+  height: 60%;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   h2{
+    color: var(--title-colour);
     text-align: left;
-    font-size: 25px;
-    padding-bottom: 20px;
-    padding: 0;
-    margin-top: -20%;
-    position: relative;
+    font-size: 20px;
   }
   h4{
     text-align: left;
-    position: relative;
     margin-right: auto;
+    color: var(--text-colour);
+    font-weight: lighter;
+    align-self: end;
   }
   hr{
-    position: relative;
-    width: 140%;
+    width: 80%;
+    color: lightgray;
+    transform: translateY(-15px);
   }
   button, a{
     position: relative;
@@ -2878,12 +2884,12 @@ body.dark-mode .basket-summary{
 
 /* Styling for the costs */
 .costs{
-  display: flex;
-  display: row;
-  align-items: none;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  display: grid;
+  height: 100%;
+  width: 80%;
+  grid-template-columns: 60% 40%;
   margin-right: auto;
+  align-content: center;
 }
 
 /* Styling for the items in the basket */
@@ -2894,11 +2900,12 @@ body.dark-mode .basket-summary{
   border-radius: 12px;
   box-shadow: 0 2px 6px 0#6f6f6f;
   padding: 2%;
-  width: 700px;
+  text-align: left;
   height: fit-content;
+  color: var(--title-colour);
   h1{
     font-size: 35px;
-    padding-bottom: 20px;
+    margin-bottom: 2%;
     position: relative;
     padding: 0;
   }
@@ -2908,21 +2915,29 @@ body.dark-mode .basket-summary{
     width: 100%;
   }
   img{
-    width:60px;
-    height: 60px;
-    padding: 5%;
+    width:70%;
   }
   table{
     padding-top: 2%;
     width: 100%;
     text-align: center;
-
+    .product-details{
+      padding: 0 5%;
+      display: grid;
+      grid-template-columns: 40% 60%;
+      align-content: center;
+    }
     button{
       background-color: var(--secondary-colour);
       color: black;
       border: none;
-      padding: 3%;
+      padding: 7% 10%;
       border-radius: 3px;
+      cursor: pointer;
+      transition: 1.5s;
+    }
+    button:hover{
+      scale: 1.2;
     }
   }
 }

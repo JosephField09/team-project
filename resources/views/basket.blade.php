@@ -157,12 +157,12 @@
                     @if (empty($basket_Items) || $basket_Items->isEmpty())
                         <div class="empty-basket">
                             <h1>Basket</h1>
-                            <hr width="90%" size="2"></hr>
-                            <h3>Your basket is empty. <a href="{{ route('products') }}">Please continue shopping</a>.</h2>
+                            <hr size="2"></hr>
+                            <p>Your basket is empty. <a href="{{ route('products') }}">Please continue shopping</a>.</p>
                         </div>
                         <div class="basket-summary">
                             <h2>Summary</h2>
-                            <hr width="100%" size="2">
+                            <hr width="90%" size="2"></hr>
                             <div class="costs">
                                 <h4>Total Products:</h4>
                                 <h4 class="basket-price" data-gbp="{{ 0 }}">£0</h4>
@@ -171,7 +171,7 @@
                                 <h4>Shipping costs:</h4>
                                 <h4>FREE</h4>
                             </div>
-                            <hr width="100%" size="2">
+                            <hr style="transform: translateY(20px)" size="2"></hr>
                             <h4 class="total" data-gbp="{{ 0 }}">Total: £0</h3>
                             <button class="btn btn-primary" @if(empty($basket_Items) || $basket_Items->isEmpty()) disabled @endif>Checkout</button>
                         </div>
@@ -184,11 +184,11 @@
                                 <table class="basket">
                                     <thead style=" border: none;border-bottom: 1px solid lightgray">
                                         <tr>
-                                            <th>Product</th>
-                                            <th>Price</th>
-                                            <th>Quantity</th>
-                                            <th>Total</th>
-                                            <th>Actions</th>
+                                            <th style="width: 30%; text-align: left; padding-left: 2%;">Products</th>
+                                            <th style="width: 20%;" >Size</th>
+                                            <th style="width: 15%;">Quantity</th>
+                                            <th style="width: 20%;">Total</th>
+                                            <th style="width: 20%;">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -198,13 +198,17 @@
                                                 <td>
                                                     <div class="product-details">
                                                         <img src="{{ asset('assets/' . $item->product->image) }}" alt="{{ $item->product->name }}" class="basket-image">
+                                                        <p style="align-self:center; justify-self: left; font-size:16px; color: black;">{{ $item->product->name }}</p>
                                                     </div>
                                                 </td>
-                                                <td class="basket-price" data-gbp="{{ $item->product->price }}">£{{ $item->product->price }}</td>
+                                                <td style="text-transform: capitalize; color: var(--text-colour);">
+                                                    <!-- Display the size. Could be from $item->product->size or $item->size, depending on how you store it. -->
+                                                    {{ $item->product->size ?? 'N/A' }}
+                                                </td>
                                                 <td>
                                                     <form action= "{{route('basket.update', $item->id)}}" method="POST">
                                                         @csrf 
-                                                        <input type="number" name="quantity" value="{{$item->quantity}}" min="1" class="basket_quantity form-control" onchange="this.form.submit()">
+                                                        <input style="width: 80%; text-align: center;" type="number" name="quantity" value="{{$item->quantity}}" min="1" class="basket_quantity form-control" onchange="this.form.submit()">
                                                     </form>
                                                 </td>
                                                 <td class="basket-price" data-gbp="{{ $item->product->price * $item->quantity }}">£{{ $item->product->price * $item->quantity }}</td>
@@ -224,7 +228,7 @@
                         <!-- Basket Summary Section -->
                         <div class="basket-summary">
                             <h2>Summary</h2>
-                            <hr width="100%" size="2">
+                            <hr size="2"></hr>
                             <div class="costs">
                                 <h4>Total Products:</h4>
                                 <h4 class="basket-price" data-gbp="{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}">£{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}</h4>
@@ -233,7 +237,7 @@
                                 <h4>Shipping costs:</h4>
                                 <h4>FREE</h4>
                             </div>
-                            <hr width="100%" size="2">
+                            <hr style="transform: translateY(20px)" size="2"></hr>
                             <h4 class="total" data-gbp="{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}">Total: £{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}</h3>
                             <a href="{{ route('checkout') }}"> Checkout </a>
                         </div>

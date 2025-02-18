@@ -188,7 +188,7 @@
                             @endif
                         </p>
                     </div>
-                    <form action="{{ route('basket.add', $data->id) }}" method="POST">
+                    <form action="{{ route('basket.add', $data->id,$data->size) }}" method="POST">
                         @csrf
                         <!-- Quantity button -->
                         <div class="size-options">
