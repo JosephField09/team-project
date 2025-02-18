@@ -137,7 +137,9 @@ class ProfileController extends Controller
         ->where('userType', '!=', 'admin') 
         ->paginate(10);
 
-    
+        // Paginate categories
+        $orders = Order::paginate(10);
+
         // Paginate categories
         $allcategories = Category::paginate(5);
     
@@ -147,6 +149,7 @@ class ProfileController extends Controller
         // Return the view with the tab, categories and admin
         return view('admin.dashboard', [
             'tab' => $tab,  
+            'orders' => $orders,
             'users' => $users,
             'allcategories' => $allcategories,
             'admin' => $admin,

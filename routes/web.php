@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ContactUsController;
@@ -13,9 +14,7 @@ use App\Http\Controllers\BasketController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Category;
 use App\Models\Order;
-
 
 // Home route
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -27,10 +26,12 @@ Route::get('/products', [ProductsController::class, 'index'])->name('products');
 Route::get('/product/{id}', [ProductsController::class, 'details'])->name('product-details');
 
 // Product reviews routes
-Route::get('/product/{id}/review',[ReviewController::class, 'create_review'])->name('reviews.create')
-    ->middleware(['auth','verified']);
-Route::post('/product/{id}/review', [ReviewController::class, 'add_review'])->name('reviews.add')
-    ->middleware(['auth','verified']);
+Route::get('/product/{id}/review', [ReviewController::class, 'create_review'])
+    ->name('reviews.create')
+    ->middleware(['auth', 'verified']);
+Route::post('/product/{id}/review', [ReviewController::class, 'add_review'])
+    ->name('reviews.add')
+    ->middleware(['auth', 'verified']);
 
 // Checkout page route
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
@@ -46,40 +47,52 @@ Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 // Basket Route
-Route::get('/basket', [BasketController::class,'index'])->name('basket'); 
-Route::post('basket.add/{id}', [BasketController::class, 'add'])->name('basket.add')
-   ->middleware(['auth', 'verified']);
+Route::get('/basket', [BasketController::class, 'index'])->name('basket');
+Route::post('basket.add/{id}', [BasketController::class, 'add'])
+    ->name('basket.add')
+    ->middleware(['auth', 'verified']);
 
-Route::post('/basket/remove/{id}', [BasketController::class,'remove'])->name('basket.remove')
-    ->middleware(['auth','verified']);
+Route::post('/basket/remove/{id}', [BasketController::class, 'remove'])
+    ->name('basket.remove')
+    ->middleware(['auth', 'verified']);
 
-Route::post('/basket/update/{id}', [BasketController::class,'update'])->name('basket.update')
-    ->middleware(['auth','verified']);
+Route::post('/basket/update/{id}', [BasketController::class, 'update'])
+    ->name('basket.update')
+    ->middleware(['auth', 'verified']);
 
-// Route to go to dashboard and clear cache to prevent csrf
+/**
+ * Normal user dashboard:
+ * - If user is admin, redirect to the admin dashboard.
+ * - Otherwise, load the user’s orders and show the regular dashboard.
+ */
 Route::get('/dashboard', function () {
-    $user = Auth::user();  // Get the authenticated user
+    $user = Auth::user(); // Get the authenticated user
 
-    // Pass users orders and the items within
-    $orders = Order::where('user_id', Auth::id())
-        ->with('orderItems.product') 
-        ->get();
-    
-    // Check if the user is an admin based on their userType
-    if ($user->userType == 'admin') {
-        return response(view('admin.dashboard', compact('user')))
-            ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
-            ->header('Pragma', 'no-cache')
-            ->header('Expires', '0');
+    if ($user->userType === 'admin') {
+        // Redirect admin to admin dashboard
+        return redirect()->route('admin.dashboard');
     }
-    
-    // Return the regular dashboard for non-admin users
-    return response(view('dashboard', compact('user','orders')))
+
+    // For normal users, load orders for display on the standard dashboard
+    $orders = Order::where('user_id', $user->id)
+        ->with('orderItems.product')
+        ->get();
+
+    return response(view('dashboard', compact('user', 'orders')))
         ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
         ->header('Pragma', 'no-cache')
         ->header('Expires', '0');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+/**
+ * Admin dashboard:
+ * - We use a controller to fetch KPI data (totalOrders, totalRevenue, etc.)
+ *   and pass it to the admin.dashboard view.
+ */
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/admin.dashboard', [AdminDashboardController::class, 'index'])
+        ->name('admin.dashboard');
+});
 
 // Requires the user to be authenticated and verified, calls update method to update data then edit method
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -89,11 +102,26 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/unsubscribe', [ProfileController::class, 'unsubscribe'])->name('unsubscribe');
 });
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    // The main admin dashboard
+    Route::get('/admin.dashboard', [AdminDashboardController::class, 'index'])
+        ->name('admin.dashboard');
+
+    // Orders search
+    Route::get('/orders', [AdminDashboardController::class, 'orders'])
+        ->name('orders');
+
+    // Users search
+    Route::get('/users', [AdminDashboardController::class, 'users'])
+        ->name('users');
+});
+
+
 // Requires the user to be authenticated and verified, calls update method to update data then edit method
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile.search', [ProfileController::class, 'search'])->name('profile.search');
     Route::get('/profile.editAdmin', [ProfileController::class, 'editAdmin'])->name('profile.editAdmin');
-    Route::patch('/profile.updateAdmin', [ProfileController::class, 'updateAdmin'])->name(name: 'profile.updateAdmin');
+    Route::patch('/profile.updateAdmin', [ProfileController::class, 'updateAdmin'])->name('profile.updateAdmin');
 });
 
 // Route to delete the user's profile, no authentication or verification
@@ -114,35 +142,11 @@ Route::patch('/category/{id}', [CategoryController::class, 'destroy'])->name('ca
 Route::post('add_product', [ProductsController::class, 'add_product'])->name('add_product');
 Route::get('products.filter', [ProductsController::class, 'filter'])->name('products.filter');
 
+// Blog routes
+Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
 
-Route::get('admin.dashboard', function () {
-    $admin = Auth::user(); // Get the authenticated admin
-    
-    // Paginate users with 10 users per page 
-    $users = \App\Models\User::where('userType', '!=', 'admin')->paginate(10)->appends(['tab' => 'admin-allUsers']);
-
-    // Paginate orders with 10 categories per page 
-    $orders = Order::paginate(10)->appends(['tab' => 'admin-allOrders']);
-
-    // Paginate categories with 5 categories per page 
-    $allcategories = Category::paginate(5)->appends(['tab' => 'admin-allProducts']);
-
-    
-    return response(view('admin.dashboard', compact('admin', 'users','orders', 'allcategories')))
-        ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
-        ->header('Pragma', 'no-cache')
-        ->header('Expires', '0');
-})->middleware(['auth', 'verified'])->name('admin.dashboard');
-
-// Route to display the list of blog posts
-Route::get('/blogs',[BlogController::class, 'index'])->name('blogs.index');
-
-/** 
- * Both routes require the user to be authenticated
- * First route displays the blog creation form
- * Second route stores the blog post that was made
- * */  
-Route::middleware(['auth'])->group(function() {
+// Authenticated routes for creating/storing blog posts
+Route::middleware(['auth'])->group(function () {
     Route::get('/blogs/create', [BlogController::class, 'create'])->name('blogs.create');
     Route::post('/blogs', [BlogController::class, 'store'])->name('blogs.store');
 });

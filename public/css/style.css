@@ -1939,11 +1939,6 @@ body.dark-mode #admin-nav{
   max-height: 70%;
 }
 
-#admin-homeContent{
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-
 /* Styling for all users, content, products and setting section section */
 #admin-allOrdersContent,
 #admin-allUsersContent,
@@ -1956,6 +1951,43 @@ body.dark-mode #admin-nav{
   padding: 10px;
 }
 
+#admin-homeContent{
+  display: grid;
+}
+
+#quick-stats{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+  height: 100%;
+  gap: 5px;
+}
+
+.stat-card{
+  background-color: white;
+  padding: 5%;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  h3{
+    color: var(--title-colour);
+  }
+  p{
+    margin-top: 5px;
+    font-size: 12px;
+    color: var(--text-colour);
+  }
+}
+
+.stat-icon{
+  justify-content: right;
+  align-content: center;
+}
+
+.stat-icon i{
+  margin-left: auto;
+  font-size: 30px;
+}
 
 /* Styling for the orders table */
 .orders-table {

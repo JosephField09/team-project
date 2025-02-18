@@ -184,61 +184,119 @@
             <div class="admin-content">
                 <!-- Home Content container -->
                 <div id="admin-homeContent" class="admin-section" style="display:none;">
-                    <p>This is the main dashboard screen</p>
+                    <div id="quick-stats">
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>{{ $totalOrders }}</h3>
+                                <p>Total Orders</p>
+                            </div>
+                            <div class="stat-icon">
+                                <i class='bx bx-shopping-bag'></i>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>${{ number_format($totalRevenue, 2) }}</h3>
+                                <p>Revenue</p>
+                            </div>
+                            <div class="stat-icon">
+                                <i class='bx bx-trending-up'></i>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>{{ $totalUsers }}</h3>
+                                <p>Total Users</p>
+                            </div>
+                            <div class="stat-icon">
+                                <i class='bx bx-group'></i>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>${{ number_format($averageOrderValue, 2) }}</h3>
+                                <p>Average Order Value</p>
+                            </div>
+                            <div class="stat-icon">
+                                <i class='bx bx-shopping-bag'></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- Order Content container -->
                 <div id="admin-allOrdersContent" class="admin-section" style="display: none;">
-                    @if ($orders->isEmpty())
-                        <p colspan="6" style="text-align: center; font-style: italic; padding:10px;">No orders have been placed yet.</p>
-                    @else
-                        <table class="table" style="transform:translateY(-20%); position:relative; top: 15%; padding: 5% 1% 1% 1%; text-align: center;">
-                            <thead>
-                                <tr style="background-color: var(--secondary-colour); color: var(--primary-colour);">
-                                    <th>Order #</th>
-                                    <th>Placed By</th>
-                                    <th>Date Placed</th>
-                                    <th>Status</th>
-                                    <th>Total</th>
-                                    <th>Items</th>
+                    <h2 style="text-align: center;">Orders List</h2>
+                    <form action="{{ url('orders') }}" method="get" style="width: 50%">
+                        @csrf
+                        <div class="form-row" style="margin-top: 3%;">
+                            <input class="input-field" 
+                                type="text" 
+                                name="search" 
+                                value="{{ request('search') }}" 
+                                placeholder="Search by Order #, First name or Email" />
+                            <input type="hidden" name="tab" value="allOrders" />
+                            <button class="add-cat" type="submit">Search</button>
+                        </div>
+                    </form>
+
+                    <table class="table" 
+                        style="transform:translateY(-20%); 
+                                position:relative; 
+                                top: 15%; 
+                                padding: 3% 1% 1% 1%; 
+                                text-align: center;">
+                        <thead>
+                            <tr style="background-color: var(--secondary-colour); color: var(--primary-colour);">
+                                <th>Order #</th>
+                                <th>Placed By</th>
+                                <th>Date Placed</th>
+                                <th>Status</th>
+                                <th>Total</th>
+                                <th>Items</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($orders as $order)
+                                <tr style="background-color: var(--light-bg); border-bottom: 1px solid var(--dark-bg);">
+                                    <td>{{ $order->id }}</td>
+                                    <td>
+                                        {{ $order->user->firstName }} {{ $order->user->lastName }} ({{ $order->user->email }})
+                                    </td>
+                                    <td>{{ $order->created_at->format('d M, Y') }}</td>
+                                    <td>{{ $order->status }}</td>
+                                    <td>£{{ number_format($order->total_cost, 2) }}</td>
+                                    <td>
+                                        <ul style="list-style:none; padding: 0;">
+                                            @foreach ($order->orderItems as $item)
+                                                <li>{{ $item->product->name }} (x{{ $item->quantity }})</li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($orders as $order)
-                                    <tr style="background-color: var(--light-bg); border-bottom: 1px solid var(--dark-bg);">
-                                        <td>{{ $order->id }}</td>
-                                        <!-- Display the user who placed the order -->
-                                        <td>
-                                            {{ $order->user->firstName }} {{ $order->user->lastName }} ({{ $order->user->email }})
-                                        </td>
-                                        <!-- Format the date as you prefer -->
-                                        <td>{{ $order->created_at->format('d M, Y') }}</td>
-                                        <td>{{ $order->status }}</td>
-                                        <td>£{{ number_format($order->total_cost, 2) }}</td>
-                                        <td>
-                                            <ul style="list-style:none; padding: 0;">
-                                                @foreach ($order->orderItems as $item)
-                                                    <li>{{ $item->product->name }} (x{{ $item->quantity }})</li>
-                                                @endforeach
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    @endif
+                            @empty
+                                <tr>
+                                    <td colspan="6" 
+                                        style="text-align: center; font-style: italic; padding:10px;">
+                                        No orders found.
+                                    </td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
                 </div>
+                
                 <!-- User Content container -->
                 <div id="admin-allUsersContent" class="admin-section" style="display: none; text-align:center;">
                     <h2>Users List</h2>
-                    <form action="{{ url('profile.search')}}" method="get" style="width: 50%">
+                    <form action="{{ url('users')}}" method="get" style="width: 50%">
                         @csrf
-                        <div class="form-row">
+                        <div class="form-row" style="margin-top: 3%;">
                             <input class="input-field" type="text" name="search" value="{{ request('search') }}" placeholder="Search by First Name or Email"/>
                             <input type="hidden" name="tab" value="allUsers" />
                             <button class="add-cat" type="submit">Search</button>
                         </div>
                     </form>
-                    <table class="table" style="transform:translateY(-20%); position:relative; top: 15%; padding: 5% 1% 1% 1%;">
+                    <table class="table" style="transform:translateY(-20%); position:relative; top: 15%; padding: 3% 1% 1% 1%;">
                         <thead>
                             <tr style="background-color: var(--secondary-colour); color: var(--primary-colour);">
                                 <th>#</th>
