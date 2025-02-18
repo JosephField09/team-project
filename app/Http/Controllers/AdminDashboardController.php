@@ -22,7 +22,24 @@ class AdminDashboardController extends Controller
         $totalRevenue        = DB::table('orders')->sum('total_cost');
         $totalUsers          = DB::table('users')->count();
         $averageOrderValue   = DB::table('orders')->avg('total_cost');
-
+        $bestSellers = DB::table('order_item')
+            ->join('products', 'order_item.product_id', '=', 'products.id')
+            ->select(
+                'products.id',
+                'products.name',
+                'products.size',   // Include size column
+                'products.image',  // Include image column
+                DB::raw('SUM(order_item.quantity) as total_sold')
+            )
+            ->groupBy(
+                'products.id',
+                'products.name',
+                'products.size',
+                'products.image'
+            )
+            ->orderByDesc('total_sold')
+            ->limit(3)
+            ->get();
         $users         = User::where('userType', '!=', 'admin')
          ->paginate(10)->appends(['tab' => 'allUsers']);
         $orders        = Order::paginate(10)->appends(['tab' => 'allOrders']);
@@ -36,6 +53,7 @@ class AdminDashboardController extends Controller
             'totalRevenue',
             'totalUsers',
             'averageOrderValue',
+            'bestSellers',
             'users',
             'orders',
             'allcategories'
@@ -64,6 +82,24 @@ class AdminDashboardController extends Controller
         $totalRevenue      = Order::sum('total_cost');
         $totalUsers        = User::count();
         $averageOrderValue = Order::avg('total_cost');
+        $bestSellers = DB::table('order_item')
+            ->join('products', 'order_item.product_id', '=', 'products.id')
+            ->select(
+                'products.id',
+                'products.name',
+                'products.size',   // Include size column
+                'products.image',  // Include image column
+                DB::raw('SUM(order_item.quantity) as total_sold')
+            )
+            ->groupBy(
+                'products.id',
+                'products.name',
+                'products.size',
+                'products.image'
+            )
+            ->orderByDesc('total_sold')
+            ->limit(3)
+            ->get();
 
         // We only need to pass $orders, but also the KPI variables, so the
         // template can still render the "Home" section if needed:
@@ -79,7 +115,8 @@ class AdminDashboardController extends Controller
             'totalOrders',
             'totalRevenue',
             'totalUsers',
-            'averageOrderValue'
+            'averageOrderValue',
+            'bestSellers'
         ))->with('tab', 'allOrders');
     }
 
@@ -106,6 +143,24 @@ class AdminDashboardController extends Controller
         $totalRevenue      = Order::sum('total_cost');
         $totalUsers        = User::count();
         $averageOrderValue = Order::avg('total_cost');
+        $bestSellers = DB::table('order_item')
+            ->join('products', 'order_item.product_id', '=', 'products.id')
+            ->select(
+                'products.id',
+                'products.name',
+                'products.size',   // Include size column
+                'products.image',  // Include image column
+                DB::raw('SUM(order_item.quantity) as total_sold')
+            )
+            ->groupBy(
+                'products.id',
+                'products.name',
+                'products.size',
+                'products.image'
+            )
+            ->orderByDesc('total_sold')
+            ->limit(3)
+            ->get();
 
         // Possibly also get orders, categories, etc.
         $orders        = Order::with('user','orderItems.product')->paginate(10)->appends(['tab' => 'allOrders']);
@@ -120,7 +175,8 @@ class AdminDashboardController extends Controller
             'totalOrders',
             'totalRevenue',
             'totalUsers',
-            'averageOrderValue'
+            'averageOrderValue',
+            'bestSellers'
         ))->with('tab', 'allUsers');
     }
 }

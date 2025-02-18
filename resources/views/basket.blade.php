@@ -181,8 +181,8 @@
                             <div class="basket-table">
                                 <h1>Basket</h1>
                                 <hr width="90%" size="2"></hr>
-                                <table class="table table-bordered">
-                                    <thead class="thead-light">
+                                <table class="basket">
+                                    <thead style=" border: none;border-bottom: 1px solid lightgray">
                                         <tr>
                                             <th>Product</th>
                                             <th>Price</th>
