@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Function to change the prices on the websites to match the currency selected
     async function changePrices(currency) {
         await getRates();
+        if (rates === undefined){
+            rates = {"GBP":1,"USD":1.25,"EUR":1.20}
+        }
+
 
         document.querySelectorAll(".price,.product-price,.basket-price,.total").forEach(priceElement => {
             let gbpPrice = parseFloat(priceElement.getAttribute("data-gbp"));
