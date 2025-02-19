@@ -224,38 +224,68 @@
                     </div>
                     <div id="main-stats">
                         <div id="main-card">
-                        <h3>Best Selling Products</h3>
-                        <table class="best-selling" 
-                            style="transform:translateY(-20%); 
-                                position:relative; 
-                                top: 15%; 
-                                text-align: left;
-                                width:100%;">
-                            <thead>
-                                <tr style="color: var(--primary-colour);">
-                                    <th>Product Name</th>
-                                    <th>Size</th>
-                                    <th>Sold</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($bestSellers as $seller)
-                                    <tr style=" color: var(--text-colour); border-bottom: 1px solid var(--dark-bg);">
-                                        <td>{{ $seller->name }}</td>
-                                        <td style="text-transform: capitalize;">{{ $seller->size }}</td>
-                                        <td>{{ $seller->total_sold }}</td>
+                            <h3>Best Selling Products</h3>
+                            <table class="best-selling" 
+                                style="transform:translateY(-20%); 
+                                    position:relative; 
+                                    top: 15%; 
+                                    text-align: left;
+                                    width:100%;">
+                                <thead>
+                                    <tr style="color: var(--primary-colour);">
+                                        <th>Product Name</th>
+                                        <th>Size</th>
+                                        <th>Quantity</th>
                                     </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="2" 
-                                            style="text-align: center; font-style: italic; padding:10px;">
-                                            No products found.
-                                        </td>
+                                </thead>
+                                <tbody>
+                                    @forelse ($bestSellers as $seller)
+                                        <tr style=" color: var(--text-colour); border-bottom: 1px solid var(--dark-bg); font-size:13px;">
+                                            <td>{{ $seller->name }}</td>
+                                            <td style="text-transform: capitalize;">{{ $seller->size }}</td>
+                                            <td>{{ $seller->total_sold }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2" 
+                                                style="text-align: center; font-style: italic; padding:10px;">
+                                                No products found.
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="main-card">
+                            <h3>Items Low in Stock</h3>
+                            <table class="best-selling" 
+                                style="transform:translateY(-7%); 
+                                    top: 15%; 
+                                    text-align: left;
+                                    width:100%;">
+                                <thead>
+                                    <tr style="color: var(--primary-colour);">
+                                        <th>Product Name</th>
+                                        <th>Stock</th>
                                     </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
+                                </thead>
+                                <tbody>
+                                    @forelse ($lowStockProducts as $product)
+                                        <tr style=" color: var(--text-colour); border-bottom: 1px solid var(--dark-bg); font-size:13px;">
+                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->stock }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2" 
+                                                style="text-align: center; font-style: italic; padding:10px;">
+                                                No products are low in stock.
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <!-- Order Content container -->

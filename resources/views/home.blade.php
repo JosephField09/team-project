@@ -150,7 +150,7 @@
         </section>
 
         <!-- Home Page Section -->
-        <section id="home-cta" style="background-image: url({{ asset('assets/AdobeStock_1042756763.jpg') }});">
+        <section id="home-cta" style="background-image: url({{ asset('assets/home-cta-bg.jpg') }});">
             <div class="home-cta-text">
                 <h1 style="font-size: 2.8em; margin: 0; font-family: Modern">Start Your Day with the Best Coffee Experience</h1>
                 <p>Indulge in the finest brews, crafted to ignite your senses and fuel your day. Your new, improved coffee journey begins here.</p>
@@ -162,7 +162,7 @@
         </section>
 
         <!-- Image Block Sections -->
-        <section id="ImageBlocks">
+        <section id="ImageBlocks" style="background-image: url({{ asset('assets/bg_with_beans.png') }}); background-size: cover;">
             <!-- Our story Section -->
             <div class="ourstory">
                 <div class="side-img">
@@ -192,13 +192,10 @@
                     <a href="{{route('about-us')}}"><h4>Read More</h4></a>
                 </div>
             </div>
-            <div style="width: 100%;height: 100%;position: absolute;" class="floating-beans">
-                <img style="justify-self: right;display: flex;transform: translateY(34vh);width: 50vw;height: 60vh; opacity:0.7;" src="{{ asset('assets/floating-beans.png') }}">
-            </div>
         </section>
 
         <!-- Services Section -->
-        <section id="services" style="text-align: center;">
+        <section id="services" style="text-align: center; background-image: url({{ asset('assets/dark_bg_with_beans.png') }}); background-size: cover;"">
             <h1>Our Delicious Services</h1>
             <p style="font-size: 1em; margin: 10px auto 0; width:56%; color: var(--text-colour);">
                 <strong>We offer a variety of top range products, here are some of our most popular categories for you to browse.</strong>
@@ -236,7 +233,7 @@
                 </div>
             </div>
             <div style="position: absolute;" class="floating-beans">
-                <img style="justify-self: left;display: flex;  transform: translateX(-17vw) translateY(-16vh) rotate(-25deg); width: 38vw; height: 70vh; opacity: 1;" src="{{ asset('assets/floating-beans-flipped.png') }}">
+                <img style="justify-self: left;transform: translateX(-17vw) translateY(-2vh) rotate(1deg); width: 38vw;" src="{{ asset('assets/flipped_beans.png') }}">
             </div>
         </section>
 

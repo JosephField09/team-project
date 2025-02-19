@@ -38,7 +38,12 @@ class AdminDashboardController extends Controller
                 'products.image'
             )
             ->orderByDesc('total_sold')
-            ->limit(3)
+            ->limit(5)
+            ->get();
+         $lowStockProducts = DB::table('products')
+            ->where('stock', '<', 10)
+            ->orderBy('stock', 'asc')
+            ->limit(5)
             ->get();
         $users         = User::where('userType', '!=', 'admin')
          ->paginate(10)->appends(['tab' => 'allUsers']);
@@ -54,6 +59,7 @@ class AdminDashboardController extends Controller
             'totalUsers',
             'averageOrderValue',
             'bestSellers',
+            'lowStockProducts',
             'users',
             'orders',
             'allcategories'
@@ -98,7 +104,12 @@ class AdminDashboardController extends Controller
                 'products.image'
             )
             ->orderByDesc('total_sold')
-            ->limit(3)
+            ->limit(5)
+            ->get();
+        $lowStockProducts = DB::table('products')
+            ->where('stock', '<', 10)
+            ->orderBy('stock', 'asc')
+            ->limit(5)
             ->get();
 
         // We only need to pass $orders, but also the KPI variables, so the
@@ -116,7 +127,8 @@ class AdminDashboardController extends Controller
             'totalRevenue',
             'totalUsers',
             'averageOrderValue',
-            'bestSellers'
+            'bestSellers',
+            'lowStockProducts'
         ))->with('tab', 'allOrders');
     }
 
@@ -159,7 +171,12 @@ class AdminDashboardController extends Controller
                 'products.image'
             )
             ->orderByDesc('total_sold')
-            ->limit(3)
+            ->limit(5)
+            ->get();
+        $lowStockProducts = DB::table('products')
+            ->where('stock', '<', 10)
+            ->orderBy('stock', 'asc')
+            ->limit(5)
             ->get();
 
         // Possibly also get orders, categories, etc.
@@ -176,7 +193,8 @@ class AdminDashboardController extends Controller
             'totalRevenue',
             'totalUsers',
             'averageOrderValue',
-            'bestSellers'
+            'bestSellers',
+            'lowStockProducts'
         ))->with('tab', 'allUsers');
     }
 }
