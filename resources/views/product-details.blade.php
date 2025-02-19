@@ -188,7 +188,7 @@
                             @endif
                         </p>
                     </div>
-                    <form action="{{ route('basket.add', $data->id,$data->size) }}" method="POST">
+                    <form action="{{ route('basket.add', $data->id) }}" method="POST">
                         @csrf
                         <!-- Quantity button -->
                         <div class="size-options">
@@ -241,7 +241,7 @@
                 @php
                     // Fetch the products by their IDs. 
                     // Preferably, you do this in the controller and pass as $products.
-                    $products = \App\Models\Product::whereIn('id', [4, 28, 43])->get();
+                    $products = \App\Models\Product::inRandomOrder()->limit(3)->get();
                 @endphp
 
                 @foreach($products as $product)

@@ -491,11 +491,11 @@
                             <div class="form-row" style="display:grid; grid-template-columns:1fr 4fr; align-items:center;">
                                 <label>Size:</label>
                                 <select style="color: gray;" id="size" class ="input-field" name="size" required>
-                                  <option value="" disabled selected>Select a Size</option>
-                                    <option value="small">Small</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="large">Large</option>
-                                    <option value="one-size">One-Size</option>
+                                  <option style="color: black;"  value="" disabled selected>Select a Size</option>
+                                    <option style="color: black;" value="small">Small</option>
+                                    <option style="color: black;" value="medium">Medium</option>
+                                    <option style="color: black;" value="large">Large</option>
+                                    <option style="color: black;" value="one-size">One-Size</option>
                                 </select>
                             </div>
                             
@@ -511,7 +511,7 @@
                                 <select id="category_id" class ="input-field" name="category_id" style="color: gray;" required>
                                   <option value="" disabled selected>Select a Category</option>
                                   @foreach($categories as $category)
-                                       <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                       <option style="color: black;" value="{{ $category->id }}">{{ $category->name }}</option>
                                   @endforeach
                                 </select>
                             </div>

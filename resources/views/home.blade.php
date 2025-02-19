@@ -244,33 +244,6 @@
                 Discover the most popular coffee that our customers just love. These highest sellers are crafted to perfection and are sure to delight your taste buds.
             </p>
             <div class="products-container">
-                @php
-                    // Fetch the products by their IDs. 
-                    // Preferably, you do this in the controller and pass as $products.
-                    $bestSellers = DB::table('order_item')
-                        ->join('products', 'order_item.product_id', '=', 'products.id')
-                        ->select(
-                            'products.id',
-                            'products.name',
-                            'products.size',   // Include size column
-                            'products.description',   // Include size column
-                            'products.image',  // Include image column
-                            'products.price',  // Include image column
-                            DB::raw('SUM(order_item.quantity) as total_sold')
-                        )
-                        ->groupBy(
-                            'products.id',
-                            'products.name',
-                            'products.size',
-                            'products.description',
-                            'products.image',
-                            'products.price'
-                        )
-                        ->orderByDesc('total_sold')
-                        ->limit(3)
-                        ->get();
-                @endphp
-
                 @foreach($bestSellers as $product)
                     <div class="product-card" style="background-color:white;">
                         <img src="{{ asset('assets/' . $product->image) }}" alt="Product Image">

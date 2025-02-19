@@ -17,7 +17,7 @@ class AdminDashboardController extends Controller
     {
         $admin = Auth::user();
 
-        // If your 'orders' table has a 'total_amount' column
+        // Admin Dashboard KPI's
         $totalOrders         = DB::table('orders')->count();
         $totalRevenue        = DB::table('orders')->sum('total_cost');
         $totalUsers          = DB::table('users')->count();
@@ -27,8 +27,8 @@ class AdminDashboardController extends Controller
             ->select(
                 'products.id',
                 'products.name',
-                'products.size',   // Include size column
-                'products.image',  // Include image column
+                'products.size',   
+                'products.image', 
                 DB::raw('SUM(order_item.quantity) as total_sold')
             )
             ->groupBy(
@@ -51,7 +51,7 @@ class AdminDashboardController extends Controller
         $allcategories = Category::paginate(5)->appends(['tab' => 'allProducts']);
 
 
-        // Pass everything to your admin dashboard view
+        // Pass everything to admin dashboard view
         return view('admin.dashboard', compact(
             'admin',
             'totalOrders',
@@ -73,7 +73,7 @@ class AdminDashboardController extends Controller
         $search = $request->input('search');
         
 
-        // Filter your orders based on the search. Example:
+        // Filter orders based on the search. Example:
         $orders = Order::with('user','orderItems.product')
                        ->where('id', 'LIKE', "%{$search}%")
                        ->orWhereHas('user', function($q) use ($search) {
@@ -83,7 +83,7 @@ class AdminDashboardController extends Controller
                        ->paginate(10)
                        ->appends(['search' => $search, 'tab' => 'allOrders']);
 
-        // Re-fetch your KPI variables so they're available in the view
+        // Re-fetch Admin Dashboard KPI's
         $totalOrders       = Order::count();
         $totalRevenue      = Order::sum('total_cost');
         $totalUsers        = User::count();
@@ -93,8 +93,8 @@ class AdminDashboardController extends Controller
             ->select(
                 'products.id',
                 'products.name',
-                'products.size',   // Include size column
-                'products.image',  // Include image column
+                'products.size',   
+                'products.image', 
                 DB::raw('SUM(order_item.quantity) as total_sold')
             )
             ->groupBy(
@@ -111,9 +111,6 @@ class AdminDashboardController extends Controller
             ->orderBy('stock', 'asc')
             ->limit(5)
             ->get();
-
-        // We only need to pass $orders, but also the KPI variables, so the
-        // template can still render the "Home" section if needed:
         $allcategories = Category::paginate(5)->appends(['tab' => 'allProducts']);
         $users         = User::where('userType','!=','admin')->paginate(10)->appends(['tab' => 'allUsers']);
 
@@ -141,7 +138,7 @@ class AdminDashboardController extends Controller
 
         $search = $request->input('search');
 
-        // Filter your users based on the search
+        // Filter users based on the search
         $users = User::where('userType','!=','admin')
                     ->where(function($q) use ($search) {
                         $q->where('firstName', 'LIKE', "%{$search}%")
@@ -150,7 +147,7 @@ class AdminDashboardController extends Controller
                     ->paginate(10)
                     ->appends(['search' => $search, 'tab' => 'allUsers']);
 
-        // Again, re-fetch KPI data
+        // Re-fetch KPI data
         $totalOrders       = Order::count();
         $totalRevenue      = Order::sum('total_cost');
         $totalUsers        = User::count();
@@ -160,8 +157,8 @@ class AdminDashboardController extends Controller
             ->select(
                 'products.id',
                 'products.name',
-                'products.size',   // Include size column
-                'products.image',  // Include image column
+                'products.size',   
+                'products.image',  
                 DB::raw('SUM(order_item.quantity) as total_sold')
             )
             ->groupBy(
@@ -178,8 +175,6 @@ class AdminDashboardController extends Controller
             ->orderBy('stock', 'asc')
             ->limit(5)
             ->get();
-
-        // Possibly also get orders, categories, etc.
         $orders        = Order::with('user','orderItems.product')->paginate(10)->appends(['tab' => 'allOrders']);
         $allcategories = Category::paginate(5)->appends(['tab' => 'allProducts']);
 
