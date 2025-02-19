@@ -41,7 +41,7 @@ class AdminDashboardController extends Controller
             ->limit(5)
             ->get();
          $lowStockProducts = DB::table('products')
-            ->where('stock', '<', 10)
+            ->where('stock', '<=', 10)
             ->orderBy('stock', 'asc')
             ->limit(5)
             ->get();
@@ -107,7 +107,7 @@ class AdminDashboardController extends Controller
             ->limit(5)
             ->get();
         $lowStockProducts = DB::table('products')
-            ->where('stock', '<', 10)
+            ->where('stock', '<=', 10)
             ->orderBy('stock', 'asc')
             ->limit(5)
             ->get();
@@ -174,7 +174,7 @@ class AdminDashboardController extends Controller
             ->limit(5)
             ->get();
         $lowStockProducts = DB::table('products')
-            ->where('stock', '<', 10)
+            ->where('stock', '<=', 10)
             ->orderBy('stock', 'asc')
             ->limit(5)
             ->get();

@@ -247,10 +247,31 @@
                 @php
                     // Fetch the products by their IDs. 
                     // Preferably, you do this in the controller and pass as $products.
-                    $products = \App\Models\Product::whereIn('id', [7, 29, 44])->get();
+                    $bestSellers = DB::table('order_item')
+                        ->join('products', 'order_item.product_id', '=', 'products.id')
+                        ->select(
+                            'products.id',
+                            'products.name',
+                            'products.size',   // Include size column
+                            'products.description',   // Include size column
+                            'products.image',  // Include image column
+                            'products.price',  // Include image column
+                            DB::raw('SUM(order_item.quantity) as total_sold')
+                        )
+                        ->groupBy(
+                            'products.id',
+                            'products.name',
+                            'products.size',
+                            'products.description',
+                            'products.image',
+                            'products.price'
+                        )
+                        ->orderByDesc('total_sold')
+                        ->limit(3)
+                        ->get();
                 @endphp
 
-                @foreach($products as $product)
+                @foreach($bestSellers as $product)
                     <div class="product-card" style="background-color:white;">
                         <img src="{{ asset('assets/' . $product->image) }}" alt="Product Image">
                         <div class="product-row" style="display: inline-flex;">
