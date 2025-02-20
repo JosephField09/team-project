@@ -196,7 +196,7 @@
                         </div>
                         <div class="stat-card">
                             <div class="stat-info">
-                                <h3>${{ number_format($totalRevenue, 2) }}</h3>
+                                <h3 class="price" data-gbp="{{ number_format($totalRevenue, 2) }}">£{{ number_format($totalRevenue, 2) }}</h3>
                                 <p>Revenue</p>
                             </div>
                             <div class="stat-icon">
@@ -214,7 +214,7 @@
                         </div>
                         <div class="stat-card">
                             <div class="stat-info">
-                                <h3>${{ number_format($averageOrderValue, 2) }}</h3>
+                                <h3 class="avg-order" data-gbp="{{ number_format($averageOrderValue, 2) }}">{ number_format($averageOrderValue, 2) }</h3>
                                 <p>Average Order Value</p>
                             </div>
                             <div class="stat-icon">

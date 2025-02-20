@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
 
-        document.querySelectorAll(".price,.product-price,.basket-price,.total").forEach(priceElement => {
+        document.querySelectorAll(".price,.product-price,.basket-price,.total,.avg-order").forEach(priceElement => {
             let gbpPrice = parseFloat(priceElement.getAttribute("data-gbp"));
             console.log(priceElement.getAttribute("class"));
             let updatedPrice = (gbpPrice * (rates[String(currency)])).toFixed(2);
@@ -40,6 +40,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                     break;
                 case "total":
                     priceElement.innerHTML= `Total: ${symbol}${updatedPrice}`;
+                    break;
+                case "avg-order":
+                    priceElement.innerHTML= `${symbol}${updatedPrice}`;
                     break;
             }
         });
