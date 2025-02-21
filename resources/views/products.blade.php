@@ -9,6 +9,65 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            // Function to fetch filtered products via AJAX
+            function fetchFilteredProducts() {
+                // Gather filter input values
+                let search = $('#search').val();
+                let category = $('#category-select').val();
+                let minPrice = $('#min-price').val();
+                let maxPrice = $('#max-price').val();
+                let sort = $('#sort-select').val();
+
+                // Prepare the data for the GET request
+                let data = {
+                    search: search,
+                    category: category,
+                    min_price: minPrice,
+                    max_price: maxPrice,
+                    sort: sort
+                };
+
+                $.ajax({
+                    url: "{{ route('products.filter') }}",
+                    type: 'GET',
+                    data: data,
+                    success: function(response) {
+                        if(response.status === 'success') {
+                            // Replace the product grid HTML
+                            $('#products-grid').html(response.html);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            }
+
+            // Fetch when any filter input changes
+            $('#search, #category-select, #min-price, #max-price, #sort-select').on('change keyup', function() {
+                fetchFilteredProducts();
+            });
+
+            // Fetch when category-button is clicked
+            $(document).on('click', '.category-button', function(e) {
+                e.preventDefault(); 
+
+                // Get the category from data field
+                let clickedCategoryId = $(this).data('category-id');
+
+                // Update the #category-select's value to match the clicked link
+                $('#category-select').val(clickedCategoryId);
+
+                // Fetch with the updated category
+                fetchFilteredProducts();
+            });
+
+        });
+    </script>
 </head>
 
 <body>
@@ -162,29 +221,42 @@
         <section id="shop-banner">
             <h2>SHOP E-SPRESSO</h2>
             <div class="filter-buttons">
-                <form action="{{ route('products') }}" method="GET" class="filter-form">
-                    <div class="filter-group">   
-                        <!-- Tag for all categories -->
-                        <div class="category-wrapper">
-                            <a href="{{ route('products', array_merge(request()->except('category'), ['category' => ''])) }}" 
-                            class="category-button {{ request('category') == '' ? 'active' : '' }}"
-                            style="background-image: url({{ asset('assets/favicon.png') }}); background-position: center; background-size: cover;background-repeat: no-repeat; background-origin: content-box;" >
-                            </a>
-                            <div class="category-name">Shop All</div>
-                        </div>
-                        <!-- Create a tag for all categories -->
-                        @foreach ($categories as $category)
-                            <div class="category-wrapper">
-                                <a href="{{ route('products.filter', array_merge(request()->except('category'), ['category' => $category->id])) }}" 
-                                class="category-button {{ request('category') == $category->id ? 'active' : '' }}"
-                                style="background-image: url('{{ asset('assets/' . $category->image) }}'); background-position: center; background-size: contain; background-repeat: no-repeat; background-origin: content-box;">
-                                </a>
-                                <p>{{ $category->name }}</p>
-                            </div>
-                        @endforeach
+                <!-- We can remove the form if the plan is to do everything via AJAX -->
+                <div class="filter-group">   
+                    <!-- 'Shop All' (no category) -->
+                    <div class="category-wrapper">
+                        <!-- href="javascript:;" or "#" to prevent navigation -->
+                        <a href="javascript:;" 
+                        class="category-button"
+                        data-category-id=""
+                        style="background-image: url({{ asset('assets/favicon.png') }});
+                                background-position: center;
+                                background-size: cover;
+                                background-repeat: no-repeat;
+                                background-origin: content-box;" >
+                        </a>
+                        <div class="category-name">Shop All</div>
                     </div>
-                </form>    
+
+                    <!-- Create a tag for all categories -->
+                    @foreach ($categories as $category)
+                        <div class="category-wrapper">
+                            <!-- Instead of linking to route('products.filter', ...), use a 'javascript:;' href -->
+                            <a href="javascript:;" 
+                            class="category-button"
+                            data-category-id="{{ $category->id }}"
+                            style="background-image: url('{{ asset('assets/' . $category->image) }}');
+                                    background-position: center;
+                                    background-size: contain;
+                                    background-repeat: no-repeat;
+                                    background-origin: content-box;">
+                            </a>
+                            <p>{{ $category->name }}</p>
+                        </div>
+                    @endforeach
+                </div>
             </div>
+
         </section>
 
         <!-- Products Section -->
@@ -193,15 +265,13 @@
             <div class="search-sort-filter">
                 <!-- Search -->
                 <div class="search">
-                    <form action="{{ route('products.filter') }}#products" method="GET" class="filter-form">
-                        <input type="text" name="search" id="search" value="{{ request('search') }}" placeholder="Search by name or category...">
-                    </form>
+                    <input type="text" id="search" name="search" placeholder="Search products...">
                 </div>
                 <div class="sort-filter">
                     <!-- Sort section -->
                     <form action="{{ route('products.filter') }}#products" method="GET" class="filter-form">
                         <div class="filter-group">
-                            <select name="sort" id="sort" onchange="this.form.submit()">
+                            <select name="sort" id="sort-select">
                                 <option value="" disabled selected>Sort by</option>
                                 <option value="name">Name: A-Z</option>
                                 <option value="name_desc">Name: Z-A</option>
@@ -216,60 +286,31 @@
                             Filter <i class='bx bx-filter-alt'></i>
                         </button>
                         <div id="filter-dropdown" class="filter-dropdown hidden">
-                            <form action="{{ route('products.filter') }}#products" method="GET" class="filter-form">
-                                <!-- Filter by category -->
-                                <div class="filter-group">
-                                    <label for="category">Filter by:</label>
-                                    <select name="category" id="category">
-                                        <option value="">All Categories</option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
-                                                {{ $category->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <!-- Filter by minimum price -->
-                                <div class="filter-group">
-                                    <label for="min_price">Min Price:</label>
-                                    <input type="number" name="min_price" id="min_price" min="0" value="{{ request('min_price') }}">
-                                </div>
-                                <!-- Filter by maximum price -->
-                                <div class="filter-group">
-                                    <label for="max_price">Max Price:</label>
-                                    <input type="number" name="max_price" id="max_price" min="0" value="{{ request('max_price') }}">
-                                </div>
-                                <!-- Apply Filters Button -->
-                                <button type="submit" class="apply-filter-button">Apply Filters</button>
-                            </form>
+                            <!-- Filter by category -->
+                            <div class="filter-group">
+                                <label for="category">Filter</label>
+                                <select name="category" id="category-select">
+                                    <option value="">All Categories</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <!-- Filter by minimum price -->
+                            <input type="number" id="min-price" name="min_price" placeholder="Min Price">
+                            
+                            <!-- Filter by maximum price -->
+                            <input type="number" id="max-price" name="max_price" placeholder="Max Price">
+                           
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Full products list -->
-            <div class="products-grid">
-                <!-- If no product matching request exist -->
-                @if($products->isEmpty())
-                    <p style="justify-self:center; margin: 10px;">No products found. Please adjust your filters.</p>
-                @else
-                    <!-- If products match -->
-                    @php $displayedDrinks = []; @endphp
-                    @foreach ($products as $data)
-                        @if (!in_array($data->name, $displayedDrinks))
-                            <div class="product-card">
-                                <img src="{{ asset('assets/' . $data->image) }}" alt="Product Image">
-                                <div class="product-row" style="display:inline-flex">
-                                    <h3 class="product-title">{{ $data->name }}</h3>
-                                    <p class="product-price" data-gbp="{{ $data->price }}">from <span>£{{ number_format($data->price, 2) }}</span></p>   
-                                </div>
-                                <p class="product-description">{{ $data->description }}</p>
-                                <a href="{{ route('product-details', $data->id) }}" class="view-button">View</a>
-                            </div>
-                            @php $displayedDrinks[] = $data->name; @endphp
-                        @endif
-                    @endforeach
-                @endif
+            <div id="products-grid" style="display: grid;  grid-template-columns: repeat(4, 1fr);  gap: 20px;   margin-bottom: 20px;">
+                @include('layouts/_products-list', ['products' => $products])
             </div>
         </section>
 

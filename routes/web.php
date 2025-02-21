@@ -140,7 +140,7 @@ Route::patch('/category/{id}', [CategoryController::class, 'destroy'])->name('ca
 
 // Route to add a product
 Route::post('add_product', [ProductsController::class, 'add_product'])->name('add_product');
-Route::get('products.filter', [ProductsController::class, 'filter'])->name('products.filter');
+Route::get('/products/filter', [ProductsController::class, 'filter'])->name('products.filter');
 
 // Blog routes
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');

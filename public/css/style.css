@@ -1638,7 +1638,7 @@ body.dark-mode #search{
 }
 
 /* Styling for the sort */
-#sort{
+#sort-select{
   width: fit-content;
   padding: 10px;
   border: 1px solid var(--primary-colour);
@@ -1648,7 +1648,7 @@ body.dark-mode #search{
 }
 
 /* Dark mode for sort */
-body.dark-mode #sort{
+body.dark-mode #sort-select{
   background-color: var(--dm-light-bg);
   border: 1px solid white;
   color: white;
@@ -1711,23 +1711,21 @@ body.dark-mode .filter-dropdown{
   font-size: smaller;
 }
 
-/* Styling for applying the filter */
-.apply-filter-button {
-  background-color: var(--secondary-colour);
-  color: var(--primary-colour);
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  width: 60%;
-  justify-self: center;
-  display: block;
-}
-
 /* Styling for if its hidden */
 .hidden {
   display: none;
 }
 
+#min-price,
+#max-price{
+  width: 100%;
+  margin-bottom: 5px;
+  background-color: rgba(211, 211, 211, 0.3);;
+  border: 1px solid lightgray;
+  padding: 5px;
+  font-size: 12px;
+  
+}
 
 /* Styling for products grid*/
 .products-grid {

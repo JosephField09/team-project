@@ -26,12 +26,20 @@ class ProductsController extends Controller
         }
 
         // Filter by price range
-        if ($request->filled('min_price') || $request->filled('max_price')) {
-            $query->whereBetween('price', [
-                $request->get('min_price', 0), 
-                $request->get('max_price', PHP_INT_MAX)
-            ]);
+        $minPrice = $request->get('min_price');
+        $maxPrice = $request->get('max_price');
+
+        if ($minPrice && $maxPrice) {
+            // Both min and max are given
+            $query->whereBetween('price', [$minPrice, $maxPrice]);
+        } elseif ($minPrice) {
+            // If minimum price is given
+            $query->where('price', '>=', $minPrice);
+        } elseif ($maxPrice) {
+            // If maximum price is given
+            $query->where('price', '<=', $maxPrice);
         }
+
 
         // Search by product name or category name
         if ($request->filled('search')) {
@@ -62,12 +70,22 @@ class ProductsController extends Controller
             }
         }
 
-        // Get filtered and sorted products
         $products = $query->get();
-        $categories = Category::all(); // Retrieve all categories for the dropdown
 
-        return view('products', compact('products', 'categories'));
+        // Check if AJAX request
+        if ($request->ajax()) {
+            // Return only the HTML for the product list partial
+            return response()->json([
+                'status' => 'success',
+                'html'   => view('layouts/_products-list', compact('products'))->render()
+            ]);
+        } else {
+            // Normal request, return the full view
+            $categories = Category::all();
+            return view('products', compact('products', 'categories'));
+        }
     }
+
     
 
     public function add_product(Request $request)
