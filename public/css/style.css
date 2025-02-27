@@ -7,6 +7,8 @@
   --headerfooter-text-colour:rgba(255, 255, 255,0.7);
   --title-colour:rgb(51,51,51);
   --text-colour:rgb(128,123,118);
+  --dm-light-bg: rgb(74, 74, 74);
+  --dm-dark-bg: rgb(34, 34, 34);
 }
 
 /* Reset default margin, padding, and box-sizing for all elements */
@@ -29,6 +31,7 @@ nav#main {
   align-items: center;
 }
 
+
 /* Styling for left section of navigation bar */
 .navbar-left{
   align-items: center;
@@ -43,6 +46,10 @@ nav#main {
   transform: translateY(4px);
 }
 
+.navbar-middle{
+  display: inline-flex;
+}
+
 /* Styling for navigation bar links */
 .navbar-middle a{
   color: var(--headerfooter-text-colour);
@@ -52,21 +59,82 @@ nav#main {
   position: relative;
   padding: 0 20px;
   border-radius: 5px;
-  transition: font-size 0.5s linear, color 0.5s linear;
+  transition:color 0.5s linear;
 }
 
 /* Styling for navigation bar links when hovered over or selected */
 .navbar-middle a.option-selected,
 .navbar-middle a:hover{
   color: var(--secondary-colour);
+}
+
+#product-nav:hover .dropdown,
+#product-nav:hover .dropdown-arrow{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  opacity: 1;
+}
+
+.dropdown-content{
+  position: absolute;
+  transform: translateY(14px);
+}
+
+.dropdown-arrow{
+  display: none;
+  position: relative;
+  transform: translateX(103px);
+}
+
+.dropdown{
+  width: 750px;
+  background: rgb(255,251,243);
+  position: absolute;
+  z-index: 999;
+  justify-self: center;
+  display: none;
+  top: 100;
+  height: 300px;
+  padding: 15px;
+  border-radius: 5px;
+  transform: translateX(-25%);
+  border: 1px solid gray;
+  border-top: none;
+  opacity: 0;
+  transition:  opacity 3s;
+}
+
+.dropdown li{
+  display: block;
+}
+
+.dropdown .category{
+  color: var(--title-colour);
   font-size: 15px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.dropdown ul{
+  margin-top: 7px;
+  border-right: 1px solid rgba(128, 128, 128, 0.5);
+  height: 230px;
+}
+
+.dropdown ul li{
+  margin-bottom: 10px;
+}
+
+.dropdown .product{
+  font-size: 10px;
+  color: var(--text-colour);
+  margin-top: 20px;
 }
 
 /* Styling for right section of navigation bar */
 .navbar-right{
   display: inline-flex;
 }
-
 
 /* Styling for login button */
 .navbar-right a.login {
@@ -77,6 +145,7 @@ nav#main {
   padding: 5px 22px;
   border-radius: 4px;
 }
+
 
 /* Styling for login button when hovering over */
 .login:hover {
@@ -97,9 +166,75 @@ nav#main {
   color: var(--headerfooter-text-colour);
   align-self: end;
 }
+
+#account-nav:hover .account-dropdown,
+.dropdown-content:hover .account-dropdown,
+#account-nav:hover .account-dropdown-arrow{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.account-dropdown-content{
+  position: absolute;
+  transform: translateY(22px);
+}
+
+.account-dropdown-arrow{
+  display: none;
+  position: relative;
+}
+
+.account-dropdown{
+  width: max-content;
+  background: white;
+  position: absolute;
+  z-index: 999;
+  justify-self: center;
+  display: none;
+  top: 100;
+  height: fit-content;
+  padding: 15px;
+  border-radius: 5px;
+  transform: translateX(-25%);
+  border-top: none;
+}
+
+.button-row{
+  margin: 10px 0 10px 0;
+}
+
+.account-dropdown i{
+  color: #000;
+  font-size: 22px;
+}
+
+.account-dropdown a{
+  color: gray;
+  font-size: 12px;
+  display: contents;
+}
+
+.account-dropdown a:hover{
+  color: var(--secondary-colour);
+}
+
 /* Styling for a tags in right of navigation bar */
 .navbar-right i {
   margin-right: 10px;
+}
+
+.navbar-right #toggleMode{
+  color: var(--headerfooter-text-colour);
+  background-color: black;
+  font-size: 20px;
+  border: none;
+  align-self: flex-end;
+}
+
+.navbar-right #toggleMode:hover{
+  color: white;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 /* Styling for basket a tag when hovering */
@@ -108,11 +243,130 @@ nav#main {
   transition: 0.3s ease-in-out;
 }
 
+#home-cta{
+  background-color: black; 
+  color: white; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  min-height: 90vh;
+  background-position: center;
+  background-size: cover;
+}
+
+#home-cta:after{
+  margin-left: auto;
+  content: "";
+  position: absolute;
+  top: 70px;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 90vh;
+}
+
+.home-cta-text{
+  justify-items: left;
+  width: 60%;
+  position: relative;
+  z-index: 1;
+  padding: 0 14.25%;
+  display: block;
+  margin-right: auto;
+}
+
+.home-cta-text p{
+  color: var(--text-colour);
+  font-size: 15px;
+  margin: 10% 0;
+}
+
+.home-cta-buttons{
+  margin-top: 10%;
+}
+
+.home-cta-text .order-now{
+  background-color: var(--secondary-colour); 
+  color: var(--primary-colour); 
+  padding: 10px 20px;
+  text-decoration: none; 
+  margin-right: 10px; 
+  font-weight: bold;
+  margin-top: 20px;
+  transition: background-color 0.5s;
+}
+
+.home-cta-text .order-now:hover{
+  background-color: #b99531;
+}
+
+.home-cta-text .learn-more{
+  color: white; 
+  padding: 10px 20px; 
+  text-decoration: none;
+  border: 0.25px solid white;
+}
+
+.home-cta-text .learn-more:hover{
+  background-color: white;
+  color: var(--primary-colour);
+}
+
+.cta-img{
+  height: 100%;
+}
+
+.cta-img img{
+  height: 100%;
+  width: 100%;
+}
+
+.currency-selector{
+  background: none;
+  transition: 0.3s ease-in-out;
+  color: var(--headerfooter-text-colour);
+  border: none;
+  appearance: none;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1;
+  padding-right: 10px;
+  text-align: center;
+  align-content: center;
+  width: 30px;
+}
+
+.currency-selector *{
+  offset: 10px;
+  background-color: black;
+  border-radius: none;
+  color: var(--headerfooter-text-colour);
+  align-self: center;
+  text-align: center;
+}
+
+
+
+.currency-selector:focus{
+  outline: none;
+  -moz-outline: none;
+}
+
+.currency-selector:hover{
+  transition: 0.3s ease-in-out;
+  color: white;
+}
+
 /* Styling for dashboard */
 .dashboard{
   padding: 5% 14.25%;
   height: fit-content;
   background-color: var(--light-bg);
+}
+
+/* Dark mode for dashboard */
+body.dark-mode .dashboard{
+  background-color: var(--dm-light-bg);
 }
 
 /* Styling for inner dashboard area */
@@ -132,6 +386,12 @@ nav#main {
   padding: 20px;
   display: grid;
   grid-template-rows: 1fr 2fr 1fr;
+}
+
+/* Dark mode for dashboard navigation */
+body.dark-mode .dash-nav{
+  background-color: var(--dm-dark-bg);
+  color: white;
 }
 
 /* Styling for user section */
@@ -212,6 +472,7 @@ nav#main {
 }
 
 
+
 /* Styling for login button icon */
 .logout i{
   margin-right: 10px;
@@ -250,6 +511,43 @@ nav#main {
   padding: 15px;
 }
 
+/* Dark mode for content section */
+body.dark-mode .content{
+  background-color: var(--dm-dark-bg);
+  color: white;
+  p, h4, h2, span{
+    color: white;
+  }
+}
+
+/* Dark mode for orders-table */
+body.dark-mode .orders-table{
+  td, th{
+    color: white;
+  }
+}
+
+/* Dark mode for titles */
+body.dark-mode .title{
+  background-color: var(--dm-dark-bg);
+  color: white;
+}
+
+/* Dark mode for members content text */
+body.dark-mode #memberContent p{
+  color: white;
+}
+
+/* Dark mode for members content headings */
+body.dark-mode #memberContent h4{
+  color: white;
+}
+
+/* Dark mode for members content span */
+body.dark-mode #memberContent span{
+  color: white;
+}
+
 /* Styling for content h2 header */
 .content h2{
   color: var(--title-colour);
@@ -268,13 +566,13 @@ label{
 }
 
 /* Styling for account conent section */
-#accountContent{
+#dash-accountContent{
   grid-template-columns: 1fr 1fr 1fr;
   height: 100%;
 }
 
 /* Styling for account content input fields */
-#accountContent .input-field{
+#dash-accountContent .input-field{
   width: 80%;
 }
 
@@ -313,6 +611,7 @@ label{
 
 /* Styling for profile info and delete profiel paragraphs */
 .profile-info p,
+.password-info p,
 .delete-profile p{
   color: var(--text-colour);
   font-size: smaller;
@@ -330,25 +629,30 @@ label{
   cursor: pointer;
 }
 
+/* Dark mode for delete button */
+body.dark-mode .delete {
+  color: white;
+}
+
 /* Styling for delete button when hovering */
 .delete:hover{
   scale: 0.9;
 }
 
 /* Styling for member content paragraph */
-#memberContent p{
+#dash-memberContent p{
   margin-top: 10px;
   color: var(--text-colour);
 }
 
 /* Styling for member content h4 header */
-#memberContent h4{
+#dash-memberContent h4{
   color: var(--title-colour);
   margin-top: 20px;
 }
 
 /* Styling for content span */
-#memberContent span{
+#dash-memberContent span{
   color: var(--title-colour);
   font-size: 30px;
 }
@@ -603,66 +907,82 @@ footer.bottom {
   flex-direction: row;
 }
 
+.side-img{
+  align-self: center;
+}
+
 /* Styling for image blocks ona bout us */
 #ImageBlocks {
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding-left: 14.25%;
-  padding-right: 14.25%;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding: 10% 14.25%;
   background-color: var(--light-bg);
+}
+
+/* Dark mode for image blocks on about us */
+body.dark-mode #ImageBlocks{
+  background-color: var(--dm-light-bg);
+  color: white;
 }
 
 /* Styling for the images on about us */
 #ImageBlocks img{
   border-radius: 15px;
-  margin: 3%;
-}
-
-.bigimage{
-  max-height: 400px;
-  width: 35%;
-  height: 35%;
+  height: 100%;
+  width: 90%;
 }
 
 /* Styling for text on about us */
 .aboutustext{
-  h1{
-    font-size: 40px;
-  }
   display: flex;
-  flex-direction: column
+  flex-direction: column;
+  z-index:1;
+  h2{
+    font-size: 35px;
+    color: var(--title-colour);
+  }
 }
 
 /* Styling for our story on about us */
 .ourstory{
-  max-width: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
   p{
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 15px 0 ;
     max-width: 500px;
     width: 100% auto;
+    color: var(--text-colour);
   }
   a{
-    margin: 15px;
-    font-size: 14px;
+    margin: 30px 0;
+    font-size: 15px;
     color: var(--primary-colour);
     background: var(--secondary-colour);
     text-decoration: none;
-    padding: 5px 22px;
+    padding: 13px 60px;
     cursor: pointer;
-    width: 150px;
-    height: 30px;
     border: none;
     border-radius: 5px;
     text-align: center;
+    width: fit-content;
+    font-weight: bold;
+    transition: scale 0.5s;
+  }
+  a:hover{
+    scale: 0.9;
   }
   h3{
-    padding-top: 25px;
-    padding-bottom: 25px;
+    margin-bottom: 25px;
     color: gray;
+  }
+}
+
+/* Dark mode for our story section on about us */
+body.dark-mode .ourstory{
+  h3{
+    color: white;
   }
 }
 
@@ -672,25 +992,241 @@ footer.bottom {
   flex-direction: row;
   justify-items: center;
   align-items: center;
-  margin-top: 0;
-  padding-bottom: 0;
+  margin-top: 20px;
   height: 30px;
   max-width: 300px;
   width: auto;
+  white-space: nowrap;
+  img{
+    width: 20%;
+    margin-right: 10px
+  }
 }
 
+#our-history {
+  width: 100%;
+  font-size: 18px;
+  padding: 5% 0 5% 0;
+  position: relative;
+  z-index: -1;
+}
+
+#our-history h2.header {
+  color: var(--title-colour);
+  padding-bottom: 10px;
+  font-size: 35px;
+  margin-bottom: 20px;
+  position: absolute;
+  z-index: -1;
+  justify-self: anchor-center;
+}
+
+/* Styling for the heading underline effect */
+#our-history h2.header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--secondary-colour);
+}
+
+#our-history .our-history-container {
+  margin-top: 40px;
+}
+
+.timeline {
+  --accent: #fecc42;
+  --text: rgb(51,51,51);
+  --line: #c4c4c4;
+  background: var(--background);
+  color: var(--text);
+  padding: 30px 0 30px 0;
+}
+
+.timeline h1 {
+  border-left: 4px solid var(--accent);
+  padding: 10px 12px 10px;
+}
+
+.timeline ul {
+  list-style: none;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--items), 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.timeline ul:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  border-top: 3px solid var(--primary-colour);
+  left: 11px;
+}
+
+.timeline ul:after {
+  content: "\f04b";
+  font-weight: 900;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 1px;
+  right: -15px;
+  font-size: 25px;
+  color: var(--accent);
+}
+
+.timeline ul li {
+  --circle-size: 15px;
+  grid-column: var(--index);
+  overflow: hidden;
+  position: relative;
+  height: calc(100% + var(--circle-size) * 0.5);
+}
+
+.timeline ul li:after {
+  content: "";
+  width: var(--circle-size);
+  height: var(--circle-size);
+  background: var(--line);
+  position: absolute;
+  bottom: 0;
+  left: var(--circle-size);
+  border-radius: 100px;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.timeline ul li:nth-child(even):after {
+  bottom: auto;
+  top: 0;
+}
+
+.timeline ul li:nth-child(even) {
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 40px;
+  margin-top: calc(var(--circle-size) * -0.45);
+}
+
+.timeline ul li:nth-child(odd) p:after,
+.timeline ul li:nth-child(even) h3:before {
+  content: "";
+  display: block;
+  border-left: 2px dashed var(--text);
+  height: 100vh;
+  margin-top: 10px;
+  position: absolute;
+  left: calc(var(--circle-size) - 1px);
+}
+
+.timeline ul li:nth-child(even) h3:before {
+  bottom: 100%;
+  margin-bottom: 5px;
+}
+
+.timeline ul li > * {
+  padding-left: calc(var(--circle-size) * 0.4);
+}
+
+.timeline ul li h3 {
+  color: var(--accent);
+  margin: 0;
+  margin-bottom: 15px;
+  font-size: 1.6em;
+  position: relative;
+}
+
+.timeline ul li img{
+  width: 70%;
+}
+
+.timeline ul li h2 {
+  color: var(--primary-colour);
+  font-size: 1.7rem;
+}
+
+.timeline ul li p {
+  margin-bottom: 15px;
+  padding-top: 15px;
+  position: relative;
+  text-wrap: pretty;
+  color: var(--text-colour);
+  font-size: 17px;
+}
+
+@media (max-width: 568px) {
+  .timeline ul {
+    display: flex;
+    flex-direction: column;
+  }
+  .timeline ul li {
+    grid-column: 1 !important;
+    grid-row: var(--index) !important;
+    height: 100%;
+    padding-bottom: 30px;
+    padding-top: 10px;
+  }
+  .timeline ul:before,
+  .timeline ul:after,
+  .timeline ul li:after,
+  .timeline ul li:nth-child(even) h3:before,
+  .timeline ul li:last-child p:after {
+    display: none;
+  }
+  .timeline ul li:first-child {
+    padding-top: 0;
+  }
+  .timeline ul li:nth-child(even) {
+    margin-top: 0;
+    padding-top: 10px;
+  }
+  .timeline ul li p:after {
+    content: "";
+    display: block;
+    border-left: 2px dashed var(--text);
+    height: 100vh;
+    margin-top: 10px;
+    position: absolute;
+    left: calc(var(--circle-size) - 1px);
+  }
+}
 
 /* Styling for our missions on about us */
+/* Styling for our missions on about us */
 .ourmission{
-  max-width: 100%;
-  padding-top: 75px;
-  padding-left: 5%;
-  display: flex;
-  flex-direction: row;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding:5%;
+  background-color: var(--dark-bg);
+  border-radius: 15px;
+  ul{
+    list-style: none;
+  }
+  span{
+    color: var(--primary-colour);
+  }
   p{
     padding-top: 15px;
     max-width: 525px;
     width: 100% auto;
+    color: var(--text-colour);
   }
   a{
     margin: 15px;
@@ -711,22 +1247,19 @@ footer.bottom {
     border-radius: 5px;
     margin-top: 100px;
   }
-  h1{
-    padding-top: 50px;
-  }
 }
 
 
 /* Styling for individual missions on about us */
 .missions{
-  padding-top: 15px;
+  padding-top: 10%;
   display: flex;
   flex-direction: column;
   max-width: 600px;
   width: auto;
-  padding-left: 3%;
   p{
-    padding-top: 10px;
+    padding-top: 2%;
+    padding-bottom: 2%;
   }
 }
 
@@ -738,19 +1271,17 @@ footer.bottom {
 
 /* Styling for our vision section on about us */
 .ourvision{
-  max-width: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  justify-content: space-between;
+  grid-template-columns: 50% 50%;
   padding-top: 60px;
-  padding-left: 5%;
-  display: flex;
-  flex-direction: row;
-  p{
-    padding-top: 15px;
-    max-width: 525px;
+  span{
+    color: var(--primary-colour);
   }
   a{
-    margin: 15px;
-    margin-left: 0px;
-    margin-top: 100px;
+    margin-top: 40px;
     font-size: 14px;
     color: var(--primary-colour);
     background: var(--secondary-colour);
@@ -767,8 +1298,43 @@ footer.bottom {
     font-size: 18px;
     border-radius: 5px;
   }
-  h1{
-    padding-top: 50px;
+  .side-img{
+    max-width: 600px;
+    justify-self: center;
+  }
+}
+
+.our-vision-body{
+  display: flex;
+  flex-direction: column;
+  h2{
+    font-size: 35px;
+    padding-bottom: 10px;
+    color: var(--title-colour);
+  }
+}
+
+.our-vision-text{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.connecting-people, .sustainability, .quality, .innovation{
+  padding: 5%;
+  max-width: 300px;
+  i{
+    background-color: var(--dark-bg);
+    font-size: 35px;
+    padding: 10px;
+    border-radius: 12px;
+    color: var(--secondary-colour);
+  }
+  p{
+    margin-top: 10px;
+  }
+  .missionheader{
+    font-size: x-large;
+    margin-bottom: 3px;
   }
 }
 
@@ -792,9 +1358,12 @@ footer.bottom {
   img{
     border-radius: 15px;
     max-width: 400px;
-    width: 35%;
-    height: 35%;
   }
+}
+
+/* Dark mode for contact us section */
+body.dark-mode #ContactUs{
+  background-color: var(--dm-dark-bg);
 }
 
 /* Styling for contact us form on about us */
@@ -814,6 +1383,24 @@ footer.bottom {
   label{
     margin-left: 10px;
   }
+}
+
+/* Dark mode for contact us form */
+body.dark-mode .contact-us-form{
+  .input-field{
+    background-color: white;
+  }
+  color: white;
+}
+
+/* Dark mode for labels */
+body.dark-mode label{
+  color: white;
+}
+
+/* Dark mode for contact us heading */
+body.dark-mode #contact-us-heading{
+  color: white;
 }
 
 /* Styling for the first and last name section of the contact us form */
@@ -878,12 +1465,274 @@ footer.bottom {
   text-align: center;
 }
 
+/* Styling for the products */
+#products{
+  padding: 0px 14.25%;
+}
+
+/* Dark mode for products section */
+body.dark-mode #products{
+  background-color: var(--dm-dark-bg);
+}
+
+/* Dark mode for main */
+body.dark-mode main{
+  background-color: var(--dm-dark-bg);
+}
+
+/* Styling for the cta text */
+#cta{
+  width: 100%;
+  height: 80vh;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+}
+
+/* Styling for the cta text */
+#cta::after{
+  margin-left: auto;
+  content: "";
+  position: absolute;
+  top: 70px;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 80vh;
+}
+
+/* Styling for the cta text */
+.cta-text{
+  justify-content: center;
+  align-self: center;
+  display: grid;
+  color: white;
+  z-index: 2000;
+  position:relative;
+  width: 100%;
+  text-align: center;
+}
+
+/* Styling for the cta text */
+.cta-text p{
+  font-size: 20px;
+}
+
+/* Styling for the cta text */
+.cta-text h3{
+  font-size: 30px;
+  margin-top: 10px
+}
+
+/* Styling for the cta text */
+.cta-text p:nth-child(3){
+  font-size: 10px;
+  margin-top: 10px;
+  color: whitesmoke;
+  letter-spacing: 1px;
+}
+
+/* Styling for the shop banner */
+#shop-banner{
+  padding: 50px 14.25%;
+  background-color: var(--light-bg);
+  height: fit-content;
+  color: #31312f;
+}
+
+/* Dark mode for shop banner */
+body.dark-mode #shop-banner{
+  background-color: var(--dm-dark-bg);
+  color: white;
+  p, .category-name{
+    color: white;
+  }
+}
+
+/* Styling for the shop banner */
+#shop-banner h2{
+  letter-spacing: 1px;
+  font-size: 30px;
+}
+
+/* Styling for the filter buttons */
+.filter-buttons{
+  margin-top: 10px;
+}
+
+/* Styling for the filter buttons */
+.filter-buttons a {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 10px;
+  text-decoration: none;
+  border: 1px solid var(--primary-colour);
+  border-radius: 100px;
+  color: #000;
+  background-color: white;
+  transition: all 0.3s;
+}
+
+/* Dark mode for filter buttons */
+body.dark-mode .filter-buttons{
+  background-color: var(--dm-dark-bg);
+  color: white;
+  a{
+    background-color: var(--dm-light-bg);
+    border: 1px solid white;
+  }
+}
+
+/* Styling for hovering the filter buttons */
+.filter-buttons a:hover {
+  scale: 1.1;
+}
+
+/* Styling for the filter group */
+.filter-group{
+  display: flex;
+  height: 100%;
+}
+
+/* Styling for the categories */
+.category-wrapper{
+  color: #31312f;
+  text-align: center;
+  font-size: 15;
+  font-weight: bold;
+}
+
+/* Styling for searching the sort filter */
+.search-sort-filter{
+  display: inline-flex;
+  width: 100%;
+  margin: 30px 0 30px 0;
+  padding-right: 30px;
+}
+
+/* Styling for the sort filter */
+.sort-filter{
+  display: inline-flex;
+  margin-left: auto;
+  gap: 20px;
+}
+
+/* Styling for the search bar */
+#search{
+  width: 130%;
+  padding: 10px;
+  border: 1px solid var(--primary-colour);
+  background-color: var(--light-bg);
+  border-radius: 25px;
+  margin-right: auto;
+  color: var(--primary-colour);
+}
+
+/* Dark mode for search */
+body.dark-mode #search{
+  background-color: var(--dm-light-bg);
+  border: 1px solid white;
+  color: white;
+}
+
+/* Styling for the sort */
+#sort-select{
+  width: fit-content;
+  padding: 10px;
+  border: 1px solid var(--primary-colour);
+  background-color: var(--light-bg);
+  padding: 0px 20px;
+  cursor: pointer;
+}
+
+/* Dark mode for sort */
+body.dark-mode #sort-select{
+  background-color: var(--dm-light-bg);
+  border: 1px solid white;
+  color: white;
+}
+
+/* Styling for the filter container */
+.filter-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Styling for the filter button */
+.filter-button {
+  width: fit-content;
+  height: 100%;
+  padding: 10px;
+  border: 1px solid var(--primary-colour);
+  background-color: var(--light-bg);
+  padding: 0px 40px;
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+  gap: 20%;
+}
+
+/* Dark mode for filter buttons */
+body.dark-mode .filter-button{
+  background-color: var(--dm-light-bg);
+  color: white;
+  border: 1px solid white;
+}
+
+/* Styling for the filter dropdown */
+.filter-dropdown {
+  position: absolute;
+  top: 131%;
+  background-color: rgb(255,251,243);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc;
+  width: 200px;
+  padding: 15px;
+  z-index: 100;
+}
+
+/* Dark mode for filter dropdown */
+body.dark-mode .filter-dropdown{
+  background-color: var(--dm-light-bg);
+}
+
+/* Styling for the filter dropdown */
+.filter-dropdown .filter-group {
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  align-items: center;
+}
+
+/* Styling for the filter dropdown */
+.filter-dropdown .filter-group{
+  font-size: smaller;
+}
+
+/* Styling for if its hidden */
+.hidden {
+  display: none;
+}
+
+#min-price,
+#max-price{
+  width: 100%;
+  margin-bottom: 5px;
+  background-color: rgba(211, 211, 211, 0.3);;
+  border: 1px solid lightgray;
+  padding: 5px;
+  font-size: 12px;
+  
+}
+
 /* Styling for products grid*/
 .products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  margin: 20px 0;
+  margin-bottom: 20px;
 }
 
 /* Styling for product card*/
@@ -892,8 +1741,18 @@ footer.bottom {
   border-radius: 8px;
   padding: 15px;
   text-align: center;
-  background-color: #fff;
+  background-color: var(--light-bg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+}
+
+/* Dark mode for product card */
+body.dark-mode .product-card {
+  background-color: var(--dm-light-bg);
+  color: white;
+  p, span{
+    color: white;
+  }
 }
 
 /* Styling for products card image*/
@@ -901,38 +1760,70 @@ footer.bottom {
   max-width: 100%;
   border-radius: 8px;
   margin-bottom: 10px;
+  height: 20%;
+  max-height: 113px;
+  justify-self: center;
+  display: grid;
+  filter: drop-shadow(7px 13px 10px gray);
+}
+
+/* Styling for the product card price */
+.product-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--secondary-colour);
+  margin-bottom: 10px;
+}
+/* Styling for the product row */
+.product-row{
+  width: 100%;
+  align-items: center;
 }
 
 /* Styling for product title */
 .product-title {
-  font-size: 18px;
-  margin: 10px 0 5px;
+  font-size: 12px;
+  margin: 10px auto 10px 0;
   font-weight: bold;
+  margin-right: auto;
+}
+
+/* Styling for the product price */
+.product-price{
+  font-size: smaller;
+  color: var(--secondary-colour);
 }
 
 /* Styling for product price text */
-.product-price {
-  color: #444;
-  margin-bottom: 10px;
+.product-price span{
+  font-size: 16px;
+  color: var(--title-colour);
+  font-weight: bold;
 }
 
 /* Styling for product description text */
 .product-description {
-  font-size: 14px;
-  color: #666;
+  font-size: 11px;
+  color: var(--text-colour);
   margin-bottom: 15px;
+  text-align: left;
 }
 
-/* Styling for pview button */
+/* Styling for view button */
 .view-button {
-  background-color: #f7c08a;
+  background-color: var(--secondary-colour);
   border: none;
-  padding: 10px 20px;
-  color: #fff;
+  padding: 10px 30px;
+  color: var(--primary-colour);
   font-size: 14px;
   border-radius: 4px;
   cursor: pointer;
   transition: scale 0.5s;
+  text-decoration: none;
+  width: 100%;
+  display: block;
+  font-size: smaller;
+  font-weight: bold;
 }
 
 /* Styling for pview button */
@@ -948,6 +1839,11 @@ footer.bottom {
   min-height: 70vh;
 }
 
+/* Dark mode for admin main section */
+body.dark-mode .admin-main{
+  background-color: var(--dm-light-bg);
+}
+
 /* Styling for admin dashboard navbar */
 #admin-nav {
   width: 71.5%;
@@ -961,6 +1857,13 @@ footer.bottom {
   align-items: center;
   justify-content: space-evenly;
   box-shadow: inset 1px 1px 20px 10px black;
+}
+
+/* Dark mode for admin navigation */
+body.dark-mode #admin-nav{
+  background-color: #888;
+  box-shadow: inset 1px 1px 20px 10px #333;
+  color: #000;
 }
 
 /* Styling for admin dashboard user section in navbar */
@@ -992,6 +1895,7 @@ footer.bottom {
   border-radius: 5px;
   transition: transform 0.5s linear, color 0.5s linear;
 }
+
 
 /* Styling for admin butons when hovering */
 .admin-buttons a:hover{
@@ -1034,10 +1938,10 @@ footer.bottom {
 }
 
 /* Styling for all users, content, products and setting section section */
-#allOrdersContent,
-#allUsersContent,
-#allProductsContent,
-#settingsContent{
+#admin-allOrdersContent,
+#admin-allUsersContent,
+#admin-allProductsContent,
+#admin-settingsContent{
   background-color: white;
   border-radius: 15px;
   height: fit-content;
@@ -1045,9 +1949,138 @@ footer.bottom {
   padding: 10px;
 }
 
+#admin-homeContent{
+  display: grid;
+}
+
+#quick-stats{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+  height: 100%;
+  gap: 5px;
+}
+
+.stat-card{
+  background-color: white;
+  padding: 5%;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  h3{
+    color: var(--title-colour);
+  }
+  p{
+    margin-top: 5px;
+    font-size: 12px;
+    color: var(--text-colour);
+  }
+}
+
+.stat-icon{
+  justify-content: right;
+  align-content: center;
+}
+
+.stat-icon i{
+  margin-left: auto;
+  font-size: 30px;
+}
+
+/* Wrap or adapt these into your main CSS file or a <style> block */
+
+/* Container for the card area */
+#main-stats {
+  display: grid;
+  grid-template-columns: 49.5% 49.5%;
+  gap: 1%;
+  margin: 40px 0;             /* space above/below */
+}
+
+/* The card itself */
+#main-card {
+  background-color: #ffffff;    /* white card background */
+  border-radius: 8px;          /* rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  width: 100%;                /* fixed width (adjust as needed) */
+  padding: 1.5rem;             /* spacing inside the card */
+  text-align: center;          /* center all text */
+  border: 1px solid #e2e2e2;   /* light border to define card edges */
+}
+
+/* Title styling */
+#main-card h3 {
+  margin-bottom: 1rem;        
+  font-size: 1.5rem;          
+  font-weight: 600;           
+  color: var(--title-colour);   
+  text-align: left;             
+}
+
+/* Paragraph styling */
+#main-card p {
+  margin: 0.5rem 0;           /* small vertical spacing */
+  font-size: 1rem;            /* base font size */
+  color: var(--text-colour);                /* slightly lighter than title for hierarchy */
+}
+
+table.basket,
+table.best-selling{
+  th,td{
+    border: none;
+    border-bottom: 1px solid rgba(128, 123, 118, 0.1);
+    padding: 11px 0px;
+  }
+}
+
+/* Styling for the orders table */
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+/* Styling for the orders table */
+.orders-table th, .orders-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+/* Styling for orders table */
+.orders-table th {
+  border: none;
+  background-color: transparent;
+  color: #333;
+  font-weight: bold;
+  border-bottom: 1px solid grey;
+}
+
+/* Styling for hovering the table */
+.orders-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Styling for the orderd table table */
+.orders-table td {
+  border: none;
+  border-bottom: 1px solid #dee2e6;
+  color: #555;
+}
+
+/* Styling for the orders table status badge */
+.orders-table td .status-badge {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+}
+
 /* Styling for table header and table d*/
 th, td {
   border: 1px solid rgba(128, 123, 118, 0.1); 
+  padding: 5px 10px;
 }
 
 /* Styling for table */
@@ -1129,7 +2162,7 @@ table{
 }
 
 /* Styling for all products content section */
-#allProductsContent{
+#admin-allProductsContent{
   grid-template-columns: 1fr 1fr ;
   padding: 20px;
   gap: 10px;
@@ -1186,24 +2219,23 @@ table{
 }
 
 /* Styling for settings content section */
-#settingsContent{
+#admin-settingsContent{
   grid-template-columns: 1fr 1fr 1fr;
 }
 
 /* Styling for settings content input field */
-#settingsContent .input-field{
+#admin-settingsContent .input-field{
   width: 90%;
 }
 
 /* Styling for the main section of the blogs page */
 #blogs-main{
+  justify-content: center;
   background: var(--light-bg);
   display: flex;
   flex-direction: row; 
   max-width: 100%;
   width: 100%;
-  padding-left: 14%;
-  padding-right: 10%;
   padding-top: 5%;
   padding-bottom: 5%;
   height: 100%;
@@ -1214,6 +2246,14 @@ table{
   }
 }
 
+/* Dark mode for blogs main section */
+body.dark-mode #blogs-main{
+  background-color: var(--dm-light-bg);
+  h1{
+    color: white;
+  }
+}
+
 /* Styling for the blogs post */
 .blog-posts{
   padding: 10%;
@@ -1221,6 +2261,7 @@ table{
   flex-direction: column;
 }
 
+/* Styling for the blog post */
 .blog-post{
   background: white;
   border-radius: 12px;
@@ -1262,6 +2303,14 @@ table{
   }
 }
 
+/* Dark mode for the blog posts */
+body.dark-mode .blog-post{
+  background-color: var(--dm-dark-bg);
+  h4, h2, p{
+    color: white;
+  }
+}
+
 
 /* Styling for the create blogs post section */
 .create-blog-post{
@@ -1292,6 +2341,12 @@ table{
   }
 }
 
+/* Dark mode for when you cant post a blog */
+body.dark-mode .cant-post-blog{
+  background-color: var(--dm-dark-bg);
+  color: white;
+}
+
 /* Styling for the form to make a blog */
 .blog-form{
   background: white;
@@ -1320,6 +2375,17 @@ table{
   }
 }
 
+/* Dark mode for the blog form */
+body.dark-mode .blog-form{
+  background-color: var(--dm-dark-bg);
+  color: white;
+}
+
+/* Dark mode for input field */
+body.dark-mode .input-field{
+  color: white;
+}
+
 /* Styling for the blog title */
 .blog-title{
   width: 300px;
@@ -1332,5 +2398,900 @@ table{
   .input-field{
     width: 300px;
     resize: none;
+  }
+}
+
+/* Styling for product details page */
+.product-details-page {
+  background-color: var(--light-bg);
+}
+
+/* Dark mode for product details page */
+body.dark-mode .product-details-page{
+  background-color: var(--dm-light-bg);
+  color: white;
+}
+
+/* Styling for the product details page product details */
+.product-details-page .product-details {
+  padding: 5% 14.25%;
+  background-color: var(--light-bg);
+  align-content: center;
+}
+
+/* Dark mode for product details */
+body.dark-mode .product-details{
+  background-color: var(--dm-light-bg);
+}
+
+/* Styling for the product details product container */
+.product-container{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 100%;
+  height: 100%;
+  scale: 0.9;
+}
+
+/* Container for product image */
+.product-details-page .product-image {
+  height: 100%;
+  flex: 1;
+  margin-right: 10%;
+  display: grid;
+}
+
+/* Styling for the product details product image */
+.product-details-page .product-image img {
+  width: 100%;
+  border-radius: 8px;
+  max-width: 500px;
+  max-height: 500px;
+  align-self: center;
+  justify-self: center;
+}
+
+/* Container for product information */
+.product-details-page .product-info {
+  flex: 1;
+  padding: 10px 0 10px 10px ;
+}
+
+/* Styling for product title */
+.product-details-page .product-info h1 {
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--primary-colour);
+  margin-bottom: 20px;
+}
+
+/* Dark mode for product info */
+body.dark-mode .product-info{
+  h1, .price, .description {
+    color: white;
+  }
+}
+
+/* Styling for product price */
+.product-details-page .product-info .price {
+  font-size: 25px;
+  font-weight: bold;
+  color: var(--title-colour);
+  margin-bottom: 20px;
+}
+
+/* Styling for product description */
+.product-details-page .product-info .description {
+  font-size: 16px;
+  color: var(--text-colour);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Styling for the product details availability */
+.rating-availability{
+  display: inline-flex;
+  align-items: baseline;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* Styling for product rating */
+.product-details-page .product-info .rating {
+  font-size: 14px;
+  color: #ffc107;
+}
+
+/* Styling for availability status */
+.product-details-page .product-info .availability {
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Styling for the product details availability colours */
+.product-details-page .product-info .availability-none {
+  color: red;
+}
+.product-details-page .product-info .availability-low  {
+  color: var(--secondary-colour);
+}
+.product-details-page .product-info .availability-full  {
+  color: green;
+}
+
+/* Styling for the product details size options */
+.product-details-page .size-options .size-row{
+  display: flex;
+  width: 100%;
+}
+
+/* Styling for the product details size option text */
+.product-details-page .size-options p {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--title-colour);
+  margin-bottom: 15px;
+}
+
+/* Styling for the product details size option */
+.product-details-page .size-options .size {
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  padding: 5px 20px;
+  border-radius: 4px;
+  margin-right: 10px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: black;
+  text-decoration: none;
+}
+
+/* Styling for the product details */
+.product-details-page .size-options .size:hover,
+.product-details-page .size-options .size.selected  {
+  background-color: var(--secondary-colour);
+}
+
+/* Styling for the quantity */
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  width: fit-content;
+  margin-top: 20px;
+}
+
+/* Styling for the quantity button */
+.quantity-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px;
+  color: #333;
+}
+
+/* Styling for the quantity */
+#quantity {
+  text-align: center;
+  width: 40px;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+/* Styling for add to basket button */
+.product-details-page .add-to-basket {
+  background-color: var(--secondary-colour);
+  color: var(--primary-colour);
+  padding: 10px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+/* Styling for when the add to basket button isnt disabled */
+.product-details-page .add-to-basket:not([disabled]):hover {
+  background-color: #e5a500;
+}
+
+/* Styling for when the add to basket button is disabled */
+.add-to-basket:disabled {
+  background-color: rgba(254, 204, 66, 0.3);
+  color: #666;
+  cursor: not-allowed;
+}
+
+/* Styling for the products review section */
+.product-reviews{
+  padding: 40px 14.25%;
+  background-color:var(--dark-bg);
+  a{
+    padding-bottom: 50px;
+    color: var(--primary-colour);
+    background: var(--secondary-colour);
+    font-weight: bold;
+    padding: 5px 22px;
+    cursor: pointer;
+    max-width: 100%;
+    height: 50px;
+    border: none;
+    font-size: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+}
+
+/* Styling for the products review body */
+.review-body{
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px 0#6f6f6f;
+  display: flex;
+  flex-direction: column;
+  padding: 1%;
+  width: 60%;
+  position: relative;
+  margin-bottom: 5px;
+  margin-top: 40px;
+  word-wrap: break-word;  
+  overflow-wrap: break-word;  
+  white-space: normal;
+  h3, h4, p{
+    margin-bottom: 5px;
+  }
+  .review-rating{
+    text-shadow: 1px 1px #6f6f6f;
+  }
+  .review-message{
+    font-size: 18px;
+  }
+  .review-by{
+    color: var(--text-colour);
+  }
+}
+
+/* Styling for recommended products section */
+.product-details-page .recommended-products {
+  padding: 40px 14.25%;
+  background-color: var(--light-bg);
+}
+
+/* Dark mode for reccomended products */
+body.dark-mode .recommended-products{
+  background-color: gray;
+  h2{
+    color: white;
+  }
+}
+
+/* Styling for the product details recommended products header 2 */
+.product-details-page .recommended-products h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--title-colour);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Styling for product cards grid */
+.product-details-page .products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Product card styles */
+.product-details-page .product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+
+}
+
+/* Styling for hovering the product card */
+.product-details-page .product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Styling for the product details product card heading 3 */
+.product-details-page .product-card h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--title-colour);
+  margin-bottom: 5px;
+}
+
+/* Styling for the product card description */
+.product-details-page .product-card .product-description {
+  font-size: 14px;
+  color: var(--text-colour);
+  margin-bottom: 20px;
+}
+
+/* Styling for view product button */
+.product-details-page .view-button {
+  background-color: var(--secondary-colour);
+  color: var(--primary-colour);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+/* Styling for hovering the voew button on product details */
+.product-details-page .view-button:hover {
+  background-color: #e5a500;
+}
+
+/* Styling for the basket icon */
+.basket {
+  position: relative;
+}
+
+/* Styling for the count in the basket */
+.basket-count {
+  position: absolute;
+  top: -9px;
+  right: 1px;
+  background-color: var(--secondary-colour);
+  color: black;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+/* Styling for the main basket section */
+.basket-main{
+  background-color: var(--light-bg);
+  padding: 3% 14.25%;
+}
+
+/* Dark mode for main section of basket */
+body.dark-mode .basket-main{
+  background-color: var(--dm-light-bg);
+}
+
+/* Styling for the basket and checkout */
+.basket-and-checkout{
+  display: grid;
+  grid-template-columns: 75% 23%;
+  flex-direction: row;
+  height: 550px;
+  gap: 2%;
+  width: 100%;
+}
+
+/* Styling for the empty basket */
+.empty-basket{
+  display: grid;
+  flex-direction: column;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px 0 #6f6f6f;
+  padding: 2%;
+  color: var(--title-colour);
+  height: 100%;
+  grid-template-rows: 1fr 3fr 5fr;
+  h1{
+    font-size: 35px;
+    margin-bottom: 2%;
+    position: relative;
+    padding: 0;
+  }
+  hr{
+    padding: 0;
+    width: 100%;
+  }
+  p{
+    font-size: 20px;
+    justify-self: center;
+    color: var(--text-colour);
+  }
+  a{
+    color: var(--secondary-colour);
+  }
+}
+
+/* Dark mode for an empty basket */
+body.dark-mode .empty-basket{
+  background-color: var(--dm-dark-bg);
+  color: white;
+  a{
+    color: var(--secondary-colour);
+  }
+}
+
+/* Styling for the the basket summary */
+.basket-summary{
+  display: grid;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px 0#6f6f6f;
+  padding: 5%;
+  height: 60%;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  h2{
+    color: var(--title-colour);
+    text-align: left;
+    font-size: 20px;
+  }
+  h4{
+    text-align: left;
+    margin-right: auto;
+    color: var(--text-colour);
+    font-weight: lighter;
+    align-self: end;
+  }
+  hr{
+    width: 80%;
+    color: lightgray;
+    transform: translateY(-15px);
+  }
+  button, a{
+    position: relative;
+    width: 300px;
+    top: 30%;
+    background-color: var(--secondary-colour);
+    border-radius: 0px 0px 12px 12px;
+    padding: 15px;
+    cursor: pointer;
+    border: none;
+    font-size: 15px;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    align-items: center;
+  }
+}
+
+/* Dark mode for basket summary */
+body.dark-mode .basket-summary{
+  background: var(--dm-dark-bg);
+  color: white;
+}
+
+/* Styling for the basket total */
+.total{
+  top: 15%;
+}
+
+/* Styling for the costs */
+.costs{
+  display: grid;
+  height: 100%;
+  width: 80%;
+  grid-template-columns: 60% 40%;
+  margin-right: auto;
+  align-content: center;
+}
+
+/* Styling for the items in the basket */
+.items-in-basket{
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px 0#6f6f6f;
+  padding: 2%;
+  text-align: left;
+  height: fit-content;
+  color: var(--title-colour);
+  h1{
+    font-size: 35px;
+    margin-bottom: 2%;
+    position: relative;
+    padding: 0;
+  }
+  hr{
+    position: relative;
+    padding: 0;
+    width: 100%;
+  }
+  img{
+    width:70%;
+  }
+  table{
+    padding-top: 2%;
+    width: 100%;
+    text-align: center;
+    .product-details{
+      padding: 0 5%;
+      display: grid;
+      grid-template-columns: 40% 60%;
+      align-content: center;
+    }
+    button{
+      background-color: var(--secondary-colour);
+      color: black;
+      border: none;
+      padding: 7% 10%;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: 1.5s;
+    }
+    button:hover{
+      scale: 1.2;
+    }
+  }
+}
+
+/* Dark mode for items in basket */
+body.dark-mode .items-in-basket{
+  background-color: var(--dm-dark-bg);
+  color: white;
+  .product-details{
+    background-color: var(--dm-dark-bg);
+  }
+}
+
+#services{
+  background-color: var(--dark-bg);
+  padding: 5% 14.25% 10% 14.25%;
+  h1{
+    font-size: 2.5em;
+    margin: 0;
+    color: var(--title-colour);
+  }
+}
+
+/* Dark mode for services section */
+body.dark-mode #services{
+  background-color: var(--dm-dark-bg);
+  color: white;
+  strong{color: white;}
+}
+
+/* Styling for the service ssection */
+.services-section { 
+  display: flex; 
+  justify-content: space-between; 
+  margin-top: 5%;
+} 
+
+/* Styling for the service card */
+.service-card { 
+  background-color: white; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 20px 3px rgba(0, 0, 0, 0.2); 
+  padding: 20px; 
+  width: 25%; 
+  min-height: 250px;
+  text-align: center; 
+  transition: transform 0.3s; 
+  margin: 0 10px; 
+  .service-icon-circle{
+    width: 90px;
+    height: 90px;
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    background-color: var(--dark-bg);
+    margin: 10px;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: 0.3s;
+    align-content: center;
+    justify-content: center;
+  }
+  img {
+    filter: saturate(1);
+    width: 60%;
+    height: 60%;
+  }
+  h3{
+    color: var(--title-colour);
+  }
+  p{
+    justify-self: center;
+    color: var(--text-colour);
+    width: 85%;
+  }
+  .view-range{
+    display: inline-block; 
+    margin-top: 10px; 
+    color: var(--primary-colour); 
+    text-decoration: none; 
+    font-weight: bold; 
+    font-size: smaller;
+  }
+}  
+
+/* Dark mode for service card */
+body.dark-mode .service-card{
+  background-color: var(--dm-light-bg);
+  color: white;
+  img{background-color: white;}
+  p, a{
+    color: white;
+  }
+}
+
+/* Styling for hovering the view range */
+.view-range:hover {
+  text-decoration: underline;
+}
+
+/* Styling for the best sellers section */
+#best-sellers {
+  background-color: var(--light-bg);
+  padding: 5% 14.25%;
+  text-align: center;
+  h1{
+    font-size: 2.5em; 
+    color: var(--title-colour);
+  }
+}
+
+/* Dark mode for best sellers section */
+body.dark-mode #best-sellers{
+  color: white;
+  background-color: var(--dm-light-bg);
+  p{
+    color: white;
+  }
+}
+
+/* Styling for the products container */
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 5% 0;
+}
+
+/* Dark mode for product box */
+body.dark-mode .product-box{
+  background-color: #31312f;
+  color: white;
+  p{
+    color: white;
+  }
+}
+
+/* Styling for the best sellers button */
+.best-sellers-button {
+  background-color: rgb(254, 204, 66);
+  color: black;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.5s;
+}
+
+.best-sellers-button:hover{
+  background-color: hsl(44, 62%, 42%);
+}
+
+#coffee-fix{
+  background-color: var(--dark-bg);
+  padding: 5% 14.25%;
+  #coffee-fix-container{
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    height: 100%;
+  }
+  #coffee-text{
+    align-self: center;
+    h1{
+      color: var(--title-colour);
+      font-size: 2.5rem;
+    }
+    p{
+      color:var(--text-colour);
+      margin: 7% 0;
+      width: 80%;
+    }
+    #become-member-button{
+      font-size: 14px;
+      color: var(--primary-colour);
+      background: var(--secondary-colour);
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 4px;
+      scale: 1;
+      transition: background 0.5s;
+    }
+    #become-member-button:hover{
+      background:hsl(44, 62%, 42%);
+    }
+  }
+}
+
+/* Container styles */
+#bean-bags {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin-left: 50%;
+}
+
+/* Shared styles for all images */
+#bean-bags img {
+  position: absolute;
+  height: 100%;
+  object-fit: contain;
+  transition: 0.5s;
+}
+
+.bag{
+  filter: drop-shadow(11px 8px 13px black);
+}
+
+/* Default or "resting" transforms */
+.bag1 {
+  z-index: 3;
+  transform: rotate(21deg);
+}
+
+.bag2 {
+  z-index: 2;
+  /* If you need a default transform, add it here */
+}
+
+.bag3 {
+  z-index: 1;
+  transform: rotate(-18deg);
+}
+
+/* When hover of #bean-bags move each bag */
+#bean-bags:hover .bag1 {
+  transform: translateX(-120px) rotate(-11deg);
+}
+
+#bean-bags:hover .bag2 {
+  transform: translateY(-15px) translateX(-30px) rotate(5deg);
+}
+
+#bean-bags:hover .bag3 {
+  transform: translateY(-5px) translateX(50px) rotate(15deg);
+}
+
+
+/* Styling for the main checkout section */
+.checkout-main{
+  background-color: var(--light-bg);
+  padding-top: 5%;
+  padding-bottom: 5%;
+  justify-items: center;
+}
+
+/* Dark mode for main section of checkout */
+body.dark-mode .checkout-main{
+  background-color: var(--dm-light-bg);
+}
+
+/* Styling for the checkout form */
+.checkout-form-section{
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px 0#6f6f6f;
+  width: 600px;
+  align-items: center;
+  text-align: center;
+  hr{
+    margin-top: 5px;
+    width: 100%;
+  }
+  h3, h4{
+    text-align: left;
+  }
+  label{
+    text-align: left;
+  }
+}
+
+/* Dark mode for check out form */
+body.dark-mode .checkout-form-section{
+  background-color: var(--dm-dark-bg);
+  color: white;
+}
+
+/* Styling for the shipping section */
+.shipping{
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+/* Styling for the payment section */
+.payment{
+  margin-top: 5%;
+}
+
+/* Styling for the small credit card numbers */
+.small-numbers{
+  display: flex;
+  flex-direction: row;
+}
+
+/* Styling for the place order button */
+.place-order{
+  margin-top: 5%;
+  width: auto;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 35px;
+  border-radius: 4px;
+  background: var(--secondary-colour);
+  border: none;
+}
+
+/* Styling for the create a review main page */
+.create-review{
+  background-color: var(--light-bg);
+  display: flex;
+  flex-direction: column; 
+  max-width: 100%;
+  width: 100%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  height: 100%;
+  min-height: 500px;
+}
+
+/* Styling for the create a review form */
+.review-form{
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px 0#6f6f6f ;
+  padding: 5%;
+  width: 1000px;
+  align-self: center;
+  display: flex ;
+  flex-direction: column;
+  button{
+    color: var(--primary-colour);
+    background: var(--secondary-colour);
+    font-weight: bold;
+    padding: 5px 22px;
+    cursor: pointer;
+    max-width: 100%;
+    height: 30px;
+    border: none;
+    font-size: 15px;
+    align-self: center;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  h3{
+    padding-bottom: 15px;
+    font-size: xx-large;
+    
+  }
+  .stars select{
+    margin-left: 10px;
+    padding: 5px;
+    height: auto;
+    width: 200px;
+    font-size: larger;
+    border-radius: 5px;
   }
 }

@@ -6,98 +6,95 @@ document.addEventListener("DOMContentLoaded", function() {
     const contents = document.querySelectorAll('.content-section');
 
     // Function to reset all to inactive state
-    function resetChosenNav() {
+    function resetChosenDashNav() {
         // Set all background colours to light grey
         options.forEach(option => {
             option.style.backgroundColor = 'rgba(254, 204, 66, 0.3)'; 
         });
-        // Don't diplay any titles
+        // Don't display any titles
         titles.forEach(title => {
             title.style.display = 'none'; 
         });
-        // Don't diplay any content
+        // Don't display any content
         contents.forEach(content => {
             content.style.display = 'none'; 
         });
     }
 
     // Function to set the active state based on the button pressed
-    function setChosenNav(id) {
-        resetChosenNav();
-        const activeOption = document.querySelector(`#${id}`);
+    function setChosenDashNav(id) {
+        resetChosenDashNav();
+        const activeOption = document.querySelector(`.dash-buttons #${id}`);
         const activeTitle = document.querySelector(`#${id}Title`);
         const activeContent = document.querySelector(`#${id}Content`);
-
-        activeOption.style.backgroundColor = '#fecc42'; 
-        activeTitle.style.display = 'block'; 
-        activeContent.style.display = 'grid'; 
+    
+        if (activeOption) activeOption.style.backgroundColor = '#fecc42';
+        if (activeTitle) activeTitle.style.display = 'block';
+        if (activeContent) activeContent.style.display = 'grid';
     }
 
-    // Set the default active state to "orders"
-    setChosenNav('orders');
+    // Check for a query parameter to set the initial state
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get('tab');
 
+    // If a query parameter exists, use it; otherwise, default to "orders"
+    const defaultTab = tab || 'orders';
+    setChosenDashNav(`dash-${defaultTab}`); // Prefix dashboard tabs
     // Add click event listeners to each option
     options.forEach(option => {
         option.addEventListener('click', function() {
             const id = this.id;
-            setChosenNav(id);
+            setChosenDashNav(id);
         });
     });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Get all the navigation links
     const choices = document.querySelectorAll('.admin-buttons .choice');
-    // Get all the content sections
     const sections = document.querySelectorAll('.admin-content .admin-section');
 
-    // Function to reset all to inactive state
-    function resetChosenNav() {
-        // Reset all links' styles
-        choices.forEach(choice => {
-            choice.style.color = 'rgba(255, 255, 255,0.7)';
-        });
-        // Hide all content sections
-        sections.forEach(section => {
-            section.style.display = 'none';
-        });
+    // Hide all sections immediately on page load
+    sections.forEach(section => section.style.display = 'none');
+
+    function resetChosenAdminNav() {
+        choices.forEach(choice => choice.style.color = 'rgba(255, 255, 255, 0.7)');
+        sections.forEach(section => section.style.display = 'none');
     }
 
-    // Function to set the active state based on the button pressed
-    function setChosenNav(id) {
-        resetChosenNav();
-        const activeChoice = document.querySelector(`#${id}`);
+    function setChosenAdminNav(id, updateURL = true) {
+        resetChosenAdminNav();
+        const activeChoice = document.querySelector(`.admin-buttons #${id}`);
         const activeSection = document.querySelector(`#${id}Content`);
 
         if (activeChoice && activeSection) {
             activeChoice.style.color = '#fecc42';
-            activeChoice.style.transform = 'translateY(0)'; 
+            activeChoice.style.transform = 'translateY(0)';
             activeSection.style.display = 'grid';
+
+            // Update URL without refreshing the page
+            if (updateURL) {
+                const newTab = id.replace('admin-', ''); // Remove "admin-" for cleaner URLs
+                const newUrl = `${window.location.pathname}?tab=${newTab}`;
+                window.history.replaceState(null, '', newUrl);
+            }
         } else {
             console.warn(`No matching elements found for ID: ${id}`);
         }
     }
 
-    // Check the query parameter to set the initial active state
+    // Get tab from URL
     const urlParams = new URLSearchParams(window.location.search);
     const tab = urlParams.get('tab');
 
     if (tab) {
-        setChosenNav(tab);
+        setChosenAdminNav(`admin-${tab}`, false); // Don't update URL on page load
     } else {
-        // Default to "home" tab if no query parameter is provided
-        setChosenNav('home');
+        setChosenAdminNav('admin-home', false); // Default tab without updating URL
     }
 
-    // Add click event listeners to each choice
     choices.forEach(choice => {
         choice.addEventListener('click', function () {
-            const id = this.id;
-            setChosenNav(id);
-
-            // Update the URL without refreshing the page
-            const newUrl = `${window.location.pathname}?tab=${id}`;
-            window.history.replaceState(null, '', newUrl);
+            setChosenAdminNav(this.id); // Calls function and updates URL
         });
     });
 });
@@ -218,6 +215,11 @@ function saveCategoryName(input, id) {
         console.error('Error:', error);
         alert('An error occurred while updating the category.');
     });
+}
+
+function toggleFilterDropdown() {
+    const dropdown = document.getElementById('filter-dropdown');
+    dropdown.classList.toggle('hidden');
 }
 
 // Request a fresh CSRF token
