@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use App\Models\WebsiteReview;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; 
@@ -21,15 +22,27 @@ class ReviewController extends Controller
             'message' => 'required|string',
         ]);
 
-        Review::create([
-            'product_id' => $id,
-            'user_id' => Auth::id(),
-            'rating' => $request->rating,
-            'title' => $request->title,
-            'message' => $request->message
-        ]);
+        if($id === "0"){
+            WebsiteReview::create([
+                'user_id' => Auth::id(),
+                'rating' => $request->rating,
+                'title' => $request->title,
+                'message' => $request->message
+                ]);
+        } else {
+            Review::create([
+                'product_id' => $id,
+                'user_id' => Auth::id(),
+                'rating' => $request->rating,
+                'title' => $request->title,
+                'message' => $request->message
+        ]);}
 
-        return redirect()->route('product-details', $id);
+        if($id === "0"){
+            return view('about-us');
+        } else {
+            return redirect()->route('product-details', $id);
+        }
     }
 }
 ?>

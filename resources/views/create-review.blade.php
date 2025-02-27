@@ -155,7 +155,11 @@
                 <div class="create-review">
                     <form class="review-form" action="{{ route('reviews.add', $id) }}" method="POST">
                         @csrf
-                        <h3>Write A Review for {{\App\Models\Product::find($id)->name}}</h3>
+                        @if ($id === "0")
+                            <h3>Write A Review for E-Spresso</h3>
+                        @else
+                            <h3>Write A Review for {{\App\Models\Product::find($id)->name}}</h3>
+                        @endif
                         <div class=stars>
                             <select name="rating" id="rating">
                                 <option value="5">⭐⭐⭐⭐⭐</option>
