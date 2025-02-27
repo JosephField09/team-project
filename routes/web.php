@@ -26,11 +26,25 @@ Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 // Basket Route
-Route::get('/basket', [BasketController::class,'index'])->name('basket'); 
+Route::get('/basket', [BasketController::class, 'index'])->name('basket');
+Route::post('basket.add/{id}', [BasketController::class, 'add'])
+    ->name('basket.add')
+    ->middleware(['auth', 'verified']);
+
+Route::post('/basket/remove/{id}', [BasketController::class, 'remove'])
+    ->name('basket.remove')
+    ->middleware(['auth', 'verified']);
+
+Route::post('/basket/update/{id}', [BasketController::class, 'update'])
+    ->name('basket.update')
+    ->middleware(['auth', 'verified']);
 
 
-
-// Route to go to dashboard and clear cache to prevent csrf
+/**
+ * Normal user dashboard:
+ * - If user is admin, redirect to the admin dashboard.
+ * - Otherwise, load the user’s orders and show the regular dashboard.
+ */
 Route::get('/dashboard', function () {
     $user = Auth::user();  // Get the authenticated user
     

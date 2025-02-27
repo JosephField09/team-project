@@ -202,5 +202,28 @@
             </footer>
         </section>
     </main>
+    <!-- Toastie Notification CSS link-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <!-- Toastie Notification JS-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <script>
+        @if(session('success'))
+        Toastify({
+            text: "{{session('success')}}",
+            duration: 3000, // means for 3 seconds
+            close: true, 
+            gravity: "top",
+            position: "center", 
+            backgroundColor: "green", 
+        }).showToast(); 
+
+        //Redirect back to homepage in 3 seconds 
+        setTimeout(function() {
+            window.location.href = "{{route('home')}}"; 
+        }, 3000); 
+        @endif 
+    </script>
 </body>
 </html>
