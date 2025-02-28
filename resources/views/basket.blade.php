@@ -326,7 +326,7 @@
         Toastify({
             text: "{{session('success')}}",
             duration: 3000, // means for 3 seconds
-            close: true, 
+            close: false, 
             gravity: "top",
             position: "center", 
             backgroundColor: "green", 

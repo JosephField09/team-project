@@ -188,7 +188,7 @@
                             @endif
                         </p>
                     </div>
-                    <form action="{{ route('basket.add', $data->id) }}" method="POST">
+                    <form id="add-to-basket-form" data-url="{{ route('basket.add', $data->id) }}" method="POST">
                         @csrf
                         <!-- Quantity button -->
                         <div class="size-options">
@@ -208,11 +208,8 @@
                         <div class="quantity">
                             <input type="number" id="quantity" name="quantity" value="1" min="1" max="{{ $data->stock }}" />
                         </div>
-                        <button 
-                            style="margin-top: 30px;"
-                            class="add-to-basket" 
-                            @if($data->stock == 0) disabled @endif>
-                            Add to Basket
+                        <button type="submit" id="add-to-basket-btn" class="add-to-basket" style="margin-top: 30px;" @if($data->stock == 0) disabled @endif>
+                            Add to Basket 
                         </button>
                     </form>
                 </div>
@@ -328,4 +325,85 @@
             </footer>
         </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#add-to-basket-form").on("submit", function (e) {
+                e.preventDefault(); //
+
+                let form = $(this); 
+                let url = form.data("url"); //
+                let quantity = $("#quantity").val(); 
+
+                $.ajax({
+                    url: url, 
+                    type: "POST", 
+                    data: {
+                        _token: "{{csrf_token()}}", //
+                        quantity: quantity 
+                    }, 
+                    headers: {
+                        'X-CSRF-TOKEN': "{{csrf_token()}}"
+                    },
+                    success: function (response) {
+                        if (response.message) {
+                            //
+                            Toastify({
+                                text: response.message,
+                                duration: 3000,
+                                close: false, 
+                                gravity: "top",
+                                position: "center",
+                                offset: {
+                                    x: 0,
+                                    y: 80
+                                },
+                                style: {
+                                    background: "green",
+                                    color: "white",
+                                    padding: "12px 20px",
+                                    borderRadius: "5px",
+                                    fontSize: "14px",
+                                    zIndex: 9999, 
+                                    position: "fixed",
+                                    top: "80px", 
+                                    left: "50%",
+                                    transform: "translateX(-50%)",
+                                    boxShadow: "0px 4px 10px rgba(0,0,0,0.1)"
+                                }
+                            }).showToast(); 
+
+                            //
+                            let basketCountElement = $(".basket-count"); 
+
+                            //
+                            if (basketCountElement.length) {
+                                basketCountElement.text(response.basketCount);
+                            } else {
+                                //
+                                $(".basket").append(`
+                                <span class= "basket-count">${response.basketCount}</span>
+                                `);
+                            }
+                        }
+                    },
+                    error: function (xhr) {
+                        console.log(xhr); 
+                        Toastify({
+                            text: "Something went wrong!",
+                            duration: 3000,
+                            close: false,
+                            gravity: "top",
+                            position: "center",
+                            style: {
+                                background: "red"
+                            } 
+                        }).showToast(); 
+                    }
+                });
+            });
+        });
+    </script>
 </body>

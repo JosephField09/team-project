@@ -40,7 +40,7 @@ class BasketController extends Controller
 
         $cartItem = Cart::where('user_id', $user_id)
                         ->where('product_id', $product_id)
-                        ->where('size', $size) // if you want a unique combination
+                      //  ->where('size', $size) // if you want a unique combination
                         ->first();
 
         if ($cartItem) {
@@ -51,11 +51,25 @@ class BasketController extends Controller
             $data->user_id = $user_id;
             $data->product_id = $product_id;
             $data->quantity = $quantity;
-            $data->size = $size;
+          //  $data->size = $size;
             $data->save();
+          
         }
 
-        return redirect()->back();
+        // 123
+        $basketCount = Cart::where('user_id', $user_id)->sum('quantity');
+
+        return response()->json([
+            "message" => "Product added to basket",
+            "basketCount" => $basketCount
+        ]);
+
+      
+
+        //session()->flash('success', 'Product added to basket!'); 
+       // return redirect()->back(); 
+
+    
     }
 
 

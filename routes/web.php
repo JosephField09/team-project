@@ -48,7 +48,7 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 // Basket Route
 Route::get('/basket', [BasketController::class, 'index'])->name('basket');
-Route::post('basket.add/{id}', [BasketController::class, 'add'])
+Route::post('/basket/add/{id}', [BasketController::class, 'add'])
     ->name('basket.add')
     ->middleware(['auth', 'verified']);
 
