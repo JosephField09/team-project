@@ -129,6 +129,31 @@ class AdminDashboardController extends Controller
         ))->with('tab', 'allOrders');
     }
 
+    public function update(Request $request, Order $order) 
+    {
+        $request->validate(['status' => 'required|in:Paid,Processed/Shipped,Returned,Cancelled']);
+
+        // Define allowed status transitions
+        // Paid can go to Processed or Cancelled
+        // Processed can go to Returned
+        // Returned and Cancelled are final
+        $validTransitions = [
+            'Paid' => ['Processed/Shipped', 'Cancelled'], 
+            'Processed/Shipped' => ['Returned'],
+            'Returned' => [],
+            'Cancelled' => [] 
+        ];
+
+        // Check if the requested transition is allowed
+        if (!in_array($request->status, $validTransitions[$order->status] ?? [])) {
+            return back()->with('error', 'Invalid status change.');
+        }
+
+        $order->update(['status' => $request->status]);
+
+        return back()->with('success', 'Order status updated successfully.');
+    }
+
     /**
      * Search users.
      */
@@ -192,4 +217,24 @@ class AdminDashboardController extends Controller
             'lowStockProducts'
         ))->with('tab', 'allUsers');
     }
+
+    public function edit(User $user)
+    {
+        return view('edit-user', compact('user'));
+    }
+
+    public function updateUser(Request $request, User $user)
+    {
+        $request->validate([
+            'firstName' => 'required|string|max:255',
+            'lastName'  => 'required|string|max:255',
+            'email'     => 'required|email|max:255|unique:users,email,' . $user->id,
+            'phone'     => 'nullable|string|max:20',
+        ]);
+
+        $user->update($request->only('firstName', 'lastName', 'email', 'phone'));
+
+        return redirect()->route('admin.dashboard', ['tab' => 'allUsers'])->with('success', 'User updated successfully.');
+    }
+
 }

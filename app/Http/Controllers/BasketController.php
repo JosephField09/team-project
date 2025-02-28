@@ -26,7 +26,7 @@ class BasketController extends Controller
             $userId = Auth::id();
             return Cart::where('user_id', $userId)->sum('quantity');
         }
-        return 0; // For guests, the count is 0
+        return 0; 
     }
     
     // Adds an item to the basket. Includes validation to protect against invalid or malicious inputs.   
@@ -40,7 +40,6 @@ class BasketController extends Controller
 
         $cartItem = Cart::where('user_id', $user_id)
                         ->where('product_id', $product_id)
-                      //  ->where('size', $size) // if you want a unique combination
                         ->first();
 
         if ($cartItem) {
@@ -60,15 +59,9 @@ class BasketController extends Controller
         $basketCount = Cart::where('user_id', $user_id)->sum('quantity');
 
         return response()->json([
-            "message" => "Product added to basket",
+            "message" => "Product added to basket successfuly",
             "basketCount" => $basketCount
         ]);
-
-      
-
-        //session()->flash('success', 'Product added to basket!'); 
-       // return redirect()->back(); 
-
     
     }
 

@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags, title, CSS, and JS -->
+    <!-- Meta tags, title, CSS and JS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Details</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
 </head>
 
+
 <body>
     <main>
-       <!-- Header Section -->
-       <section id="header">
+        <!-- Header Section -->
+        <section id="header">
             <nav id="main">
                 <!-- Left navbar section -->
                 <div class="navbar-left">
@@ -53,7 +54,7 @@
                         </div>
                     </div>
                     <a class="middle" href="{{ route('about-us') }}">About Us</a>
-                    <a class="middle option-selected" href="{{ route('contact-us') }}">Contact Us</a>
+                    <a class="middle" href="{{ route('contact-us') }}">Contact Us</a>
                     <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
                 </div>
                 <!-- Right navbar section -->
@@ -149,47 +150,45 @@
             </nav>
         </section>
 
-         <!-- Contact Us Section -->
-         <section id="ContactUs">
-            <div class="side-img">
-                <img src="{{ asset('assets/AdobeStock_1026464614.jpeg') }}"></img>
-            </div>
-            <div class="contact-us-form">
-                <form id="contact-us">
-                    <h1 id="contact-us-heading">Contact Us</h1>
-                    <div class="first-and-last-name">
-                        <div class="first-name">
-                            <label for="fName">First Name</label>
-                            <input id ="fName "type ="text" name="fName" placeholder="Enter Your First Name" class="input-field" require/>
-                        </div>
-                        <div class="last-name">
-                            <label for="lName">Last Name</label>
-                            <input id ="lName "type ="text" name="lName" placeholder="Enter Your Last Name" class="input-field" require/>
-                        </div>
-                    </div>
-                    <div class="email-and-phone">
-                        <div class="email">
-                            <label for="email">Email</label>
-                            <input id="email" type="email"  name="email" placeholder="Enter your Email" class="input-field" require>
-                        </div>
-                        <div class="phone">
-                            <label for="phone">Phone</label>
-                            <input id="phone" type="text" id="phone" name="phone" placeholder="Enter Your Phone number" class="input-field" require/>
-                        </div>
-                    </div>
-                    <div class="message-to-send">
-                        <label for="message">Message</label>
-                        <textarea rows="5" cols="50" id="uMessage" name="uMessage" form="contactusform" class="input-field"
-                        placeholder="Write Message Here..." require></textarea>
-                    </div>
-                    <p class="error-message" id="formError"></p>
-                    <div class ="submit-form">
-                        <button type="submit" id="submit-form-btn">Submit Now</button>
-                    </div>
+        <!-- Edit user section-->
+        <section id="edit-user">
+            <div id="edit-user-container">
+                <h1>Edit User</h1>
+
+                @if (session('success'))
+                    <p style="color: green;">{{ session('success') }}</p>
+                @endif
+
+                @if ($errors->any())
+                    <ul style="color: red;">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+
+                <form action="{{ route('users.update', $user->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="input-field" name="firstName" value="{{ old('firstName', $user->firstName) }}" required>
+
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="input-field" name="lastName" value="{{ old('lastName', $user->lastName) }}" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" class="input-field" name="email" value="{{ old('email', $user->email) }}" required>
+
+                    <label for="phone">Phone</label>
+                    <input type="text" class="input-field" name="phone" value="{{ old('phone', $user->phone) }}">
+
+                    <button class="add-cat" style="display: grid; justify-self: center;" type="submit">Update User</button>
+                    <p style="text-align: center;color:var(--text-colour)">Made a mistake? <a href="{{ route('admin.dashboard', ['tab' => 'allUsers']) }}" style="display: inline-block; margin-top: 10px; color: var(--secondary-colour); text-decoration: none;">Cancel</a></p>
                 </form>
-                <script src="{{ asset('js/contact-us.js') }}" ></script>
             </div>
         </section>
+
 
         <!-- Footer Section -->
         <section id="footer">
@@ -199,7 +198,7 @@
                     <div class="logo">
                         <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                     </div>
-                    <p class="desc">At E-spresso, we're passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. Whether you’re a coffee connoisseur or just beginning your journey, Our store is your gateway to a world of rich flavors and aromatic delights.</p>
+                    <p class="desc">At E-spresso, we’re passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. Whether you’re a coffee connoisseur or just beginning your journey, Our store is your gateway to a world of rich flavors and aromatic delights.</p>
                     <div class="socials">
                         <ul class="social-links">
                             <i class='bx bxl-facebook-circle'></i>
@@ -262,4 +261,3 @@
         </section>
     </main>
 </body>
-</html>

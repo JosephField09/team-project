@@ -284,6 +284,7 @@
                         <li><a href="{{ route('contact-us') }}">Contact Us </a></li>
                         <li><a href="{{ route('blog') }}">Blog</a></li>
                         <li><a class="login" href="{{ route('admin.register') }}">Admin Register</a></li>
+                        <li><a href="{{ route('reviews.create', 0) }}">Review E-Spresso</a></li>
 
                     </ul>
                 </div>
@@ -352,7 +353,7 @@
                             //
                             Toastify({
                                 text: response.message,
-                                duration: 3000,
+                                duration: 2000,
                                 close: false, 
                                 gravity: "top",
                                 position: "center",
@@ -368,10 +369,11 @@
                                     fontSize: "14px",
                                     zIndex: 9999, 
                                     position: "fixed",
-                                    top: "80px", 
-                                    left: "50%",
-                                    transform: "translateX(-50%)",
-                                    boxShadow: "0px 4px 10px rgba(0,0,0,0.1)"
+                                    top: "0", 
+                                    left: "43%",
+                                    transform: "translateY(50%)",
+                                    boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
+                                    transition:"0.5s"
                                 }
                             }).showToast(); 
 

@@ -328,7 +328,27 @@
                                         {{ $order->user->firstName }} {{ $order->user->lastName }} ({{ $order->user->email }})
                                     </td>
                                     <td>{{ $order->created_at->format('d M, Y') }}</td>
-                                    <td>{{ $order->status }}</td>
+                                    <td>
+                                        <form action="{{ route('orders.update', $order->id) }}" method="POST" class="status-form">
+                                            @csrf
+                                            @method('PUT')
+                                            <select name="status" style="background-color: transparent; border: none;" class="status-select"
+                                                    onchange="this.form.submit()" {{ in_array($order->status, ['Returned', 'Cancelled']) ? 'disabled' : '' }}>
+                                                @if($order->status == 'Paid')
+                                                    <option value="Paid" selected>Paid</option>
+                                                    <option value="Processed/Shipped">Processed/Shipped</option>
+                                                    <option value="Cancelled">Cancelled</option>
+                                                @elseif($order->status == 'Processed/Shipped')
+                                                    <option value="Processed/Shipped" selected>Processed/Shipped</option>
+                                                    <option value="Returned">Returned</option>
+                                                @elseif($order->status == 'Returned')
+                                                    <option value="Returned" selected>Returned</option>
+                                                @elseif($order->status == 'Cancelled')
+                                                    <option value="Cancelled" selected>Cancelled</option>
+                                                @endif
+                                            </select>
+                                        </form>
+                                    </td>
                                     <td>£{{ number_format($order->total_cost, 2) }}</td>
                                     <td>
                                         <ul style="list-style:none; padding: 0;">
@@ -340,7 +360,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" 
+                                    <td colspan="7" 
                                         style="text-align: center; font-style: italic; padding:10px;">
                                         No orders found.
                                     </td>
@@ -369,6 +389,7 @@
                                 <th>Last Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
+                                <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
@@ -381,17 +402,22 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone }}</td>
                                 <td>
-                                <form action="{{ route('profile.destroyOther', $user->id) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('patch')
-                                    <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this user?')"><i class='bx bx-trash'></i></button>
-                                </form>
-                            </td>
+                                    <a style="color: black;" href="{{ route('users.edit', $user->id) }}" class="edit-btn"><i class='bx bx-edit'></i></a>
+                                </td>
+                                <td>
+                                    <form action="{{ route('profile.destroyOther', $user->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('patch')
+                                        <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this user?')">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                             @empty
-                                <tr>
-                                    <td colspan="6" style="text-align: center; font-style: italic; padding:10px;">No users found.</td>
-                                </tr>
+                            <tr>
+                                <td colspan="7" style="text-align: center; font-style: italic; padding:10px;">No users found.</td>
+                            </tr>
                             @endforelse
                         </tbody>
                     </table>
@@ -680,6 +706,7 @@
                         <li><a href="{{ route('contact-us') }}">Contact Us </a></li>
                         <li><a href="{{ route('blog') }}">Blog</a></li>
                         <li><a class="login" href="{{ route('admin.register') }}">Admin Register</a></li>
+                        <li><a href="{{ route('reviews.create', 0) }}">Review E-Spresso</a></li>
 
                     </ul>
                 </div>

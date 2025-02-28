@@ -178,7 +178,7 @@
                         <img src="{{ asset('assets/check-mark.png') }}"></img>
                         <h4>High-quality, eco-friendly packaging</h4>
                     </div>
-                    <a class="contact-us"href="#contact-us"><h4>Contact us</h4></a>
+                    <a class="contact-us" href="{{ route('contact-us') }}"><h4>Contact us</h4></a>
                 </div>
             </div>
 
@@ -301,6 +301,7 @@
                         <li><a href="{{ route('contact-us') }}">Contact Us </a></li>
                         <li><a href="{{ route('blog') }}">Blog</a></li>
                         <li><a class="login" href="{{ route('admin.register') }}">Admin Register</a></li>
+                        <li><a href="{{ route('reviews.create', 0) }}">Review E-Spresso</a></li>
 
                     </ul>
                 </div>

@@ -111,9 +111,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/orders', [AdminDashboardController::class, 'orders'])
         ->name('orders');
 
+    // Update order status
+    Route::put('/orders/{order}', [AdminDashboardController::class, 'update'])->name('orders.update');
+
     // Users search
     Route::get('/users', [AdminDashboardController::class, 'users'])
         ->name('users');
+        
+    //Users edit
+    Route::get('/users/{user}/edit', [AdminDashboardController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{user}', [AdminDashboardController::class, 'updateUser'])->name('users.update');
+        
 });
 
 

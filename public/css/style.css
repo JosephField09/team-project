@@ -1987,25 +1987,22 @@ body.dark-mode #admin-nav{
   font-size: 30px;
 }
 
-/* Wrap or adapt these into your main CSS file or a <style> block */
-
-/* Container for the card area */
 #main-stats {
   display: grid;
   grid-template-columns: 49.5% 49.5%;
   gap: 1%;
-  margin: 40px 0;             /* space above/below */
+  margin: 40px 0;             
 }
 
 /* The card itself */
 #main-card {
-  background-color: #ffffff;    /* white card background */
+  background-color: #ffffff;   
   border-radius: 8px;          /* rounded corners */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
-  width: 100%;                /* fixed width (adjust as needed) */
-  padding: 1.5rem;             /* spacing inside the card */
-  text-align: center;          /* center all text */
-  border: 1px solid #e2e2e2;   /* light border to define card edges */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  width: 100%;               
+  padding: 1.5rem;            
+  text-align: center;         
+  border: 1px solid #e2e2e2;   
 }
 
 /* Title styling */
@@ -2019,9 +2016,9 @@ body.dark-mode #admin-nav{
 
 /* Paragraph styling */
 #main-card p {
-  margin: 0.5rem 0;           /* small vertical spacing */
-  font-size: 1rem;            /* base font size */
-  color: var(--text-colour);                /* slightly lighter than title for hierarchy */
+  margin: 0.5rem 0;          
+  font-size: 1rem;            
+  color: var(--text-colour);                
 }
 
 table.basket,
@@ -2159,6 +2156,35 @@ table{
 .pagination li:last-child {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
+}
+
+#edit-user{
+  background-color: var(--light-bg);
+  height: fit-content;
+  min-height: 6vh;
+  padding: 5% 30%;
+}
+
+#edit-user-container{
+  background-color: white;
+  border-radius: 12px;
+  padding: 5%;
+  box-shadow: 0 2px 6px 0 #6f6f6f;
+  h1{
+    font-size: 35px;
+    margin-bottom: 2%;
+    position: relative;
+    padding: 0;
+    text-align: center;
+  }
+  label{
+    color: var(--title-colour);
+  }
+  p{
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }
 
 /* Styling for all products content section */
@@ -2766,6 +2792,7 @@ body.dark-mode .recommended-products{
 .basket-main{
   background-color: var(--light-bg);
   padding: 3% 14.25%;
+  height: fit-content;
 }
 
 /* Dark mode for main section of basket */
@@ -2778,7 +2805,6 @@ body.dark-mode .basket-main{
   display: grid;
   grid-template-columns: 75% 23%;
   flex-direction: row;
-  height: 550px;
   gap: 2%;
   width: 100%;
 }
@@ -2830,9 +2856,8 @@ body.dark-mode .empty-basket{
   border-radius: 12px;
   box-shadow: 0 2px 6px 0#6f6f6f;
   padding: 5%;
-  height: 60%;
+  height: 65%;
   width: 100%;
-  justify-content: space-between;
   align-items: center;
   h2{
     color: var(--title-colour);
@@ -2853,11 +2878,9 @@ body.dark-mode .empty-basket{
   }
   button, a{
     position: relative;
-    width: 300px;
-    top: 30%;
     background-color: var(--secondary-colour);
-    border-radius: 0px 0px 12px 12px;
-    padding: 15px;
+    border-radius: 5px;
+    padding: 9px 2px;
     cursor: pointer;
     border: none;
     font-size: 15px;
@@ -2866,7 +2889,13 @@ body.dark-mode .empty-basket{
     text-decoration: none;
     font-weight: bold;
     align-items: center;
+    margin-top: 5%;
+    transition: 0.5s;
   }
+  a:hover{
+    scale: 0.9;
+  }
+  
 }
 
 /* Dark mode for basket summary */
@@ -2900,6 +2929,7 @@ body.dark-mode .basket-summary{
   padding: 2%;
   text-align: left;
   height: fit-content;
+  min-height: 60vh;
   color: var(--title-colour);
   h1{
     font-size: 35px;
