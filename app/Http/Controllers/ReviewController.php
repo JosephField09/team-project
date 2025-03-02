@@ -39,7 +39,7 @@ class ReviewController extends Controller
         ]);}
 
         if($id === "0"){
-            return view('about-us');
+            return redirect()->route('about-us');
         } else {
             return redirect()->route('product-details', $id);
         }

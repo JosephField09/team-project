@@ -228,7 +228,6 @@
                         <li><a href="{{ route('blog') }}">Blog</a></li>
                         <li><a class="login" href="{{ route('admin.register') }}">Admin Register</a></li>
                         <li><a href="{{ route('reviews.create', 0) }}">Review E-Spresso</a></li>
-
                     </ul>
                 </div>
                 <!-- Information Section -->
