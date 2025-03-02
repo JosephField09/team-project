@@ -273,6 +273,47 @@
             </div>
         </section>
 
+        <!-- Customer Testimonials Section -->
+        <section id="customer-testimonials">
+            <div class="testimonials-header">
+                <h3>Testimonials</h3>
+                <h2>What Our Customers Say About Us</h2>
+            </div>
+            <div class="testimonials-carousel">
+                <div class="testimonials-track" id="testimonials-track">
+                    @forelse($reviews as $review)
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <div class="testimonial-info">
+                                <i class='bx bxs-user-circle'></i>
+                                <div class="name-and-review">
+                                    <h3>{{$review->user->firstName}} {{$review->user->lastName}}</h3>
+                                    <h3>{{$review->title}}</h3>
+                                    <h4 class="review-rating">{{ str_repeat('⭐', $review->rating)}}</h4>
+                                </div>
+                            </div>
+                            <div class="testimonial-message">
+                                <p>{{$review->message}}<p>
+                            </div>
+                        </div>
+                    </div>
+                    @empty
+                    <div class="testimonial no-content">
+                        <div class="testimonial-content no-content">
+                            <h2>No testimonials available</h2>
+                        </div>
+                    </div>
+                    @endforelse
+                </div>
+            </div>
+            <div class="slider-dots">
+                @for ($i = 0; $i < count($reviews); $i++)
+                    <div class="dot {{$i === 0 ? 'active' : ''}}" data-index="{{ $i }}"></div>
+                @endfor
+            </div>
+            <script src="{{ asset('js/testimonials.js') }}"></script>
+        </section>
+
         <!-- Footer Section -->
         <section id="footer">
             <footer class="top">
@@ -301,7 +342,7 @@
                         <li><a href="{{ route('contact-us') }}">Contact Us </a></li>
                         <li><a href="{{ route('blog') }}">Blog</a></li>
                         <li><a class="login" href="{{ route('admin.register') }}">Admin Register</a></li>
-
+                        <li><a href="{{ route('reviews.create', 0) }}">Review E-Spresso</a></li>
                     </ul>
                 </div>
                 <!-- Information Section -->

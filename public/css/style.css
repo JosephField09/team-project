@@ -918,6 +918,7 @@ footer.bottom {
   flex-direction: column;
   padding: 10% 14.25%;
   background-color: var(--light-bg);
+  padding-bottom: 5%;
 }
 
 /* Dark mode for image blocks on about us */
@@ -1336,6 +1337,103 @@ body.dark-mode .ourstory{
     font-size: x-large;
     margin-bottom: 3px;
   }
+}
+
+#customer-testimonials{
+  background-color: var(--light-bg);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.testimonials-header{
+  margin-bottom: 40px;
+  h3{
+    color: var(--text-colour);
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  h2{
+    font-size: 32px;
+    margin: 0;
+  }
+}
+
+.testimonials-carousel{
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.testimonials-track{
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.testimonial{
+  flex: 0 0 33%;
+  padding: 20px; 
+  box-sizing: border-box;
+}
+
+.testimonial-content{
+  background-color: white;
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 800px; 
+  margin: 0 auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+.testimonial-info{
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  i{
+    font-size: 80px;
+    margin-right: 20px;
+  }
+}
+
+.name-and-review{
+  display: flex;
+  flex-direction: column;
+  h3, h4{
+    padding-bottom: 2px;
+  }
+}
+
+.testimonial-message{
+  color: var(--text-colour);
+  max-width: 800px;
+  word-wrap: break-word;  
+  overflow-wrap: break-word;  
+}
+
+.slider-dots{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ffedbe;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active{
+  background-color: var(--secondary-colour);
+}
+
+.no-content{
+  justify-content: center;
+  display: grid;
 }
 
 /* Styling for our contact us section on about us */
