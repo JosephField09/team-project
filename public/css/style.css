@@ -2579,6 +2579,9 @@ body.dark-mode .product-details-page{
   padding: 5% 14.25%;
   background-color: var(--light-bg);
   align-content: center;
+  top: 70px;
+  position: relative;
+  margin-bottom: 70px;
 }
 
 /* Dark mode for product details */
