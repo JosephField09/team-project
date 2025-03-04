@@ -6,9 +6,9 @@
         </div>
         <!-- Middle navbar section -->
         <div class="navbar-middle">
-            <a class="middle option-selected" href="{{ route('home') }}">Home</a>
+        <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
             <div id="product-nav" class="middle" style="display: contents;">
-                <a href="{{ route('products') }}">Products</a>
+            <a href="{{ route('products') }}" class="{{ request()->routeIs('products') ? 'active' : '' }}">Products</a>
                 <div class="dropdown-content">
                     <div class="dropdown-arrow" style="width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid rgb(255,251,243); ;"></div>
                     <ul class="dropdown">
@@ -36,9 +36,9 @@
                     </ul>
                 </div>
             </div>
-            <a class="middle" href="{{ route('about-us') }}">About Us</a>
-            <a class="middle" href="{{ route('contact-us') }}">Contact Us</a>
-            <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
+            <a href="{{ route('about-us') }}" class="{{ request()->routeIs('about-us') ? 'active' : '' }}">About Us</a>
+            <a href="{{ route('contact-us') }}" class="{{ request()->routeIs('contact-us') ? 'active' : '' }}">Contact Us</a>
+            <a href="{{ route('blogs.index') }}" class="{{ request()->routeIs('blogs.index') ? 'active' : '' }}">Blog</a>
         </div>
         <div class="hamburger">
             <span class="bar"></span>

@@ -63,7 +63,7 @@ nav#main {
 }
 
 /* Styling for navigation bar links when hovered over or selected */
-.navbar-middle a.option-selected,
+.navbar-middle a.active,
 .navbar-middle a:hover,
 .sidebar a:hover{
   color: var(--secondary-colour);
@@ -267,6 +267,8 @@ nav#main {
 }
 
 #home-cta{
+  top: 70px;
+  position: relative;
   background-color: black; 
   color: white; 
   display: flex; 
@@ -384,6 +386,9 @@ nav#main {
   padding: 5% 14.25%;
   height: fit-content;
   background-color: var(--light-bg);
+  top: 70px;
+  position: relative;
+  margin-bottom: 70px;
 }
 
 /* Dark mode for dashboard */
@@ -693,11 +698,14 @@ body.dark-mode .delete {
 /* Styling for Main container */
 .main {
   height: 70vh;
+  top: 70px;
+  position: relative;
   background-color: var(--light-bg);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 14.25%
+  padding: 0 14.25%;
+  margin-bottom: 70px;
 }
 
 /* Styling for form box */
@@ -941,7 +949,6 @@ footer.bottom {
   flex-direction: column;
   padding: 10% 14.25%;
   background-color: var(--light-bg);
-  padding-bottom: 5%;
   position: relative;
 }
 
@@ -1367,6 +1374,8 @@ body.dark-mode .ourstory{
   background-color: var(--light-bg);
   padding: 40px 20px;
   text-align: center;
+  top: 70px;
+  position: relative;
 }
 
 .testimonials-header{
@@ -1959,8 +1968,8 @@ body.dark-mode .product-card {
 .admin-main{
   background-color: var(--light-bg);
   height: fit-content;
-  max-height: 100vh;
-  min-height: 70vh;
+  top: 75px;
+  position: relative;
 }
 
 /* Dark mode for admin main section */
@@ -2059,6 +2068,7 @@ body.dark-mode #admin-nav{
 .admin-content{
   padding: 10px 14.25% 50px 14.25%;
   max-height: 70%;
+  min-height: 80vh;
 }
 
 /* Styling for all users, content, products and setting section section */
@@ -2893,6 +2903,12 @@ body.dark-mode .recommended-products{
 /* Styling for hovering the voew button on product details */
 .product-details-page .view-button:hover {
   background-color: #e5a500;
+}
+
+#basket{
+  top: 70px;
+  position: relative;
+  margin-bottom: 70px;
 }
 
 /* Styling for the basket icon */

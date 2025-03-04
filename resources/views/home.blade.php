@@ -31,7 +31,7 @@
         </section>
 
         <!-- Image Block Sections -->
-        <section id="ImageBlocks" style="background-image: url({{ asset('assets/bg_with_beans.png') }}); background-size: cover;">
+        <section id="ImageBlocks" style="background-image: url({{ asset('assets/bg_with_beans.png') }}); background-size: cover; top:0;">
             <!-- Our story Section -->
             <div class="ourstory">
                 <div class="side-img">
