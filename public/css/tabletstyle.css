@@ -1,3 +1,9 @@
+@media screen and (min-width: 1120px ){
+    .form-box{
+        width: 630px;
+    }
+}
+
 @media screen and (max-width: 1120px ){
     .navbar-middle{
         display: none;
@@ -114,7 +120,38 @@
         margin-top: 10%;
         margin-right: 0;
     }
+    
 } 
+@media screen and (max-width: 1000px ){
+    .dash-nav{
+        height: fit-content;
+    }
+
+    .dash-inner{
+        grid-template-columns: none;
+        grid-template-rows: 1fr;
+        gap: 1%;
+        margin-bottom: 20%;
+        .option:hover{
+            scale: 0.9;
+        }
+        .title{
+            height: fit-content;
+            padding-top: 2%;
+            padding-bottom: 2%;
+        }
+        .dash-title-content{
+            grid-template-rows: 1fr;
+        }
+        #dash-accountContent{
+            grid-template-columns: none;
+            grid-template-rows: 1fr 1fr 1fr;
+           .input-field{
+            width: 100%;
+           }
+        }
+    }
+}
 
 @media screen and (max-width: 460px ){
     footer.top{

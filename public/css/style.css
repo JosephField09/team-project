@@ -494,7 +494,7 @@ body.dark-mode .dash-nav{
   font-size: smaller;
   align-self: flex-end;
   border: none;
-  justify-content: space-evenly;
+  justify-content: center;
   cursor: pointer;
 }
 
@@ -621,7 +621,6 @@ label{
 
 /* Styling for profile info grid */
 .profile-info{
-  border-right: 1px solid gray;
   padding: 5px;
 }
 
@@ -633,7 +632,6 @@ label{
 /* Styling for delete profile grid */
 .delete-profile{
   padding: 5px;
-  border-left: 1px solid gray;
 }
 
 /* Styling for profile info and delete profiel paragraphs */
@@ -1388,6 +1386,7 @@ body.dark-mode .ourstory{
   h2{
     font-size: 32px;
     margin: 0;
+    color: var(--title-colour);
   }
 }
 
@@ -2326,11 +2325,6 @@ table{
   grid-template-columns: 1fr 1fr ;
   padding: 20px;
   gap: 10px;
-}
-
-/* Styling for categories section in admin dashboard */
-.categories{
-  border-right: 1px solid gray;
 }
 
 /* Styling for form in categories */
