@@ -71,7 +71,6 @@
                                                     </div>
                                                 </td>
                                                 <td style="text-transform: capitalize; color: var(--text-colour);">
-                                                    <!-- Display the size. Could be from $item->product->size or $item->size, depending on how you store it. -->
                                                     {{ $item->product->size ?? 'N/A' }}
                                                 </td>
                                                 <td>
