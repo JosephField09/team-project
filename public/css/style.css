@@ -142,6 +142,7 @@ nav#main {
   color: white;
   position: relative;
   align-self: center;
+  cursor: pointer;
 }
 
 .bar{
@@ -3297,7 +3298,7 @@ body.dark-mode .product-box{
   width: 100%;
   height: 100%;
   display: flex;
-  margin-left: 50%;
+  margin-left: 49%;
 }
 
 /* Shared styles for all images */
