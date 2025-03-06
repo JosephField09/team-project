@@ -222,3 +222,10 @@
         margin-left: 20px;
     }
 }
+
+@media screen and (max-width: 430px) {
+    .review-form{
+        width: 90%;
+        margin-top: 70px;
+    }
+}
