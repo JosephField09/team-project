@@ -346,7 +346,7 @@ nav#main {
   width: 100%;
 }
 
-.currency-selector{
+.currency-selector, .hb-currency-selector{
   background: none;
   transition: 0.3s ease-in-out;
   color: var(--headerfooter-text-colour);
@@ -361,7 +361,7 @@ nav#main {
   width: 30px;
 }
 
-.currency-selector *{
+.currency-selector, .hb-currency-selector *{
   offset: 10px;
   background-color: black;
   border-radius: none;
