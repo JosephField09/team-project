@@ -185,8 +185,16 @@
         grid-template-rows: 1fr 2fr;
     }
     .product-details-page .size-options .size-options{
-        display: grid;
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .product-details-page .size-options .size{
+        margin-bottom: 10px;
+    }
+    .review-body{
+        width: 100%;
+        padding: 5%;
     }
 }
 
@@ -212,5 +220,12 @@
     }
     .sustainability, .innovation{
         margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .review-form{
+        width: 90%;
+        margin-top: 70px;
     }
 }
