@@ -189,3 +189,28 @@
         grid-template-columns: 1fr;
     }
 }
+
+@media screen and (max-width: 430px) {
+    .ourstory{
+        display: flex;
+        flex-direction: column;
+    }
+    .promise{
+        max-width: 250px;
+        margin-left: -20px;
+    }
+    .ourmission{
+        grid-template-columns: none;
+        width: auto;
+    }
+    .ourvision{
+        display: flex;
+        flex-direction: column;
+    }
+    .connecting-people, .quality{
+        margin-left: -20px;
+    }
+    .sustainability, .innovation{
+        margin-left: 20px;
+    }
+}

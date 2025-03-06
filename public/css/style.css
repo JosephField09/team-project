@@ -1238,7 +1238,7 @@ body.dark-mode .ourstory{
   }
 }
 
-/* Styling for our missions on about us */
+
 /* Styling for our missions on about us */
 .ourmission{
   width: 100%;
@@ -1375,6 +1375,7 @@ body.dark-mode .ourstory{
   text-align: center;
   top: 70px;
   position: relative;
+  margin-bottom: 50px;
 }
 
 .testimonials-header{
