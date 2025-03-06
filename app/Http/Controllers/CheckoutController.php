@@ -66,10 +66,6 @@ class CheckoutController extends Controller
                     'quantity' => $item->quantity,
                     'price' => $product -> price,
                 ]);
-
-                //Adjusts the stock of the item by how many hte user ordered
-                $product->stock -= $item->quantity;
-                $product->save();
             }
 
             //Deletes the user's cart now that they have checked out

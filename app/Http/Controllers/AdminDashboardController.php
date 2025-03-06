@@ -19,11 +19,17 @@ class AdminDashboardController extends Controller
 
         // Admin Dashboard KPI's
         $totalOrders         = DB::table('orders')->count();
-        $totalRevenue        = DB::table('orders')->sum('total_cost');
+        $totalRevenue        = DB::table('orders')
+        ->whereIn('status', ['Processed/Shipped']) // Exclude "Paid" Orders
+        ->sum('total_cost');
         $totalUsers          = DB::table('users')->count();
-        $averageOrderValue   = DB::table('orders')->avg('total_cost');
+        $averageOrderValue   = DB::table('orders')
+        ->whereIn('status', ['Processed/Shipped']) // Exclude "Paid" Orders
+        ->avg('total_cost');
         $bestSellers = DB::table('order_item')
             ->join('products', 'order_item.product_id', '=', 'products.id')
+            ->join('orders', 'order_item.order_id', '=', 'orders.id') 
+            ->whereIn('orders.status', ['Processed/Shipped']) 
             ->select(
                 'products.id',
                 'products.name',
@@ -133,14 +139,11 @@ class AdminDashboardController extends Controller
     {
         $request->validate(['status' => 'required|in:Paid,Processed/Shipped,Returned,Cancelled']);
 
-        // Define allowed status transitions
-        // Paid can go to Processed or Cancelled
-        // Processed can go to Returned
-        // Returned and Cancelled are final
+        // Define allowed status trasititons
         $validTransitions = [
-            'Paid' => ['Processed/Shipped', 'Cancelled'], 
+            'Paid' => ['Processed/Shipped', 'Cancelled'],
             'Processed/Shipped' => ['Returned'],
-            'Returned' => [],
+            'Returned' => [], 
             'Cancelled' => [] 
         ];
 
@@ -149,9 +152,42 @@ class AdminDashboardController extends Controller
             return back()->with('error', 'Invalid status change.');
         }
 
-        $order->update(['status' => $request->status]);
+        // If changing status to "Processed/Shipped" decrease stock 
+        if ($order->status === 'Paid' && $request->status === 'Processed/Shipped') {
+            foreach ($order->orderItems as $item) {
+                $product = $item->product; 
+                if ($product->stock >= $item->quantity) {
+                    $product->decrement('stock', $item->quantity);
+                } else {
+                    return back()->with('error', 'Not enough stock for ' . $product->name);
+                }
+            }
+        }
 
-        return back()->with('success', 'Order status updated successfully.');
+        // If changing status to "Returned" add stock back 
+        if ($order->status === 'Processed/Shipped' && $request->status === 'Returned') {
+            foreach ($order->orderItems as $item) {
+                $product = $item->product; 
+                $product->increment('stock', $item->quantity);
+            }
+
+             // Keep order total the same, just update status
+             DB::table('orders')
+             ->where('id', $order->id)
+             ->update(['total_cost' => 0]);
+    
+        }
+
+        // If changing status to "Cancelled" remove the order items 
+        if ($request->status === 'Cancelled') {
+            $order->orderItems()->delete(); // Delete order items first
+            $order->delete(); // Delete the order itself 
+            return back()->with('success', 'Order cancelled and removed.');
+        }
+
+        // Update order status
+        $order->update(['status' => $request->status]);
+        return back()->with('success', 'Order status updated successfully');
     }
 
     /**

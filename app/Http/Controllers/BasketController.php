@@ -8,7 +8,6 @@ use App\Models\Product;
 use App\Models\User;  
 use Illuminate\Support\Facades\Auth; 
 
-
 class BasketController extends Controller
 {
     // Handles displaying the basket. Ensures that logged in users only see their own basket from the database
@@ -55,7 +54,7 @@ class BasketController extends Controller
           
         }
 
-        // 123
+        // Basket notification Toastie 
         $basketCount = Cart::where('user_id', $user_id)->sum('quantity');
 
         return response()->json([
@@ -87,6 +86,4 @@ class BasketController extends Controller
         $cart_Item->delete(); 
         return redirect()->route('basket'); // Redirect to the basket page 
     }
-    
-    
 }
