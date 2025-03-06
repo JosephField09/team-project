@@ -258,19 +258,6 @@
                                 `);
                             }
                         }
-                    },
-                    error: function (xhr) {
-                        console.log(xhr); 
-                        Toastify({
-                            text: "Something went wrong!",
-                            duration: 3000,
-                            close: false,
-                            gravity: "top",
-                            position: "center",
-                            style: {
-                                background: "red"
-                            } 
-                        }).showToast(); 
                     }
                 });
             });
