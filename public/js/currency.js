@@ -55,8 +55,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         changePrices(this.value);
     });
 
+    document.getElementById("hb-currency-selector").addEventListener("change", function (){
+        changePrices(this.value);
+    });
+
     // Sets the saved choice so that the currency stays the same for all
     let savedChoice = localStorage.getItem("currency") || "GBP";
     document.getElementById("currency-selector").value = savedChoice;
+    document.getElementById("hb-currency-selector").value = savedChoice;
     await changePrices(savedChoice);
 });

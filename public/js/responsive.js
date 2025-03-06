@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.querySelector(".hamburger");
     const sidebar = document.querySelector(".sidebar");
-    const currencySelector = document.querySelector("#currency-selector");
+    const currencySelector = document.querySelector("#hb-currency-selector");
 
     // Open sidebar when hamburger is clicked
     hamburger.addEventListener("click", function () {

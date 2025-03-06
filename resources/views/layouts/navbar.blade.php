@@ -69,7 +69,7 @@
                                     <span class="basket-count">{{ $basketCount }}</span>
                                 @endif
                             </a>
-                            <select id="currency-selector" class="currency-selector">
+                            <select id="hb-currency-selector" class="hb-currency-selector">
                                 <option value="GBP">£</option>
                                 <option value="USD">$</option>
                                 <option value="EUR">€</option>
@@ -95,7 +95,7 @@
                                     <span class="basket-count">{{ $basketCount }}</span>
                                 @endif
                             </a>
-                            <select id="currency-selector" class="currency-selector">
+                            <select id="hb-currency-selector" class="hb-currency-selector">
                                 <option value="GBP">£</option>
                                 <option value="USD">$</option>
                                 <option value="EUR">€</option>
@@ -114,7 +114,7 @@
                         <a class="basket" href="{{ route('basket') }}">
                             <i class='bx bx-basket'></i>
                         </a>
-                        <select id="currency-selector" class="currency-selector">
+                        <select id="hb-currency-selector" class="hb-currency-selector">
                             <option value="GBP">£</option>
                             <option value="USD">$</option>
                             <option value="EUR">€</option>
