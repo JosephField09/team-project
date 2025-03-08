@@ -1351,8 +1351,6 @@ body.dark-mode .ourstory{
 }
 
 .connecting-people, .sustainability, .quality, .innovation{
-  padding: 5%;
-  max-width: 300px;
   i{
     background-color: var(--dark-bg);
     font-size: 35px;
@@ -1614,6 +1612,13 @@ body.dark-mode main{
   background-color: var(--dm-dark-bg);
 }
 
+#products-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
 /* Styling for the cta text */
 #cta{
   width: 100%;
@@ -1637,7 +1642,6 @@ body.dark-mode main{
 
 /* Styling for the cta text */
 .cta-text{
-  justify-content: center;
   align-self: center;
   display: grid;
   color: white;
@@ -1742,7 +1746,7 @@ body.dark-mode .filter-buttons{
 .search-sort-filter{
   display: inline-flex;
   width: 100%;
-  margin: 30px 0 30px 0;
+  margin: 30px 0;
   padding-right: 30px;
 }
 
@@ -1786,12 +1790,6 @@ body.dark-mode #sort-select{
   background-color: var(--dm-light-bg);
   border: 1px solid white;
   color: white;
-}
-
-/* Styling for the filter container */
-.filter-container {
-  position: relative;
-  display: inline-block;
 }
 
 /* Styling for the filter button */
@@ -1878,6 +1876,7 @@ body.dark-mode .filter-dropdown{
   background-color: var(--light-bg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: fit-content;
+  min-height: -webkit-fill-available;
 }
 
 /* Dark mode for product card */

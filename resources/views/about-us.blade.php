@@ -135,10 +135,10 @@
                         <div class="innovation">
                             <i class='bx bxs-brain' ></i>
                             <p><span class="missionheader">Innovation</span></p>
-                            <p>Continuosly evolving to offer unique experiences</p>
+                            <p>Continuously evolving to offer unique experiences</p>
                         </div>
                     </div> 
-                    <a class="contact-us" href="{{ route('products') }}"><h4>Discover Our Product</h4></a>
+                    <a class="contact-us" href="{{ route('products') }}"><h4>Discover Our Products</h4></a>
                 </div>
             </div>
         </section>

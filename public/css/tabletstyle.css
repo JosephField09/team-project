@@ -2,6 +2,9 @@
     .form-box{
         width: 630px;
     }
+    .connecting-people, .sustainability, .quality, .innovation{
+        padding: 5%;
+    }
 }
 
 @media screen and (max-width: 1120px ){
@@ -50,13 +53,11 @@
         z-index: 1999;
         padding-top: 60px;
         box-shadow: -4px 0 10px rgba(0, 0, 0, 0.5);
-        overflow-y: auto; /* Allows scrolling inside the sidebar */
+        overflow-y: auto; 
     }
-    
-    
 
     .sidebar.active {
-        right: 0; /* Slide in */
+        right: 0; 
     }
 
     .sidebar .middle{
@@ -68,7 +69,6 @@
         display: block;
     }
 
-    /* Style for account icon, basket, and currency selector */
     .sidebar .navbar-right {
         display: flex;
         flex-direction: column;
@@ -103,6 +103,15 @@
         font-size: 24px;
     }
 
+    .filter-group{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    #products-grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
     .form-box h1{
         font-size: 25px;
     }
@@ -120,9 +129,22 @@
         margin-top: 10%;
         margin-right: 0;
     }
-    
 } 
+
 @media screen and (max-width: 1000px ){
+    .product-container{
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+    }
+    .products-container{
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: none;
+    }
+    .product-details-page .product-image{
+        margin-right: 0;
+        height: fit-content;
+    }
+
     .dash-nav{
         height: fit-content;
     }
@@ -153,6 +175,52 @@
     }
 }
 
+@media screen and (max-width: 800px ){
+    .search-sort-filter {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        padding-right: 0;
+    }
+    #search {
+        width: 100%;
+    }
+    .sort-filter {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-left: 0;
+        width: 100%;
+        justify-items: center;
+        transform: translateY(35%);
+    }
+    #products-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ourstory,
+    .ourmission{
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+    }
+    .ourvision {
+        grid-template-columns: none;
+        grid-template-rows: 1.5fr 1fr;
+    }
+
+    .our-vision-text {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 540px ){
+    #products-grid{
+        grid-template-columns: 1fr
+    }
+    .ourvision {
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+    }
+}
+
 @media screen and (max-width: 460px ){
     footer.top{
         grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -162,24 +230,35 @@
     .contact-information{
         margin-bottom: 30%;
     }
-}
-
-@media screen and (max-width: 1000px ){
-    .product-container{
+    .filter-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+    }
+    .search-sort-filter{
+        padding-right: 0;
+    }
+    .sort-filter {
         grid-template-columns: none;
         grid-template-rows: 1fr 1fr;
+        height: 140%;
+        justify-items: center;
+        padding-bottom: 5%;
+        transform: none;
     }
-    .products-container{
-        grid-template-rows: repeat(3, 1fr);
-        grid-template-columns: none;
+    .ourvision {
+        grid-template-rows: 1fr 2fr;
     }
-    .product-details-page .product-image{
-        margin-right: 0;
-        height: fit-content;
+    .our-vision-text {
+        grid-template-columns: 1fr;
     }
 }
 
 @media screen and (max-width: 430px) {
+    .cta-text p,
+    .cta-text h3{
+        font-size: smaller;
+        padding: 0 5%;
+    }
     .product-container{
         grid-template-columns: none;
         grid-template-rows: 1fr 2fr;
@@ -196,36 +275,21 @@
         width: 100%;
         padding: 5%;
     }
-}
 
-@media screen and (max-width: 430px) {
     .ourstory{
-        display: flex;
-        flex-direction: column;
+        grid-template-rows: 0.5fr 1fr;
     }
+    .ourmission {
+        grid-template-rows: 1.5fr 1fr;
+    }
+
     .promise{
         max-width: 250px;
         margin-left: -20px;
     }
-    .ourmission{
-        grid-template-columns: none;
-        width: auto;
-    }
-    .ourvision{
-        display: flex;
-        flex-direction: column;
-    }
-    .connecting-people, .quality{
-        margin-left: -20px;
-    }
-    .sustainability, .innovation{
-        margin-left: 20px;
-    }
-}
-
-@media screen and (max-width: 430px) {
     .review-form{
         width: 90%;
         margin-top: 70px;
+    
     }
 }

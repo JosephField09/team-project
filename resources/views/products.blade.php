@@ -90,11 +90,9 @@
         <section id="shop-banner">
             <h2>SHOP E-SPRESSO</h2>
             <div class="filter-buttons">
-                <!-- We can remove the form if the plan is to do everything via AJAX -->
                 <div class="filter-group">   
-                    <!-- 'Shop All' (no category) -->
+                    <!-- 'Shop All' -->
                     <div class="category-wrapper">
-                        <!-- href="javascript:;" or "#" to prevent navigation -->
                         <a href="javascript:;" 
                         class="category-button"
                         data-category-id=""
@@ -107,10 +105,9 @@
                         <div class="category-name">Shop All</div>
                     </div>
 
-                    <!-- Create a tag for all categories -->
                     @foreach ($categories as $category)
                         <div class="category-wrapper">
-                            <!-- Instead of linking to route('products.filter', ...), use a 'javascript:;' href -->
+                            <!-- Uses 'javascript:;' href -->
                             <a href="javascript:;" 
                             class="category-button"
                             data-category-id="{{ $category->id }}"
@@ -177,7 +174,7 @@
                 </div>
             </div>
             
-            <div id="products-grid" style="display: grid;  grid-template-columns: repeat(4, 1fr);  gap: 20px;   margin-bottom: 20px;">
+            <div id="products-grid">
                 @include('layouts/_products-list', ['products' => $products])
             </div>
         </section>
