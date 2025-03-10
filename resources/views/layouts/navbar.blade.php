@@ -1,5 +1,6 @@
 <section id="header" style="width: 100vw; position: fixed; z-index: 1000;">
     <nav id="main">
+        <script src="{{ asset('js/dark-mode.js') }}"></script>
         <!-- Left navbar section -->
         <div class="navbar-left">
             <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
@@ -75,8 +76,7 @@
                                 <option value="EUR">€</option>
                             </select>
                             <script src="{{ asset('js/currency.js') }}"></script>
-                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                            <script src="{{ asset('js/dark-mode.js') }}"></script>
+                            <button id="hb-toggleMode"><i class='bx bxs-moon'></i></button>
                         </div>
                     <!-- If user is user -->
                     @elseif(Auth::user()->userType === 'user')
@@ -101,10 +101,7 @@
                                 <option value="EUR">€</option>
                             </select>
                             <script src="{{ asset('js/currency.js') }}"></script>
-                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                            <script src="{{ asset('js/dark-mode.js') }}"></script>
-                        
-                            
+                            <button id="hb-toggleMode"><i class='bx bxs-moon'></i></button>
                         </div>
                     @endif
                 <!-- If user is not logged in -->
@@ -120,8 +117,7 @@
                             <option value="EUR">€</option>
                         </select>
                         <script src="{{ asset('js/currency.js') }}"></script>
-                        <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                        <script src="{{ asset('js/dark-mode.js') }}"></script>
+                        <button id="hb-toggleMode"><i class='bx bxs-moon'></i></button>
                     </div>
                 @endif
             </div>
@@ -148,7 +144,6 @@
                     </select>
                     <script src="{{ asset('js/currency.js') }}"></script>
                     <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                    <script src="{{ asset('js/dark-mode.js') }}"></script>
                 <!-- If user is user -->
                 @elseif(Auth::user()->userType === 'user')
                     <div id="account-nav"  style="display: contents;">
@@ -197,7 +192,6 @@
                     </select>
                     <script src="{{ asset('js/currency.js') }}"></script>
                     <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                    <script src="{{ asset('js/dark-mode.js') }}"></script>
                 @endif
             <!-- If user is not logged in -->
             @else
@@ -213,7 +207,6 @@
                 </select>
                 <script src="{{ asset('js/currency.js') }}"></script>
                 <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                <script src="{{ asset('js/dark-mode.js') }}"></script>
             @endif
         </div>
     </nav>

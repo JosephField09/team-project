@@ -109,12 +109,12 @@
         <!-- Best Sellers Section -->
         <section id="best-sellers">
             <h1>Best Sellers</h1>
-            <p style="margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto; color:gray;">
+            <p>
                 Discover the most popular coffee that our customers just love. These highest sellers are crafted to perfection and are sure to delight your taste buds.
             </p>
             <div class="products-container">
                 @foreach($bestSellers as $product)
-                    <div class="product-card" style="background-color:white;">
+                    <div class="product-card">
                         <img src="{{ asset('assets/' . $product->image) }}" alt="Product Image">
                         <div class="product-row" style="display: inline-flex;">
                             <h3 class="product-title">{{ $product->name }}</h3>
@@ -160,7 +160,6 @@
                 </div>
             </div>
         </section>
-        <div style="height:10vh; background-color:var(--light-bg)"></div>
 
         <!-- Footer Section -->
         <section id="footer">
