@@ -1940,6 +1940,7 @@ body.dark-mode .product-card {
   color: var(--text-colour);
   margin-bottom: 15px;
   text-align: left;
+  min-height: 48px;
 }
 
 /* Styling for view button */
