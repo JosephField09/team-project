@@ -249,6 +249,7 @@
     .ourvision {
         grid-template-columns: none;
         grid-template-rows: 1.5fr 1fr;
+        padding-top: 0;
     }
 
     .our-vision-text {
@@ -330,6 +331,9 @@
     .our-vision-text {
         grid-template-columns: 1fr;
     }
+    .connecting-people, .sustainability, .quality, .innovation{
+        padding-top: 10%;
+    }
 }
 
 @media screen and (max-width: 430px) {
@@ -360,10 +364,51 @@
     }
     .ourmission {
         grid-template-rows: 1.5fr 1fr;
+        width: 120%;
     }
     .review-form{
         width: 90%;
         margin-top: 70px;
-    
+    }
+    #blogs-main{
+        display: grid;
+        grid-template-rows: 0.5fr 1fr;
+        padding: 5%;
+        margin-bottom: 130px;
+    }
+    .blog-post, #blog-posts{
+        width:100%;
+        top: 400px;
+    }
+    .blog-post{
+        h2{
+            top: 10px;
+            left: -10px;
+        }
+        p{
+            left: -10px;
+        }
+    }
+    .create-blog-post, .cant-post-blog{
+        transform: translateY(-160px);
+        margin-left: 0;
+        width: 90%;
+    }
+    .cant-post-blog{
+        width: 300px;
+        transform: translateY(-10px);
+        height: 200px;
+        align-items: center;
+    }
+    .blog-form{
+        width:300px;
+        margin-left: 0px;
+        button{
+            margin-left: 0;
+            justify-content: space-around;
+        }
+    }
+    #title.input-field, #message.input-field{
+        width: auto;
     }
 }
