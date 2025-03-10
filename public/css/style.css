@@ -942,7 +942,6 @@ footer.bottom {
 
 /* Styling for image blocks ona bout us */
 #ImageBlocks {
-  top: 70px;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -988,13 +987,11 @@ body.dark-mode #ImageBlocks{
   }
   a{
     margin: 30px 0;
-    font-size: 15px;
     color: var(--primary-colour);
     background: var(--secondary-colour);
     text-decoration: none;
     padding: 13px 60px;
     cursor: pointer;
-    border: none;
     border-radius: 5px;
     text-align: center;
     width: fit-content;
@@ -1466,6 +1463,8 @@ body.dark-mode .ourstory{
 .no-content{
   justify-content: center;
   display: grid;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Styling for our contact us section on about us */
@@ -3149,7 +3148,7 @@ body.dark-mode #services{
   border-radius: 8px; 
   box-shadow: 0 2px 20px 3px rgba(0, 0, 0, 0.2); 
   padding: 20px; 
-  width: 25%; 
+  width: 26%; 
   min-height: 250px;
   text-align: center; 
   transition: transform 0.3s; 
