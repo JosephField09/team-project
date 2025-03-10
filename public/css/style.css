@@ -694,6 +694,11 @@ body.dark-mode .delete {
   cursor: pointer;
 }
 
+body.dark-mode .main{
+  background-color: var(--dm-light-bg);
+  color: white;
+}
+
 /* Styling for Main container */
 .main {
   height: 70vh;
@@ -705,6 +710,13 @@ body.dark-mode .delete {
   align-items: center;
   padding: 0 14.25%;
   margin-bottom: 70px;
+}
+
+body.dark-mode .form-box{
+  background: var(--dm-dark-bg);
+  h1, p, .input-field{
+    color: white;
+  }
 }
 
 /* Styling for form box */
@@ -1012,7 +1024,7 @@ body.dark-mode #ImageBlocks{
 
 /* Dark mode for our story section on about us */
 body.dark-mode .ourstory{
-  h3{
+  h3, h2, p{
     color: white;
   }
 }
@@ -1051,6 +1063,7 @@ body.dark-mode .ourstory{
   z-index: -1;
   justify-self: anchor-center;
 }
+
 
 /* Styling for the heading underline effect */
 #our-history h2.header::after {
@@ -1238,6 +1251,13 @@ body.dark-mode .ourstory{
   }
 }
 
+body.dark-mode .ourmission{
+  background-color: var(--dm-dark-bg);
+  p, span, ul, h2{
+    color: white;
+  }
+}
+
 
 /* Styling for our missions on about us */
 .ourmission{
@@ -1298,6 +1318,15 @@ body.dark-mode .ourstory{
 .missionheader{
   font-weight: 600;
   font-size: 1.1em;
+}
+
+body.dark-mode .ourvision{
+  h2, span, p{
+    color: white;
+  }
+  i{
+    background-color: var(--dm-dark-bg);
+  }
 }
 
 /* Styling for our vision section on about us */
@@ -1364,6 +1393,16 @@ body.dark-mode .ourstory{
   .missionheader{
     font-size: x-large;
     margin-bottom: 3px;
+  }
+}
+
+body.dark-mode #customer-testimonials{
+  background-color: var(--dm-light-bg);
+  h2,h3, i, p{
+    color: white;
+  }
+  .testimonial-content{
+    background-color: var(--dm-dark-bg);
   }
 }
 
@@ -1520,7 +1559,7 @@ body.dark-mode #ContactUs{
 /* Dark mode for contact us form */
 body.dark-mode .contact-us-form{
   .input-field{
-    background-color: white;
+    background-color: var(--dm-light-bg);
   }
   color: white;
 }
@@ -1883,7 +1922,7 @@ body.dark-mode .filter-dropdown{
 body.dark-mode .product-card {
   background-color: var(--dm-light-bg);
   color: white;
-  p, span{
+  p, span, h3, p.product-description{
     color: white;
   }
 }
@@ -2774,6 +2813,14 @@ body.dark-mode .product-info{
   cursor: not-allowed;
 }
 
+body.dark-mode .product-reviews{
+  background-color: var(--dm-dark-bg);
+  .review-body{
+    background-color: var(--dm-light-bg);
+    color: white;
+  }
+}
+
 /* Styling for the products review section */
 .product-reviews{
   padding: 40px 14.25%;
@@ -3195,9 +3242,11 @@ body.dark-mode #services{
 body.dark-mode .service-card{
   background-color: var(--dm-light-bg);
   color: white;
-  img{background-color: white;}
   p, a{
     color: white;
+  }
+  .service-icon-circle{
+    background-color: white;
   }
 }
 
@@ -3215,13 +3264,20 @@ body.dark-mode .service-card{
     font-size: 2.5em; 
     color: var(--title-colour);
   }
+  P{
+    margin-top: 10px; 
+    max-width: 600px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    color:gray;
+  }
 }
 
 /* Dark mode for best sellers section */
 body.dark-mode #best-sellers{
   color: white;
   background-color: var(--dm-light-bg);
-  p{
+  p, h1{
     color: white;
   }
 }
@@ -3256,6 +3312,15 @@ body.dark-mode .product-box{
 
 .best-sellers-button:hover{
   background-color: hsl(44, 62%, 42%);
+}
+
+body.dark-mode #coffee-fix{
+  background-color: var(--dm-dark-bg);
+  #coffee-text{
+    h1, p{
+      color: white;
+    }
+  }
 }
 
 #coffee-fix{

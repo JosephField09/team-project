@@ -111,7 +111,7 @@
                 @endphp
 
                 @foreach($products as $product)
-                    <div class="product-card" style="background-color:white;">
+                    <div class="product-card">
                         <img src="{{ asset('assets/' . $product->image) }}" alt="Product Image">
                         <div class="product-row" style="display: inline-flex;">
                             <h3 class="product-title">{{ $product->name }}</h3>
