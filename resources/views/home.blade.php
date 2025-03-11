@@ -31,7 +31,7 @@
         </section>
 
         <!-- Image Block Sections -->
-        <section id="ImageBlocks" style="background-image: url({{ asset('assets/bg_with_beans.png') }}); background-size: cover;">
+        <section id="ImageBlocks" style="background-image: url({{ asset('assets/bg_with_beans.png') }}); background-size: cover;margin-top: 70px;">
             <!-- Our story Section -->
             <div class="ourstory">
                 <div class="side-img">
@@ -109,12 +109,12 @@
         <!-- Best Sellers Section -->
         <section id="best-sellers">
             <h1>Best Sellers</h1>
-            <p>
+            <p class="best-description">
                 Discover the most popular coffee that our customers just love. These highest sellers are crafted to perfection and are sure to delight your taste buds.
             </p>
             <div class="products-container">
                 @foreach($bestSellers as $product)
-                    <div class="product-card">
+                    <div class="product-card" style="background-color: white;">
                         <img src="{{ asset('assets/' . $product->image) }}" alt="Product Image">
                         <div class="product-row" style="display: inline-flex;">
                             <h3 class="product-title">{{ $product->name }}</h3>

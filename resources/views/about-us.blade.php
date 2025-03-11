@@ -19,7 +19,7 @@
         @include('layouts.navbar')
 
         <!-- Image Block Sections -->
-        <section id="ImageBlocks">
+        <section id="ImageBlocks" style="padding: 15% 14.25% 5% 14.25%;">
             <!-- Our story Section -->
             <div class="ourstory">
                 <div class="side-img">

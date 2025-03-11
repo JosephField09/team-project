@@ -942,12 +942,6 @@ footer.bottom {
   letter-spacing: 1px;
 }
 
-/* Styling for our story section on about us */
-#ourstory{
-  display: flex;
-  flex-direction: row;
-}
-
 .side-img{
   align-self: center;
 }
@@ -989,6 +983,7 @@ body.dark-mode #ImageBlocks{
 /* Styling for our story on about us */
 .ourstory{
   width: 100%;
+  padding-bottom: 10%;
   display: grid;
   grid-template-columns: 50% 50%;
   p{
@@ -1046,7 +1041,7 @@ body.dark-mode .ourstory{
 #our-history {
   width: 100%;
   font-size: 18px;
-  padding: 5% 0 5% 0;
+  padding: 5% 0 10% 0;
   position: relative;
   z-index: -1;
 }
@@ -1333,7 +1328,7 @@ body.dark-mode .ourvision{
   grid-template-columns: 50% 50%;
   justify-content: space-between;
   grid-template-columns: 50% 50%;
-  padding-top: 60px;
+  padding-top: 10%;
   span{
     color: var(--primary-colour);
   }
@@ -1405,11 +1400,9 @@ body.dark-mode #customer-testimonials{
 
 #customer-testimonials{
   background-color: var(--light-bg);
-  padding: 40px 20px;
+  padding: 5% 14.25%;
   text-align: center;
-  top: 70px;
   position: relative;
-  margin-bottom: 50px;
 }
 
 .testimonials-header{
@@ -1854,13 +1847,12 @@ body.dark-mode .filter-button{
 /* Styling for the filter dropdown */
 .filter-dropdown {
   position: absolute;
-  top: 131%;
   background-color: rgb(255,251,243);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border: 1px solid #ccc;
   width: 200px;
   padding: 15px;
-  z-index: 100;
+  z-index: 200;
 }
 
 /* Dark mode for filter dropdown */
@@ -1928,6 +1920,7 @@ body.dark-mode .product-card {
 
 /* Styling for products card image*/
 .product-card img {
+  z-index: 200;
   max-width: 100%;
   border-radius: 8px;
   margin-bottom: 10px;
@@ -2424,18 +2417,15 @@ table{
 
 /* Styling for the main section of the blogs page */
 #blogs-main{
-  top: 70px;
   position: relative;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 52.5% 42.5%;
+  gap: 5%;
+  grid-auto-rows: auto;
+  min-height: 55vh; 
+  height: auto;     
+  padding: 10% 14.25% 8% 14.25%; 
   background: var(--light-bg);
-  display: flex;
-  flex-direction: row; 
-  max-width: 100%;
-  width: 100%;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  height: 100%;
-  min-height: 500px;
   h1{
     text-align: center;
     align-self: center;
@@ -2466,9 +2456,8 @@ body.dark-mode #blogs-main{
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 10%;
-  width: 550px;
-  max-width: 550px;
+  padding: 5%;
+  width: 100%;
   position: relative;
   margin-bottom: 30px;
   word-wrap: break-word;  
@@ -2477,25 +2466,16 @@ body.dark-mode #blogs-main{
   h4{
     padding-bottom: 20px;
     position: absolute;
-    top: 20px;
-    left: 20px;
-    padding: 0;
     color: var(--text-colour)
   }
   h2{
     position: relative;
-    top:-10px;
-    left: -35px;
-    font-size: 25px;
-    max-width: 500px;
-    padding-bottom: 10px;
+    margin: 5% 0 2% 0;
     color: var(--title-colour);
   }
   p{
     position: relative;
     color: var(--text-colour);
-    max-width: 500px;
-    left: -35px;
   }
 }
 
@@ -2520,12 +2500,12 @@ body.dark-mode .blog-post{
   border-radius: 12px;
   box-shadow: 0 2px 6px 0#6f6f6f;
   padding: 5%;
-  width: 400px;
-  margin-left: 10%;
+  width: 100%;
+  align-content: center;
   text-align: center;
-  height: fit-content;
+  height: 200px;
   .login {
-    font-size: 25px;
+    font-size: 20px;
     color: var(--primary-colour);
     background: var(--secondary-colour);
     text-decoration: none;
@@ -2549,11 +2529,10 @@ body.dark-mode .cant-post-blog{
   border-radius: 12px;
   box-shadow: 0 2px 6px 0#6f6f6f ;
   padding: 10%;
-  width: 400px;
-  margin-left: 10%;
+  width: 100%;
   button{
+    display: block;
     margin: 15px;
-    margin-left: 26%;
     color: var(--primary-colour);
     background: var(--secondary-colour);
     font-weight: bold;
@@ -2564,6 +2543,7 @@ body.dark-mode .cant-post-blog{
     border: none;
     font-size: 15px;
     border-radius: 5px;
+    justify-self: center;
   }
   h4{
     padding-bottom: 10px;
@@ -2584,7 +2564,7 @@ body.dark-mode .input-field{
 
 /* Styling for the blog title */
 .blog-title{
-  width: 300px;
+  width: 100%;
 }
 
 /* Styling for the blog message */
@@ -2592,7 +2572,7 @@ body.dark-mode .input-field{
   display: flex;
   flex-direction: column;
   .input-field{
-    width: 300px;
+    width: 100%;
     resize: none;
   }
 }
@@ -2633,6 +2613,7 @@ body.dark-mode .product-details{
 }
 
 /* Container for product image */
+
 .product-details-page .product-image {
   height: 100%;
   flex: 1;
@@ -2892,14 +2873,6 @@ body.dark-mode .recommended-products{
   text-align: center;
 }
 
-/* Styling for product cards grid */
-.product-details-page .products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  justify-content: center;
-}
-
 /* Product card styles */
 .product-details-page .product-card {
   background-color: #fff;
@@ -2918,6 +2891,7 @@ body.dark-mode .recommended-products{
 }
 
 /* Styling for the product details product card heading 3 */
+#best-sellers .product-card h3,
 .product-details-page .product-card h3 {
   font-size: 18px;
   font-weight: bold;
@@ -2926,9 +2900,11 @@ body.dark-mode .recommended-products{
 }
 
 /* Styling for the product card description */
+#best-sellers .product-card .product-description,
 .product-details-page .product-card .product-description {
   font-size: 14px;
   color: var(--text-colour);
+  padding-top: 10px;
   margin-bottom: 20px;
 }
 
@@ -3263,7 +3239,7 @@ body.dark-mode .service-card{
     font-size: 2.5em; 
     color: var(--title-colour);
   }
-  P{
+  p.best-description{
     margin-top: 10px; 
     max-width: 600px; 
     margin-left: auto; 
@@ -3486,8 +3462,7 @@ body.dark-mode .checkout-form-section{
   flex-direction: column; 
   max-width: 100%;
   width: 100%;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding: 10% 14.25% 5% 14.25%;
   height: 100%;
   min-height: 500px;
 }
@@ -3498,7 +3473,6 @@ body.dark-mode .checkout-form-section{
   border-radius: 12px;
   box-shadow: 0 2px 6px 0#6f6f6f ;
   padding: 5%;
-  width: 1000px;
   align-self: center;
   display: flex ;
   flex-direction: column;
