@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="{{ asset('css/tabletstyle.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/responsive.js') }}"></script>
+    <style>
+        #header{
+            position: relative;
+        }
+    </style>
 </head>
 
 
@@ -22,7 +27,7 @@
         <!-- Edit user section-->
         <section id="edit-user">
             <div id="edit-user-container">
-                <h1>Edit User</h1>
+                <h1>Edit Product</h1>
 
                 @if (session('success'))
                     <p style="color: green;">{{ session('success') }}</p>
@@ -36,36 +41,85 @@
                     </ul>
                 @endif
 
-                <form action="{{ route('users.update', $user->id) }}" method="POST">
+                <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     
-                    <div class="form-grid">
-                        <div class="form-row">
-                            <label for="firstName">First Name</label>
-                            <input type="text" class="input-field" name="firstName" value="{{ old('firstName', $user->firstName) }}" required>
+                    <label for="name">Name</label>
+                    <input type="text" class="input-field" name="name" value="{{ old('name', $product->name) }}" required>
+                    <div class="form-grid" style="gap: 5%;">
+                        <div class="form-grid" style="grid-template-columns: 30% 70%; gap: 0;">
+                            {{-- Display the currently stored image, if it exists --}}
+                            @if($product->image)
+                                <label for="description">Current Image</label>
+                                <img src="{{ asset('assets/' . $product->image) }}" alt="Current Image" style="max-width: 80px; justify-self:center">
+                            @endif
+                            
+                            <label for="image">Upload Image</label>
+                            <input id="file-prompt" class ="input-field" type="file" name="image" value="{{ old('image', $product->image) }}">
+
                         </div>
-                        <div class="form-row">
-                            <label for="lastName">Last Name</label>
-                            <input type="text" class="input-field" name="lastName" value="{{ old('lastName', $user->lastName) }}" required>
+                        <div >
+                            <label for="description">Description</label>
+                            <textarea 
+                                style="height:73%;" 
+                                class="input-field" 
+                                name="description" 
+                                required
+                            >{{ old('description', $product->description) }}</textarea>
                         </div>
                     </div>
 
-                    <label for="email">Email</label>
-                    <input type="email" class="input-field" name="email" value="{{ old('email', $user->email) }}" required>
+                    
 
-                    <label for="phone">Phone</label>
-                    <input type="text" class="input-field" name="phone" value="{{ old('phone', $user->phone) }}">
+                    <div class="form-grid">
+                        <div class="form-row">
+                            <label for="price">Price</label>
+                            <input type="number" class="input-field" name="price" min="0" step="0.01" value="{{ old('price', $product->price) }}">
+                        </div>
+                        <div class="form-row">
+                            <label for="size">Size:</label>
+                            <select id="size" class="input-field" name="size" required>
+                                <option value="" disabled>Select a Size</option>
+                                <option value="small"    {{ old('size', $product->size) === 'small'    ? 'selected' : '' }}>Small</option>
+                                <option value="medium"   {{ old('size', $product->size) === 'medium'   ? 'selected' : '' }}>Medium</option>
+                                <option value="large"    {{ old('size', $product->size) === 'large'    ? 'selected' : '' }}>Large</option>
+                                <option value="one-size" {{ old('size', $product->size) === 'one-size' ? 'selected' : '' }}>One-Size</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-row">
+                            <label for="stock">Stock</label>
+                            <input type="number" class="input-field" name="stock" min="0" step="1" value="{{ old('stock', $product->stock) }}" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="category_id">Category</label>
+                            <select class="input-field" name="category_id" id="category_id" required>
+                                <option value="" disabled selected>Select a Category</option>
+                                @foreach($categories as $category)
+                                    <option 
+                                        value="{{ $category->id }}" 
+                                        {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}
+                                    >
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
 
-                    <button class="add-cat" style="display: grid; justify-self: center;" type="submit">Update User</button>
-                    <p style="text-align: center;color:var(--text-colour)">Made a mistake? <a href="{{ route('admin.dashboard', ['tab' => 'allUsers']) }}" style="display: inline-block; margin-top: 10px; color: var(--secondary-colour); text-decoration: none;">Cancel</a></p>
+    
+
+                    <button class="add-cat" style="display: grid; justify-self: center;" type="submit">Update Product</button>
+                    <p style="text-align: center;color:var(--text-colour)">Made a mistake? <a href="{{ route('admin.dashboard', ['tab' => 'allProducts']) }}" style="display: inline-block; margin-top: 10px; color: var(--secondary-colour); text-decoration: none;">Cancel</a></p>
                 </form>
             </div>
         </section>
 
 
         <!-- Footer Section -->
-        <section id="footer" style="top: 70px;">
+        <section id="footer">
             <footer class="top">
                 <!-- Logo description and social links -->
                 <div class="logo-desc-soc">

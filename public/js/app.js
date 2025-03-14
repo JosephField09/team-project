@@ -52,24 +52,37 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function () {
     const choices = document.querySelectorAll('.admin-buttons .choice');
     const sections = document.querySelectorAll('.admin-content .admin-section');
+    const titles = document.querySelectorAll('.adminTitle'); // ← Collect all the titles
 
-    // Hide all sections immediately on page load
+    // Hide all sections and titles immediately on page load
     sections.forEach(section => section.style.display = 'none');
+    titles.forEach(title => title.style.display = 'none');
 
     function resetChosenAdminNav() {
+        // Reset styles for choices
         choices.forEach(choice => choice.style.color = 'rgba(255, 255, 255, 0.7)');
+        // Hide all sections
         sections.forEach(section => section.style.display = 'none');
+        // Hide all titles
+        titles.forEach(title => title.style.display = 'none');
     }
 
     function setChosenAdminNav(id, updateURL = true) {
         resetChosenAdminNav();
+
         const activeChoice = document.querySelector(`.admin-buttons #${id}`);
         const activeSection = document.querySelector(`#${id}Content`);
+        const activeTitle = document.querySelector(`#${id}Title`); // Find the matching title
 
         if (activeChoice && activeSection) {
             activeChoice.style.color = '#fecc42';
             activeChoice.style.transform = 'translateY(0)';
             activeSection.style.display = 'grid';
+
+            // Show the matching title if it exists
+            if (activeTitle) {
+                activeTitle.style.display = 'block';
+            }
 
             // Update URL without refreshing the page
             if (updateURL) {
@@ -92,6 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setChosenAdminNav('admin-home', false); // Default tab without updating URL
     }
 
+    // Click events
     choices.forEach(choice => {
         choice.addEventListener('click', function () {
             setChosenAdminNav(this.id); // Calls function and updates URL
@@ -99,6 +113,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const admin = document.querySelector(".admin-main");
+    const hamburger = document.querySelector(".admin-hamburger");
+    const sidebar = document.querySelector("#admin-nav");
+
+    // Open sidebar when hamburger is clicked
+    hamburger.addEventListener("click", function () {
+        admin.classList.toggle("inactive");
+        hamburger.classList.toggle("inactive");
+        sidebar.classList.toggle("inactive");
+    });
+});
 
 function editCell(cell, user_id, fieldName) {
     // Check if an input is already present

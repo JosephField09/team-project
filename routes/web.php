@@ -148,7 +148,11 @@ Route::patch('/category/{id}', [CategoryController::class, 'destroy'])->name('ca
 
 // Route to add a product
 Route::post('add_product', [ProductsController::class, 'add_product'])->name('add_product');
+Route::get('/products/{product}/edit', [ProductsController::class, 'edit'])->name('product.edit');
+Route::put('/products/{product}', [ProductsController::class, 'update'])->name('product.update');
 Route::get('/products/filter', [ProductsController::class, 'filter'])->name('products.filter');
+Route::get('/search', [AdminDashboardController::class, 'search'])->name('search');
+Route::patch('/product/{id}', [ProductsController::class, 'delete'])->name('product.delete');
 
 // Blog routes
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');

@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
 class AdminDashboardController extends Controller
@@ -54,7 +55,8 @@ class AdminDashboardController extends Controller
         $users         = User::where('userType', '!=', 'admin')
          ->paginate(10)->appends(['tab' => 'allUsers']);
         $orders        = Order::paginate(10)->appends(['tab' => 'allOrders']);
-        $allcategories = Category::paginate(5)->appends(['tab' => 'allProducts']);
+        $allcategories = Category::paginate(5)->appends(['tab' => 'allCategories']);
+        $allproducts = Product::paginate(5)->appends(['tab' => 'allProducts']);
 
 
         // Pass everything to admin dashboard view
@@ -68,7 +70,8 @@ class AdminDashboardController extends Controller
             'lowStockProducts',
             'users',
             'orders',
-            'allcategories'
+            'allcategories',
+            'allproducts'
         ));
     }
 
@@ -117,13 +120,15 @@ class AdminDashboardController extends Controller
             ->orderBy('stock', 'asc')
             ->limit(5)
             ->get();
-        $allcategories = Category::paginate(5)->appends(['tab' => 'allProducts']);
+        $allcategories = Category::paginate(5)->appends(['tab' => 'allCategories']);
+        $allproducts = Product::paginate(5)->appends(['tab' => 'allProducts']);
         $users         = User::where('userType','!=','admin')->paginate(10)->appends(['tab' => 'allUsers']);
 
         return view('admin.dashboard', compact(
             'orders',
             'search',
             'allcategories',
+            'allproducts',
             'admin',
             'users',
             'totalOrders',
@@ -237,7 +242,8 @@ class AdminDashboardController extends Controller
             ->limit(5)
             ->get();
         $orders        = Order::with('user','orderItems.product')->paginate(10)->appends(['tab' => 'allOrders']);
-        $allcategories = Category::paginate(5)->appends(['tab' => 'allProducts']);
+        $allcategories = Category::paginate(5)->appends(['tab' => 'allCategories']);
+        $allproducts = Product::paginate(5)->appends(['tab' => 'allProducts']);
 
         return view('admin.dashboard', compact(
             'admin',
@@ -245,6 +251,7 @@ class AdminDashboardController extends Controller
             'search',
             'orders',
             'allcategories',
+            'allproducts',
             'totalOrders',
             'totalRevenue',
             'totalUsers',
@@ -252,6 +259,84 @@ class AdminDashboardController extends Controller
             'bestSellers',
             'lowStockProducts'
         ))->with('tab', 'allUsers');
+    }
+
+    public function search(Request $request)
+    {
+        $admin = Auth::user();
+
+        $search = $request->input('search');
+
+        // Filter users based on the search
+        $users = User::where('userType','!=','admin')
+                    ->where(function($q) use ($search) {
+                        $q->where('firstName', 'LIKE', "%{$search}%")
+                          ->orWhere('email', 'LIKE', "%{$search}%");
+                    })
+                    ->paginate(10)
+                    ->appends(['search' => $search, 'tab' => 'allUsers']);
+
+        // Re-fetch KPI data
+        $totalOrders       = Order::count();
+        $totalRevenue      = Order::sum('total_cost');
+        $totalUsers        = User::count();
+        $averageOrderValue = Order::avg('total_cost');
+        $bestSellers = DB::table('order_item')
+            ->join('products', 'order_item.product_id', '=', 'products.id')
+            ->select(
+                'products.id',
+                'products.name',
+                'products.size',   
+                'products.image',  
+                DB::raw('SUM(order_item.quantity) as total_sold')
+            )
+            ->groupBy(
+                'products.id',
+                'products.name',
+                'products.size',
+                'products.image'
+            )
+            ->orderByDesc('total_sold')
+            ->limit(5)
+            ->get();
+        $lowStockProducts = DB::table('products')
+            ->where('stock', '<=', 10)
+            ->orderBy('stock', 'asc')
+            ->limit(5)
+            ->get();
+        $orders        = Order::with('user','orderItems.product')->paginate(10)->appends(['tab' => 'allOrders']);
+        $allcategories = Category::paginate(5)->appends(['tab' => 'allCategories']);
+
+        $search = $request->input('search');
+
+        $query = Product::query();
+
+        // Filter by product name or category name
+        if (!empty($search)) {
+            $query->where('name', 'like', '%' . $search . '%')
+                  ->orWhereHas('category', function ($q) use ($search) {
+                      $q->where('name', 'like', '%' . $search . '%');
+                  });
+        }
+
+        // Retrieve the matching products
+        $allproducts = $query->paginate(5);
+
+        
+        return view('admin.dashboard', compact(
+            'admin',
+            'users',
+            'search',
+            'orders',
+            'allcategories',
+            'allproducts',
+            'totalOrders',
+            'totalRevenue',
+            'totalUsers',
+            'averageOrderValue',
+            'bestSellers',
+            'lowStockProducts'
+        ))->with('tab', 'allProducts');
     }
 
     public function edit(User $user)

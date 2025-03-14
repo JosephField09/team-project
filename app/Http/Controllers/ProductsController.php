@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Container\Attributes\Storage;
 use Illuminate\Http\UploadedFile;
 
 class ProductsController extends Controller
@@ -114,6 +115,49 @@ class ProductsController extends Controller
 
         // Redirect or return a response
         return redirect()->route('admin.dashboard',['tab' => 'allProducts'])->with('status', 'product-added');
+    }
+
+    public function edit(Product $product)
+    {
+        return view('edit-product', compact('product'));
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        // Validate incoming data 
+        $validatedData = $request->validate([
+            'name'         => 'required|string|max:255',
+            'image'        => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+            'price'        => 'required|numeric|min:0',
+            'description'  => 'nullable|string',
+            'category_id'  => 'required|integer|exists:categories,id',
+            'size'         => 'required|string|max:50',
+            'stock'        => 'required|integer',
+
+        ]);
+
+        // Check if a new image was uploaded
+        if ($request->hasFile('image')) {
+ 
+            $filename = $request->file('image')->getClientOriginalName();
+            $request->file('image')->move(public_path('assets'), $filename);
+
+            $validatedData['image'] = $filename;
+        }
+
+        $product->update($validatedData);
+
+        // Redirect with success message
+        return redirect()->route('admin.dashboard', ['tab' => 'allProducts'])->with('status', 'product-edited');
+    }
+
+
+    public function delete($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('admin.dashboard', ['tab' => 'allProducts'])->with('status', 'Product deleted successfully!');
     }
 
     public function details($id)

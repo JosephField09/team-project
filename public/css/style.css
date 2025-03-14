@@ -156,6 +156,20 @@ nav#main {
   position: relative;
 }
 
+.hamburger.active .bar:nth-child(2),
+.admin-hamburger.inactive .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(1),
+.admin-hamburger.inactive .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(3),
+.admin-hamburger.inactive .bar:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
 
 /* Styling for login button */
 .navbar-right a.login,
@@ -1043,7 +1057,6 @@ body.dark-mode .ourstory{
   font-size: 18px;
   padding: 5% 0 10% 0;
   position: relative;
-  z-index: -1;
 }
 
 #our-history h2.header {
@@ -1204,6 +1217,10 @@ body.dark-mode .ourstory{
   text-wrap: pretty;
   color: var(--text-colour);
   font-size: 17px;
+}
+
+body.dark-mode .timeline ul li p {
+  color: white;
 }
 
 @media (max-width: 568px) {
@@ -1998,10 +2015,21 @@ body.dark-mode .product-card {
 
 /* Styling for adnin main secion */
 .admin-main{
-  background-color: var(--light-bg);
-  height: fit-content;
-  top: 75px;
+  background-color: #f7f7f7;
   position: relative;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  transition: 0.3s ease-in-out;
+}
+.admin-main.inactive {
+  grid-template-columns: 0% 100%; 
+  .admin-logo,
+  .admin-user,
+  .admin-buttons,
+  .navbar-buttons,
+  .admin-logout{
+    display: none;
+  }
 }
 
 /* Dark mode for admin main section */
@@ -2011,17 +2039,24 @@ body.dark-mode .admin-main{
 
 /* Styling for admin dashboard navbar */
 #admin-nav {
-  width: 71.5%;
-  background-color: #272727;
+  display: grid;
+  grid-template-rows: 5% 15% 35% 30% 5% 10%;
+  width: 100%;
+  left: 0;
+  padding: 7.5% 10%;
+  background-color: var(--primary-colour);
   color: var(--text-colour);
-  border-radius: 50px;
-  margin: 3% 14.25%;
-  height: 50px;
-  display: inline-flex;
+  height: -webkit-fill-available;
   position: relative;
   align-items: center;
   justify-content: space-evenly;
   box-shadow: inset 1px 1px 20px 10px black;
+  max-height: 100vh;
+  transition: 0.3s ease-in-out;
+}
+
+#admin-nav.inactive {
+  transform: translateX(-100%);  
 }
 
 /* Dark mode for admin navigation */
@@ -2031,50 +2066,107 @@ body.dark-mode #admin-nav{
   color: #000;
 }
 
-/* Styling for admin dashboard user section in navbar */
-.admin-user{
-  display: inline-flex;
+/* Styling for admin dashboard logo section in navbar */
+.admin-logo{
+  width: 100%;
 }
 
+/* Styling for admin dashboard logo image section in navbar */
+.admin-logo img{
+  width: 70%;
+}
+
+/* Styling for admin dashboard user section in navbar */
+.admin-user{
+  display: grid;
+  grid-template-columns: 15% 85%;
+  align-content: center;
+  padding: 5%;
+  height: 55%;
+  background-color: rgba(181, 181, 181, 0.1) ;
+  border-radius: 15px;
+  border: 1px solid rgba(128, 128, 128,0.6);
+}
 
 /* Styling for name text */
 .name{
-  font-size: 12px;
+  font-size: 15px;
   color: var(--headerfooter-text-colour);
-  margin-left: 5px;
+  margin-left: 10%;
+  height: 100%;
+  align-items: center;
+}
+
+.admin-buttons h4,
+.navbar-buttons h4{
+  text-transform: uppercase;
+  font-size: 14px;
+  padding-left: 6%;
+  letter-spacing: 1px;
 }
 
 /* Styling for admin buttons */
-.admin-buttons{
-  display: inline-flex;
+.admin-buttons,
+.navbar-buttons{
+  display: grid;
+  grid-template-rows: 10% 90%;
+  padding-top: 5%;
+  width: 100%;
+  height: 80%;
+  align-self: baseline;
+}
+
+.admin-buttons-all,
+.navbar-buttons-all{
+  width: 100%;
+  margin-top: 2%;
+  display: grid;
 }
 
 /* Styling for navigation bar links */
-.admin-buttons a{
+.admin-buttons a,
+.navbar-buttons a{
+  width: 100%;
   color: var(--headerfooter-text-colour);
-  font-size: 12px;
+  font-size: 15px;
   text-decoration: none;
   font-weight: 100;
   position: relative;
-  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  padding: 5%;
   border-radius: 5px;
+  height: 100%;
+  align-self: center;
   transition: transform 0.5s linear, color 0.5s linear;
 }
 
-
 /* Styling for admin butons when hovering */
-.admin-buttons a:hover{
-  transform: translateY(-5px);
+.admin-buttons a:hover,
+.navbar-buttons a:hover{
+  background-color:rgba(247, 217, 135, 0.1) ;
+  color: var(--secondary-colour);
 }
 
+.admin-buttons i,
+.navbar-buttons i{
+  font-size: 20px;
+  padding-right: 5%;
+}
+
+.admin-logout{
+  width: 100%;
+  align-content: center;
+}
 /* Styling for admin logout button */
 .admin-logout button{
   background: var(--secondary-colour);
   border: none;
-  border-radius: 15px;
-  width: fit-content;
-  height: fit-content;
-  padding: 5px 10px;
+  justify-self: center;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  padding: 10px 15px;
   color: var(--primary-colour);
   display: inline-flex;
   cursor: pointer;
@@ -2096,16 +2188,57 @@ body.dark-mode #admin-nav{
   cursor: pointer;
 }
 
-/* Styling for content section */
-.admin-content{
-  padding: 10px 14.25% 50px 14.25%;
-  max-height: 70%;
-  min-height: 80vh;
+#admin-nav-container{
+  height: 100vh;
+}
+.admin-horizontal-nav{
+  width: 100%;
+  background-color: var(--primary-colour);
+  height: 70px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 1%;
+}
+
+.admin-hamburger{
+  color: white;
+  position: relative;
+  align-self: center;
+  cursor: pointer;
+}
+
+.admin-nav-middle{
+  width: 100%;
+}
+.admin-nav-middle a{
+  display: contents;
+}
+.admin-nav-middle img {
+  width: 10%;
+  position: relative;
+  display: flow;
+  justify-self: center;
+}
+.admin-titles-content{
+  width: 100%;
+  padding: 2%;
+  background: var(--light-bg);
+  height: 91%;
+}
+.admin-titles{
+  width: 100%;
+  margin:2% 0;
+}
+.admin-titles p{
+  font-size: 40px;
+  color: var(--title-colour);
 }
 
 /* Styling for all users, content, products and setting section section */
 #admin-allOrdersContent,
 #admin-allUsersContent,
+#admin-allCategoriesContent,
 #admin-allProductsContent,
 #admin-settingsContent{
   background-color: white;
@@ -2117,6 +2250,7 @@ body.dark-mode #admin-nav{
 
 #admin-homeContent{
   display: grid;
+  width: 100%;
 }
 
 #quick-stats{
@@ -2160,10 +2294,9 @@ body.dark-mode #admin-nav{
   margin: 40px 0;             
 }
 
-/* The card itself */
 #main-card {
   background-color: #ffffff;   
-  border-radius: 8px;          /* rounded corners */
+  border-radius: 8px;        
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
   width: 100%;               
   padding: 1.5rem;            
@@ -2326,9 +2459,10 @@ table{
 
 #edit-user{
   background-color: var(--light-bg);
+  top: 70px;
   height: fit-content;
-  min-height: 6vh;
-  padding: 5% 30%;
+  padding: 5% 25% 10% 25%;
+  position: relative;
 }
 
 #edit-user-container{
@@ -2345,6 +2479,7 @@ table{
   }
   label{
     color: var(--title-colour);
+    align-self: center;
   }
   p{
     font-size: 13px;
@@ -2353,13 +2488,25 @@ table{
   }
 }
 
-/* Styling for all products content section */
-#admin-allProductsContent{
-  grid-template-columns: 1fr 1fr ;
-  padding: 20px;
-  gap: 10px;
+.form-grid{
+  display: grid;
+  grid-template-columns: 47.5% 47.5%;
+  gap: 5%;
+}
+.form-grid .form-row{
+  display: grid; 
+  grid-template-columns: 20% 80%;
 }
 
+/* Styling for all products content section */
+#admin-allProductsContent{
+  grid-template-columns: 45% 50%;
+  padding: 20px;
+  gap: 5%;
+}
+.products .form-row{
+  grid-template-columns: 1fr 4fr;
+}
 /* Styling for form in categories */
 .categories form{
   margin-bottom: 5%;
@@ -2367,7 +2514,8 @@ table{
 
 /* Styling for header 4 in categoreis and products */
 .categories h4,
-.products h4{
+.products h4,
+.edit-products h4{
   font-size: 20px;
   margin-bottom: 3%;
 }

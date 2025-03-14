@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
         $category->save();
 
-        return redirect()->route('admin.dashboard',['tab' => 'allProducts']);
+        return redirect()->route('admin.dashboard',['tab' => 'allCategories']);
     }
     
     /**
@@ -46,6 +46,6 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
 
-        return redirect()->route('admin.dashboard', ['tab' => 'allProducts'])->with('status', 'User deleted successfully!');
+        return redirect()->route('admin.dashboard', ['tab' => 'allCategories'])->with('status', 'Category deleted successfully!');
     }
 }

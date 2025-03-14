@@ -71,6 +71,7 @@
                                             <th>Status</th>
                                             <th>Total</th>
                                             <th>Items</th>
+                                            <th>Return</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -86,6 +87,15 @@
                                                             <li>{{ $item->product->name }} (x{{ $item->quantity }})</li>
                                                         @endforeach
                                                     </ul>
+                                                </td>
+                                                <td>
+                                                    <form>
+                                                        @csrf
+                                                        @method('patch')
+                                                        <button type="submit" class="delete" onclick="return confirm('Are you sure you want to return this order?')">
+                                                            Return
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
