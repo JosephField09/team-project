@@ -18,8 +18,7 @@
     <main>
         <!-- Header Section -->
         @include('layouts.navbar')
-
-        <!-- Dashboard main section -->
+          
         <section class="dashboard">
             <div class="dash-inner">
                 <div class="dash-nav">
@@ -50,6 +49,7 @@
                             </button>
                     </form>
                 </div>
+
                 <div class="dash-title-content">
                     <div class="title">
                         <!-- Titles -->
@@ -89,13 +89,19 @@
                                                     </ul>
                                                 </td>
                                                 <td>
-                                                    <form>
-                                                        @csrf
-                                                        @method('patch')
+                                                    @if($order->status === 'Processed/Shipped')
+                                                    <form action="{{route('admin.orders.return', $order->id)}}" method="POST">
+                                                        @csrf 
+                                                        @method('PATCH')
                                                         <button type="submit" class="delete" onclick="return confirm('Are you sure you want to return this order?')">
                                                             Return
                                                         </button>
                                                     </form>
+                                                    @else 
+                                                        <button class="delete" disabled style="background: #D3D3D3; cursor: not-allowed;">
+                                                            Return 
+                                                        </button>
+                                                    @endif 
                                                 </td>
                                             </tr>
                                         @endforeach

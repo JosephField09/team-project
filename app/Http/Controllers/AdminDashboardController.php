@@ -175,11 +175,6 @@ class AdminDashboardController extends Controller
                 $product = $item->product; 
                 $product->increment('stock', $item->quantity);
             }
-
-             // Keep order total the same, just update status
-             DB::table('orders')
-             ->where('id', $order->id)
-             ->update(['total_cost' => 0]);
     
         }
 
@@ -193,6 +188,26 @@ class AdminDashboardController extends Controller
         // Update order status
         $order->update(['status' => $request->status]);
         return back()->with('success', 'Order status updated successfully');
+    }
+
+    public function returnUserOrder($id) {
+        $userOrder = Order::findorFail($id);
+
+        // Returns Users Processed/Shipped orders only 
+        if ($userOrder->status !== 'Processed/Shipped') {
+            return redirect()->back()->with('You cannot return this order');
+        }
+
+        // Increase stock after order is "Returned"
+        foreach ($userOrder->orderItems as $item) {
+            $product = $item->product; 
+            $product->increment('stock', $item->quantity);
+        }
+
+        // Status updated to "Returned" 
+        $userOrder->update(['status' => 'Returned']);
+
+        return redirect()->back()->with('Order returned successfully');
     }
 
     /**

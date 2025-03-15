@@ -121,6 +121,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //Users edit
     Route::get('/users/{user}/edit', [AdminDashboardController::class, 'edit'])->name('users.edit');
     Route::put('/users/{user}', [AdminDashboardController::class, 'updateUser'])->name('users.update');
+
+    // User order return route 
+    Route::patch('/admin/orders/{id}/return', [AdminDashboardController::class, 'returnUserOrder'])->name('admin.orders.return');
         
 });
 

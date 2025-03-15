@@ -193,7 +193,7 @@
         @if(session('success'))
         Toastify({
             text: "{{session('success')}}",
-            duration: 3000, // means for 3 seconds
+            duration: 3000, // translates into 3 seconds in realtime
             close: false, 
             gravity: "top",
             position: "center", 

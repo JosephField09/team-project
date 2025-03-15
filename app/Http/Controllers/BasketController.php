@@ -49,7 +49,6 @@ class BasketController extends Controller
             $data->user_id = $user_id;
             $data->product_id = $product_id;
             $data->quantity = $quantity;
-          //  $data->size = $size;
             $data->save();
           
         }
