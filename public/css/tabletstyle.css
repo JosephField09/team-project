@@ -122,6 +122,17 @@
         font-size: 25px;
     }
 
+    #admin-nav-container{
+        background-color: var(--primary-colour);
+        width: 200%;
+    }
+    #admin-nav{
+        z-index: 1;
+    }
+    .admin-titles-content{
+        height: 100%;
+    }
+    #admin-allUsersContent,
     #admin-allProductsContent{
         grid-template-columns: none;
         grid-template-rows: 1fr 1fr;
@@ -293,6 +304,9 @@
         grid-template-rows: 1fr 1fr 1fr;
         grid-template-columns: none;
     }
+    #admin-settingsContent .input-field {
+        width: 90%; 
+    }
 }
 @media screen and (min-width: 997px ) and (min-height:1100px){
     #edit-user{
@@ -329,7 +343,9 @@
         padding-top: 25%;
         padding-bottom: 20%;
     }
-
+    #admin-nav-container {
+        width: 300%; 
+    }
     #quick-stats {
         grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
     }

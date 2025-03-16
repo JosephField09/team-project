@@ -85,9 +85,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 /**
- * Admin dashboard:
- * - We use a controller to fetch KPI data (totalOrders, totalRevenue, etc.)
- *   and pass it to the admin.dashboard view.
+ * Admin dashboard
  */
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin.dashboard', [AdminDashboardController::class, 'index'])
@@ -131,6 +129,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Requires the user to be authenticated and verified, calls update method to update data then edit method
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile.search', [ProfileController::class, 'search'])->name('profile.search');
+    Route::post('/profile.add', [ProfileController::class, 'add'])->name('profile.add');
     Route::get('/profile.editAdmin', [ProfileController::class, 'editAdmin'])->name('profile.editAdmin');
     Route::patch('/profile.updateAdmin', [ProfileController::class, 'updateAdmin'])->name('profile.updateAdmin');
 });

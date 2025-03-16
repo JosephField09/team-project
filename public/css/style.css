@@ -1065,7 +1065,6 @@ body.dark-mode .ourstory{
   font-size: 35px;
   margin-bottom: 20px;
   position: absolute;
-  z-index: -1;
   justify-self: anchor-center;
 }
 
@@ -1786,7 +1785,6 @@ body.dark-mode .filter-buttons{
 .category-wrapper{
   color: #31312f;
   text-align: center;
-  font-size: 15;
   font-weight: bold;
 }
 
@@ -2138,7 +2136,6 @@ body.dark-mode #admin-nav{
   border-radius: 5px;
   height: 100%;
   align-self: center;
-  transition: transform 0.5s linear, color 0.5s linear;
 }
 
 /* Styling for admin butons when hovering */
@@ -2245,7 +2242,7 @@ body.dark-mode #admin-nav{
   border-radius: 15px;
   height: fit-content;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  padding: 10px;
+  padding: 20px;
 }
 
 #admin-homeContent{
@@ -2499,21 +2496,21 @@ table{
 }
 
 /* Styling for all products content section */
+#admin-allUsersContent,
 #admin-allProductsContent{
   grid-template-columns: 45% 50%;
   padding: 20px;
   gap: 5%;
 }
+.add-user .form-row,
 .products .form-row{
   grid-template-columns: 1fr 4fr;
-}
-/* Styling for form in categories */
-.categories form{
-  margin-bottom: 5%;
 }
 
 /* Styling for header 4 in categoreis and products */
 .categories h4,
+.add-user h4,
+.edit-user h4,
 .products h4,
 .edit-products h4{
   font-size: 20px;

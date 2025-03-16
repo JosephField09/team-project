@@ -50,7 +50,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const choices = document.querySelectorAll('.admin-buttons .choice');
     const sections = document.querySelectorAll('.admin-content .admin-section');
     const titles = document.querySelectorAll('.adminTitle'); // ← Collect all the titles
 
@@ -59,8 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
     titles.forEach(title => title.style.display = 'none');
 
     function resetChosenAdminNav() {
-        // Reset styles for choices
-        choices.forEach(choice => choice.style.color = 'rgba(255, 255, 255, 0.7)');
         // Hide all sections
         sections.forEach(section => section.style.display = 'none');
         // Hide all titles

@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use App\Models\User;
 use App\Models\Order;
@@ -14,6 +15,44 @@ use App\Models\Category;
 
 class ProfileController extends Controller
 {
+    public function add(Request $request): RedirectResponse
+    {
+        // Validate data
+        $validated = $request->validate([
+            'firstName' => 'required|string|max:255',
+            'lastName'  => 'required|string|max:255',
+            'email'     => 'required|email',
+            'password'  => 'required|string|min:8',
+            'phone'     => 'required|string|max:50',
+            'userType'  => 'required|in:user,admin',
+        ]);
+
+        // Check if the email already exists
+        if (User::where('email', $validated['email'])->exists()) {
+            return redirect()
+                ->back()
+                ->withInput() 
+                ->with('status', 'user-not-added');
+        }
+    
+        // Create and save the user
+        $user = new User;
+        $user->firstName       = $validated['firstName'];
+        $user->lastName        = $validated['lastName'];
+        $user->email           = $validated['email'];
+        $user->password        = Hash::make($validated['password']); 
+        $user->phone           = $validated['phone'];
+        $user->userType        = $validated['userType'];
+        $user->isSubscribed    = 0; 
+        $user->email_verified_at = null; 
+        $user->save();
+    
+        // Redirect with success status
+        return redirect()
+            ->route('admin.dashboard', ['tab' => 'allUsers'])
+            ->with('status', 'user-added');
+    }
+
     /**
      * Display the user's profile form.
      */
@@ -178,7 +217,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Delete a specific user's account from admin panel.
+     * Delete a specific user's account from admin dashboard.
      */
     public function destroyOther($id)
     {

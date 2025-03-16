@@ -275,57 +275,122 @@
                         </div>
                         
                         <!-- User Content container -->
-                        <div id="admin-allUsersContent" class="admin-section" style="display: none; text-align:center;">
-                            <form action="{{ url('users')}}" method="get" style="width: 50%">
-                                @csrf
-                                <div class="form-row" style="margin-top: 3%;">
-                                    <input class="input-field" type="text" name="search" value="{{ request('search') }}" placeholder="Search by First Name or Email"/>
-                                    <input type="hidden" name="tab" value="allUsers" />
-                                    <button class="add-cat" type="submit">Search</button>
+                        <div id="admin-allUsersContent" class="admin-section" style="display: none;">
+                            <div class="add-user">
+                                <h4>Add a User</h4>
+                                <form action="{{ route('profile.add') }}" method="post">
+                                    @csrf
+                                    <!-- First Name row -->
+                                    <div class="form-row" style="display:grid; align-items:center;">
+                                        <label>First Name:</label>
+                                        <input class ="input-field" type="text" name="firstName" placeholder="Enter a first name" required>
+                                    </div>
+                                    <!-- Last Name row -->
+                                    <div class="form-row" style="display:grid; align-items:center;">
+                                        <label>Last Name:</label>
+                                        <input class ="input-field" type="text" name="lastName" placeholder="Enter a last name" required>
+                                    </div>
+                                    <div class="form-row" style="display:grid; align-items:center;">
+                                        <label>Password:</label>
+                                        <input class="input-field" type="password" name="password" placeholder="Enter Password" required>
+                                    </div>
+                                    <!-- Email row -->
+                                    <div class="form-row" style="display:grid; align-items:center;">
+                                        <label>Email:</label>
+                                        <input class ="input-field" type="email" name="email" placeholder="Enter an email" required>
+                                    </div>
+                                    <!-- Phone row -->
+                                    <div class="form-row" style="display:grid; align-items:center;">
+                                        <label>Phone:</label>
+                                        <input class ="input-field" type="text" name="phone" placeholder="Enter a phone" required>
+                                    </div>
+                                    <!-- User Type row -->
+                                    <div class="form-row" style="display:grid; align-items:center;">
+                                        <label>User Type:</label>
+                                        <select name="userType" class="input-field" required>
+                                            <option value="user">User</option>
+                                            <option value="admin">Admin</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <input class="add-cat" type="submit" value="Add User" style="margin-left:0;">
+                                        @if (session('status') === 'user-not-added')
+                                            <p 
+                                                x-data="{ show: true }"
+                                                x-show="show"
+                                                x-transition
+                                                x-init="setTimeout(() => show = false, 2000)"
+                                                style="color: red; margin-top:10px; display:inline; margin-left:8px;"
+                                            >{{ __('User Not Added - This email is already in use') }}</p>
+                                        @elseif (session('status') === 'user-added')
+                                            <p 
+                                                x-data="{ show: true }"
+                                                x-show="show"
+                                                x-transition
+                                                x-init="setTimeout(() => show = false, 2000)"
+                                                style="color: green; margin-top:10px; display:inline; margin-left:8px;"
+                                            >{{ __('User Added Succesfully') }}</p>
+                                        @endif
+                                        @error('password')
+                                            <p style="color: red; margin-top:10px; display:inline; margin-left:8px;">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="edit-user">
+                                <h4>Edit Users</h4>
+                                <form action="{{ url('users')}}" method="get" style="width: 70%">
+                                    @csrf
+                                    <div class="form-row" style="margin-top: 3%;">
+                                        <input class="input-field" type="text" name="search" value="{{ request('search') }}" placeholder="Search by First Name or Email"/>
+                                        <input type="hidden" name="tab" value="allUsers" />
+                                        <button class="add-cat" type="submit">Search</button>
+                                    </div>
+                                </form>
+                                <table class="table" style="padding: 3% 1% 1% 1%; width:100%; text-align:center;">
+                                    <thead>
+                                        <tr style="background-color: var(--secondary-colour); color: var(--primary-colour);">
+                                            <th>#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($users as $user)
+                                        <tr style="background-color: var(--light-bg); border-bottom: 1px solid var(--dark-bg);">
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $user->firstName }}</td>
+                                            <td>{{ $user->lastName }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->phone }}</td>
+                                            <td>
+                                                <a style="color: black;" href="{{ route('users.edit', $user->id) }}" class="edit-btn"><i class='bx bx-edit'></i></a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('profile.destroyOther', $user->id) }}" method="POST" style="display:inline;">
+                                                    @csrf
+                                                    @method('patch')
+                                                    <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this user?')">
+                                                        <i class='bx bx-trash'></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @empty
+                                        <tr>
+                                            <td colspan="7" style="text-align: center; font-style: italic; padding:10px;">No users found.</td>
+                                        </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                                <div>
+                                    {{ $users->links('pagination::bootstrap-4') }}
                                 </div>
-                            </form>
-                            <table class="table" style="transform:translateY(-20%); position:relative; top: 15%; padding: 3% 1% 1% 1%;">
-                                <thead>
-                                    <tr style="background-color: var(--secondary-colour); color: var(--primary-colour);">
-                                        <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Edit</th>
-                                        <th>Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($users as $user)
-                                    <tr style="background-color: var(--light-bg); border-bottom: 1px solid var(--dark-bg);">
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $user->firstName }}</td>
-                                        <td>{{ $user->lastName }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->phone }}</td>
-                                        <td>
-                                            <a style="color: black;" href="{{ route('users.edit', $user->id) }}" class="edit-btn"><i class='bx bx-edit'></i></a>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('profile.destroyOther', $user->id) }}" method="POST" style="display:inline;">
-                                                @csrf
-                                                @method('patch')
-                                                <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this user?')">
-                                                    <i class='bx bx-trash'></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    @empty
-                                    <tr>
-                                        <td colspan="7" style="text-align: center; font-style: italic; padding:10px;">No users found.</td>
-                                    </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
-                            <div>
-                                {{ $users->links('pagination::bootstrap-4') }}
                             </div>
                         </div>
                         <div id="admin-allCategoriesContent" class="admin-section" style="display: none;">
@@ -340,7 +405,7 @@
                                     </div>
                                 </form>
 
-                                <table class="table" style="transform:translateY(-40%); position:relative; top: 15%; padding: 2%; width:100%; text-align:center;">
+                                <table class="table" style="top: 15%; padding: 2%; width:100%; text-align:center;">
                                     <thead>
                                         <tr style="background-color: var(--secondary-colour); color: var(--primary-colour);">
                                             <th>#</th>
@@ -352,7 +417,7 @@
                                     <tbody>
                                         @forelse ($allcategories as $category)
                                             <tr style="background-color: var(--light-bg); border-bottom: 1px solid var(--dark-bg);">
-                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $category->id }}</td>
                                                 <td style="padding:5px;" ondblclick="editCategoryName(this, '{{ $category->id }}')">
                                                     <span class="category-name">{{ $category->name }}</span>
                                                     <input type="text" class="edit-input" value="{{ $category->name }}" style="display: none; width: 100%;" 
@@ -368,7 +433,7 @@
                                                         @csrf
                                                         @method('patch')
                                                         <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this category?')">
-                                                            <i style="color: red;" class='bx bx-trash'></i>
+                                                            <i class='bx bx-trash'></i>
                                                         </button>
                                                     </form>
                                                 </td>
@@ -464,7 +529,7 @@
                                 <form action="{{url('search')}}" method="get" style="width: 60%">
                                     @csrf
                                     <div class="form-row" style="margin-top: 3%;">
-                                        <input class="input-field" type="text" name="search" value="{{ request('search') }}" placeholder="Search by First Name or Email"/>
+                                        <input class="input-field" type="text" name="search" value="{{ request('search') }}" placeholder="Search by Name or Category"/>
                                         <input type="hidden" name="tab" value="allProducts" />
                                         <button class="add-cat" type="submit">Search</button>
                                     </div>
@@ -485,7 +550,7 @@
                                     <tbody>
                                         @forelse ($allproducts as $product)
                                             <tr style="background-color: var(--light-bg); border-bottom: 1px solid var(--dark-bg);">
-                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $product->id }}</td>
                                                 <td>{{ $product->name }}</td>
                                                 <td style="font-size: 10px;">{{ $product->description }}</td>
                                                 <td style="text-transform: capitalize;">{{ $product->size }}</td>
