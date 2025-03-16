@@ -319,6 +319,44 @@
         padding: 12% 14.25% 23% 14.25%;
     }
 }
+
+@media (max-width: 568px) {
+    .timeline ul {
+      display: flex;
+      flex-direction: column;
+    }
+    .timeline ul li {
+      grid-column: 1 !important;
+      grid-row: var(--index) !important;
+      height: 100%;
+      padding-bottom: 30px;
+      padding-top: 10px;
+    }
+    .timeline ul:before,
+    .timeline ul:after,
+    .timeline ul li:after,
+    .timeline ul li:nth-child(even) h3:before,
+    .timeline ul li:last-child p:after {
+      display: none;
+    }
+    .timeline ul li:first-child {
+      padding-top: 0;
+    }
+    .timeline ul li:nth-child(even) {
+      margin-top: 0;
+      padding-top: 10px;
+    }
+    .timeline ul li p:after {
+      content: "";
+      display: block;
+      border-left: 2px dashed var(--text);
+      height: 100vh;
+      margin-top: 10px;
+      position: absolute;
+      left: calc(var(--circle-size) - 1px);
+    }
+  }
+
 @media screen and (max-width: 540px ){
     .services-section {
         grid-template-columns: 1fr;

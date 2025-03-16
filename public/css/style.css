@@ -1068,6 +1068,9 @@ body.dark-mode .ourstory{
   justify-self: anchor-center;
 }
 
+body.dark-mode #our-history h2.header{
+  color: white;
+}
 
 /* Styling for the heading underline effect */
 #our-history h2.header::after {
@@ -1222,50 +1225,12 @@ body.dark-mode .timeline ul li p {
   color: white;
 }
 
-@media (max-width: 568px) {
-  .timeline ul {
-    display: flex;
-    flex-direction: column;
-  }
-  .timeline ul li {
-    grid-column: 1 !important;
-    grid-row: var(--index) !important;
-    height: 100%;
-    padding-bottom: 30px;
-    padding-top: 10px;
-  }
-  .timeline ul:before,
-  .timeline ul:after,
-  .timeline ul li:after,
-  .timeline ul li:nth-child(even) h3:before,
-  .timeline ul li:last-child p:after {
-    display: none;
-  }
-  .timeline ul li:first-child {
-    padding-top: 0;
-  }
-  .timeline ul li:nth-child(even) {
-    margin-top: 0;
-    padding-top: 10px;
-  }
-  .timeline ul li p:after {
-    content: "";
-    display: block;
-    border-left: 2px dashed var(--text);
-    height: 100vh;
-    margin-top: 10px;
-    position: absolute;
-    left: calc(var(--circle-size) - 1px);
-  }
-}
-
 body.dark-mode .ourmission{
   background-color: var(--dm-dark-bg);
   p, span, ul, h2{
     color: white;
   }
 }
-
 
 /* Styling for our missions on about us */
 .ourmission{
@@ -3296,7 +3261,10 @@ body.dark-mode .items-in-basket{
     color: var(--title-colour);
   }
 }
-
+body.dark-mode #services h1 {
+  color: white;
+}
+    
 /* Dark mode for services section */
 body.dark-mode #services{
   background-color: var(--dm-dark-bg);
