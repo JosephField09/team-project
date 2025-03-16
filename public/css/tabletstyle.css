@@ -121,7 +121,7 @@
     .form-box h1{
         font-size: 25px;
     }
-
+    
     #admin-nav-container{
         background-color: var(--primary-colour);
         width: 200%;
@@ -131,6 +131,17 @@
     }
     .admin-titles-content{
         height: 100%;
+    }
+    #contact-cards{
+        grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+        grid-template-rows: 1fr 1fr;
+    }
+    #admin-nav-container {
+        width: 208%; 
+        z-index: 100;
+    }
+    .admin-logo{
+        opacity: 0;
     }
     #admin-allUsersContent,
     #admin-allProductsContent{
@@ -163,6 +174,15 @@
         margin-right: 0;
     }
 } 
+@media screen and (max-width: 1120px ) and (min-width:540px){
+    .contact-card:nth-child(3) {
+        width: 50%;
+        grid-column: 1 / -1; 
+        justify-self: center;
+        margin-top: 10%;
+        height: 100%;
+    }
+}
 
 @media screen and (max-width: 1120px ) and (min-width:541px){
     .service-card:nth-child(3) {
@@ -275,6 +295,19 @@
         padding-bottom: 5%;
     }
 
+    .first-and-last-name,
+    .email-and-phone,
+    .message-to-send{
+        flex-direction: column;
+        .input-field{
+            width: 100%;
+        }
+      }
+
+    #faq .faq-desc-qa {
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+    }
     .basket-and-checkout{
         grid-template-columns: none;
         grid-template-rows: 1fr 1.5fr;
@@ -357,7 +390,7 @@
     }
   }
 
-@media screen and (max-width: 540px ){
+  @media screen and (max-width: 540px ){
     .services-section {
         grid-template-columns: 1fr;
         justify-items: center;
@@ -376,6 +409,15 @@
     }
     .testimonials-header h2{
         font-size: 20px;
+    }
+    #contact-cards{
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    }
+    .contact-card{
+        height: 110%;
+    }
+    #contact-middle{
+        padding: 30% 14.25% 10% 14.25%;
     }
     #blogs-main{
         padding-top: 25%;
@@ -452,6 +494,21 @@
     }
     .connecting-people, .sustainability, .quality, .innovation{
         padding-top: 10%;
+    }
+    #faq .faq-desc-qa {
+        grid-template-columns: none;
+        grid-template-rows: 0.5fr 1fr;
+        #faq-email{
+            width: 100%;
+        }
+        .form-row{
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            gap: 10%;
+        }
+    }
+    #accordion li input[type="radio"]:checked ~ .qa-content {
+        max-height: 300px;
     }
 }
 

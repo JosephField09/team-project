@@ -1481,23 +1481,15 @@ body.dark-mode #customer-testimonials{
 }
 
 /* Styling for our contact us section on about us */
-#ContactUs{
+#contact-us-container{
   max-width: 100%;
-  padding-left: 14.25%;
-  padding-right: 14.25%;
-  padding-bottom: 50px;
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  top: 70px;;
-  position: relative;
-  background-color: var(--dark-bg);
+  padding: 5% 0 0 0;
+  background-color: var(--light-bg);
   h1{
     color: var(--title-colour);
-    padding: 20px;
     font-size: 30px;
     text-align: center;
-    padding-bottom: 40px;
+    margin-bottom: 2%;
   }
   img{
     border-radius: 15px;
@@ -1506,14 +1498,54 @@ body.dark-mode #customer-testimonials{
 }
 
 /* Dark mode for contact us section */
-body.dark-mode #ContactUs{
+body.dark-mode #contact-us-container{
   background-color: var(--dm-dark-bg);
 }
+#contact-start{
+  width: 100%;
+  text-align: center;
+  padding-top: 70px;
 
-/* Styling for contact us form on about us */
+}
+#contact-middle{
+  width: 100%;
+  padding: 10% 14.25% 5% 14.25%;
+  background-color: white;
+}
+
+#contact-cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+  width: 90%;
+  padding: 0 14.25%;
+  gap:5%;
+  justify-self: center;
+}
+
+.contact-card{
+  background-color: white;
+  padding: 10%;
+  box-shadow: 0 3px 4px 0px gray;
+  height: 120%;
+  i{
+    font-size: 100px;
+    color:rgb(255 246 236);
+  }
+  p.explain{
+    color: gray;
+    font-size: 12px;
+    margin: 7% 0;
+    height: 31%;
+  }
+  p.detail{
+    color: lightgray;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Styling for contact us form on contact us */
 .contact-us-form{
-  margin-left: 5px;
-  align-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1527,6 +1559,20 @@ body.dark-mode #ContactUs{
   label{
     margin-left: 10px;
   }
+  h3{
+    color: var(--title-colour);
+    font-size: 15px;
+    margin-bottom: 2%;
+    text-align: center;
+  }
+  p{
+    color: gray;
+    font-size: 12px;
+    margin-bottom: 2%;
+    text-align: center;
+    width: 70%;
+    justify-self: center;
+  }
 }
 
 /* Dark mode for contact us form */
@@ -1538,8 +1584,21 @@ body.dark-mode .contact-us-form{
 }
 
 /* Dark mode for labels */
-body.dark-mode label{
+body.dark-mode #contact-start h1,
+body.dark-mode .contact-card p.detail,
+body.dark-mode .contact-us-form label,
+body.dark-mode #faq h2,
+body.dark-mode #accordion li label{
   color: white;
+}
+body.dark-mode .contact-card{
+  background-color: lightgray;
+}
+body.dark-mode #contact-middle{
+  background-color: gray;
+}
+body.dark-mode .contact-card p.explain{
+  color: gray;
 }
 
 /* Dark mode for contact us heading */
@@ -1607,6 +1666,92 @@ body.dark-mode #contact-us-heading{
 .submit-form{
   padding: 15px;
   text-align: center;
+}
+
+#faq{
+  width: 100%;
+  height: fit-content;
+  padding: 5% 16.25%;
+  h2{
+    font-size: 35px;
+    color: var(--title-colour);
+    margin-bottom: 1%;
+  }
+  p{
+    color: var(--text-colour);
+    font-size: 15px;
+    margin: 2% 0 10% 0;
+
+  }
+  .faq-desc-qa{
+    display: grid;
+    grid-template-columns: 45% 50%;
+    gap: 5%;
+  }
+  .faq-desc-qa .form-row{
+    display: block;
+  }
+  #faq-email{
+    border-radius: 50px;
+    padding: 2%;
+    border: 1px solid lightgray;
+    width: 60%;
+    font-size: 10px;
+  }
+  #submit-faq-btn{
+    font-size: 10px;
+    font-weight: bold;
+    padding: 10px 35px;
+    border-radius: 50px;
+    background: var(--secondary-colour);
+    border: none;
+    cursor: pointer;
+  }
+}
+#accordion{
+  width: 100%;
+}
+
+#accordion li{
+  list-style: none;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 0 10px 10px 10px;
+  border-bottom: 2px solid lightgray;
+}
+
+#accordion li label{
+  padding: 5px 12px 5px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--primary-colour);
+}
+#accordion li label span{
+  font-size: 22px;
+  color: var(--primary-colour);
+  transition: transform 0.5s; 
+}
+
+#accordion li input[type="radio"]:checked ~ label span {
+  transform: rotate(180deg);
+}
+
+#accordion li input[type="radio"] {
+  display: none;
+}
+#accordion .qa-content{
+  padding: 0 10px;
+  line-height: 26px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s;
+}
+#accordion li input[type="radio"]:checked ~ .qa-content {
+  max-height: 200px;
 }
 
 /* Styling for the products */
@@ -1750,6 +1895,7 @@ body.dark-mode .filter-buttons{
 .category-wrapper{
   color: #31312f;
   text-align: center;
+  font-size: 15;
   font-weight: bold;
 }
 
@@ -3255,16 +3401,18 @@ body.dark-mode .items-in-basket{
 #services{
   background-color: var(--dark-bg);
   padding: 5% 14.25% 10% 14.25%;
-  h1{
-    font-size: 2.5em;
-    margin: 0;
-    color: var(--title-colour);
-  }
+}
+
+#services h1,
+#contact-start h1{
+  font-size: 2.5em;
+  margin: 0;
+  color: var(--title-colour);
 }
 body.dark-mode #services h1 {
   color: white;
 }
-    
+
 /* Dark mode for services section */
 body.dark-mode #services{
   background-color: var(--dm-dark-bg);
