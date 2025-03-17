@@ -1362,11 +1362,15 @@ body.dark-mode .ourmission{
     max-width: 525px;
     width: 100% auto;
     color: var(--text-colour);
-    transform: translateY(-10%);
-  }
-  p.in-view{
-    transform: none;
+    transition: 2s;
     transition-delay: 400ms;
+  }
+  li{
+    transform: translateY(-10%);
+    transition-delay: 800ms;
+  }
+  li.in-view{
+    transform: none;
   }
   a{
     margin: 15px;
@@ -2273,7 +2277,7 @@ body.dark-mode .admin-main{
   padding: 7.5% 10%;
   background-color: var(--primary-colour);
   color: var(--text-colour);
-  height: -webkit-fill-available;
+  height: 100vh;
   position: relative;
   align-items: center;
   justify-content: space-evenly;
@@ -2415,7 +2419,8 @@ body.dark-mode #admin-nav{
 }
 
 #admin-nav-container{
-  height: 100vh;
+  height: 100%;
+  background-color: var(--primary-colour);
 }
 .admin-horizontal-nav{
   width: 100%;
