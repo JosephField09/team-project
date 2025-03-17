@@ -1,20 +1,29 @@
 document.addEventListener("DOMContentLoaded", function() {
     const track = document.getElementById("testimonials-track");
-    const dots = document.querySelectorAll(".dot");
     const testimonials = document.querySelectorAll(".testimonial");
-
-    // Sets the width of the track
-    track.style.width = `${testimonials.length * 100}%`;
-
-    // Makes the dots move the track
-    dots.forEach((dot,index) => {
-        dot.addEventListener("click", () =>{
-            track.style.transform = `translateX(-${index * (100 / testimonials.length)}%)`;
-            dots.forEach(d => d.classList.remove("active"));
-            dot.classList.add("active");
+    const prevButton = document.getElementById("prevTestimonial");
+    const nextButton = document.getElementById("nextTestimonial");
+    let currentIndex = 1;
+    
+    function updateTestimonials() {
+        const offset = -((currentIndex - 1) * (100 / testimonials.length)) + "%"; 
+        track.style.transform = `translateX(${offset})`;
+        
+        testimonials.forEach((testimonial, index) => {
+            testimonial.classList.toggle("active", index === currentIndex);
+            testimonial.style.opacity = index === currentIndex ? "1" : "0.5";
         });
+    }
+    
+    prevButton.addEventListener("click", function() {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : testimonials.length - 1;
+        updateTestimonials();
     });
-
-    track.style.transform = "translateX(0)";
-    dots[0].classList.add("active");
+    
+    nextButton.addEventListener("click", function() {
+        currentIndex = (currentIndex < testimonials.length - 1) ? currentIndex + 1 : 0;
+        updateTestimonials();
+    });
+    
+    updateTestimonials();
 });

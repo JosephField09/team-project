@@ -987,7 +987,7 @@ footer.bottom {
   scale: 1;
 }
 
-/* Styling for image blocks ona bout us */
+/* Styling for image blocks on about us */
 #ImageBlocks {
   align-items: center;
   display: flex;
@@ -1020,7 +1020,7 @@ body.dark-mode #ImageBlocks{
   h2{
     font-size: 35px;
     color: var(--title-colour);
-    transform: translateY(-25%);
+    transform: translateY(25%);
     transition: 1s ease;
     transition-delay: 200ms;
   }
@@ -1040,7 +1040,7 @@ body.dark-mode #ImageBlocks{
     max-width: 500px;
     width: 100% auto;
     color: var(--text-colour);
-    transform: translateY(-10%);
+    transform: translateY(10%);
     transition-delay: 300ms;
   }
   p.in-view{
@@ -1096,6 +1096,9 @@ body.dark-mode .ourstory{
     margin-right: 10px;
     scale:0;
     transition-delay: 100ms;
+  }
+  h4{
+    transform: translateY(15%);
   }
   img.in-view{
     scale: 1;
@@ -1190,24 +1193,6 @@ body.dark-mode #our-history h2.header{
 }
 .timeline ul.in-view:before {
   width: 100%; /* fully stretch the line */
-}
-
-.timeline ul:after {
-  content: "\f04b";
-  font-weight: 900;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  margin-top: 1px;
-  right: -15px;
-  font-size: 25px;
-  color: var(--accent);
 }
 
 .timeline ul li {
@@ -1364,9 +1349,13 @@ body.dark-mode .ourmission{
     color: var(--text-colour);
     transition: 2s;
     transition-delay: 400ms;
+    transform: translateY(10%);
+  }
+  p.in-view{
+    transform: none;
   }
   li{
-    transform: translateY(-10%);
+    transform: translateY(10%);
     transition-delay: 800ms;
   }
   li.in-view{
@@ -1450,6 +1439,11 @@ body.dark-mode .ourvision{
     text-align: center;
     font-size: 18px;
     border-radius: 5px;
+    transform: translateY(-20%)
+  }
+  a.in-view{
+    transform: none;
+    transition-delay: 1200ms;
   }
   .side-img{
     max-width: 600px;
@@ -1472,13 +1466,59 @@ body.dark-mode .ourvision{
   grid-template-columns: auto auto;
 }
 
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes sway {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
 .connecting-people, .sustainability, .quality, .innovation{
-  i{
+  transform: skew(10deg,10deg);
+  .i-container{
     background-color: var(--dark-bg);
-    font-size: 35px;
     padding: 10px;
+    width: fit-content;
     border-radius: 12px;
+  }
+  i{
+    font-size: 35px;
     color: var(--secondary-colour);
+  }
+  i.in-view{
+    transform: none;
   }
   p{
     margin-top: 10px;
@@ -1487,6 +1527,35 @@ body.dark-mode .ourvision{
     font-size: x-large;
     margin-bottom: 3px;
   }
+}
+
+.connecting-people.in-view,.sustainability.in-view, .quality.in-view, .innovation.in-view{
+  transform: none;
+}
+.sustainability.in-view{
+  transition-delay: 400ms;
+}
+.quality.in-view{
+  transition-delay: 800ms;
+}
+.innovation.in-view{
+  transition-delay: 1000ms;
+}
+
+.connecting-people i:hover {
+  animation: bounce 2s infinite ease-in-out;
+}
+
+.sustainability i:hover {
+  animation: sway 1s infinite ease-in-out;
+}
+
+.quality i:hover {
+  animation: spin 2s linear;
+}
+
+.innovation i:hover {
+  animation: pulse 1.5s infinite ease-in-out;
 }
 
 body.dark-mode #customer-testimonials{
@@ -1499,99 +1568,135 @@ body.dark-mode #customer-testimonials{
   }
 }
 
-#customer-testimonials{
+#customer-testimonials {
   background-color: var(--light-bg);
-  padding: 5% 14.25%;
+  padding: 5% 1%;
   text-align: center;
   position: relative;
   top: 50px;
 }
 
-.testimonials-header{
+.testimonials-header {
   margin-bottom: 40px;
-  h3{
-    color: var(--text-colour);
-    font-size: 16px;
-    margin-bottom: 8px;
-  }
-  h2{
-    font-size: 32px;
-    margin: 0;
-    color: var(--title-colour);
-  }
+}
+.testimonials-header h3 {
+  color: var(--text-colour);
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.testimonials-header h2 {
+  font-size: 32px;
+  margin: 0;
+  color: var(--title-colour);
 }
 
-.testimonials-carousel{
+.testimonials-carousel {
   position: relative;
   overflow: hidden;
   max-width: 100%;
   margin: 0 auto;
-}
-
-.testimonials-track{
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
-.testimonial{
-  flex: 0 0 33%;
-  padding: 20px; 
-  box-sizing: border-box;
-}
-
-.testimonial-content{
-  background-color: white;
-  border-radius: 12px;
-  padding: 40px;
-  max-width: 800px; 
-  margin: 0 auto;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  text-align: left;
-}
-
-.testimonial-info{
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
-  i{
-    font-size: 80px;
-    margin-right: 20px;
-  }
+  justify-content: center;
 }
 
-.name-and-review{
-  display: flex;
-  flex-direction: column;
-  h3, h4{
-    padding-bottom: 2px;
-  }
-}
-
-.testimonial-message{
-  color: var(--text-colour);
-  max-width: 800px;
-  word-wrap: break-word;  
-  overflow-wrap: break-word;  
-}
-
-.slider-dots{
+.testimonials-track-wrapper {
+  overflow: hidden;
+  width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 30px
 }
 
-.dot {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background-color: #ffedbe;
-  margin: 0 5px;
+.testimonials-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  align-items: center;
+}
+
+.testimonial {
+  flex: 0 0 33%; 
+  padding: 20px;
+  box-sizing: border-box;
+  opacity: 0.5;
+  transition: opacity 0.5s ease;
+}
+
+.testimonial.active {
+  opacity: 1;
+}
+
+.testimonial.active .testimonial-content{
+  width: 525px;
+  height: 275px;
+}
+.testimonial-content {
+  background-color: white;
+  width: 500px;
+  height: 250px;
+  margin: 0 auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  transition: 0.5s ease-out;
+}
+
+.testimonial-user-info{
+  display: grid;
+  grid-template-columns: 20% 80%;
+  padding: 3% 3% 2% 3%;
+}
+
+.review-pfp{
+  height: 100%;
+  width: 100%;
+  i{
+    font-size: 91px;
+  }
+}
+.review-details{
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  .review-name{
+    font-size: 25px;
+  }
+}
+
+.testimonial-main{
+  width: 100%;
+  height: fit-content;
+  padding: 0 10%;
+  .review-title{
+    color: var(--title-colour);
+    font-size: 17px;
+    margin-bottom: 2%;
+  }
+  .review-message{
+    color: var(--text-colour);
+    position: relative;
+    overflow-wrap: anywhere;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 14px;
+  }
+}
+
+.arrow {
+  background: none;
+  border: none;
+  font-size: 24px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
 }
 
-.dot.active{
-  background-color: var(--secondary-colour);
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
 }
 
 .no-content{
@@ -1599,6 +1704,7 @@ body.dark-mode #customer-testimonials{
   display: grid;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 /* Styling for our contact us section on about us */
@@ -1626,6 +1732,18 @@ body.dark-mode #contact-us-container{
   width: 100%;
   text-align: center;
   padding-top: 70px;
+  p#contact-desc{
+    font-size: 1em;
+    margin: 2% 0 5% 0;
+    width: 60%;
+    justify-self: center;
+    color: var(--text-colour);
+    transform: translateY(15%);
+  }
+  p#contact-desc.in-view{
+    transform: none;
+    transition-delay: 100ms;
+  }
 
 }
 #contact-middle{
@@ -1648,6 +1766,9 @@ body.dark-mode #contact-us-container{
   padding: 10%;
   box-shadow: 0 3px 4px 0px gray;
   height: 120%;
+  transform: translateY(-15%);
+  transition: 1s;
+  opacity: 0;
   i{
     font-size: 100px;
     color:rgb(255 246 236);
@@ -1663,6 +1784,22 @@ body.dark-mode #contact-us-container{
     font-size: 15px;
     overflow-wrap: anywhere;
   }
+}
+
+.contact-card.in-view{
+  transform: none;
+}
+#contact-cards .contact-card.in-view:nth-child(1){
+  opacity: 1;
+  transition-delay: 200ms;
+}
+#contact-cards .contact-card.in-view:nth-child(2){
+  opacity: 1;
+  transition-delay: 400ms;
+}
+#contact-cards .contact-card.in-view:nth-child(3){
+  opacity: 1;
+  transition-delay: 600ms;
 }
 
 /* Styling for contact us form on contact us */
@@ -1933,12 +2070,18 @@ body.dark-mode main{
 /* Styling for the cta text */
 .cta-text p{
   font-size: 20px;
+  transform: translateY(-15%);
 }
 
 /* Styling for the cta text */
 .cta-text h3{
   font-size: 30px;
-  margin-top: 10px
+  margin-top: 10px;
+  transform: translateY(-15%);
+}
+.cta-text h3.in-view{
+  transform: none;
+  transition-delay: 200ms;
 }
 
 /* Styling for the cta text */
@@ -3525,7 +3668,7 @@ body.dark-mode .items-in-basket{
   background-color: var(--dark-bg);
   padding: 5% 14.25% 10% 14.25%;
   p{
-    transform: translateY(-15%);
+    transform: translateY(15%);
     transition-delay: 400ms;
   }
   p.in-view{
@@ -3538,7 +3681,7 @@ body.dark-mode .items-in-basket{
   font-size: 2.5em;
   margin: 0;
   color: var(--title-colour);
-  transform: translateY(-20%);
+  transform: translateY(20%);
   transition: 1s;
 }
 #services h1.in-view,
@@ -3574,7 +3717,7 @@ body.dark-mode #services{
   text-align: center; 
   transition: transform 0.3s; 
   margin: 0 10px; 
-  transform: translateY(-15%);
+  transform: translateY(15%);
   transition: 1s;
   opacity: 0;
   .service-icon-circle{
@@ -3654,7 +3797,7 @@ body.dark-mode .service-card{
   h1{
     font-size: 2.5em; 
     color: var(--title-colour);
-    transform: translateY(-20%);
+    transform: translateY(20%);
     #services{
       background-color: var(--dark-bg);
       padding: 5% 14.25% 10% 14.25%;
@@ -3671,7 +3814,7 @@ body.dark-mode .service-card{
     color:gray;
   }
   p.best-description.in-view{
-    transform: translateY(-15%);
+    transform: translateY(15%);
     transition-delay: 400ms;
     transform: none;
   }

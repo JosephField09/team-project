@@ -116,69 +116,78 @@
                 <div class="our-vision-body"> 
                     <h2>Our Vision</h2>
                     <div class="our-vision-text">
-                        <div class="connecting-people">
-                            <i class='bx bxs-universal-access' ></i>
+                        <div class="connecting-people out-of-view">
+                            <div class="i-container">
+                                <i class='bx bxs-universal-access out-of-view' ></i>
+                            </div>
                             <p><span class="missionheader">Connecting People</span></p>
                             <p>Bringing communities together through coffee.</p>
                         </div>
-                        <div class="sustainability">
-                            <i class='bx bxs-leaf'></i>
+                        <div class="sustainability out-of-view">
+                            <div class="i-container">
+                                <i class='bx bxs-leaf out-of-view'></i>
+                            </div>
                             <p><span class="missionheader">Sustainability</span></p>
                             <p>Prioritising eco-friendly practices for a better planet.</p>
                         </div>
-                        <div class="quality">
-                            <i class='bx bxs-coffee-bean'></i>
+                        <div class="quality out-of-view">
+                            <div class="i-container">
+                                <i class='bx bxs-coffee-bean out-of-view'></i>
+                            </div>
                             <p><span class="missionheader">Quality</span></p>
                             <p>Serving the finest coffee with care and precision.</p>
                         </div>
-                        <div class="innovation">
-                            <i class='bx bxs-brain' ></i>
+                        <div class="innovation out-of-view">
+                            <div class="i-container">
+                                <i class='bx bxs-brain out-of-view' ></i>
+                            </div>
                             <p><span class="missionheader">Innovation</span></p>
                             <p>Continuously evolving to offer unique experiences</p>
                         </div>
                     </div> 
-                    <a class="contact-us" href="{{ route('products') }}"><h4>Discover Our Products</h4></a>
+                    <a class="contact-us out-of-view" href="{{ route('products') }}"><h4>Discover Our Products</h4></a>
                 </div>
             </div>
         </section>
 
-        <!-- Customer Testimonials Section -->
-        <section id="customer-testimonials">
+       <!-- Customer Testimonials Section -->
+       <section id="customer-testimonials">
             <div class="testimonials-header">
                 <h3>Testimonials</h3>
                 <h2>What Our Customers Say About Us</h2>
             </div>
             <div class="testimonials-carousel">
-                <div class="testimonials-track" id="testimonials-track">
-                    @forelse($reviews as $review)
-                    <div class="testimonial">
-                        <div class="testimonial-content">
-                            <div class="testimonial-info">
-                                <i class='bx bxs-user-circle'></i>
-                                <div class="name-and-review">
-                                    <h3>{{$review->user->firstName}} {{$review->user->lastName}}</h3>
-                                    <h3>{{$review->title}}</h3>
-                                    <h4 class="review-rating">{{ str_repeat('⭐', $review->rating)}}</h4>
+                <button class="arrow left" id="prevTestimonial">&#10094;</button>
+                <div class="testimonials-track-wrapper">
+                    <div class="testimonials-track" id="testimonials-track">
+                        @forelse($reviews as $review)
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <div class="testimonial-user-info">
+                                    <div class="review-pfp">
+                                        <i class='bx bx-user-circle'></i>
+                                    </div>
+                                    <div class="review-details">
+                                        <h3 class="review-name">{{$review->user->firstName}} {{$review->user->lastName}}</h3>
+                                        <h4 class="review-rating">{!! str_repeat("<i class='bx bxs-star' style='color:#fecc42'></i>", $review->rating) !!}</h4>
+                                    </div>
+                                </div>
+                                <div class="testimonial-main">
+                                    <h3 class="review-title">{{$review->title}}</h3>
+                                    <p class="review-message">{{$review->message}}</p>
                                 </div>
                             </div>
-                            <div class="testimonial-message">
-                                <p>{{$review->message}}<p>
+                        </div>
+                        @empty
+                        <div class="testimonial no-content">
+                            <div class="testimonial-content no-content">
+                                <h2>No testimonials available</h2>
                             </div>
                         </div>
+                        @endforelse
                     </div>
-                    @empty
-                    <div class="testimonial no-content">
-                        <div class="testimonial-content no-content">
-                            <h2>No testimonials available</h2>
-                        </div>
-                    </div>
-                    @endforelse
                 </div>
-            </div>
-            <div class="slider-dots">
-                @for ($i = 0; $i < count($reviews); $i++)
-                    <div class="dot {{$i === 0 ? 'active' : ''}}" data-index="{{ $i }}"></div>
-                @endfor
+                <button class="arrow right" id="nextTestimonial">&#10095;</button>
             </div>
             <script src="{{ asset('js/testimonials.js') }}"></script>
         </section>

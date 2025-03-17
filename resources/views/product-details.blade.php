@@ -36,7 +36,7 @@
                             <p>
                             @for ($i = 1; $i <= 5; $i++)
                                 @if ($i <= $average)
-                                    ⭐
+                                    <i class="bx bxs-star" style="color:#fecc42; font-size: 18px;"></i>
                                 @endif
                             @endfor
                             </p>

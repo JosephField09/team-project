@@ -21,24 +21,24 @@
         <!-- Contact Us Section -->
         <div id="contact-us-container">
             <div id="contact-start">
-                <h1>Contact Us</h1>
-                <p style="font-size: 1em; margin: 2% 0 5% 0; width:60%;justify-self:center; color: var(--text-colour);">
+                <h1 class="out-of-view">Contact Us</h1>
+                <p id="contact-desc" class="out-of-view">
                     <strong>Got a question, comment, or just want to chat about all things coffee? We'd love to hear from you! Reach out anytime, and our friendly team will get back to you as soon as possible</strong>
                 </p>
                 <div id="contact-cards">
-                    <div class="contact-card">
+                    <div class="contact-card out-of-view">
                         <i class='bx bx-envelope'></i>
                         <h2>Email Support</h2>
                         <p class="explain">Have a question about our coffee selections or need assistance with your order? Send us an email, and our dedicated team will respond promptly</p>
                         <p class="detail">espressoadmin@gmail.com</p>
                     </div>
-                    <div class="contact-card">
+                    <div class="contact-card out-of-view">
                         <i class='bx bx-phone'></i>
                         <h2>Call Us</h2>
                         <p class="explain">Prefer to chat? Give us a call and we'll happily guide you through our latest brews or answer any questions</p>
                         <p class="detail">+44 1234 567890</p>
                     </div>
-                    <div class="contact-card">
+                    <div class="contact-card out-of-view">
                         <i class='bx bx-buildings'></i>
                         <h2>Visit our Office</h2>
                         <p class="explain">We welcome in-person visits for a direct conversation. Our team will be pleased to assist you and provide an inside look at our offerings</p>
@@ -50,7 +50,7 @@
                 <div class="contact-us-form">
                     <h1 id="contact-us-heading">Get in Touch</h1>
                         <h3>Ready to get started?</h3>
-                        <p> Whether you have questions, need support or want to learn more about or services, our team is here to help. 
+                        <p> Whether you have questions, need support or want to learn more about our services, our team is here to help. 
                             Fill out this form and a member of our team will contact you shortly</p>
                     <form id="contact-us">
                         <div class="first-and-last-name">
@@ -103,7 +103,7 @@
                                 // Get the input field value
                                 const userText = document.getElementById('faq-email').value.trim();
                                 
-                                const mailtoLink = `mailto:espressoadmin@gmail.com?subject=FAQ question&body=${encodeURIComponent(userText)}`;
+                                const mailtoLink = `mailto:espressoadmin@gmail.com?subject=FAQ Question&body=${encodeURIComponent(userText)}`;
 
                                 // Open the user's email app
                                 window.location.href = mailtoLink;

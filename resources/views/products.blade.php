@@ -80,9 +80,9 @@
         <!-- Call to Action Section -->
         <section id="cta" style="background-image: url({{ asset('assets/AdobeStock_262772087.jpg') }});" >
             <div class="cta-text">
-                <p>Our Products</p>
-                <h3>Discover the Perfect Fit</h3>
-                <p>Explore a Wide Range of Products Tailored to Meet Your Needs</p>
+                <p class="out-of-view">Our Products</p>
+                <h3 class="out-of-view">Discover the Perfect Fit</h3>
+                <p class="out-of-view">Explore a Wide Range of Products Tailored to Meet Your Needs</p>
             </div>
         </section>
 
