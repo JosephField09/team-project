@@ -29,7 +29,7 @@ class HomeController extends Controller
                 'products.price'
             )
             ->orderByDesc('total_sold')
-            ->limit(5)
+            ->limit(3)
             ->get();
         return view('home', ['bestSellers' => $bestSellers]);
     }

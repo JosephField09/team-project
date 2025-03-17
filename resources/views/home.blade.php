@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{ asset('css/tabletstyle.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/responsive.js') }}"></script>
+    <script>
+    </script>
 </head>
 
 <body>
@@ -21,9 +23,9 @@
         <!-- Home Page Section -->
         <section id="home-cta" style="background-image: url({{ asset('assets/home-cta-bg.jpg') }});">
             <div class="home-cta-text">
-                <h1 style="font-size: 2.8em; margin: 0; font-family: Modern">Start Your Day with the Best Coffee Experience</h1>
-                <p>Indulge in the finest brews, crafted to ignite your senses and fuel your day. Your new, improved coffee journey begins here.</p>
-                <div class="home-cta-buttons">
+                <h1 style="font-size: 2.8em; margin: 0; font-family: Modern" class="out-of-view">Start Your Day with the Best Coffee Experience</h1>
+                <p class="out-of-view">Indulge in the finest brews, crafted to ignite your senses and fuel your day. Your new, improved coffee journey begins here.</p>
+                <div class="home-cta-buttons out-of-view">
                     <a class="order-now" href= "{{route('products')}}">Order Now</a>
                     <a class="learn-more" href= "{{route('about-us')}}">Learn More</a>
                 </div>
@@ -31,66 +33,46 @@
         </section>
 
         <!-- Image Block Sections -->
-        <section id="ImageBlocks" style="background-image: url({{ asset('assets/bg_with_beans.png') }}); background-size: cover;margin-top: 70px;">
+        <section id="ImageBlocks" style="background-image: url({{ asset('assets/bg_with_beans.png') }}); background-size: cover;margin-top: 20px;margin-bottom: 50px;">
             <!-- Our story Section -->
             <div class="ourstory">
-                <div class="side-img">
+                <div class="side-img out-of-view">
                     <img src= "{{ asset('assets/our_story_home.png') }}" alt="Coffee Beans Drying" class="bigimage"></img>
                 </div>
                 <div class="aboutustext">
-                    <h3>About Us</h3>
-                    <h2 class="header">Our Story, Your Coffee</h2>
-                    <h2>Experience</h2>
-                    <p>At E-spresso, we believe in more than just coffee - we create moments. From our handpicked beans to the perfect brew, each cup is crafted with love and care. Whether you're here for a quick pick-me-up or to enjoy a relaxing moment, we're dedicated to making every sip special. Join us in celebrating the art of coffee, brewed to perfection just for you.</p>
+                    <h3 class="out-of-view">About Us</h3>
+                    <h2 class="header out-of-view">Our Story, Your Coffee</h2>
+                    <h2 class="out-of-view">Experience</h2>
+                    <p class="out-of-view">At E-spresso, we believe in more than just coffee - we create moments. From our handpicked beans to the perfect brew, each cup is crafted with love and care. Whether you're here for a quick pick-me-up or to enjoy a relaxing moment, we're dedicated to making every sip special. Join us in celebrating the art of coffee, brewed to perfection just for you.</p>
                     <div class="promise">
-                        <img style="width: 10%;" src= "{{ asset('assets/check-mark.png') }}"></img>
-                        <h4>Single-origin coffee beans</h4>
+                        <img style="width: 10%;" class="first out-of-view" src= "{{ asset('assets/check-mark.png') }}"></img>
+                        <h4 class="first out-of-view">Single-origin coffee beans</h4>
                     </div>
                     <div class="promise">
-                        <img src= "{{ asset('assets/check-mark.png') }}"></img>
-                        <h4>Expertly roasted for optimal flavour</h4>
+                        <img class="second out-of-view" src= "{{ asset('assets/check-mark.png') }}"></img>
+                        <h4 class="second out-of-view">Expertly roasted for optimal flavour</h4>
                     </div>
                     <div class="promise">
-                        <img src= "{{ asset('assets/check-mark.png') }}"></img>
-                        <h4>Wide range of blends for every taste</h4>
+                        <img class="third out-of-view" src= "{{ asset('assets/check-mark.png') }}"></img>
+                        <h4 class="third out-of-view">Wide range of blends for every taste</h4>
                     </div>
-                    <div class="promise">
-                        <img src= "{{ asset('assets/check-mark.png') }}"></img>
-                        <h4>High-quality, eco-friendly packaging</h4>
+                    <div class="promise"class="out-of-view">
+                        <img class="fourth out-of-view" src= "{{ asset('assets/check-mark.png') }}"></img>
+                        <h4 class="fourth out-of-view">High-quality, eco-friendly packaging</h4>
                     </div>
-                    <a href="{{route('about-us')}}"><h4>Read More</h4></a>
+                    <a class="out-of-view" href="{{route('about-us')}}"><h4>Read More</h4></a>
                 </div>
             </div>
         </section>
 
         <!-- Services Section -->
         <section id="services" style="text-align: center; background-image: url({{ asset('assets/dark_bg_with_beans.png') }}); background-size: cover;"">
-            <h1>Our Delicious Services</h1>
-            <p style="font-size: 1em; margin: 10px auto 0; width:56%; color: var(--text-colour);">
+            <h1 class="out-of-view" >Our Delicious Services</h1>
+            <p class="out-of-view" style="font-size: 1em; margin: 10px auto 0; width:56%; color: var(--text-colour);">
                 <strong>We offer a variety of top range products, here are some of our most popular categories for you to browse.</strong>
             </p>
             <div class="services-section">
-                <div class="service-card">
-                    <div class="service-icon-circle">
-                        <img src="{{ asset('assets/donut-icon.svg') }}">
-                    </div>
-                    <h3>Sweet Treats</h3>
-                    <br>
-                    <p>Enjoy our deliciously baked sweet treats, made from the finest ingredients — perfect for a delightful pick-me-up</p>
-                    <br><br>
-                    <a href="{{ route('products.filter', array_merge(request()->except('category'), ['category' => 5])) }}" class="view-range"> View Range</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon-circle">
-                        <img style="width: 100%; height: 100%;" src="{{ asset('assets/bean-icon.svg') }}">
-                    </div>
-                    <h3>Different Beans</h3>
-                    <br>
-                    <p>Explore our selection of premium coffee beans sourced from around the world for the perfect brew.</p>
-                    <br><br>
-                    <a href="{{ route('products.filter', array_merge(request()->except('category'), ['category' => 3])) }}" class="view-range"> View Range</a>
-                </div>
-                <div class="service-card">
+                <div class="service-card out-of-view">
                     <div class="service-icon-circle">
                         <img src="{{ asset('assets/coffee-icon.svg') }}">
                     </div>
@@ -100,6 +82,26 @@
                     <br><br>
                     <a href="{{ route('products.filter', array_merge(request()->except('category'), ['category' => 1])) }}" class="view-range"> View Range</a>
                 </div>
+                <div class="service-card out-of-view">
+                    <div class="service-icon-circle">
+                        <img style="width: 100%; height: 100%;" src="{{ asset('assets/bean-icon.svg') }}">
+                    </div>
+                    <h3>Different Beans</h3>
+                    <br>
+                    <p>Explore our selection of premium coffee beans sourced from around the world for the perfect brew.</p>
+                    <br><br>
+                    <a href="{{ route('products.filter', array_merge(request()->except('category'), ['category' => 3])) }}" class="view-range"> View Range</a>
+                </div>
+                <div class="service-card out-of-view">
+                    <div class="service-icon-circle">
+                        <img src="{{ asset('assets/donut-icon.svg') }}">
+                    </div>
+                    <h3>Sweet Treats</h3>
+                    <br>
+                    <p>Enjoy our deliciously baked sweet treats, made from the finest ingredients — perfect for a delightful pick-me-up</p>
+                    <br><br>
+                    <a href="{{ route('products.filter', array_merge(request()->except('category'), ['category' => 5])) }}" class="view-range"> View Range</a>
+                </div>
             </div>
             <div style="position: absolute;" class="floating-beans">
                 <img style="justify-self: left;transform: translateX(-17vw) translateY(-2vh) rotate(1deg); width: 38vw;" src="{{ asset('assets/flipped_beans.png') }}">
@@ -108,13 +110,13 @@
 
         <!-- Best Sellers Section -->
         <section id="best-sellers">
-            <h1>Best Sellers</h1>
-            <p class="best-description">
+            <h1 class="out-of-view">Best Sellers</h1>
+            <p class="best-description out-of-view">
                 Discover the most popular coffee that our customers just love. These highest sellers are crafted to perfection and are sure to delight your taste buds.
             </p>
             <div class="products-container">
                 @foreach($bestSellers as $product)
-                    <div class="product-card" style="background-color: white;">
+                    <div class="product-card out-of-view" style="background-color: white;">
                         <img src="{{ asset('assets/' . $product->image) }}" alt="Product Image">
                         <div class="product-row" style="display: inline-flex;">
                             <h3 class="product-title">{{ $product->name }}</h3>
@@ -125,30 +127,30 @@
                     </div>
                 @endforeach
             </div>
-            <a href="{{ route('products') }}" class="best-sellers-button">View All Products</a>
+            <a href="{{ route('products') }}" class="best-sellers-button out-of-view">View All Products</a>
         </section>
 
         <!-- Coffee Fix Section -->
         <section id="coffee-fix">
             <div id="coffee-fix-container">
                 <div id="coffee-text">
-                    <h1>Need a Coffee Fix?</h1>
-                    <p>Become a member today and enjoy exclusive access to freshly roasted coffee beans delivered right to your door.</p>
+                    <h1 class="out-of-view">Need a Coffee Fix?</h1>
+                    <p class="out-of-view">Become a member today and enjoy exclusive access to freshly roasted coffee beans delivered right to your door.</p>
                     @if(Auth::check())
-                        {{-- If the logged-in user is an admin --}}
+                        {{-- If the user is an admin --}}
                         @if(Auth::user()->userType === 'admin')
-                            <a id="become-member-button" href="{{ route('admin.dashboard') }}">
+                            <a class="out-of-view" id="become-member-button" href="{{ route('admin.dashboard') }}">
                                 Go to admin dashboard
                             </a>
                         @else
-                            {{-- For any other authenticated user type (e.g., a regular user) --}}
-                            <a id="become-member-button" href="{{ route('dashboard') }}?tab=member">
+                            {{-- If the user is a regular user --}}
+                            <a class="out-of-view" id="become-member-button" href="{{ route('dashboard') }}?tab=member">
                                 Subscribe
                             </a>
                         @endif
                     @else
-                        {{-- If the user is not logged in at all --}}
-                        <a id="become-member-button" href="{{ route('register') }}">
+                        {{-- If the user isn't logged in  --}}
+                        <a class="out-of-view" id="become-member-button" href="{{ route('register') }}">
                             Become a Member
                         </a>
                     @endif
@@ -196,7 +198,7 @@
                 <div class="information">
                     <h3>Information</h3>
                     <ul class="details">
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="{{ route('contact-us') }}#faq">FAQ</a></li>
                         <li><a href="#">Terms & Conditions</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>

@@ -19,79 +19,78 @@
         @include('layouts.navbar')
 
         <!-- Image Block Sections -->
-        <section id="ImageBlocks" style="padding: 15% 14.25% 5% 14.25%;">
+        <section id="ImageBlocks" style="padding: 10% 14.25% 5% 14.25%;">
             <!-- Our story Section -->
             <div class="ourstory">
-                <div class="side-img">
-                    <img src="{{ asset('assets/AdobeStock_835212991.jpeg') }}" alt="Woman picking coffee beans" ></img>
+                <div class="side-img out-of-view">
+                    <img src= "{{ asset('assets/AdobeStock_835212991.jpeg') }}" alt="Coffee Beans Drying"></img>
                 </div>
                 <div class="aboutustext">
-                    <h3>About Us</h3>
-                    <h2>Our Story, Your Coffee Experience</h2>
-                    <p>At E-Spresso, we believe in more than just coffee - we create moments. From our handpicked beans to the perfect brew,
-                        each cup is crafted with love and care. Whether you're here for a quick pick-me-up or to enjoy a relaxing moment, we're
-                        dedicated to making every sip special. Join us in celebrating the art of coffee, brewed to perfection just for you.
-                    </p>
+                    <h3 class="out-of-view">About Us</h3>
+                    <h2 class="header out-of-view">Our Story, Your Coffee Experience</h2>
+                    <p class="out-of-view">Our team is composed of passionate individuals who bring diverse skills and experiences to the table, allowing us to exceed in energising you for the day ahead. We believe in sustainability and ethical practices, ensuring that our operations not only benefit our customers but also contribute positively to the community and the environment.</p>
                     <div class="promise">
-                        <img src="{{ asset('assets/check-mark.png') }}" style="width: 10%;"></img>
-                        <h4>Single-origin coffee beans</h4>
+                        <img style="width: 10%;" class="first out-of-view" src= "{{ asset('assets/check-mark.png') }}"></img>
+                        <h4 class="first out-of-view">Single-origin coffee beans</h4>
                     </div>
                     <div class="promise">
-                        <img src="{{ asset('assets/check-mark.png') }}" ></img>
-                        <h4>Expertly roasted for optimal flavor</h4>
+                        <img class="second out-of-view" src= "{{ asset('assets/check-mark.png') }}"></img>
+                        <h4 class="second out-of-view">Expertly roasted for optimal flavour</h4>
                     </div>
                     <div class="promise">
-                        <img src="{{ asset('assets/check-mark.png') }}"></img>
-                        <h4>Wide range of blends for every taste</h4>
+                        <img class="third out-of-view" src= "{{ asset('assets/check-mark.png') }}"></img>
+                        <h4 class="third out-of-view">Wide range of blends for every taste</h4>
                     </div>
-                    <div class="promise">
-                        <img src="{{ asset('assets/check-mark.png') }}"></img>
-                        <h4>High-quality, eco-friendly packaging</h4>
+                    <div class="promise"class="out-of-view">
+                        <img class="fourth out-of-view" src= "{{ asset('assets/check-mark.png') }}"></img>
+                        <h4 class="fourth out-of-view">High-quality, eco-friendly packaging</h4>
                     </div>
-                    <a class="contact-us" href="{{ route('contact-us') }}"><h4>Contact us</h4></a>
+                    <a class="out-of-view" href="{{route('about-us')}}"><h4>Read More</h4></a>
                 </div>
             </div>
 
-            <div id="our-history">
+            <div id="our-history"> 
                 <h2 class="header">Our History</h2>
                 <div class="our-history-container">
-                <div class="timeline" style="--items: 3">
-                    <ul>
-                    <li style="--index: 1">
-                        <h3>2020</h3>
-                        <h2>From Quarantine to Caffeine</h2>
-                        <p>
-                        In the midst of lockdown, when stepping outside was nearly impossible where coffee cravings collided with closed shops and stay-at-home orders, 
-                        E-spresso was born to keep coffee lovers fueled at home. 
-                        </p>
-                    </li>
-                    <li style="--index: 2">
-                        <h3>2023</h3>
-                        <h2>Brewing Success</h2>
-                        <p>
-                        As the world returned to pre-covid ways, our commitment to delivering fresh, ethically sourced coffee right to your door only grew stronger. 
-                        What started as a lockdown necessity became a trusted favorite, leading to soaring demand, new product offerings, and expanded delivery networks.
-                        </p>
-                    </li>
-                    <li style="--index: 3">
-                        <h3>2025</h3>
-                        <h2>A Latte to Come</h2>
-                        <p>
-                        As we look to the future, we’re expanding globally, 
-                        deepening our commitment to sustainable sourcing, and embracing new brewing innovations. 
-                        Driven by our passion for exceptional coffee, we aim to connect communities and fuel dreams—one cup at a time.
-                        </p>
-                    </li>
-                    </ul>
-                </div>
+                    <!-- Add `out-of-view` here -->
+                    <div class="timeline" style="--items: 3">
+                        <ul class="out-of-view">
+                            <li class="out-of-view" style="--index: 1">
+                                <h3 class="first out-of-view">2020</h3>
+                                <h2 class="first out-of-view">From Quarantine to Caffeine</h2>
+                                <p class="first out-of-view">
+                                In the midst of lockdown, when stepping outside was nearly impossible where coffee cravings collided with closed shops and stay-at-home orders, 
+                                E-spresso was born to keep coffee lovers fueled at home. 
+                                </p>
+                            </li>
+                            <li class="out-of-view" style="--index: 2">
+                                <h3 class="second out-of-view">2023</h3>
+                                <h2 class="second out-of-view">Brewing Success</h2>
+                                <p class="second out-of-view">
+                                As the world returned to pre-covid ways, our commitment to delivering fresh, ethically sourced coffee right to your door only grew stronger. 
+                                What started as a lockdown necessity became a trusted favorite, leading to soaring demand, new product offerings, and expanded delivery networks.
+                                </p>
+                            </li>
+                            <li class="out-of-view" style="--index: 3">
+                                <h3 class="third out-of-view">2025</h3>
+                                <h2 class="third out-of-view">A Latte to Come</h2>
+                                <p class="third out-of-view">
+                                As we look to the future, we're expanding globally, 
+                                deepening our commitment to sustainable sourcing, and embracing new brewing innovations. 
+                                Driven by our passion for exceptional coffee, we aim to connect communities and fuel dreams—one cup at a time.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
 
             <!-- Our mission Section -->
             <div class="ourmission">
                 <div class="aboutustext">
-                        <h2>Our Mission</h2>
-                        <p>At E-Spresso, we strive to create a warm and inviting space where coffee lovers can gather, connect, and share meaningful moments 
+                        <h2 class="out-of-view">Our Mission</h2>
+                        <p class="out-of-view">At E-Spresso, we strive to create a warm and inviting space where coffee lovers can gather, connect, and share meaningful moments 
                             and enjoy the finest brews. We are committed to delivering exceptional experiences.
                             
                         </p>
@@ -104,14 +103,14 @@
                             </ul>
                         </div>
                 </div>
-                <div class="side-img">
+                <div class="side-img out-of-view">
                     <img style="margin-left: 10px; justify-self: center; display: block;" src="{{ asset('assets/AdobeStock_814649831.jpeg') }}"></img>
                 </div>
             </div>
             
             <!-- Our vision Section -->
             <div class="ourvision">
-                <div class="side-img">
+                <div class="side-img out-of-view" >
                     <img src="{{ asset('assets/AdobeStock_859686298.jpeg') }}" class="bigimage"></img>
                 </div>  
                 <div class="our-vision-body"> 

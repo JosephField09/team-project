@@ -451,9 +451,6 @@
 }
 
 @media screen and (max-width: 460px ){
-    #home-cta{
-        margin-bottom: 70px;
-    }
     .home-cta-buttons{
         display: grid;
         margin-top: 0;
@@ -508,7 +505,7 @@
         }
     }
     #accordion li input[type="radio"]:checked ~ .qa-content {
-        max-height: 300px;
+        max-height: 400px;
     }
 }
 

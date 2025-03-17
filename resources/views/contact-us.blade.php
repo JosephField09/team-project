@@ -117,7 +117,7 @@
                                 <label for="first">How should I store my coffee beans?<span><i class='bx bx-chevron-down'></i></span></label>
                                 <div class="qa-content">
                                     <p>Store them in an airtight container in a cool, dark place. Avoid direct sunlight, heat, and humidity, as these can degrade the quality of the beans. 
-                                        We recommend keeping it in a pantry or cupboard to prevent exposure to moisture and unwanted odors. For the best taste, grind your beans just before brewing and use them within a few weeks of opening.</p>
+                                        We recommend keeping it in a pantry or cupboard to prevent exposure to moisture and unwanted odours. For the best taste, grind your beans just before brewing and use them within a few weeks of opening.</p>
                                 </div>
                             </li>
                             <li>

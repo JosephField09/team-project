@@ -245,5 +245,27 @@ function toggleFilterDropdown() {
     dropdown.classList.toggle('hidden');
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all the elements with the .out-of-view class
+    const allSections = document.querySelectorAll('.out-of-view');
+    
+    // Create an intersection observer
+    const observer = new IntersectionObserver((entries, observerRef) => {
+    entries.forEach(entry => {
+        // If the element is visible add the .in-view class
+        if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        // Stop observing once it's in view 
+        observerRef.unobserve(entry.target);
+        }
+    });
+    }, {
+    threshold: 0.1
+    });
+
+    // Loop over each target and observe it
+    allSections.forEach(section => observer.observe(section));
+});
+
 // Request a fresh CSRF token
 window.axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').content;
