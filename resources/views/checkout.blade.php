@@ -41,9 +41,9 @@
                             <input id ="input "type ="text" name="cardno" placeholder="Card Number" class="input-field" required/>
                             <input id ="input "type ="text" name="cardholder" placeholder="Name On Card" class="input-field" required/>
                             <div class="small-numbers">
-                                <input id ="input "type ="text" name="month" placeholder="MM" class="input-field" maxlength="2" pattern="[0-9]{2}" required/>
-                                <input id ="input "type ="text" name="year" placeholder="YY" class="input-field" maxlength="2" pattern="[0-9]{2}"required/>
-                                <input id ="input "type ="text" name="cvv" placeholder="CVV" class="input-field" maxlength="3" pattern="[0-9]{3}"required/>
+                                <input id ="input "type ="number" name="month" placeholder="MM" class="input-field" min="1" max="12" maxlength="2" pattern="[0-9]{2}" required/>
+                                <input id ="input "type ="number" name="year" placeholder=" YY" class="input-field" min="25" max="35" maxlength="2" pattern="[0-9]{2}"required/>
+                                <input id="input" type="number" name="cvv" placeholder="CVV" class="input-field" min="1" max="999" pattern="[0-9]{3}" required oninput="this.value = this.value.padStart(3, '0').slice(-3)">
                             </div>
                         </div>
                         <button type="submit" class="place-order">Place Order</button>
