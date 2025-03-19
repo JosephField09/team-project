@@ -25,10 +25,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         document.querySelectorAll(".price,.product-price,.basket-price,.total,.avg-order").forEach(priceElement => {
             let gbpPrice = parseFloat(priceElement.getAttribute("data-gbp"));
-            console.log(priceElement.getAttribute("class"));
-            let updatedPrice = (gbpPrice * (rates[String(currency)])).toFixed(2);
+            let updatedPrice = (gbpPrice * (rates[String(currency)])).toFixed(2); // Works out the new price
             let symbol = symbols[currency];
-            switch(priceElement.getAttribute("class")){
+            switch(priceElement.getAttribute("class")){ // Switch case depending on the class name for the price displayed
                 case "price":
                     priceElement.innerText= `${symbol}${updatedPrice}`;
                     break;
@@ -55,6 +54,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         changePrices(this.value);
     });
 
+    // Same function as above, just for the currency changer in the hamburger menu for mobile
     document.getElementById("hb-currency-selector").addEventListener("change", function (){
         changePrices(this.value);
     });

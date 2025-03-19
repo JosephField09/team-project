@@ -628,6 +628,10 @@ label{
   font-size: smaller;
 }
 
+body.dark-mode label{
+  color: white;
+}
+
 /* Styling for account conent section */
 #dash-accountContent{
   grid-template-columns: 1fr 1fr 1fr;
@@ -698,6 +702,18 @@ body.dark-mode .delete {
 /* Styling for delete button when hovering */
 .delete:hover{
   scale: 0.9;
+}
+
+body.dark-mode #dash-memberContent p{
+  color: white;
+}
+
+body.dark-mode #dash-memberContent h4{
+  color: white;
+}
+
+body.dark-mode #dash-memberContent span{
+  color: white;
 }
 
 /* Styling for member content paragraph */
@@ -3627,10 +3643,16 @@ body.dark-mode .basket-main{
 /* Dark mode for an empty basket */
 body.dark-mode .empty-basket{
   background-color: var(--dm-dark-bg);
-  color: white;
+  p, h1{
+    color: white;
+  }
   a{
     color: var(--secondary-colour);
   }
+}
+
+body.dark-mode .basket-summary{
+  h2,h4{color: white;}
 }
 
 /* Styling for the the basket summary */
@@ -3775,6 +3797,22 @@ body.dark-mode .items-in-basket{
   }
 }
 
+body.dark-mode #contact-start{
+  strong, h1, h2, h3, p, label{
+    color: white;
+  }
+}
+
+body.dark-mode #contact-middle{
+  strong, h1, h2, h3, p, label{
+    color: white;
+  }
+}
+
+body.dark-mode .bx-chevron-down{
+  color: white;
+}
+
 #services h1,
 #contact-start h1{
   font-size: 2.5em;
@@ -3875,7 +3913,7 @@ body.dark-mode #services{
 body.dark-mode .service-card{
   background-color: var(--dm-light-bg);
   color: white;
-  p, a{
+  p, a, h3{
     color: white;
   }
   .service-icon-circle{
@@ -4117,12 +4155,14 @@ body.dark-mode .checkout-main{
   width: 600px;
   align-items: center;
   text-align: center;
+  margin-top: 20px;
   hr{
     margin-top: 5px;
     width: 100%;
   }
   h3, h4{
     text-align: left;
+    margin-top: 10px;
   }
   label{
     text-align: left;
