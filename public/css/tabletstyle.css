@@ -28,9 +28,9 @@
 
     .sidebar {
         position: fixed; 
-        right: -40%;
+        right: -50%;
         top: 0; 
-        width: 40%;
+        width: 50%;
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.97);
         display: flex;
@@ -116,6 +116,22 @@
 
     #products-grid{
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    #customer-testimonials {
+        background-color: var(--light-bg);
+        padding: 5% 0 10% 0;
+    }
+
+    #review-container{
+        grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
+    }
+
+    .create-review{
+        padding: 15% 14.25% 10% 14.25%;;
+        h3{
+            font-size: x-large;
+        }
     }
 
     .form-box h1{
@@ -324,6 +340,13 @@
     #products-grid{
         grid-template-columns: repeat(2, 1fr);
     }
+    #review-container{
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        margin: 15% 0;
+    }
+    .review-user-info{
+        grid-template-columns: 20% 60% 20%;
+    }
     #blogs-main{
         padding-top: 15%;
         padding-bottom: 15%;
@@ -351,9 +374,36 @@
     #edit-user{
         padding: 12% 14.25% 23% 14.25%;
     }
+    .create-review{
+        padding: 20% 14.25% 15% 14.25%;;
+    }
+}
+@media (max-width: 700px) {
+    .testimonial-content{
+        width: 200px;
+        font-size: small;
+        i{
+            display: none;
+        }
+        h3{
+            font-size: 12px;
+            margin-bottom: 10%;
+        }
+    }
+    .testimonial-user-info{
+        align-content: center;
+        grid-template-columns: none;
+        grid-template-rows: auto;
+        text-align: center;
+        padding: 10% 0;
+    }
 }
 
 @media (max-width: 568px) {
+
+    .review-user-info{
+        grid-template-columns: 25% 55% 20%;
+    }
     .timeline ul {
       display: flex;
       flex-direction: column;
@@ -527,11 +577,19 @@
     .product-details-page .size-options .size{
         margin-bottom: 10px;
     }
+    #review-container{
+        margin: 30% 0;
+    }
     .review-body{
         width: 100%;
         padding: 5%;
     }
-
+    .review-user-info {
+        grid-template-columns: 35% 45% 20%;
+    }
+    .review-by{
+        text-align: right;
+    }
     .ourstory{
         grid-template-rows: 0.5fr 1fr;
     }
@@ -539,12 +597,24 @@
         grid-template-rows: 1.5fr 1fr;
         width: 120%;
     }
-    .review-form{
-        width: 90%;
-        margin-top: 70px;
+    .create-review {
+        padding: 25% 14.25% 10% 14.25%;
     }
-  
-    #title.input-field, #message.input-field{
-        width: auto;
+    .review-form{
+        align-items: center;
+        flex-wrap: wrap-reverse;
+        .review-title,
+        .review-message{
+            width: 100%;
+        }
+        h3{
+            text-align: center;
+        }
+        input-field{
+            width: 100%;
+        }
+    }
+    #customer-testimonials {
+        padding: 17.5% 0;
     }
 }

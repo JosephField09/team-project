@@ -11,6 +11,52 @@
     <link rel="stylesheet" href="{{ asset('css/tabletstyle.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/responsive.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stars = document.querySelectorAll('.star');
+            const ratingInput = document.getElementById('rating');
+
+            // Update stars based on the current selected rating
+            function updateStars(rating) {
+                stars.forEach(star => {
+                    if (parseInt(star.getAttribute('data-value')) <= rating) {
+                        star.classList.add('selected');
+                    } else {
+                        star.classList.remove('selected');
+                    }
+                });
+            }
+
+            stars.forEach(star => {
+                // When a star is clicked, update the rating value and selected classes
+                star.addEventListener('click', function() {
+                    const rating = parseInt(this.getAttribute('data-value'));
+                    ratingInput.value = rating;
+                    updateStars(rating);
+                });
+
+                // When hovering, add the hover class to all stars up to the hovered star
+                star.addEventListener('mouseover', function() {
+                    const hoverRating = parseInt(this.getAttribute('data-value'));
+                    stars.forEach(s => {
+                        if (parseInt(s.getAttribute('data-value')) <= hoverRating) {
+                            s.classList.add('hover');
+                        } else {
+                            s.classList.remove('hover');
+                        }
+                    });
+                });
+
+                // When the user moves the mouse, remove the hover effect
+                star.addEventListener('mouseout', function() {
+                    stars.forEach(s => {
+                        s.classList.remove('hover');
+                    });
+                    updateStars(parseInt(ratingInput.value));
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -25,19 +71,20 @@
                     <form class="review-form" action="{{ route('reviews.add', $id) }}" method="POST">
                         @csrf
                         @if ($id === "0")
-                            <h3>Write A Review for E-Spresso</h3>
+                            <h3>Write Us a Review</h3>
                         @else
-                            <h3>Write A Review for {{\App\Models\Product::find($id)->name}}</h3>
+                            <h3>Write A Review for {{ \App\Models\Product::find($id)->name }}</h3>
                         @endif
-                        <div class=stars>
-                            <select name="rating" id="rating">
-                                <option value="5">⭐⭐⭐⭐⭐</option>
-                                <option value="4">⭐⭐⭐⭐</option>
-                                <option value="3">⭐⭐⭐</option>
-                                <option value="2">⭐⭐</option>
-                                <option value="1">⭐</option>
-                            </select>
+
+                        <div class="stars">
+                            <input type="hidden" name="rating" id="rating" value="0">
+                            <i class="bx bxs-star star" data-value="1"></i>
+                            <i class="bx bxs-star star" data-value="2"></i>
+                            <i class="bx bxs-star star" data-value="3"></i>
+                            <i class="bx bxs-star star" data-value="4"></i>
+                            <i class="bx bxs-star star" data-value="5"></i>
                         </div>
+
                         <div class="review-title">
                             <input type="text" class="input-field" name="title" id="title" placeholder="Enter title" required>
                         </div>

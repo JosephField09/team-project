@@ -87,16 +87,39 @@
 
         <!-- Product Reviews Section -->
         <section class="product-reviews">
-            <a href="{{ route('reviews.create', $data->id) }}">Add a Review</a>
-
-            @foreach($data->reviews as $review)
-                <div class="review-body">
-                    <h3 class="review-title">{{ $review->title }}</h3>
-                    <h4 class="review-rating">{{ str_repeat('⭐', $review->rating)}}</h4>
-                    <p class="review-message">{{ $review->message}}</p>
-                    <p class="review-by">{{ $review->user->firstName }} {{ $review->user->lastName }}, {{$review->created_at->format('d M Y')}}</p>
-                </div>
-            @endforeach
+            <h2>Reviews</h2>
+            <p class="review-description out-of-view">
+                Discover firsthand experiences from our customers. Read honest feedback and insights to help you make an informed decision about our product
+            </p>
+            <div id="review-container">
+                @forelse($data->reviews as $review)
+                    <div class="review-body">
+                        <div class="review-user-info">
+                            <div class="review-pfp">
+                                <i class='bx bx-user-circle'></i>
+                            </div>
+                            <div class="review-details">
+                                <h3 class="review-name">{{$review->user->firstName}} {{$review->user->lastName}}</h3>
+                                <h4 class="review-rating">
+                                    {!! str_repeat("<i class='bx bxs-star' style='color:#fecc42'></i>", $review->rating) !!}
+                                </h4>
+                            </div>
+                            <div style="align-self: center;">
+                                <p class="review-by">{{$review->created_at->format('d M Y')}}</p>
+                            </div>       
+                        </div>
+                        <div class="testimonial-main">
+                            <h3 class="review-title">{{$review->title}}</h3>
+                            <p class="review-message">{{$review->message}}</p>
+                        </div>
+                    </div>
+                @empty
+                    <p id="review-empty">Our review cup is still empty — time to espresso yourself!</p>
+                @endforelse
+            </div>
+            <div id="review-button">
+                <a href="{{ route('reviews.create', $data->id) }}">Add a Review</a>
+            </div>
         </section>
 
         <!-- Recommended Products Section -->

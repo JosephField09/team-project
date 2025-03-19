@@ -8,7 +8,7 @@ class AboutUsController extends Controller
 {
     public function index()
     {
-        $reviews = WebsiteReview::with('user')->latest()->take(3)->get();
-        return view('about-us', ['reviews'=>$reviews]); // returns the about-us.blade.php view
+        $reviews = WebsiteReview::with('user')->latest()->take(5)->get();
+        return view('about-us', ['reviews'=>$reviews]);
     }
 }

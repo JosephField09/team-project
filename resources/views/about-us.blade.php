@@ -99,7 +99,7 @@
                                 <li class="out-of-view"><p><span class="missionheader">Quality First:</span> We source the best beans from around the world to ensure every sip is a delight</p></li>
                                 <li class="out-of-view"><p><span class="missionheader">Sustainability:</span> We priotitise eco-friendly practices to support a healthier planet.</p></li>
                                 <li class="out-of-view"><p><span class="missionheader">Community Connection:</span> We aim to be more than just a coffee shop by fostering meaningful relationships with our customers</p></li>
-                                <li class="out-of-view"><p><span class="missionheader">Continuos Innovation:</span> From classic blends to unique creations, we strive to keep our menu exciting and fresh.</p></li>
+                                <li class="out-of-view"><p><span class="missionheader">Continuous Innovation:</span> From classic blends to unique creations, we strive to keep our menu exciting and fresh.</p></li>
                             </ul>
                         </div>
                 </div>
@@ -150,46 +150,48 @@
             </div>
         </section>
 
-       <!-- Customer Testimonials Section -->
-       <section id="customer-testimonials">
+        <!-- Customer Testimonials Section -->
+        <section id="customer-testimonials">
             <div class="testimonials-header">
                 <h3>Testimonials</h3>
                 <h2>What Our Customers Say About Us</h2>
             </div>
             <div class="testimonials-carousel">
-                <button class="arrow left" id="prevTestimonial">&#10094;</button>
                 <div class="testimonials-track-wrapper">
-                    <div class="testimonials-track" id="testimonials-track">
-                        @forelse($reviews as $review)
-                        <div class="testimonial">
-                            <div class="testimonial-content">
-                                <div class="testimonial-user-info">
-                                    <div class="review-pfp">
-                                        <i class='bx bx-user-circle'></i>
-                                    </div>
-                                    <div class="review-details">
-                                        <h3 class="review-name">{{$review->user->firstName}} {{$review->user->lastName}}</h3>
-                                        <h4 class="review-rating">{!! str_repeat("<i class='bx bxs-star' style='color:#fecc42'></i>", $review->rating) !!}</h4>
-                                    </div>
-                                </div>
-                                <div class="testimonial-main">
-                                    <h3 class="review-title">{{$review->title}}</h3>
-                                    <p class="review-message">{{$review->message}}</p>
-                                </div>
-                            </div>
+                <div class="testimonials-track" id="testimonials-track">
+                    @forelse($reviews as $review)
+                    <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="testimonial-user-info">
+                        <div class="testimonial-pfp">
+                            <i class='bx bx-user-circle'></i>
                         </div>
-                        @empty
-                        <div class="testimonial no-content">
-                            <div class="testimonial-content no-content">
-                                <h2>No testimonials available</h2>
-                            </div>
+                        <div class="testimonial-details">
+                            <h3 class="testimonial-name">{{$review->user->firstName}} {{$review->user->lastName}}</h3>
+                            <h4 class="testimonial-rating">
+                            {!! str_repeat("<i class='bx bxs-star' style='color:#fecc42'></i>", $review->rating) !!}
+                            </h4>
                         </div>
-                        @endforelse
+                        </div>
+                        <div class="testimonial-main">
+                        <h3 class="testimonial-title">{{$review->title}}</h3>
+                        <p class="testimonial-message">{{$review->message}}</p>
+                        </div>
                     </div>
+                    </div>
+                    @empty
+                    <div class="testimonial no-content">
+                    <div class="testimonial-content no-content">
+                        <h2>No testimonials available</h2>
+                    </div>
+                    </div>
+                    @endforelse
                 </div>
-                <button class="arrow right" id="nextTestimonial">&#10095;</button>
+                </div>
+                <script src="{{ asset('js/testimonials.js') }}"></script>
             </div>
-            <script src="{{ asset('js/testimonials.js') }}"></script>
+            <!-- Dot navigation for testimonials -->
+            <div class="testimonial-dots" id="testimonial-dots"></div>
         </section>
 
         <!-- Footer Section -->

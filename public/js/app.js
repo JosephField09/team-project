@@ -97,19 +97,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const tab = urlParams.get('tab');
 
     if (tab) {
-        setChosenAdminNav(`admin-${tab}`, false); // Don't update URL on page load
+        setChosenAdminNav(`admin-${tab}`, false); 
     } else {
-        setChosenAdminNav('admin-home', false); // Default tab without updating URL
+        setChosenAdminNav('admin-home', false); 
     }
 
     // Click events
     choices.forEach(choice => {
         choice.addEventListener('click', function () {
-            setChosenAdminNav(this.id); // Calls function and updates URL
+            setChosenAdminNav(this.id); 
         });
     });
 });
 
+// Function for Admin sidebar
 document.addEventListener("DOMContentLoaded", function () {
     const admin = document.querySelector(".admin-main");
     const hamburger = document.querySelector(".admin-hamburger");
@@ -130,7 +131,7 @@ function editCell(cell, user_id, fieldName) {
     // Get the current text content
     const currentValue = cell.textContent.trim();
 
-    // Save the original value for restoration in case of failure
+    // Save the original value in case it fails
     cell.dataset.originalValue = currentValue;
 
     // Create an input element
@@ -146,7 +147,7 @@ function editCell(cell, user_id, fieldName) {
     // Focus the input
     input.focus();
 
-    // Save the value on blur or pressing Enter
+    // Save the value on blur or when pressing Enter
     input.addEventListener('blur', () => saveCellValue(cell, input.value, user_id, fieldName));
     input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') saveCellValue(cell, input.value, user_id, fieldName);
@@ -157,7 +158,7 @@ function saveCellValue(cell, newValue, user_id, fieldName) {
     // Check if the new value is empty
     if (!newValue.trim()) {
         alert('Value cannot be empty.');
-        cell.textContent = cell.dataset.originalValue; // Restore the original value
+        cell.textContent = cell.dataset.originalValue; 
         return;
     }
 
