@@ -29,21 +29,21 @@
                             <h3>Shipping</h3>
                             <hr width="90%" size="2"></hr>
                             <h4>Address: </h4>
-                            <input id ="address "type ="text" name="address" placeholder="Enter Your Address" class="input-field" require/>
+                            <input id ="address "type ="text" name="address" placeholder="Enter Your Address" class="input-field" required/>
                             <h4>City: </h4>
-                            <input id ="city "type ="text" name="city" placeholder="Enter Your City" class="input-field" require/>
+                            <input id ="city "type ="text" name="city" placeholder="Enter Your City" class="input-field" required/>
                             <h4>Postcode: </h4>
-                            <input id ="postcode "type ="text" name="postcode" placeholder="Enter Your Postcode" class="input-field" require/>
+                            <input id ="postcode "type ="text" name="postcode" placeholder="Enter Your Postcode" class="input-field" required/>
                         </div>
                         <div class="payment">
                             <h3>Payment</h3>
                             <hr width="90%" size="2"></hr>
-                            <input id ="input "type ="text" name="cardno" placeholder="Card Number" class="input-field" require/>
-                            <input id ="input "type ="text" name="cardholder" placeholder="Name On Card" class="input-field" require/>
+                            <input id ="input "type ="text" name="cardno" placeholder="Card Number" class="input-field" required/>
+                            <input id ="input "type ="text" name="cardholder" placeholder="Name On Card" class="input-field" required/>
                             <div class="small-numbers">
-                                <input id ="input "type ="text" name="month" placeholder="MM" class="input-field" maxlength="2" require/>
-                                <input id ="input "type ="text" name="year" placeholder="YY" class="input-field" maxlength="2" require/>
-                                <input id ="input "type ="text" name="cvv" placeholder="CVV" class="input-field" maxlength="3" require/>
+                                <input id ="input "type ="text" name="month" placeholder="MM" class="input-field" maxlength="2" pattern="[0-9]{2}" required/>
+                                <input id ="input "type ="text" name="year" placeholder="YY" class="input-field" maxlength="2" pattern="[0-9]{2}"required/>
+                                <input id ="input "type ="text" name="cvv" placeholder="CVV" class="input-field" maxlength="3" pattern="[0-9]{3}"required/>
                             </div>
                         </div>
                         <button type="submit" class="place-order">Place Order</button>

@@ -336,6 +336,34 @@
         grid-template-rows: 1fr 1.5fr;
     }
 
+    .basket-main{
+        padding: 3% 5%;
+    }
+
+    .items-in-basket{
+        width: fit-content;
+        padding: 4%;
+        p{
+            display: none;
+        }
+        img{
+            width: 50px;
+        }
+        .product-details{
+            justify-content: center;
+        }
+    }
+
+    .checkout-main{
+        padding: 3% 5%;
+        width: none;
+    }
+
+    .checkout-form-section{
+        margin-top: 80px;
+        max-width: fit-content;
+    }
+
     #quick-stats {
         grid-template-columns: repeat(auto-fit, minmax(34%, 1fr));
     }

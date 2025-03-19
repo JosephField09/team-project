@@ -67,10 +67,10 @@
                                                 <td>
                                                     <div class="product-details">
                                                         <img src="{{ asset('assets/' . $item->product->image) }}" alt="{{ $item->product->name }}" class="basket-image">
-                                                        <p style="align-self:center; justify-self: left; font-size:16px; color: black;">{{ $item->product->name }}</p>
+                                                        <p style="align-self:center; justify-self: left; font-size:16px;">{{ $item->product->name }}</p>
                                                     </div>
                                                 </td>
-                                                <td style="text-transform: capitalize; color: var(--text-colour);">
+                                                <td style="text-transform: capitalize;">
                                                     {{ $item->product->size ?? 'N/A' }}
                                                 </td>
                                                 <td>
