@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/tabletstyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/responsive.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -88,11 +88,11 @@
 
         <!-- Shop Banner Section -->
         <section id="shop-banner">
-            <h2>SHOP E-SPRESSO</h2>
+            <h2 class="out-of-view">SHOP E-SPRESSO</h2>
             <div class="filter-buttons">
                 <div class="filter-group">   
                     <!-- 'Shop All' -->
-                    <div class="category-wrapper">
+                    <div class="category-wrapper out-of-view">
                         <a href="javascript:;" 
                         class="category-button"
                         data-category-id=""
@@ -106,7 +106,7 @@
                     </div>
 
                     @foreach ($categories as $category)
-                        <div class="category-wrapper">
+                        <div class="category-wrapper out-of-view">
                             <!-- Uses 'javascript:;' href -->
                             <a href="javascript:;" 
                             class="category-button"

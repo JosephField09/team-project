@@ -4,22 +4,23 @@
     <!-- Meta tags, title, CSS and JS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot Password</title>
+    <title>Reset Password</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/tabletstyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">    
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/responsive.js') }}"></script>
 </head>
+
 <body>
     <main>
         <!-- Header Section -->
         @include('layouts.navbar')
 
         <!-- Register form and php section -->
-        <section class="main">
-            <div class="form-box" style="padding: 40px 40px; width:fit-content; max-width:25%">
+        <section id="forgot" class="main">
+            <div class="form-box">
                 <p style="color:var(--text-colour); font-size: 13px;">Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.</p>
                     <div class="form-inner">
                         <form method="POST" action="{{ route('password.email') }}">
@@ -33,8 +34,8 @@
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
-                            <x-primary-button style="background-color: var(--secondary-colour); color:black; justify-items: center;">
-                                {{ __('Email Password Reset Link') }}
+                            <x-primary-button class="submit-btn" style="background-color: var(--secondary-colour); color:black; justify-items: center;">
+                                {{ __('Forgot Password') }}
                             </x-primary-button>
                         </div>
                      </form>
@@ -112,13 +113,3 @@
         </section>
     </main>
 </body>
-
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-    </div>
-
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-</x-guest-layout>

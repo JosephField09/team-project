@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/tabletstyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/responsive.js') }}"></script>
 </head>
@@ -45,7 +45,6 @@
                         <img class="fourth out-of-view" src= "{{ asset('assets/check-mark.png') }}"></img>
                         <h4 class="fourth out-of-view">High-quality, eco-friendly packaging</h4>
                     </div>
-                    <a class="out-of-view" href="{{route('about-us')}}"><h4>Read More</h4></a>
                 </div>
             </div>
 
@@ -90,16 +89,17 @@
             <div class="ourmission">
                 <div class="aboutustext">
                         <h2 class="out-of-view">Our Mission</h2>
-                        <p class="out-of-view">At E-Spresso, we strive to create a warm and inviting space where coffee lovers can gather, connect, and share meaningful moments 
-                            and enjoy the finest brews. We are committed to delivering exceptional experiences.
+                        <p class="out-of-view">At E-Spresso, our mission is to redefine the coffee experience by blending tradition with modern craftsmanship. 
+                            We are driven by a passion for excellence, creating a space where every cup tells a story. 
+                            Our focus is not just on coffee but on the moments, the people, and the culture it inspires.
                             
                         </p>
                         <div class="missions">
                             <ul>
-                                <li class="out-of-view"><p><span class="missionheader">Quality First:</span> We source the best beans from around the world to ensure every sip is a delight</p></li>
-                                <li class="out-of-view"><p><span class="missionheader">Sustainability:</span> We priotitise eco-friendly practices to support a healthier planet.</p></li>
-                                <li class="out-of-view"><p><span class="missionheader">Community Connection:</span> We aim to be more than just a coffee shop by fostering meaningful relationships with our customers</p></li>
-                                <li class="out-of-view"><p><span class="missionheader">Continuous Innovation:</span> From classic blends to unique creations, we strive to keep our menu exciting and fresh.</p></li>
+                                <li class="out-of-view"><p><span class="missionheader">Authenticity: </span>Honouring the rich heritage of coffee by preserving time-honored brewing techniques while embracing innovation</p></li>
+                                <li class="out-of-view"><p><span class="missionheader">Well-being: </span>Creating a space that promotes relaxation, mindfulness, and enjoyment - one sip at a time</p></li>
+                                <li class="out-of-view"><p><span class="missionheader">Cultural Appreciation: </span>Celebrating the global diversity of coffee, bringing flavours and traditions from around the world to our customers</p></li>
+                                <li class="out-of-view"><p><span class="missionheader">Exceptional Service: </span> Beyond great coffee, we are committed to providing warmth, hospitality, and a personalized experience for every guest</p></li>
                             </ul>
                         </div>
                 </div>
@@ -121,28 +121,28 @@
                                 <i class='bx bxs-universal-access out-of-view' ></i>
                             </div>
                             <p><span class="missionheader">Connecting People</span></p>
-                            <p>Bringing communities together through coffee.</p>
+                            <p>Aiming to be more than a coffee shop by creating meaningful relationships with our customers</p>
                         </div>
                         <div class="sustainability out-of-view">
                             <div class="i-container">
                                 <i class='bx bxs-leaf out-of-view'></i>
                             </div>
                             <p><span class="missionheader">Sustainability</span></p>
-                            <p>Prioritising eco-friendly practices for a better planet.</p>
+                            <p>Prioritising eco-friendly practices to support a better planet.</p>
                         </div>
                         <div class="quality out-of-view">
                             <div class="i-container">
                                 <i class='bx bxs-coffee-bean out-of-view'></i>
                             </div>
                             <p><span class="missionheader">Quality</span></p>
-                            <p>Serving the finest coffee with care and precision.</p>
+                            <p>Sourcing the best beans from around the world to serve the finest coffee with care and precision</p>
                         </div>
                         <div class="innovation out-of-view">
                             <div class="i-container">
                                 <i class='bx bxs-brain out-of-view' ></i>
                             </div>
                             <p><span class="missionheader">Innovation</span></p>
-                            <p>Continuously evolving to offer unique experiences</p>
+                            <p>From classic blends to unique creations, we aim to continue evolving to offer unique experiences</p>
                         </div>
                     </div> 
                     <a class="contact-us out-of-view" href="{{ route('products') }}"><h4>Discover Our Products</h4></a>

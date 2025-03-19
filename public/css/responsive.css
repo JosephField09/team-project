@@ -1,4 +1,11 @@
 @media screen and (min-width: 1120px ){
+    #forgot{
+        padding: 0 20%;
+        .form-box{
+            height: 40%;
+            align-self: center;
+        }
+    }
     .form-box{
         width: 630px;
     }
@@ -533,6 +540,9 @@
         padding-bottom: 5%;
         transform: none;
     }
+    #products-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }   
     .ourvision {
         grid-template-rows: 1fr 2fr;
     }

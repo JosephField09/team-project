@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/tabletstyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/responsive.js') }}"></script>
     <script>

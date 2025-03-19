@@ -1374,7 +1374,7 @@ body.dark-mode .ourmission{
 
 /* Styling for individual missions on about us */
 .missions{
-  padding-top: 10%;
+  padding-top: 5%;
   display: flex;
   flex-direction: column;
   max-width: 600px;
@@ -2143,6 +2143,12 @@ body.dark-mode #shop-banner{
 #shop-banner h2{
   letter-spacing: 1px;
   font-size: 30px;
+  transform: translateY(10%);
+}
+
+/* Styling for the shop banner */
+#shop-banner h2.in-view{
+  transform: none;
 }
 
 /* Styling for the filter buttons */
@@ -2192,6 +2198,32 @@ body.dark-mode .filter-buttons{
   text-align: center;
   font-size: 15;
   font-weight: bold;
+  transform: translateX(-15%);
+}
+
+.category-wrapper.in-view{
+  transform: none;
+}
+.category-wrapper.in-view:nth-child(1){
+  transition-delay: 200ms;
+}
+.category-wrapper.in-view:nth-child(2){
+  transition-delay: 300ms;
+}
+.category-wrapper.in-view:nth-child(2){
+  transition-delay: 400ms;
+}
+.category-wrapper.in-view:nth-child(3){
+  transition-delay: 500ms;
+}
+.category-wrapper.in-view:nth-child(4){
+  transition-delay: 600ms;
+}
+.category-wrapper.in-view:nth-child(5){
+  transition-delay: 700ms;
+}
+.category-wrapper.in-view:nth-child(6){
+  transition-delay: 800ms;
 }
 
 /* Styling for searching the sort filter */
