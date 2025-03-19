@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setDarkMode(!isToggled);
     });
 
+    // Same listening but for the toggle button in the hamburger menu
     document.getElementById('hb-toggleMode').addEventListener('click', () => {
         const isToggled = body.classList.contains('dark-mode');
         setDarkMode(!isToggled);
