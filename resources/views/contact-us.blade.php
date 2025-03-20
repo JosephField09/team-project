@@ -113,7 +113,7 @@
                     <div id="qa">
                         <ul id="accordion">
                             <li>
-                                <input type="radio" name="accordion" id="first">
+                                <input type="checkbox" name="accordion" id="first">
                                 <label for="first">How should I store my coffee beans?<span><i class='bx bx-chevron-down'></i></span></label>
                                 <div class="qa-content">
                                     <p>Store them in an airtight container in a cool, dark place. Avoid direct sunlight, heat, and humidity, as these can degrade the quality of the beans. 
@@ -121,7 +121,7 @@
                                 </div>
                             </li>
                             <li>
-                                <input type="radio" name="accordion" id="second" >
+                                <input type="checkbox" name="accordion" id="second" >
                                 <label for="second">What are your shipping and delivery options?<span><i class='bx bx-chevron-down'></i></span></label>
                                 <div class="qa-content">
                                     <p>We offer free shipping on all orders, making it easy to get your favorite coffee delivered straight to your door. Our standard delivery time is approximately three business days, so you can expect your order to arrive promptly. 
@@ -129,7 +129,7 @@
                                 </div>
                             </li>
                             <li>
-                                <input type="radio" name="accordion" id="third" >
+                                <input type="checkbox" name="accordion" id="third" >
                                 <label for="third">Do you offer a way to recurr orders?<span><i class='bx bx-chevron-down'></i></span></label>
                                 <div class="qa-content">
                                     <p>Yes! We offer a subscription service that allows you to receive your favorite coffee on a recurring basis without the hassle of reordering. 
@@ -138,7 +138,7 @@
                                 </div>
                             </li>
                             <li>
-                                <input type="radio" name="accordion" id="fourth" >
+                                <input type="checkbox" name="accordion" id="fourth" >
                                 <label for="fourth">What is your return policy?<span><i class='bx bx-chevron-down'></i></span></label>
                                 <div class="qa-content">
                                     <p>We want you to be completely satisfied with your order. If for any reason you're not happy with your purchase, you can return the entire order for a full refund. 

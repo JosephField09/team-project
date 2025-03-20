@@ -1650,7 +1650,6 @@ body.dark-mode #customer-testimonials{
 .testimonial-content {
   background-color: white;
   width: 500px;
-  height: 250px;
   margin: 0 auto;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   text-align: left;
@@ -2020,11 +2019,11 @@ body.dark-mode #contact-us-heading{
   transition: transform 0.5s; 
 }
 
-#accordion li input[type="radio"]:checked ~ label span {
+#accordion li input[type="checkbox"]:checked ~ label span {
   transform: rotate(180deg);
 }
 
-#accordion li input[type="radio"] {
+#accordion li input[type="checkbox"] {
   display: none;
 }
 #accordion .qa-content{
@@ -2032,10 +2031,10 @@ body.dark-mode #contact-us-heading{
   line-height: 26px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s;
+  transition: max-height 1s;
 }
-#accordion li input[type="radio"]:checked ~ .qa-content {
-  max-height: 200px;
+#accordion li input[type="checkbox"]:checked ~ .qa-content {
+  max-height: 300px;
 }
 
 /* Styling for the products */

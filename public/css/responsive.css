@@ -413,6 +413,12 @@
         padding: 20% 14.25% 15% 14.25%;;
     }
 }
+@media (min-width: 700px) {
+    .testimonial-content{
+        height: 250px;
+    }
+}
+
 @media (max-width: 700px) {
     .testimonial-content{
         width: 200px;
@@ -424,6 +430,9 @@
             font-size: 12px;
             margin-bottom: 10%;
         }
+    }
+    .no-content{
+        padding: 10%;
     }
     .testimonial-user-info{
         align-content: center;
