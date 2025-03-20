@@ -100,6 +100,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/profile.update', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('/subscribe', [ProfileController::class, 'subscribe'])->name('subscribe');
     Route::post('/unsubscribe', [ProfileController::class, 'unsubscribe'])->name('unsubscribe');
+    Route::patch('/password', [PasswordController::class, 'update'])->name('password.update');
+
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
