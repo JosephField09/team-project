@@ -3456,7 +3456,7 @@ body.dark-mode .product-reviews{
   word-wrap: break-word;  
   overflow-wrap: break-word;  
   white-space: normal;
-  height: 150px;
+  height: -webkit-fill-available;
   min-height: fit-content;
 }
 
