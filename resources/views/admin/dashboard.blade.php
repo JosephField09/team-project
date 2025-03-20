@@ -20,7 +20,7 @@
         <section class="admin-main"> 
             <div id="admin-nav-container">
                 <div id="admin-nav">
-                    <div class="admin-logo"><a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a></div>
+                    <div class="admin-logo"><a><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a></div>
                     <div class="admin-user">
                         <i style="color: white; font-size: 32px; align-content: center;" class='bx bx-user'></i>
                         <div class="name">
