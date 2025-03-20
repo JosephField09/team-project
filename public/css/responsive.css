@@ -1,3 +1,11 @@
+@media screen and (max-width: 1300px ){
+    #admin-allUsersContent,
+    #admin-allProductsContent{
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: none;
+    }
+}
+
 @media screen and (min-width: 1120px ){
     #forgot{
         padding: 0 20%;
@@ -166,11 +174,6 @@
     .admin-logo{
         opacity: 0;
     }
-    #admin-allUsersContent,
-    #admin-allProductsContent{
-        grid-template-columns: none;
-        grid-template-rows: 1fr 1fr;
-    }
     .products{
         margin-left: 0;
         .form-row{
@@ -284,15 +287,19 @@
         grid-template-columns: none;
     }
     #coffee-fix  #coffee-text {
+        display: grid;
         justify-items: center;
         text-align: center;
+        justify-content: center;
+        justify-self: center;
     }
     #bean-bags{
         margin-top: 10%;
         margin-left: 0;
     }
     #bean-bags img{
-        justify-self: anchor-center;
+        justify-self: center;
+    
     }
     .ourstory,
     .ourmission{

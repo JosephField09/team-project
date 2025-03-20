@@ -819,6 +819,7 @@ body.dark-mode .form-box{
   border: none;
   margin: 10px;
   cursor: pointer;
+  color:var(--primary-colour);
 }
 
 /* Styling for submit button when hovering */
@@ -1752,6 +1753,8 @@ body.dark-mode #contact-us-container{
   width: 100%;
   text-align: center;
   padding-top: 70px;
+display:grid;
+    justify-content:center;
   p#contact-desc{
     font-size: 1em;
     margin: 2% 0 5% 0;
@@ -1942,6 +1945,7 @@ body.dark-mode #contact-us-heading{
   border-radius: 4px;
   background: var(--secondary-colour);
   border: none;
+  color:var(--primary-colour);
 }
 
 /* Styling for our submit form */
@@ -2374,7 +2378,15 @@ body.dark-mode .filter-dropdown{
   background-color: var(--light-bg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: fit-content;
-  min-height: -webkit-fill-available;
+  display: grid;
+  flex-direction: column;
+  align-items: center; /* Centers all content */
+  justify-content: space-between; /* Distributes space properly */
+  max-height: 450px; /* Adjust as needed */
+  text-align: center; /* Ensures text is properly aligned */
+  overflow: hidden; /* Prevents content overflow */
+}
+
 }
 
 /* Dark mode for product card */
@@ -2392,9 +2404,10 @@ body.dark-mode .product-card {
   max-width: 100%;
   border-radius: 8px;
   margin-bottom: 10px;
-  height: 20%;
   max-height: 113px;
   justify-self: center;
+  justify-content: center;
+  justify-items: center;
   display: grid;
   filter: drop-shadow(7px 13px 10px gray);
 }
@@ -2675,7 +2688,7 @@ body.dark-mode #admin-nav{
   width: 100%;
   padding: 2%;
   background: var(--light-bg);
-  height: 91%;
+  height: 90.5%;
 }
 .admin-titles{
   width: 100%;
@@ -4065,6 +4078,7 @@ body.dark-mode #coffee-fix{
 #coffee-fix{
   background-color: var(--dark-bg);
   padding: 5% 14.25%;
+  display:grid;
   #coffee-fix-container{
     display: grid;
     grid-template-columns: 3fr 2fr;
@@ -4116,7 +4130,7 @@ body.dark-mode #coffee-fix{
   position: relative;
   width: 100%;
   height: 100%;
-  display: flex;
+  display: grid;
   margin-left: 49%;
 }
 
