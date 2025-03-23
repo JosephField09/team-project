@@ -50,6 +50,7 @@
 
                         <button type="submit" class="submit-btn">Register</button>
                     </form>
+                    <!-- Option if user is already an admin -->
                     <p>Already an admin? <a href="{{ route('login') }}">Login here</a></p>
                 </div>
             </div>

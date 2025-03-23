@@ -48,6 +48,7 @@
                     </form>
                 </div>
             @else
+                <!-- If user is not logged in container -->
                 <div class="cant-post-blog">
                     <h3>You must be logged in to create a post.</h3>
                     <a class="login" href="{{ route('login') }}">Login</a>

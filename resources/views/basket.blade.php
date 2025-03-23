@@ -22,7 +22,7 @@
         <section id="basket">
             <div class="basket-main">
                 <div class="basket-and-checkout">
-                    <!-- When the basket is empty -->
+                    <!-- If the basket is empty -->
                     @if (empty($basket_Items) || $basket_Items->isEmpty())
                         <div class="empty-basket">
                             <h1>Basket</h1>
@@ -45,11 +45,12 @@
                             <button class="btn btn-primary" @if(empty($basket_Items) || $basket_Items->isEmpty()) disabled @endif>Checkout</button>
                         </div>
                     @else
-                        <!-- Basket Table -->
+                         <!-- If there are items in teh basket -->
                         <div class="items-in-basket">
                             <div class="basket-table">
                                 <h1>Basket</h1>
                                 <hr width="90%" size="2"></hr>
+                                <!-- Basket Table -->
                                 <table class="basket">
                                     <thead style=" border: none;border-bottom: 1px solid lightgray">
                                         <tr>

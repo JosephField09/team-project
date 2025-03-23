@@ -18,13 +18,14 @@
        <!-- Header Section -->
        @include('layouts.navbar')
 
-        <!-- Checkout Main Section -->
+        <!-- Checkout Section -->
         <section id="checkout">
             <div class="checkout-main">
                 <div class="checkout-form-section">
                     <h2>Checkout</h2>
                     <form action="{{ route('checkout.add') }}" method="POST" id ="checkout-Form">
                         @csrf
+                        <!-- Shipping details section -->
                         <div class="shipping">
                             <h3>Shipping</h3>
                             <hr width="90%" size="2"></hr>
@@ -35,6 +36,7 @@
                             <h4>Postcode: </h4>
                             <input id ="postcode "type ="text" name="postcode" placeholder="Enter Your Postcode" class="input-field" required/>
                         </div>
+                        <!-- Payment details section -->
                         <div class="payment">
                             <h3>Payment</h3>
                             <hr width="90%" size="2"></hr>

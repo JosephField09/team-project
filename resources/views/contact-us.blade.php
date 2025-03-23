@@ -20,24 +20,28 @@
 
         <!-- Contact Us Section -->
         <div id="contact-us-container">
+            <!-- Contact start container-->
             <div id="contact-start">
                 <h1 class="out-of-view">Contact Us</h1>
                 <p id="contact-desc" class="out-of-view">
                     <strong>Got a question, comment, or just want to chat about all things coffee? We'd love to hear from you! Reach out anytime, and our friendly team will get back to you as soon as possible</strong>
                 </p>
                 <div id="contact-cards">
+                    <!-- Contact card 1 -->
                     <div class="contact-card out-of-view">
                         <i class='bx bx-envelope'></i>
                         <h2>Email Support</h2>
                         <p class="explain">Have a question about our coffee selections or need assistance with your order? Send us an email, and our dedicated team will respond promptly</p>
                         <p class="detail">espressoadmin@gmail.com</p>
                     </div>
+                    <!-- Contact card 2 -->
                     <div class="contact-card out-of-view">
                         <i class='bx bx-phone'></i>
                         <h2>Call Us</h2>
                         <p class="explain">Prefer to chat? Give us a call and we'll happily guide you through our latest brews or answer any questions</p>
                         <p class="detail">+44 1234 567890</p>
                     </div>
+                    <!-- Contact card 3 -->
                     <div class="contact-card out-of-view">
                         <i class='bx bx-buildings'></i>
                         <h2>Visit our Office</h2>
@@ -46,6 +50,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Contact middle container-->
             <div id="contact-middle">
                 <div class="contact-us-form">
                     <h1 id="contact-us-heading">Get in Touch</h1>
@@ -86,6 +91,7 @@
                     <script src="{{ asset('js/contact-us.js') }}" ></script>
                 </div>
             </div>
+            <!-- FAQ container-->
             <div id="faq">
                 <h2>FAQ</h2>
                 <div class="faq-desc-qa">

@@ -1,3 +1,4 @@
+<!-- Complete navbar -->
 <section id="header" style="width: 100vw; position: fixed; z-index: 1000;">
     <nav id="main">
         <script src="{{ asset('js/dark-mode.js') }}"></script>

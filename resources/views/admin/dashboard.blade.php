@@ -20,6 +20,7 @@
         <section class="admin-main"> 
             <div id="admin-nav-container">
                 <div id="admin-nav">
+                    <!-- Admin Logo and User details -->
                     <div class="admin-logo"><a><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a></div>
                     <div class="admin-user">
                         <i style="color: white; font-size: 32px; align-content: center;" class='bx bx-user'></i>
@@ -62,7 +63,8 @@
                         </form>
                     </div>
                 </div>
-            </div>            
+            </div>          
+            <!-- All admin main content container -->  
             <div class="admin-all">
                 <div class="admin-horizontal-nav">
                     <div class="admin-hamburger">
@@ -393,8 +395,9 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Categories container -->
                         <div id="admin-allCategoriesContent" class="admin-section" style="display: none;">
-                            <!-- Categories section -->
+                            <!-- Add categories section -->
                             <div class="categories">
                                 <h4>Add a Category</h4>
                                 <form action="{{ url('category.add') }}" method="post">
@@ -405,6 +408,7 @@
                                     </div>
                                 </form>
 
+                                <!-- Add categories + edit and delete section with table -->
                                 <table class="table" style="top: 15%; padding: 2%; width:100%; text-align:center;">
                                     <thead>
                                         <tr style="background-color: var(--secondary-colour); color: var(--primary-colour);">
@@ -452,7 +456,7 @@
                         </div>
                         <!-- Categories and Products container -->
                         <div id="admin-allProductsContent" class="admin-section" style="display: none;">
-                            <!-- Products section -->
+                            <!-- Add products section -->
                             <div class="products">
                                 <h4>Add a Product</h4>
                                 <form action="{{ route('add_product') }}" method="post" enctype="multipart/form-data">
@@ -524,6 +528,7 @@
                                     </div>
                                 </form>
                             </div>
+                            <!-- Edit products section-->
                             <div class="edit-products">
                                 <h4>Edit Products</h4>
                                 <form action="{{url('search')}}" method="get" style="width: 60%">

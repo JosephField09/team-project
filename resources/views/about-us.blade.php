@@ -48,12 +48,13 @@
                 </div>
             </div>
 
+            <!-- Our history section-->
             <div id="our-history"> 
                 <h2 class="header">Our History</h2>
                 <div class="our-history-container">
-                    <!-- Add `out-of-view` here -->
                     <div class="timeline" style="--items: 3">
                         <ul class="out-of-view">
+                            <!-- Timeline component 1 -->
                             <li class="out-of-view" style="--index: 1">
                                 <h3 class="first out-of-view">2020</h3>
                                 <h2 class="first out-of-view">From Quarantine to Caffeine</h2>
@@ -62,6 +63,7 @@
                                 E-spresso was born to keep coffee lovers fueled at home. 
                                 </p>
                             </li>
+                            <!-- Timeline component 2 -->
                             <li class="out-of-view" style="--index: 2">
                                 <h3 class="second out-of-view">2023</h3>
                                 <h2 class="second out-of-view">Brewing Success</h2>
@@ -70,6 +72,7 @@
                                 What started as a lockdown necessity became a trusted favorite, leading to soaring demand, new product offerings, and expanded delivery networks.
                                 </p>
                             </li>
+                            <!-- Timeline component 3 -->
                             <li class="out-of-view" style="--index: 3">
                                 <h3 class="third out-of-view">2025</h3>
                                 <h2 class="third out-of-view">A Latte to Come</h2>
@@ -156,34 +159,39 @@
                 <h3>Testimonials</h3>
                 <h2>What Our Customers Say About Us</h2>
             </div>
+            <!-- Testimonials carousel -->
             <div class="testimonials-carousel">
                 <div class="testimonials-track-wrapper">
                 <div class="testimonials-track" id="testimonials-track">
                     @forelse($reviews as $review)
+                    <!-- Testimonial -->
                     <div class="testimonial">
                     <div class="testimonial-content">
+                        <!-- Testimonial users name, rating and generic picture -->
                         <div class="testimonial-user-info">
-                        <div class="testimonial-pfp">
-                            <i class='bx bx-user-circle'></i>
+                            <div class="testimonial-pfp">
+                                <i class='bx bx-user-circle'></i>
+                            </div>
+                            <div class="testimonial-details">
+                                <h3 class="testimonial-name">{{$review->user->firstName}} {{$review->user->lastName}}</h3>
+                                <h4 class="testimonial-rating">
+                                {!! str_repeat("<i class='bx bxs-star' style='color:#fecc42'></i>", $review->rating) !!}
+                                </h4>
+                            </div>
                         </div>
-                        <div class="testimonial-details">
-                            <h3 class="testimonial-name">{{$review->user->firstName}} {{$review->user->lastName}}</h3>
-                            <h4 class="testimonial-rating">
-                            {!! str_repeat("<i class='bx bxs-star' style='color:#fecc42'></i>", $review->rating) !!}
-                            </h4>
-                        </div>
-                        </div>
+                        <!-- Testimonial title and message -->
                         <div class="testimonial-main">
-                        <h3 class="testimonial-title">{{$review->title}}</h3>
-                        <p class="testimonial-message">{{$review->message}}</p>
+                            <h3 class="testimonial-title">{{$review->title}}</h3>
+                            <p class="testimonial-message">{{$review->message}}</p>
                         </div>
                     </div>
                     </div>
                     @empty
+                    <!-- If there are no testimonials -->
                     <div class="testimonial no-content">
-                    <div class="testimonial-content no-content">
-                        <h2>No testimonials available</h2>
-                    </div>
+                        <div class="testimonial-content no-content">
+                            <h2>No testimonials available</h2>
+                        </div>
                     </div>
                     @endforelse
                 </div>

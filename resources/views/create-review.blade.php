@@ -66,6 +66,7 @@
 
         <!-- Create a Review Section -->
         <section>
+            <!-- If user is logged in-->
             @auth
                 <div class="create-review">
                     <form class="review-form" action="{{ route('reviews.add', $id) }}" method="POST">
@@ -76,6 +77,7 @@
                             <h3>Write A Review for {{ \App\Models\Product::find($id)->name }}</h3>
                         @endif
 
+                        <!-- Stars Section -->
                         <div class="stars">
                             <input type="hidden" name="rating" id="rating" value="0">
                             <i class="bx bxs-star star" data-value="1"></i>
@@ -85,9 +87,11 @@
                             <i class="bx bxs-star star" data-value="5"></i>
                         </div>
 
+                        <!-- Review title section -->
                         <div class="review-title">
                             <input type="text" class="input-field" name="title" id="title" placeholder="Enter title" required>
                         </div>
+                        <!-- Review message section -->
                         <div class="review-message">
                             <textarea name="message" class="input-field" id="message" rows="7" placeholder="Enter message" required></textarea>
                         </div>
@@ -95,6 +99,7 @@
                     </form>
                 </div>
             @else
+                <!-- If user is not logged in-->
                 <div class="cant-post-review">
                     <h3>You must be logged in to create a review.</h3>
                     <a class="login" href="{{ route('login') }}">Login</a>
