@@ -1,6 +1,6 @@
 # Group 11 Team Project - E-spresso
 
-E-spresso is a coffee shop website that sells coffee shop based products like drinks, beans, pods as well as pastries and sweet treats! It currently has working pages for the home, products, product details, about us, login/sign up, basket and working checkout and dashboard for both users and admins.
+E-spresso is a coffee shop website that sells coffee shop based products like drinks, beans, pods as well as pastries and sweet treats! It currently has working pages for the home, products, product details, about us, contact us, blog, review, login/sign up, basket and working checkout and dashboard for both users and admins.
 
 ## How to use
 
@@ -24,13 +24,17 @@ E-spresso is a coffee shop website that sells coffee shop based products like dr
 - Add items to basket when clicking on an item details
 - Edit items in your basket on the basket page
 - Checkout your cart to create an order
-- Sign up and create an account
+- Sign up and create an account 
 - Login with your account 
+- Forgot password option if you forget
 - Add a blog to the blogs page
+- Review a product
+- Review the website
 - A toggle button to switch between light and dark mode
+- A currency selector to swap between GBP, EUR and USD
 - User dashboard to view orders and change personal information
 - Option in user dashboard to subscribe 
-- Admin dashboard to view all users and change personal information
+- Admin dashboard to view all users, all orders, add/remove products, view sales stats and change personal information
 
 ## Pages available
 
@@ -38,7 +42,9 @@ E-spresso is a coffee shop website that sells coffee shop based products like dr
 - Products
 - Product details
 - About us
+- Contact us
 - Blogs
+- Make a review
 - Basket
 - Checkout
 - Sign up

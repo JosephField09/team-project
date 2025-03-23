@@ -22,6 +22,7 @@
     }
 }
 
+/* Styling for the items when the screen goes below 1120px width */
 @media screen and (max-width: 1120px ){
     .navbar-middle{
         display: none;
@@ -217,6 +218,7 @@
     }
 }
 
+/* Styling for the items when the screen goes below 1000px width */
 @media screen and (max-width: 1000px ){
     .search-sort-filter {
         display: grid;
@@ -278,6 +280,8 @@
         }
     }
 }
+
+/* Styling for the items when the screen goes below 900px width */
 @media screen and (max-width: 900px ){
     #coffee-fix {
         padding: 12% 14.25%;
@@ -378,6 +382,8 @@
         padding: 5% 15% 15% 15%;
     }
 }
+
+/* Styling for the items when the screen goes below 800px width */
 @media screen and (max-width: 800px ){
     #products-grid{
         grid-template-columns: repeat(2, 1fr);
@@ -426,6 +432,7 @@
     }
 }
 
+/* Styling for the items when the screen goes below 700px width */
 @media (max-width: 700px) {
     .testimonial-content{
         width: 200px;
@@ -450,6 +457,7 @@
     }
 }
 
+/* Styling for the items when the screen goes below 568px width */
 @media (max-width: 568px) {
 
     .review-user-info{
@@ -551,6 +559,7 @@
     }
 }
 
+/* Styling for the items when the screen goes below 460px width */
 @media screen and (max-width: 460px ){
     .home-cta-buttons{
         display: grid;
