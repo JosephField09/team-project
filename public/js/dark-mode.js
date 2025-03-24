@@ -1,23 +1,28 @@
+document.addEventListener("DOMContentLoaded", () => {
 // This gets the button from the document as well as the body section
-const toggle = document.getElementById('toggleMode');
-const body = document.body;
+    const body = document.body;
 
-// Listens out for when the button is clicked
-toggle.addEventListener('click', () => {
-    // Removes the dark mode from the items
-    if (body.classList.contains('dark-mode')){ 
-        body.classList.remove('dark-mode'); 
-        localStorage.setItem('theme','light');
-        location.reload();
-    } else {
-        // Adds the dark mode to the items
-        main.classList.add('dark-mode');
-        localStorage.setItem('theme','dark');
-        location.reload();
+    // Toggles whether darkmode is toggled on or not
+    function setDarkMode(enabled){
+        body.classList.toggle('dark-mode');
+        localStorage.setItem('toggled', enabled);
     }
+
+    // Checks what mode is saved (true means dark mode )
+    if (localStorage.getItem('toggled') === 'true') {
+        setDarkMode(true);
+    }
+
+    // Listens out for when the button is clicked
+    document.getElementById('toggleMode').addEventListener('click', () => {
+        const isToggled = body.classList.contains('dark-mode');
+        setDarkMode(!isToggled);
+    });
+
+    // Same listening but for the toggle button in the hamburger menu
+    document.getElementById('hb-toggleMode').addEventListener('click', () => {
+        const isToggled = body.classList.contains('dark-mode');
+        setDarkMode(!isToggled);
+    });
 });
 
-// Adds dark mode if the theme is set to dark
-if (localStorage.getItem('theme') === 'dark'){
-    body.classList.add('dark-mode');
-}

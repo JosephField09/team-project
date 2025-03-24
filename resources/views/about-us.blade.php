@@ -8,181 +8,199 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/responsive.js') }}"></script>
 </head>
 
 <body>
     <main>
         <!-- Header Section -->
-        <section id="header">
-            <nav id="main">
-                <!-- Left navbar section -->
-                <div class="navbar-left">
-                    <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
-               </div>
-               <!-- Middle navbar section -->
-                <div class="navbar-middle">
-                    <a class="middle" href="{{ route('home') }}">Home</a>
-                    <a class="middle" href="{{ route('products') }}">Products</a>
-                    <a class="middle option-selected" href="{{ route('about-us') }}">About Us</a>
-                    <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
-                </div>
-                <!-- Right navbar section -->
-                <div class="navbar-right">
-                    <!-- If user is logged in -->
-                    @if(Auth::check())
-                        <!-- If user is admin -->
-                        @if(Auth::user()->userType === 'admin')
-                            <a class="account" href="{{ route('admin.dashboard') }}">
-                                <i class='bx bx-user'></i>
-                            </a>
-                            <a class="basket" href="{{ route('basket') }}">
-                                <i class='bx bx-basket'></i>
-                                @if($basketCount > 0)
-                                    <span class="basket-count">{{ $basketCount }}</span>
-                                @endif
-                            </a>
-                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                            <script src="{{ asset('js/dark-mode.js') }}"></script>
-                        @elseif(Auth::user()->userType === 'user')
-                            <a class="account" href="{{ route('dashboard') }}">
-                                <i class='bx bx-user'></i>
-                            </a>
-                            <a class="basket" href="{{ route('basket') }}">
-                                <i class='bx bx-basket'></i>
-                                @if($basketCount > 0)
-                                    <span class="basket-count">{{ $basketCount }}</span>
-                                @endif
-                            </a>
-                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                            <script src="{{ asset('js/dark-mode.js') }}"></script>
-                        @endif
-                    <!-- If user is not logged in -->
-                    @else
-                        <a class="login" href="{{ route('login') }}">Login</a>
-                        <p>|</p>
-                        <a class="basket" href="{{ route('basket') }}">
-                            <i class='bx bx-basket'></i>
-                        </a>
-                        <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                        <script src="{{ asset('js/dark-mode.js') }}"></script>
-                    @endif
-                </div>
-            </nav>
-        </section>
+        @include('layouts.navbar')
 
         <!-- Image Block Sections -->
-        <section id="ImageBlocks">
+        <section id="ImageBlocks" style="padding: 10% 14.25% 5% 14.25%;">
             <!-- Our story Section -->
             <div class="ourstory">
-                <img src="{{ asset('assets/AdobeStock_835212991.jpeg') }}" alt="Woman picking coffee beans" 
-                class="bigimage" style="float: left;"></img>
+                <div class="side-img out-of-view">
+                    <img src= "{{ asset('assets/AdobeStock_835212991.jpeg') }}" alt="Coffee Beans Drying"></img>
+                </div>
                 <div class="aboutustext">
-                    <h3>About Us</h3>
-                    <h1 class="header">Our Story, Your Coffee Experience</h1>
-                    <p>At E-Spresso, we believe in more than just coffee - we create moments. From our handpicked beans to the perfect brew,
-                        each cup is crafted with love and care. Whether you're here for a quick pick-me-up or to enjoy a relaxing moment, we're
-                        dedicated to making every sip special. Join us in celebrating the art of coffee, brewed to perfection just for you.
-                    </p>
+                    <h3 class="out-of-view">About Us</h3>
+                    <h2 class="header out-of-view">Our Story, Your Coffee Experience</h2>
+                    <p class="out-of-view">Our team is composed of passionate individuals who bring diverse skills and experiences to the table, allowing us to exceed in energising you for the day ahead. We believe in sustainability and ethical practices, ensuring that our operations not only benefit our customers but also contribute positively to the community and the environment.</p>
                     <div class="promise">
-                        <img src="{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
-                        <h4>Single-origin coffee beans</h4>
+                        <img style="width: 10%;" class="first out-of-view" src= "{{ asset('assets/check-mark.png') }}"></img>
+                        <h4 class="first out-of-view">Single-origin coffee beans</h4>
                     </div>
                     <div class="promise">
-                        <img src="{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
-                        <h4>Expertly roasted for optimal flavor</h4>
+                        <img class="second out-of-view" src= "{{ asset('assets/check-mark.png') }}"></img>
+                        <h4 class="second out-of-view">Expertly roasted for optimal flavour</h4>
                     </div>
                     <div class="promise">
-                        <img src="{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
-                        <h4>Wide range of blends for every taste</h4>
+                        <img class="third out-of-view" src= "{{ asset('assets/check-mark.png') }}"></img>
+                        <h4 class="third out-of-view">Wide range of blends for every taste</h4>
                     </div>
-                    <div class="promise">
-                        <img src="{{ asset('assets/check-mark.png') }}" height="15px" width="15px"></img>
-                        <h4>High-quality, eco-friendly packaging</h4>
+                    <div class="promise"class="out-of-view">
+                        <img class="fourth out-of-view" src= "{{ asset('assets/check-mark.png') }}"></img>
+                        <h4 class="fourth out-of-view">High-quality, eco-friendly packaging</h4>
                     </div>
-                    <a class="contact-us"href="#contact-us"><h4>Contact us</h4></a>
                 </div>
             </div>
+
+            <!-- Our history section-->
+            <div id="our-history"> 
+                <h2 class="header">Our History</h2>
+                <div class="our-history-container">
+                    <div class="timeline" style="--items: 3">
+                        <ul class="out-of-view">
+                            <!-- Timeline component 1 -->
+                            <li class="out-of-view" style="--index: 1">
+                                <h3 class="first out-of-view">2020</h3>
+                                <h2 class="first out-of-view">From Quarantine to Caffeine</h2>
+                                <p class="first out-of-view">
+                                In the midst of lockdown, when stepping outside was nearly impossible where coffee cravings collided with closed shops and stay-at-home orders, 
+                                E-spresso was born to keep coffee lovers fueled at home. 
+                                </p>
+                            </li>
+                            <!-- Timeline component 2 -->
+                            <li class="out-of-view" style="--index: 2">
+                                <h3 class="second out-of-view">2023</h3>
+                                <h2 class="second out-of-view">Brewing Success</h2>
+                                <p class="second out-of-view">
+                                As the world returned to pre-covid ways, our commitment to delivering fresh, ethically sourced coffee right to your door only grew stronger. 
+                                What started as a lockdown necessity became a trusted favorite, leading to soaring demand, new product offerings, and expanded delivery networks.
+                                </p>
+                            </li>
+                            <!-- Timeline component 3 -->
+                            <li class="out-of-view" style="--index: 3">
+                                <h3 class="third out-of-view">2025</h3>
+                                <h2 class="third out-of-view">A Latte to Come</h2>
+                                <p class="third out-of-view">
+                                As we look to the future, we're expanding globally, 
+                                deepening our commitment to sustainable sourcing, and embracing new brewing innovations. 
+                                Driven by our passion for exceptional coffee, we aim to connect communities and fuel dreams—one cup at a time.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
             <!-- Our mission Section -->
             <div class="ourmission">
                 <div class="aboutustext">
-                        <h1 class="header">Our Mission</h1>
-                        <p>At E-Spresso, our mission is to create a welcoming space where coffe lovers can gather,
-                            connect, and enjoy the finest brews. We are committed to delivering exceptional experiences, one cup at a time.
+                        <h2 class="out-of-view">Our Mission</h2>
+                        <p class="out-of-view">At E-Spresso, our mission is to redefine the coffee experience by blending tradition with modern craftsmanship. 
+                            We are driven by a passion for excellence, creating a space where every cup tells a story. 
+                            Our focus is not just on coffee but on the moments, the people, and the culture it inspires.
+                            
                         </p>
                         <div class="missions">
                             <ul>
-                                <li><p><span class="missionheader">Quality First:</span> We source the best beans from around the world to ensure every sip is a delight</p></li>
-                                <li><p><span class="missionheader">Sustainability:</span> We priotitise eco-friendly practices to support a healthier planet.</p></li>
-                                <li><p><span class="missionheader">Community Connection:</span> We aim to be more than just a coffee shop by fostering meaningful relationships with our customers</p></li>
-                                <li><p><span class="missionheader">Continuos Innovation:</span> From classic blends to unique creations, we strive to keep our menu exciting and fresh.</p></li>
+                                <li class="out-of-view"><p><span class="missionheader">Authenticity: </span>Honouring the rich heritage of coffee by preserving time-honored brewing techniques while embracing innovation</p></li>
+                                <li class="out-of-view"><p><span class="missionheader">Well-being: </span>Creating a space that promotes relaxation, mindfulness, and enjoyment - one sip at a time</p></li>
+                                <li class="out-of-view"><p><span class="missionheader">Cultural Appreciation: </span>Celebrating the global diversity of coffee, bringing flavours and traditions from around the world to our customers</p></li>
+                                <li class="out-of-view"><p><span class="missionheader">Exceptional Service: </span> Beyond great coffee, we are committed to providing warmth, hospitality, and a personalized experience for every guest</p></li>
                             </ul>
                         </div>
-                        <a class="contact-us" href="{{ route('products') }}"><h4>Explore Our menu</h4></a>
                 </div>
-                <img src="{{ asset('assets/AdobeStock_814649831.jpeg') }}" style="float: right;" class="bigimage"></img>
+                <div class="side-img out-of-view">
+                    <img style="margin-left: 10px; justify-self: center; display: block;" src="{{ asset('assets/AdobeStock_814649831.jpeg') }}"></img>
+                </div>
             </div>
+            
             <!-- Our vision Section -->
             <div class="ourvision">
-                <img src="{{ asset('assets/AdobeStock_859686298.jpeg') }}" class="bigimage"></img>
-                <div class="aboutustext">
-                    <h1 class="header">Our Vision</h1>
-                    <p>At E-Spresso, we strive to create a world where coffee inspires connections, fules creativity, and promotes sustainability. 
-                    Our goal is to redefine the coffee experience and make a positive impact on both our community and the environment.
-                    </p>
-                    <div class="missions">
-                        <ul>
-                            <li><p><span class="missionheader">Connecting People:</span> Bringing communities together through coffee.</p></li>
-                            <li><p><span class="missionheader">Sustainability:</span> Prioritising eco-friendly practices for a better planet.</p></li>
-                            <li><p><span class="missionheader">Quality:</span>  Serving the finest coffee with care and precision.</p></li>
-                            <li><p><span class="missionheader">Innovation:</span> Continuosly evolving to offer unique experiences</p></li>
-                        </ul>
-                    </div>
-                    <a class="contact-us" href="{{ route('products') }}"><h4>Discover Our Product</h4></a>
+                <div class="side-img out-of-view" >
+                    <img src="{{ asset('assets/AdobeStock_859686298.jpeg') }}" class="bigimage"></img>
+                </div>  
+                <div class="our-vision-body"> 
+                    <h2>Our Vision</h2>
+                    <div class="our-vision-text">
+                        <div class="connecting-people out-of-view">
+                            <div class="i-container">
+                                <i class='bx bxs-universal-access out-of-view' ></i>
+                            </div>
+                            <p><span class="missionheader">Connecting People</span></p>
+                            <p>Aiming to be more than a coffee shop by creating meaningful relationships with our customers</p>
+                        </div>
+                        <div class="sustainability out-of-view">
+                            <div class="i-container">
+                                <i class='bx bxs-leaf out-of-view'></i>
+                            </div>
+                            <p><span class="missionheader">Sustainability</span></p>
+                            <p>Prioritising eco-friendly practices to support a better planet.</p>
+                        </div>
+                        <div class="quality out-of-view">
+                            <div class="i-container">
+                                <i class='bx bxs-coffee-bean out-of-view'></i>
+                            </div>
+                            <p><span class="missionheader">Quality</span></p>
+                            <p>Sourcing the best beans from around the world to serve the finest coffee with care and precision</p>
+                        </div>
+                        <div class="innovation out-of-view">
+                            <div class="i-container">
+                                <i class='bx bxs-brain out-of-view' ></i>
+                            </div>
+                            <p><span class="missionheader">Innovation</span></p>
+                            <p>From classic blends to unique creations, we aim to continue evolving to offer unique experiences</p>
+                        </div>
+                    </div> 
+                    <a class="contact-us out-of-view" href="{{ route('products') }}"><h4>Discover Our Products</h4></a>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Us Section -->
-        <section id="ContactUs">
-            <img src="{{ asset('assets/AdobeStock_1026464614.jpeg') }}"></img>
-            <div class="contact-us-form">
-                <form id="contact-us">
-                    <h1 id="contact-us-heading">Contact Us</h1>
-                    <div class="first-and-last-name">
-                        <div class="first-name">
-                            <label for="fName">First Name</label>
-                            <input id ="fName "type ="text" name="fName" placeholder="Enter Your First Name" class="input-field" require/>
-                        </div>
-                        <div class="last-name">
-                            <label for="lName">Last Name</label>
-                            <input id ="lName "type ="text" name="lName" placeholder="Enter Your Last Name" class="input-field" require/>
-                        </div>
-                    </div>
-                    <div class="email-and-phone">
-                        <div class="email">
-                            <label for="email">Email</label>
-                            <input id="email" type="email"  name="email" placeholder="Enter your Email" class="input-field" require>
-                        </div>
-                        <div class="phone">
-                            <label for="phone">Phone</label>
-                            <input id="phone" type="text" id="phone" name="phone" placeholder="Enter Your Phone number" class="input-field" require/>
-                        </div>
-                    </div>
-                    <div class="message-to-send">
-                        <label for="message">Message</label>
-                        <textarea rows="5" cols="50" id="uMessage" name="uMessage" form="contactusform" class="input-field"
-                        placeholder="Write Message Here..." require></textarea>
-                    </div>
-                    <p class="error-message" id="formError"></p>
-                    <div class ="submit-form">
-                        <button type="submit" id="submit-form-btn">Submit Now</button>
-                    </div>
-                </form>
-                <script src="{{ asset('js/contact-us.js') }}" ></script>
+        <!-- Customer Testimonials Section -->
+        <section id="customer-testimonials">
+            <div class="testimonials-header">
+                <h3>Testimonials</h3>
+                <h2>What Our Customers Say About Us</h2>
             </div>
+            <!-- Testimonials carousel -->
+            <div class="testimonials-carousel">
+                <div class="testimonials-track-wrapper">
+                <div class="testimonials-track" id="testimonials-track">
+                    @forelse($reviews as $review)
+                    <!-- Testimonial -->
+                    <div class="testimonial">
+                    <div class="testimonial-content">
+                        <!-- Testimonial users name, rating and generic picture -->
+                        <div class="testimonial-user-info">
+                            <div class="testimonial-pfp">
+                                <i class='bx bx-user-circle'></i>
+                            </div>
+                            <div class="testimonial-details">
+                                <h3 class="testimonial-name">{{$review->user->firstName}} {{$review->user->lastName}}</h3>
+                                <h4 class="testimonial-rating">
+                                {!! str_repeat("<i class='bx bxs-star' style='color:#fecc42'></i>", $review->rating) !!}
+                                </h4>
+                            </div>
+                        </div>
+                        <!-- Testimonial title and message -->
+                        <div class="testimonial-main">
+                            <h3 class="testimonial-title">{{$review->title}}</h3>
+                            <p class="testimonial-message">{{$review->message}}</p>
+                        </div>
+                    </div>
+                    </div>
+                    @empty
+                    <!-- If there are no testimonials -->
+                    <div class="testimonial no-content">
+                        <div class="testimonial-content no-content">
+                            <h2>No testimonials available</h2>
+                        </div>
+                    </div>
+                    @endforelse
+                </div>
+                </div>
+                <script src="{{ asset('js/testimonials.js') }}"></script>
+            </div>
+            <!-- Dot navigation for testimonials -->
+            <div class="testimonial-dots" id="testimonial-dots"></div>
         </section>
-
-
 
         <!-- Footer Section -->
         <section id="footer">
@@ -192,7 +210,7 @@
                     <div class="logo">
                         <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                     </div>
-                    <p class="desc">At E-spresso, we’re passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. Whether you’re a coffee connoisseur or just beginning your journey, Our store is your gateway to a world of rich flavors and aromatic delights.</p>
+                    <p class="desc">At E-spresso, we're passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. Whether you’re a coffee connoisseur or just beginning your journey, Our store is your gateway to a world of rich flavors and aromatic delights.</p>
                     <div class="socials">
                         <ul class="social-links">
                             <i class='bx bxl-facebook-circle'></i>
@@ -209,9 +227,10 @@
                         <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="{{ route('products') }}">Products</a></li>
                         <li><a href="{{ route('about-us') }}">About Us </a></li>
+                        <li><a href="{{ route('contact-us') }}">Contact Us </a></li>
                         <li><a href="{{ route('blog') }}">Blog</a></li>
                         <li><a class="login" href="{{ route('admin.register') }}">Admin Register</a></li>
-
+                        <li><a href="{{ route('reviews.create', 0) }}">Review E-Spresso</a></li>
                     </ul>
                 </div>
                 <!-- Information Section -->

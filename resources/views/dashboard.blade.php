@@ -9,71 +9,16 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/responsive.js') }}"></script>
 </head>
 
 <body>
     <main>
         <!-- Header Section -->
-        <section id="header">
-            <nav id="main">
-                <!-- Left navbar section -->
-                <div class="navbar-left">
-                    <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
-               </div>
-               <!-- Middle navbar section -->
-                <div class="navbar-middle">
-                    <a class="middle" href="{{ route('home') }}">Home</a>
-                    <a class="middle" href="{{ route('products') }}">Products</a>
-                    <a class="middle" href="{{ route('about-us') }}">About Us</a>
-                    <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
-                </div>
-                <!-- Right navbar section -->
-                <div class="navbar-right">
-                    <!-- If user is logged in -->
-                    @if(Auth::check())
-                        <!-- If user is admin -->
-                        @if(Auth::user()->userType === 'admin')
-                            <a class="account" href="{{ route('admin.dashboard') }}">
-                                <i class='bx bx-user'></i>
-                            </a>
-                            <a class="basket" href="{{ route('basket') }}">
-                                <i class='bx bx-basket'></i>
-                                @if($basketCount > 0)
-                                    <span class="basket-count">{{ $basketCount }}</span>
-                                @endif
-                            </a>
-                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                            <script src="{{ asset('js/dark-mode.js') }}"></script>
-                        <!-- If user is user -->
-                        @elseif(Auth::user()->userType === 'user')
-                            <a class="account" href="{{ route('dashboard') }}">
-                                <i class='bx bx-user'></i>
-                            </a>
-                            <a class="basket" href="{{ route('basket') }}">
-                                <i class='bx bx-basket'></i>
-                                @if($basketCount > 0)
-                                    <span class="basket-count">{{ $basketCount }}</span>
-                                @endif
-                            </a>
-                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                            <script src="{{ asset('js/dark-mode.js') }}"></script>
-                        @endif
-                    <!-- If user is not logged in -->
-                    @else
-                        <a class="login" href="{{ route('login') }}">Login</a>
-                        <p>|</p>
-                        <a class="basket" href="{{ route('basket') }}">
-                            <i class='bx bx-basket'></i>
-                        </a>
-                        <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                        <script src="{{ asset('js/dark-mode.js') }}"></script>
-                    @endif
-                </div>
-            </nav>
-        </section>
-
-        <!-- Dashboard main section -->
+        @include('layouts.navbar')
+          
         <section class="dashboard">
             <div class="dash-inner">
                 <div class="dash-nav">
@@ -87,13 +32,13 @@
                         </div>
                     </div>
                     <div class="dash-buttons">
-                        <a id="orders" class="option" >
+                        <a id="dash-orders" class="option">
                             <i class='bx bx-shopping-bag'></i>My Orders
                         </a>
-                        <a id="account" class="option">
+                        <a id="dash-account" class="option">
                             <i class='bx bx-cog'></i>My Account
                         </a>
-                        <a id="member" class="option">
+                        <a id="dash-member" class="option">
                             <i class='bx bx-reset'></i>My Membership
                         </a>
                     </div>
@@ -104,16 +49,17 @@
                             </button>
                     </form>
                 </div>
+
                 <div class="dash-title-content">
                     <div class="title">
                         <!-- Titles -->
-                        <div id="ordersTitle" class="title-section">My Orders</div>
-                        <div id="accountTitle" class="title-section" style="display: none;">My Account</div>
-                        <div id="memberTitle" class="title-section" style="display: none;">My Membership</div>
+                        <div id="dash-ordersTitle" class="title-section">My Orders</div>
+                        <div id="dash-accountTitle" class="title-section" style="display: none;">My Account</div>
+                        <div id="dash-memberTitle" class="title-section" style="display: none;">My Membership</div>
                     </div>
                     <div class="content">
                         <!-- Content -->
-                        <div id="ordersContent" class="content-section" style="display: none;">
+                        <div id="dash-ordersContent" class="content-section" style="display: none;">
                             @if ($orders->isEmpty())
                                 <p>You have not placed any orders yet.</p>
                             @else
@@ -125,6 +71,7 @@
                                             <th>Status</th>
                                             <th>Total</th>
                                             <th>Items</th>
+                                            <th>Return</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -133,13 +80,28 @@
                                                 <td>{{ $order->id }}</td>
                                                 <td>{{ $order->created_at->format('d M, Y') }}</td>
                                                 <td>{{ $order->status }}</td>
-                                                <td>£{{ number_format($order->total_cost, 2) }}</td>
+                                                <td class="basket-price" data-gbp="{{ number_format($order->total_cost, 2) }}">£{{ number_format($order->total_cost, 2) }}</td>
                                                 <td>
                                                     <ul style="list-style:none">
                                                         @foreach ($order->orderItems as $item)
                                                             <li>{{ $item->product->name }} (x{{ $item->quantity }})</li>
                                                         @endforeach
                                                     </ul>
+                                                </td>
+                                                <td>
+                                                    @if($order->status === 'Processed/Shipped')
+                                                    <form action="{{route('admin.orders.return', $order->id)}}" method="POST">
+                                                        @csrf 
+                                                        @method('PATCH')
+                                                        <button type="submit" class="delete" onclick="return confirm('Are you sure you want to return this order?')">
+                                                            Return
+                                                        </button>
+                                                    </form>
+                                                    @else 
+                                                        <button class="delete" disabled style="background: #D3D3D3; cursor: not-allowed;">
+                                                            Return 
+                                                        </button>
+                                                    @endif 
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -149,12 +111,12 @@
                         </div>
 
                         <!-- Account Content button -->
-                        <div id="accountContent" class="content-section" style="display: none;">
+                        <div id="dash-accountContent" class="content-section" style="display: none;">
                             <div class="profile-info">
                                 <h4>Profile Information</h4>
                                 <section>
                                     <p>
-                                        {{ __("Update your account's profile information and email address.") }}
+                                        {{ __("Update your account's profile information and email address") }}
                                     </p>
 
                                     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
@@ -206,6 +168,10 @@
                             <!-- Edit password information -->
                             <div class="password-info">
                                 <h4>Update Password</h4>
+                                <p>
+                                    {{ __("Update your account's password") }}
+                                </p>
+
                                 <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
                                     @csrf
                                     @method('put')
@@ -271,10 +237,10 @@
                         </div>
 
                         <!-- Subscribe/Unsubscribe member section -->
-                        <div id="memberContent" class="content-section">
+                        <div id="dash-memberContent" class="content-section">
                             @if (auth()->check() && auth()->user()->isSubscribed)
                                 <h2>Welcome Back, Coffee Lover!</h2>
-                                <p>You’re already subscribed to our coffee subscription service. Fresh beans are on their way to you regularly—enjoy your hassle-free coffee experience!</p>
+                                <p>You're already subscribed to our coffee subscription service. Fresh beans are on their way to you regularly—enjoy your hassle-free coffee experience!</p>
                                 <h4>Your subscription is active at <span>£6.95 </span>a month</h4>
                                 <form method="POST" action="{{ route('unsubscribe') }}">
                                     @csrf
@@ -282,7 +248,7 @@
                                 </form>
                             @else
                                 <h2>Getting deja brew?</h2>
-                                <p>Finding yourself running out of beans and ordering often? With our subscription you you’ll never have to make a last-minute dash again. Regular deliveries mean your beans are always fresh, and your cup is always full, without the hassle of reordering. It’s the coffee experience that just keeps on brewing, right to your door!"</p>
+                                <p>Finding yourself running out of beans and ordering often? With our subscription you you'll never have to make a last-minute dash again. Regular deliveries mean your beans are always fresh, and your cup is always full, without the hassle of reordering. It’s the coffee experience that just keeps on brewing, right to your door!"</p>
                                 <h4>Subscribe now for only <span>£6.95 </span>a month</h4>
                                 <form method="POST" action="{{ route('subscribe') }}">
                                     @csrf
@@ -303,7 +269,7 @@
                     <div class="logo">
                         <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                     </div>
-                    <p class="desc">At E-spresso, we’re passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. Whether you’re a coffee connoisseur or just beginning your journey, Our store is your gateway to a world of rich flavors and aromatic delights.</p>
+                    <p class="desc">At E-spresso, we're passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. Whether you’re a coffee connoisseur or just beginning your journey, Our store is your gateway to a world of rich flavors and aromatic delights.</p>
                     <div class="socials">
                         <ul class="social-links">
                             <i class='bx bxl-facebook-circle'></i>
@@ -320,9 +286,10 @@
                         <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="{{ route('products') }}">Products</a></li>
                         <li><a href="{{ route('about-us') }}">About Us </a></li>
+                        <li><a href="{{ route('contact-us') }}">Contact Us </a></li>
                         <li><a href="{{ route('blog') }}">Blog</a></li>
                         <li><a class="login" href="{{ route('admin.register') }}">Admin Register</a></li>
-
+                        <li><a href="{{ route('reviews.create', 0) }}">Review E-Spresso</a></li>
                     </ul>
                 </div>
                 <!-- Information Section -->

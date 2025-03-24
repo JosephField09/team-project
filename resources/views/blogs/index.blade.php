@@ -8,72 +8,15 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/responsive.js') }}"></script>
 </head>
 
 <body>
     <main>
         <!-- Header Section -->
-        <section id="header">
-            <nav id="main">
-                <!-- Left navbar section -->
-                <div class="navbar-left">
-                    <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
-               </div>
-               <!-- Middle navbar section -->
-                <div class="navbar-middle">
-                    <a class="middle" href="{{ route('home') }}">Home</a>
-                    <a class="middle" href="{{ route('products') }}">Products</a>
-                    <a class="middle" href="{{ route('about-us') }}">About Us</a>
-                    <a class="middle option-selected" href="{{ route('blogs.index') }}">Blog</a>
-                </div>
-                <!-- Right navbar section -->
-                <div class="navbar-right">
-                    <!-- If user is logged in -->
-                    @if(Auth::check())
-                        <!-- If user is admin -->
-                        @if(Auth::user()->userType === 'admin')
-                            <a class="account" href="{{ route('admin.dashboard') }}">
-                                <i class='bx bx-user'></i>
-                            </a>
-                            <a class="basket" href="{{ route('basket') }}">
-                                <i class='bx bx-basket'></i>
-                                @if($basketCount > 0)
-                                    <span class="basket-count">{{ $basketCount }}</span>
-                                @endif
-                            </a>
-                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                            <script src="{{ asset('js/dark-mode.js') }}"></script>
-                        <!-- If user is user -->
-                        @elseif(Auth::user()->userType === 'user')
-                            <a class="account" href="{{ route('dashboard') }}">
-                                <i class='bx bx-user'></i>
-                            </a>
-                            <a class="basket" href="{{ route('basket') }}">
-                                <i class='bx bx-basket'></i>
-                                @if($basketCount > 0)
-                                    <span class="basket-count">{{ $basketCount }}</span>
-                                @endif
-                            </a>
-                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                            <script src="{{ asset('js/dark-mode.js') }}"></script>
-                        @endif
-                    <!-- If user is not logged in -->
-                    @else
-                        <a class="login" href="{{ route('login') }}">Login</a>
-                        <p>|</p>
-                        <a class="basket" href="{{ route('basket') }}">
-                            <i class='bx bx-basket'></i>
-                            @if($basketCount > 0)
-                                    <span class="basket-count">{{ $basketCount }}</span>
-                            @endif
-                        </a>
-                        <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                        <script src="{{ asset('js/dark-mode.js') }}"></script>
-                    @endif
-                </div>
-            </nav>
-        </section>
+        @include('layouts.navbar')
 
         <!-- Main blogs display section -->
         <section id="blogs-main">
@@ -105,6 +48,7 @@
                     </form>
                 </div>
             @else
+                <!-- If user is not logged in container -->
                 <div class="cant-post-blog">
                     <h3>You must be logged in to create a post.</h3>
                     <a class="login" href="{{ route('login') }}">Login</a>
@@ -120,7 +64,7 @@
                     <div class="logo">
                         <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
                     </div>
-                    <p class="desc">At E-spresso, we’re passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. Whether you’re a coffee connoisseur or just beginning your journey, Our store is your gateway to a world of rich flavors and aromatic delights.</p>
+                    <p class="desc">At E-spresso, we're passionate about delivering the perfect coffee experience. From premium beans to convenient pods, we offer a selection to satisfy every coffee lover’s taste. Whether you’re a coffee connoisseur or just beginning your journey, Our store is your gateway to a world of rich flavors and aromatic delights.</p>
                     <div class="socials">
                         <ul class="social-links">
                             <i class='bx bxl-facebook-circle'></i>
@@ -137,9 +81,10 @@
                         <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="{{ route('products') }}">Products</a></li>
                         <li><a href="{{ route('about-us') }}">About Us </a></li>
+                        <li><a href="{{ route('contact-us') }}">Contact Us </a></li>
                         <li><a href="{{ route('blog') }}">Blog</a></li>
                         <li><a class="login" href="{{ route('admin.register') }}">Admin Register</a></li>
-
+                        <li><a href="{{ route('reviews.create', 0) }}">Review E-Spresso</a></li>
                     </ul>
                 </div>
                 <!-- Information Section -->

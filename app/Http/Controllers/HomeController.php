@@ -1,55 +1,36 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        // Define the best sellers manually with updated prices and ratings
-        $bestSellers = [
-            (object)[
-                'id' => 1, // Add an id property
-                'name' => 'Cappuccino',
-                'image' => 'cappuccino.jpeg',
-                'price' => '£12.00',
-                'description' => 'A rich, creamy coffee with steamed milk and foam.',
-                'rating' => 5
-            ],
-            (object)[
-                'id' => 2, // Add an id property
-                'name' => 'Espresso',
-                'image' => 'espresso.jpeg',
-                'price' => '£12.00',
-                'description' => 'A strong and bold coffee shot.',
-                'rating' => 5
-            ],
-            (object)[
-                'id' => 3, // Add an id property
-                'name' => 'Macchiato',
-                'image' => 'macchiato.jpeg',
-                'price' => '£12.00',
-                'description' => 'An espresso with a touch of foamed milk.',
-                'rating' => 5
-            ],
-            (object)[
-                'id' => 4, // Add an id property
-                'name' => 'Hot Chocolate',
-                'image' => 'hot_chocolate.jpeg',
-                'price' => '£12.00',
-                'description' => 'A warm and comforting drink made with rich chocolate.',
-                'rating' => 5
-            ],
-            (object)[
-                'id' => 5, // Add an id property
-                'name' => 'Americano',
-                'image' => 'americano.jpeg',
-                'price' => '£12.00',
-                'description' => 'A classic coffee made by diluting espresso with hot water.',
-                'rating' => 5
-            ]
-        ];
-
-        return view('home', compact('bestSellers'));
+        $bestSellers = DB::table('order_item')
+            ->join('products', 'order_item.product_id', '=', 'products.id')
+            ->join('orders', 'order_item.order_id', '=', 'orders.id') 
+            ->whereIn('orders.status', ['Processed/Shipped']) 
+            ->select(
+                'products.id',
+                'products.name',
+                'products.size',
+                'products.description',
+                'products.image',
+                'products.price',
+                DB::raw('SUM(order_item.quantity) as total_sold')
+            )
+            ->groupBy(
+                'products.id',
+                'products.name',
+                'products.size',
+                'products.description',
+                'products.image',
+                'products.price'
+            )
+            ->orderByDesc('total_sold')
+            ->limit(3)
+            ->get();
+        return view('home', ['bestSellers' => $bestSellers]);
     }
 }

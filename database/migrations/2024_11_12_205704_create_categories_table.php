@@ -23,9 +23,9 @@ return new class extends Migration
         DB::table('categories')->insert([
             ['name' => 'Drinks', 'image' => 'latte.png', 'created_at' => now(), 'updated_at' => now()],
             ['name' => 'Pods','image' => 'pod_espresso.png', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Beans', 'image' => 'bag_jamaican.png', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Pastries','image' => 'chocolate_twist.png', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Sweet Treats','image' => 'brownie.png', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Beans', 'image' => 'single_bag_brazilian.png', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Pastries','image' => 'croissant.png', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Sweet Treats','image' => 'cookie.png', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 

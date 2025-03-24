@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Container\Attributes\Storage;
 use Illuminate\Http\UploadedFile;
 
 class ProductsController extends Controller
@@ -26,12 +27,20 @@ class ProductsController extends Controller
         }
 
         // Filter by price range
-        if ($request->filled('min_price') || $request->filled('max_price')) {
-            $query->whereBetween('price', [
-                $request->get('min_price', 0), 
-                $request->get('max_price', PHP_INT_MAX)
-            ]);
+        $minPrice = $request->get('min_price');
+        $maxPrice = $request->get('max_price');
+
+        if ($minPrice && $maxPrice) {
+            // Both min and max are given
+            $query->whereBetween('price', [$minPrice, $maxPrice]);
+        } elseif ($minPrice) {
+            // If minimum price is given
+            $query->where('price', '>=', $minPrice);
+        } elseif ($maxPrice) {
+            // If maximum price is given
+            $query->where('price', '<=', $maxPrice);
         }
+
 
         // Search by product name or category name
         if ($request->filled('search')) {
@@ -62,12 +71,22 @@ class ProductsController extends Controller
             }
         }
 
-        // Get filtered and sorted products
         $products = $query->get();
-        $categories = Category::all(); // Retrieve all categories for the dropdown
 
-        return view('products', compact('products', 'categories'));
+        // Check if AJAX request
+        if ($request->ajax()) {
+            // Return only the HTML for the product list partial
+            return response()->json([
+                'status' => 'success',
+                'html'   => view('layouts/_products-list', compact('products'))->render()
+            ]);
+        } else {
+            // Normal request, return the full view
+            $categories = Category::all();
+            return view('products', compact('products', 'categories'));
+        }
     }
+
     
 
     public function add_product(Request $request)
@@ -96,6 +115,49 @@ class ProductsController extends Controller
 
         // Redirect or return a response
         return redirect()->route('admin.dashboard',['tab' => 'allProducts'])->with('status', 'product-added');
+    }
+
+    public function edit(Product $product)
+    {
+        return view('edit-product', compact('product'));
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        // Validate incoming data 
+        $validatedData = $request->validate([
+            'name'         => 'required|string|max:255',
+            'image'        => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+            'price'        => 'required|numeric|min:0',
+            'description'  => 'nullable|string',
+            'category_id'  => 'required|integer|exists:categories,id',
+            'size'         => 'required|string|max:50',
+            'stock'        => 'required|integer',
+
+        ]);
+
+        // Check if a new image was uploaded
+        if ($request->hasFile('image')) {
+ 
+            $filename = $request->file('image')->getClientOriginalName();
+            $request->file('image')->move(public_path('assets'), $filename);
+
+            $validatedData['image'] = $filename;
+        }
+
+        $product->update($validatedData);
+
+        // Redirect with success message
+        return redirect()->route('admin.dashboard', ['tab' => 'allProducts'])->with('status', 'product-edited');
+    }
+
+
+    public function delete($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('admin.dashboard', ['tab' => 'allProducts'])->with('status', 'Product deleted successfully!');
     }
 
     public function details($id)

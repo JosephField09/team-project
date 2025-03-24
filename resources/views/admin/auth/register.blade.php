@@ -8,63 +8,15 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/responsive.js') }}"></script>
 </head>
 
 <body>
     <main>
         <!-- Header Section -->
-        <section id="header">
-            <nav id="main">
-                <!-- Left navbar section -->
-                <div class="navbar-left">
-                    <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
-               </div>
-               <!-- Middle navbar section -->
-                <div class="navbar-middle">
-                    <a class="middle" href="{{ route('home') }}">Home</a>
-                    <a class="middle" href="{{ route('products') }}">Products</a>
-                    <a class="middle" href="{{ route('about-us') }}">About Us</a>
-                    <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
-                </div>
-                <!-- Right navbar section -->
-                <div class="navbar-right">
-                    <!-- If user is logged in -->
-                    @if(Auth::check())
-                        <!-- If user is admin -->
-                        @if(Auth::user()->userType === 'admin')
-                            <a class="account" href="{{ route('admin.dashboard') }}">
-                                <i class='bx bx-user'></i>
-                            </a>
-                            <a class="basket" href="{{ route('basket') }}">
-                                <i class='bx bx-basket'></i>
-                                @if($basketCount > 0)
-                                    <span class="basket-count">{{ $basketCount }}</span>
-                                @endif
-                            </a>
-                        <!-- If user is user -->
-                        @elseif(Auth::user()->userType === 'user')
-                            <a class="account" href="{{ route('dashboard') }}">
-                                <i class='bx bx-user'></i>
-                            </a>
-                            <a class="basket" href="{{ route('basket') }}">
-                                <i class='bx bx-basket'></i>
-                                @if($basketCount > 0)
-                                    <span class="basket-count">{{ $basketCount }}</span>
-                                @endif
-                            </a>
-                        @endif
-                    <!-- If user is not logged in -->
-                    @else
-                        <a class="login" href="{{ route('login') }}">Login</a>
-                        <p>|</p>
-                        <a class="basket" href="{{ route('basket') }}">
-                            <i class='bx bx-basket'></i>
-                        </a>
-                    @endif
-                </div>
-            </nav>
-        </section>
+        @include('layouts.navbar')
 
         <!-- Admin Registration Form -->
         <section class="main">
@@ -98,6 +50,7 @@
 
                         <button type="submit" class="submit-btn">Register</button>
                     </form>
+                    <!-- Option if user is already an admin -->
                     <p>Already an admin? <a href="{{ route('login') }}">Login here</a></p>
                 </div>
             </div>
@@ -128,9 +81,10 @@
                         <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="{{ route('products') }}">Products</a></li>
                         <li><a href="{{ route('about-us') }}">About Us </a></li>
+                        <li><a href="{{ route('contact-us') }}">Contact Us </a></li>
                         <li><a href="{{ route('blog') }}">Blog</a></li>
                         <li><a class="login" href="{{ route('admin.register') }}">Admin Register</a></li>
-
+                        <li><a href="{{ route('reviews.create', 0) }}">Review E-Spresso</a></li>
                     </ul>
                 </div>
                 <!-- Information Section -->

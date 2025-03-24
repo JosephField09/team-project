@@ -19,6 +19,15 @@
   font-family: 'Trebuchet MS';
 }
 
+/* Styling for when the menu is in and out of view */
+.out-of-view{
+  opacity: 0;
+  transition: 0.75s ease;
+}
+.in-view{
+  opacity: 1;
+}
+
 /* Styling for the whole navigation bar */
 nav#main {
   background: black;
@@ -46,6 +55,10 @@ nav#main {
   transform: translateY(4px);
 }
 
+.navbar-middle{
+  display: inline-flex;
+}
+
 /* Styling for navigation bar links */
 .navbar-middle a{
   color: var(--headerfooter-text-colour);
@@ -55,14 +68,86 @@ nav#main {
   position: relative;
   padding: 0 20px;
   border-radius: 5px;
-  transition: font-size 0.5s linear, color 0.5s linear;
+  transition:color 0.5s linear;
 }
 
 /* Styling for navigation bar links when hovered over or selected */
-.navbar-middle a.option-selected,
-.navbar-middle a:hover{
+.navbar-middle a.active,
+.navbar-middle a:hover,
+.sidebar a:hover{
   color: var(--secondary-colour);
+}
+
+/* Styling for the navigation dropdown and arrow when hovered*/
+#product-nav:hover .dropdown,
+#product-nav:hover .dropdown-arrow{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  opacity: 1;
+}
+
+/* Styling for dropwown content*/
+.dropdown-content{
+  position: absolute;
+  transform: translateY(14px);
+}
+
+/* Styling for the dropdown arrow */
+.dropdown-arrow{
+  display: none;
+  position: relative;
+  transform: translateX(103px);
+}
+
+/* Styling for the dropdown menu */
+.dropdown{
+  width: 750px;
+  background: rgb(255,251,243);
+  position: absolute;
+  z-index: 999;
+  justify-self: center;
+  display: none;
+  top: 100;
+  height: 300px;
+  padding: 15px;
+  border-radius: 5px;
+  transform: translateX(-25%);
+  border: 1px solid gray;
+  border-top: none;
+  opacity: 0;
+  transition:  opacity 3s;
+}
+
+/* Styling for the dropdwon list*/
+.dropdown li{
+  display: block;
+}
+
+/* Styling for the category dropdown*/
+.dropdown .category{
+  color: var(--title-colour);
   font-size: 15px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+/* Styling for the dropdown list*/
+.dropdown ul{
+  margin-top: 7px;
+  border-right: 1px solid rgba(128, 128, 128, 0.5);
+  height: 230px;
+}
+
+/* Styling for the dropdown list */
+.dropdown ul li{
+  margin-bottom: 10px;
+}
+
+/* Styling for the products in the dropdown*/
+.dropdown .product{
+  font-size: 10px;
+  color: var(--text-colour);
+  margin-top: 20px;
 }
 
 /* Styling for right section of navigation bar */
@@ -70,15 +155,56 @@ nav#main {
   display: inline-flex;
 }
 
+/* Styling for hamburger icon */
+.hamburger{
+  display: none;
+  color: white;
+  position: relative;
+  align-self: center;
+  cursor: pointer;
+}
+
+/* Styling for the bars */
+.bar{
+  display: block;
+  background-color: white;
+  width: 17px;
+  height: 2px;
+  margin: 4px auto;
+  z-index: 2000;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+/* Styling for the bars when the hamburger menu is active*/
+.hamburger.active .bar:nth-child(2),
+.admin-hamburger.inactive .bar:nth-child(2) {
+  opacity: 0;
+}
+
+/* Styling for the bars when the hamburger menu is active*/
+.hamburger.active .bar:nth-child(1),
+.admin-hamburger.inactive .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+/* Styling for the bars when the hamburger menu is active*/
+.hamburger.active .bar:nth-child(3),
+.admin-hamburger.inactive .bar:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
 
 /* Styling for login button */
-.navbar-right a.login {
+.navbar-right a.login,
+.sidebar a.login,
+.sidebar button.login {
   font-size: 14px;
   color: var(--primary-colour);
   background: var(--secondary-colour);
   text-decoration: none;
   padding: 5px 22px;
   border-radius: 4px;
+  border: none;
 }
 
 
@@ -101,11 +227,72 @@ nav#main {
   color: var(--headerfooter-text-colour);
   align-self: end;
 }
+
+/* Styling for when the account menu is hovered */
+#account-nav:hover .account-dropdown,
+.dropdown-content:hover .account-dropdown,
+#account-nav:hover .account-dropdown-arrow{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+/* Styling for the account dropdown content */
+.account-dropdown-content{
+  position: absolute;
+  transform: translateY(22px);
+}
+
+/* Styling for the account dropdown arrow */
+.account-dropdown-arrow{
+  display: none;
+  position: relative;
+}
+
+/* Styling for the account dropdown */
+.account-dropdown{
+  width: max-content;
+  background: white;
+  position: absolute;
+  z-index: 999;
+  justify-self: center;
+  display: none;
+  top: 100;
+  height: fit-content;
+  padding: 15px;
+  border-radius: 5px;
+  transform: translateX(-25%);
+  border-top: none;
+}
+
+/* Styling for the button row */
+.button-row{
+  margin: 10px 0 10px 0;
+}
+
+/* Styling for the account dropdown icons */
+.account-dropdown i{
+  color: #000;
+  font-size: 22px;
+}
+
+/* Styling for the account dropdown links */
+.account-dropdown a{
+  color: gray;
+  font-size: 12px;
+  display: contents;
+}
+
+/* Styling for when the account dropdown links are hovered*/
+.account-dropdown a:hover{
+  color: var(--secondary-colour);
+}
+
 /* Styling for a tags in right of navigation bar */
 .navbar-right i {
   margin-right: 10px;
 }
 
+/* Styling for the toggle colour mode */
 .navbar-right #toggleMode{
   color: var(--headerfooter-text-colour);
   background-color: black;
@@ -114,6 +301,7 @@ nav#main {
   align-self: flex-end;
 }
 
+/* Styling for when the toggle colour mode is hovered */
 .navbar-right #toggleMode:hover{
   color: white;
   transition: 0.3s ease-in-out;
@@ -126,11 +314,159 @@ nav#main {
   transition: 0.3s ease-in-out;
 }
 
+/* Styling for the call to action on the home */
+#home-cta{
+  top: 70px;
+  position: relative;
+  background-color: black; 
+  color: white; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  min-height: 90vh;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Styling for the call to action after on home */
+#home-cta:after{
+  margin-left: auto;
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 90vh;
+}
+
+/* Styling for the call to action text */
+.home-cta-text{
+  justify-items: left;
+  width: 60%;
+  position: relative;
+  z-index: 1;
+  padding: 0 14.25%;
+  display: block;
+  margin-right: auto;
+}
+.home-cta-text h1{
+  transform: translateX(-10%);
+}
+.home-cta-text p{
+  color: var(--text-colour);
+  font-size: 15px;
+  margin: 10% 0;
+  transform: translateX(-10%);
+}
+
+/* Styling for the call to action text animation*/
+.home-cta-text h1.in-view{
+  transform: none;
+}
+.home-cta-text p.in-view{
+  transform: none;
+  transition-delay: 200ms;
+}
+
+/* Styling for call to action buttons */
+.home-cta-buttons{
+  margin-top: 10%;
+  transform: translateX(-10%);
+}
+
+/* Styling for call to action buttons animations */
+.home-cta-buttons.in-view{
+  transform: none;
+  transition-delay: 500ms;
+}
+
+/* Styling for order now on the call to action */
+.home-cta-text .order-now{
+  background-color: var(--secondary-colour); 
+  color: var(--primary-colour); 
+  padding: 10px 20px;
+  text-decoration: none; 
+  margin-right: 10px; 
+  font-weight: bold;
+  margin-top: 20px;
+  transition: background-color 0.5s;
+}
+
+/* Styling for when that call to action button is hovered */
+.home-cta-text .order-now:hover{
+  background-color: #b99531;
+}
+
+/* Styling for learn more text */
+.home-cta-text .learn-more{
+  color: white; 
+  padding: 10px 20px; 
+  text-decoration: none;
+  border: 0.25px solid white;
+}
+
+/* Styling for when learn more text is hovered */
+.home-cta-text .learn-more:hover{
+  background-color: white;
+  color: var(--primary-colour);
+}
+
+/* Styling for the call to action image */
+.cta-img{
+  height: 100%;
+}
+
+.cta-img img{
+  height: 100%;
+  width: 100%;
+}
+
+/* Styling for the currency selector icon */
+.currency-selector, .hb-currency-selector{
+  background: none;
+  transition: 0.3s ease-in-out;
+  color: var(--headerfooter-text-colour);
+  border: none;
+  appearance: none;
+  font-weight: 400;
+  font-size: 20px;
+  padding-right: 10px;
+  text-align: center;
+  align-self: self-start;
+  width: 30px;
+  font-size: 22px;
+}
+
+/* Styling for the currency selector icon */
+.currency-selector, .hb-currency-selector *{
+  offset: 10px;
+  background-color: black;
+  border-radius: none;
+  color: var(--headerfooter-text-colour);
+  align-self: center;
+  text-align: center;
+}
+
+/* Styling for when the currency selector is clicked on */
+.currency-selector:focus{
+  outline: none;
+  -moz-outline: none;
+}
+
+/* Styling for when the currency selector is hovered */
+.currency-selector:hover{
+  transition: 0.3s ease-in-out;
+  color: white;
+}
+
 /* Styling for dashboard */
 .dashboard{
   padding: 5% 14.25%;
   height: fit-content;
   background-color: var(--light-bg);
+  top: 70px;
+  position: relative;
+  margin-bottom: 70px;
 }
 
 /* Dark mode for dashboard */
@@ -236,11 +572,9 @@ body.dark-mode .dash-nav{
   font-size: smaller;
   align-self: flex-end;
   border: none;
-  justify-content: space-evenly;
+  justify-content: center;
   cursor: pointer;
 }
-
-
 
 /* Styling for login button icon */
 .logout i{
@@ -334,14 +668,18 @@ label{
   font-size: smaller;
 }
 
+body.dark-mode label{
+  color: white;
+}
+
 /* Styling for account conent section */
-#accountContent{
+#dash-accountContent{
   grid-template-columns: 1fr 1fr 1fr;
   height: 100%;
 }
 
 /* Styling for account content input fields */
-#accountContent .input-field{
+#dash-accountContent .input-field{
   width: 80%;
 }
 
@@ -363,7 +701,6 @@ label{
 
 /* Styling for profile info grid */
 .profile-info{
-  border-right: 1px solid gray;
   padding: 5px;
 }
 
@@ -375,11 +712,11 @@ label{
 /* Styling for delete profile grid */
 .delete-profile{
   padding: 5px;
-  border-left: 1px solid gray;
 }
 
 /* Styling for profile info and delete profiel paragraphs */
 .profile-info p,
+.password-info p,
 .delete-profile p{
   color: var(--text-colour);
   font-size: smaller;
@@ -407,20 +744,35 @@ body.dark-mode .delete {
   scale: 0.9;
 }
 
+/* Styling for the member content dark mode */
+body.dark-mode #dash-memberContent p{
+  color: white;
+}
+
+/* Styling for the member content dark mode */
+body.dark-mode #dash-memberContent h4{
+  color: white;
+}
+
+/* Styling for the member content dark mode */
+body.dark-mode #dash-memberContent span{
+  color: white;
+}
+
 /* Styling for member content paragraph */
-#memberContent p{
+#dash-memberContent p{
   margin-top: 10px;
   color: var(--text-colour);
 }
 
 /* Styling for member content h4 header */
-#memberContent h4{
+#dash-memberContent h4{
   color: var(--title-colour);
   margin-top: 20px;
 }
 
 /* Styling for content span */
-#memberContent span{
+#dash-memberContent span{
   color: var(--title-colour);
   font-size: 30px;
 }
@@ -436,20 +788,38 @@ body.dark-mode .delete {
   cursor: pointer;
 }
 
+/* Styling for main class in dark mode */
+body.dark-mode .main{
+  background-color: var(--dm-light-bg);
+  color: white;
+}
+
 /* Styling for Main container */
 .main {
   height: 70vh;
+  top: 70px;
+  position: relative;
   background-color: var(--light-bg);
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 14.25%;
+  margin-bottom: 70px;
+}
+
+/* Styling for the form box in dark mode */
+body.dark-mode .form-box{
+  background: var(--dm-dark-bg);
+  h1, p, .input-field{
+    color: white;
+  }
 }
 
 /* Styling for form box */
 .form-box {
-  width: 630px;
+  width: 100%;
   background: white;
-  padding: 20px 100px;
+  padding: 20px 10%;
   text-align: center;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -486,7 +856,6 @@ body.dark-mode .delete {
 
 /* Styling for form form submit buttons */
 .submit-btn{
-  width: 46%;
   font-size: 15px;
   font-weight: bold;
   padding: 10px 35px;
@@ -495,6 +864,7 @@ body.dark-mode .delete {
   border: none;
   margin: 10px;
   cursor: pointer;
+  color:var(--primary-colour);
 }
 
 /* Styling for submit button when hovering */
@@ -669,22 +1039,28 @@ footer.bottom {
   letter-spacing: 1px;
 }
 
-/* Styling for our story section on about us */
-#ourstory{
-  display: flex;
-  flex-direction: row;
+/* Styling for the side image */
+.side-img{
+  align-self: center;
+  scale: 0;
+  transition: 1s ease;
 }
 
-/* Styling for image blocks ona bout us */
+/* Styling for the side image in view */
+.side-img.in-view{
+  scale: 1;
+}
+
+/* Styling for image blocks on about us */
 #ImageBlocks {
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding-left: 14.25%;
-  padding-right: 14.25%;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding: 10% 14.25%;
   background-color: var(--light-bg);
+  position: relative;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 /* Dark mode for image blocks on about us */
@@ -696,57 +1072,74 @@ body.dark-mode #ImageBlocks{
 /* Styling for the images on about us */
 #ImageBlocks img{
   border-radius: 15px;
-  margin: 3%;
-}
-
-.bigimage{
-  max-height: 400px;
-  width: 35%;
-  height: 35%;
+  height: 100%;
+  width: 90%;
 }
 
 /* Styling for text on about us */
 .aboutustext{
-  h1{
-    font-size: 40px;
-  }
   display: flex;
-  flex-direction: column
+  flex-direction: column;
+  z-index:1;
+  h2{
+    font-size: 35px;
+    color: var(--title-colour);
+    transform: translateY(25%);
+    transition: 1s ease;
+    transition-delay: 200ms;
+  }
+  h2.in-view{
+    transform: none;
+  }
 }
 
 /* Styling for our story on about us */
 .ourstory{
-  max-width: 100%;
+  width: 100%;
+  padding-bottom: 10%;
+  display: grid;
+  grid-template-columns: 50% 50%;
   p{
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 15px 0 ;
     max-width: 500px;
     width: 100% auto;
+    color: var(--text-colour);
+    transform: translateY(10%);
+    transition-delay: 300ms;
+  }
+  p.in-view{
+    transform: none;
   }
   a{
-    margin: 15px;
-    font-size: 14px;
+    margin: 30px 0;
     color: var(--primary-colour);
     background: var(--secondary-colour);
     text-decoration: none;
-    padding: 5px 22px;
+    padding: 13px 60px;
     cursor: pointer;
-    width: 150px;
-    height: 30px;
-    border: none;
     border-radius: 5px;
     text-align: center;
+    width: fit-content;
+    font-weight: bold;
+    transition: scale 0.5s;
+    scale: 0;
+    transition-delay: 1100ms;
+  }
+  a:hover{
+    scale: 0.9;
+  }
+  a.in-view{
+    scale: 1;
   }
   h3{
-    padding-top: 25px;
-    padding-bottom: 25px;
+    margin-bottom: 25px;
     color: gray;
   }
 }
 
 /* Dark mode for our story section on about us */
 body.dark-mode .ourstory{
-  h3{
+  h3, h2, p{
     color: white;
   }
 }
@@ -757,26 +1150,291 @@ body.dark-mode .ourstory{
   flex-direction: row;
   justify-items: center;
   align-items: center;
-  margin-top: 10px;
-  padding-bottom: 0;
+  margin-top: 20px;
   height: 30px;
   max-width: 300px;
   width: auto;
   white-space: nowrap;
+  img{
+    width: 20%;
+    margin-right: 10px;
+    scale:0;
+    transition-delay: 100ms;
+  }
+  h4{
+    transform: translateY(15%);
+  }
+  img.in-view{
+    scale: 1;
+  }
+  img.first.in-view,
+  h4.first.in-view{
+    transition-delay: 400ms;
+  } 
+  img.second.in-view,
+  h4.second.in-view{
+    transition-delay: 600ms;
+  } 
+  img.third.in-view,
+  h4.third.in-view{
+    transition-delay: 600ms;
+  } 
+  img.fourth.in-view,
+  h4.fourth.in-view{
+    transition-delay: 800ms;
+  } 
 }
 
+/* Styling for our history section on about us */
+#our-history {
+  width: 100%;
+  font-size: 18px;
+  padding: 5% 0 10% 0;
+  position: relative;
+}
+
+/* Styling for the our history header */
+#our-history h2.header {
+  color: var(--title-colour);
+  padding-bottom: 10px;
+  font-size: 35px;
+  margin-bottom: 20px;
+  position: absolute;
+  justify-self: anchor-center;
+}
+
+/* Styling for our history header in dark mode */
+body.dark-mode #our-history h2.header{
+  color: white;
+}
+
+/* Styling for the our history container */
+#our-history .our-history-container {
+  margin-top: 40px;
+}
+
+/* Styling for the timeline on about us */
+.timeline {
+  --accent: #fecc42;
+  --text: rgb(51,51,51);
+  --line: #c4c4c4;
+  background: var(--background);
+  color: var(--text);
+  padding: 30px 0 30px 0;
+}
+
+/* Styling for the heading on the timeline */
+.timeline h1 {
+  border-left: 4px solid var(--accent);
+  padding: 10px 12px 10px;
+}
+
+/* Styling for the items on the timeline */
+.timeline ul {
+  list-style: none;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--items), 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+/* Styling for timeline before */
+.timeline ul:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 0%;
+  border-top: 3px solid var(--primary-colour);
+  left: 11px;
+  transition: width 2.3s ease-in; 
+}
+.timeline ul.in-view:before {
+  width: 100%; 
+}
+
+/* Styling for the timelines list */
+.timeline ul li {
+  --circle-size: 15px;
+  grid-column: var(--index);
+  overflow: hidden;
+  position: relative;
+  height: calc(100% + var(--circle-size) * 0.5);
+}
+
+/* Styling for timeline list after */
+.timeline ul li:after {
+  content: "";
+  width: var(--circle-size);
+  height: var(--circle-size);
+  background: var(--line);
+  position: absolute;
+  bottom: 0;
+  left: var(--circle-size);
+  border-radius: 100px;
+  transform: translateX(-50%);
+  z-index: 1;
+  opacity: 0;
+  transition: 0.1s linear; 
+
+}
+.timeline ul li.in-view:nth-child(1)::after {
+  opacity: 1;
+}
+.timeline ul li.in-view:nth-child(2)::after{
+  opacity: 1;
+  transition-delay: 1.2s;
+}
+.timeline ul li.in-view:nth-child(3)::after {
+  opacity: 1;
+  transition-delay: 1.8s;
+}
+
+/* Styling for the items on the timeline */
+.timeline ul li:nth-child(even):after {
+  bottom: auto;
+  top: 0;
+}
+
+/* Styling for when timeline is even */
+.timeline ul li:nth-child(even) {
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 40px;
+  margin-top: calc(var(--circle-size) * -0.45);
+}
+
+/* Styling for the timeline odd after and even before */
+.timeline ul li:nth-child(odd) p:after,
+.timeline ul li:nth-child(even) h3:before {
+  content: "";
+  display: block;
+  border-left: 2px dashed var(--text);
+  height: 100vh;
+  margin-top: 10px;
+  position: absolute;
+  left: calc(var(--circle-size) - 1px);
+}
+
+/* Styling for the heading3 for the even child */
+.timeline ul li:nth-child(even) h3:before {
+  bottom: 100%;
+  margin-bottom: 5px;
+}
+
+/* Styling for the circle size on the timeline */
+.timeline ul li > * {
+  padding-left: calc(var(--circle-size) * 0.4);
+}
+
+/* Styling for the timeline headings */
+.timeline ul li h3 {
+  color: var(--accent);
+  margin: 0;
+  margin-bottom: 15px;
+  font-size: 1.6em;
+  position: relative;
+  opacity: 0;
+  transform: translateY(-10%);
+}
+
+/* Styling for the timeline image */
+.timeline ul li img{
+  width: 70%;
+}
+
+/* Styling for the timeline headings */
+.timeline ul li h2 {
+  color: var(--primary-colour);
+  font-size: 1.7rem;
+  opacity: 0;
+  transform: translateY(-10%);
+}
+
+/* Styling for timeline text */
+.timeline ul li p {
+  margin-bottom: 15px;
+  padding-top: 15px;
+  position: relative;
+  text-wrap: pretty;
+  color: var(--text-colour);
+  font-size: 17px;
+  transform: translateY(-10%);
+  opacity: 0;
+}
+
+/* Styling for the timeline animation */
+.timeline ul li h3.first.in-view,
+.timeline ul li h2.first.in-view,
+.timeline ul li p.first.in-view{
+  opacity: 1;
+  transform: none;
+}
+.timeline ul li h3.second.in-view,
+.timeline ul li h2.second.in-view,
+.timeline ul li p.second.in-view {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1.2s;
+}
+.timeline ul li h3.third.in-view,
+.timeline ul li h2.third.in-view,
+.timeline ul li p.third.in-view {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1.8s;
+}
+
+/* Styling for the timeline in dark mode */
+body.dark-mode .timeline ul li p {
+  color: white;
+}
+
+/* Styling for when our mission is in dark mode*/
+body.dark-mode .ourmission{
+  background-color: var(--dm-dark-bg);
+  p, span, ul, h2{
+    color: white;
+  }
+}
 
 /* Styling for our missions on about us */
 .ourmission{
-  max-width: 100%;
-  padding-top: 75px;
-  padding-left: 5%;
-  display: flex;
-  flex-direction: row;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding:5%;
+  background-color: var(--dark-bg);
+  border-radius: 15px;
+  ul{
+    list-style: none;
+  }
+  span{
+    color: var(--primary-colour);
+  }
   p{
     padding-top: 15px;
     max-width: 525px;
     width: 100% auto;
+    color: var(--text-colour);
+    transition: 2s;
+    transition-delay: 400ms;
+    transform: translateY(10%);
+  }
+  p.in-view{
+    transform: none;
+  }
+  li{
+    transform: translateY(10%);
+    transition-delay: 800ms;
+  }
+  li.in-view{
+    transform: none;
   }
   a{
     margin: 15px;
@@ -797,22 +1455,19 @@ body.dark-mode .ourstory{
     border-radius: 5px;
     margin-top: 100px;
   }
-  h1{
-    padding-top: 50px;
-  }
 }
 
 
 /* Styling for individual missions on about us */
 .missions{
-  padding-top: 15px;
+  padding-top: 5%;
   display: flex;
   flex-direction: column;
   max-width: 600px;
   width: auto;
-  padding-left: 3%;
   p{
-    padding-top: 10px;
+    padding-top: 2%;
+    padding-bottom: 2%;
   }
 }
 
@@ -822,21 +1477,26 @@ body.dark-mode .ourstory{
   font-size: 1.1em;
 }
 
+/* Styling for our vision in dark mode */
+body.dark-mode .ourvision{
+  h2, span, p{
+    color: white;
+  }
+}
+
 /* Styling for our vision section on about us */
 .ourvision{
-  max-width: 100%;
-  padding-top: 60px;
-  padding-left: 5%;
-  display: flex;
-  flex-direction: row;
-  p{
-    padding-top: 15px;
-    max-width: 525px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  justify-content: space-between;
+  grid-template-columns: 50% 50%;
+  padding-top: 10%;
+  span{
+    color: var(--primary-colour);
   }
   a{
-    margin: 15px;
-    margin-left: 0px;
-    margin-top: 100px;
+    margin-top: 40px;
     font-size: 14px;
     color: var(--primary-colour);
     background: var(--secondary-colour);
@@ -852,46 +1512,425 @@ body.dark-mode .ourstory{
     text-align: center;
     font-size: 18px;
     border-radius: 5px;
+    transform: translateY(-20%)
   }
-  h1{
-    padding-top: 50px;
+  a.in-view{
+    transform: none;
+    transition-delay: 1200ms;
+  }
+  .side-img{
+    max-width: 600px;
+    justify-self: center;
   }
 }
 
-/* Styling for our contact us section on about us */
-#ContactUs{
-  max-width: 100%;
-  padding-left: 14.25%;
-  padding-right: 14.25%;
-  padding-bottom: 50px;
-  align-items: center;
+/* Styling for our vision body */
+.our-vision-body{
   display: flex;
-  flex-direction: row;
-  background-color: var(--dark-bg);
+  flex-direction: column;
+  h2{
+    font-size: 35px;
+    padding-bottom: 10px;
+    color: var(--title-colour);
+  }
+}
+
+/* Styling for our vision text*/
+.our-vision-text{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+/* Styling for bounce animations */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Styling for sway animations */
+@keyframes sway {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Styling for spin animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Styling for the pulse animation */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Styling for the information sections */
+.connecting-people, .sustainability, .quality, .innovation{
+  transform: skew(10deg,10deg);
+  .i-container{
+    background-color: var(--dark-bg);
+    padding: 10px;
+    width: fit-content;
+    border-radius: 12px;
+  }
+  i{
+    font-size: 35px;
+    color: var(--secondary-colour);
+  }
+  i.in-view{
+    transform: none;
+  }
+  p{
+    margin-top: 10px;
+  }
+  .missionheader{
+    font-size: x-large;
+    margin-bottom: 3px;
+  }
+}
+
+/* Styling for animations for those sections */
+.connecting-people.in-view,.sustainability.in-view, .quality.in-view, .innovation.in-view{
+  transform: none;
+}
+.sustainability.in-view{
+  transition-delay: 400ms;
+}
+.quality.in-view{
+  transition-delay: 800ms;
+}
+.innovation.in-view{
+  transition-delay: 1000ms;
+}
+
+.connecting-people i:hover {
+  animation: bounce 2s infinite ease-in-out;
+}
+
+.sustainability i:hover {
+  animation: sway 1s infinite ease-in-out;
+}
+
+.quality i:hover {
+  animation: spin 2s linear;
+}
+
+.innovation i:hover {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Styling for testimonials in dark mode */
+body.dark-mode #customer-testimonials{
+  background-color: var(--dm-light-bg);
+  h2,h3{
+    color: white;
+  }
+  h3.testimonial-title,i{
+    color: gray;
+  }
+  p{
+    color: lightgray;
+  }
+  .testimonial-content{
+    background-color: var(--dm-dark-bg);
+  }
+}
+
+/* Styling for the customer testimonials */
+#customer-testimonials {
+  background-color: var(--light-bg);
+  padding: 5% 0;
+  text-align: center;
+  position: relative;
+  top: 50px;
+}
+
+/* Styling for the testimonials header */
+.testimonials-header {
+  margin-bottom: 40px;
+}
+.testimonials-header h3 {
+  color: var(--text-colour);
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.testimonials-header h2 {
+  font-size: 32px;
+  margin: 0;
+  color: var(--title-colour);
+}
+
+/* Styling for the testimonials carousel */
+.testimonials-carousel {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Styling for testimonials track */
+.testimonials-track-wrapper {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Set the track to always span 5 slots (500%) */
+.testimonials-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  align-items: center;
+  width: 500%;
+}
+
+.odd-testimonials{
+  justify-content: center;
+}
+
+/* Each slot is 20% of the track */
+.testimonial,
+.testimonial-spacer {
+  flex: 0 0 20%;
+  padding: 60px;
+  box-sizing: border-box;
+}
+
+/* Styling for the testimonials when theyre inactive vs active */
+.testimonial {
+  opacity: 0.5;
+  transition: opacity 0.5s ease;
+}
+.testimonial.active {
+  opacity: 1;
+}
+
+/* Styling for the content in the active testimonial */
+.testimonial.active .testimonial-content {
+  scale: 1.2;
+}
+
+/* Styling for testimonial content */
+.testimonial-content {
+  background-color: white;
+  width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  transition: 0.5s ease-out;
+}
+
+/* Styling for testimonial user info */
+.testimonial-user-info {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  padding: 3% 3% 2% 3%;
+}
+
+/* Styling for the testimonial profile picture */
+.testimonial-pfp {
+  height: 100%;
+  width: 100%;
+}
+.testimonial-pfp i {
+  font-size: 91px;
+}
+
+/* Styling for the testimonial details */
+.testimonial-details {
+  width: 100%;
+  height: 100%;
+  align-content: center;
+}
+.testimonial-name {
+  font-size: 25px;
+}
+
+/* Styling for the testimonials main section */
+.testimonial-main {
+  width: 100%;
+  height: fit-content;
+  padding: 0 10%;
+}
+
+/* Styling for testimonial title */
+.testimonial-title {
+  color: var(--title-colour);
+  font-size: 17px;
+  margin-bottom: 2%;
+}
+
+/* Styling for testimonial message */
+.testimonial-message {
+  color: var(--text-colour);
+  position: relative;
+  overflow-wrap: anywhere;
+  font-style: italic;
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+/* Styling for the testimonial dots */
+.testimonial-dots {
+  text-align: center;
+  margin-top: 20px;
+  justify-self: center
+}
+
+/* Styling for each dot */
+.testimonial-dots .dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  background-color: rgba(254, 204, 66, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Styling for when dots are active */
+.testimonial-dots .dot.active {
+  background-color: #fecc42; /* Yellow color */
+}
+
+/* Styling for when there are no testimonials */
+.no-content {
+  justify-content: center;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* Styling for our contact us section on about us */
+#contact-us-container{
+  max-width: 100%;
+  padding: 5% 0 0 0;
+  background-color: var(--light-bg);
   h1{
     color: var(--title-colour);
-    padding: 20px;
     font-size: 30px;
     text-align: center;
-    padding-bottom: 40px;
+    margin-bottom: 2%;
   }
   img{
     border-radius: 15px;
     max-width: 400px;
-    width: 35%;
-    height: 35%;
   }
 }
 
 /* Dark mode for contact us section */
-body.dark-mode #ContactUs{
-  background-color: var(--dm-dark-bg);
+body.dark-mode #contact-us-container{
+  background-color: var(--dm-light-bg);
 }
 
-/* Styling for contact us form on about us */
+/* Styling for contact us start */
+#contact-start{
+  width: 100%;
+  text-align: center;
+  padding-top: 70px;
+display:grid;
+    justify-content:center;
+  p#contact-desc{
+    font-size: 1em;
+    margin: 2% 0 5% 0;
+    width: 60%;
+    justify-self: center;
+    color: var(--text-colour);
+    transform: translateY(15%);
+  }
+  p#contact-desc.in-view{
+    transform: none;
+    transition-delay: 100ms;
+  }
+
+}
+
+/* Styling for the contact us middle */
+#contact-middle{
+  width: 100%;
+  padding: 10% 14.25% 5% 14.25%;
+  background-color: white;
+}
+
+/* Styling for contact cards */
+#contact-cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+  width: 90%;
+  padding: 0 14.25%;
+  gap:5%;
+  justify-self: center;
+}
+
+/* Styling for each contact card */
+.contact-card{
+  background-color: white;
+  padding: 10%;
+  box-shadow: 0 3px 4px 0px gray;
+  height: 120%;
+  transform: translateY(-15%);
+  transition: 1s;
+  opacity: 0;
+  i{
+    font-size: 100px;
+    color:rgb(255 246 236);
+  }
+  p.explain{
+    color: gray;
+    font-size: 12px;
+    margin: 7% 0;
+    height: 31%;
+  }
+  p.detail{
+    color: lightgray;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Styling for animations when the contact cards are in view */
+.contact-card.in-view{
+  transform: none;
+}
+#contact-cards .contact-card.in-view:nth-child(1){
+  opacity: 1;
+  transition-delay: 200ms;
+}
+#contact-cards .contact-card.in-view:nth-child(2){
+  opacity: 1;
+  transition-delay: 400ms;
+}
+#contact-cards .contact-card.in-view:nth-child(3){
+  opacity: 1;
+  transition-delay: 600ms;
+}
+
+/* Styling for contact us form on contact us */
 .contact-us-form{
-  margin-left: 5px;
-  align-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -905,19 +1944,50 @@ body.dark-mode #ContactUs{
   label{
     margin-left: 10px;
   }
+  h3{
+    color: var(--title-colour);
+    font-size: 15px;
+    margin-bottom: 2%;
+    text-align: center;
+  }
+  p{
+    color: gray;
+    font-size: 14px;
+    margin-bottom: 2%;
+    text-align: center;
+    width: 55%;
+    justify-self: center;
+  }
 }
 
 /* Dark mode for contact us form */
 body.dark-mode .contact-us-form{
   .input-field{
-    background-color: white;
+    background-color: var(--dm-light-bg);
   }
   color: white;
 }
 
-/* Dark mode for labels */
-body.dark-mode label{
+body.dark-mode .contact-card h2,
+body.dark-mode #faq p{
   color: white;
+}
+/* Dark mode for labels */
+body.dark-mode #contact-start h1,
+body.dark-mode .contact-card p.detail,
+body.dark-mode .contact-us-form label,
+body.dark-mode #faq h2,
+body.dark-mode #accordion li label{
+  color: lightgray;
+}
+body.dark-mode .contact-card{
+  background-color: var(--dm-dark-bg);
+}
+body.dark-mode #contact-middle{
+  background-color: gray;
+}
+body.dark-mode .contact-card p.explain{
+  color: gray;
 }
 
 /* Dark mode for contact us heading */
@@ -979,12 +2049,106 @@ body.dark-mode #contact-us-heading{
   border-radius: 4px;
   background: var(--secondary-colour);
   border: none;
+  color:var(--primary-colour);
 }
 
 /* Styling for our submit form */
 .submit-form{
   padding: 15px;
   text-align: center;
+}
+
+/* Styling for the faq on contact us */
+#faq{
+  width: 100%;
+  height: fit-content;
+  padding: 5% 16.25%;
+  scroll-margin-top: 20vh;
+  h2{
+    font-size: 35px;
+    color: var(--title-colour);
+    margin-bottom: 1%;
+  }
+  p{
+    color: var(--text-colour);
+    font-size: 15px;
+    margin: 2% 0 10% 0;
+
+  }
+  .faq-desc-qa{
+    display: grid;
+    grid-template-columns: 45% 50%;
+    gap: 5%;
+  }
+  .faq-desc-qa .form-row{
+    display: block;
+  }
+  #faq-email{
+    border-radius: 50px;
+    padding: 2%;
+    border: 1px solid lightgray;
+    width: 60%;
+    font-size: 10px;
+  }
+  #submit-faq-btn{
+    font-size: 10px;
+    font-weight: bold;
+    padding: 10px 35px;
+    border-radius: 50px;
+    background: var(--secondary-colour);
+    border: none;
+    cursor: pointer;
+  }
+}
+
+/* Styling for the accodion on contact us */
+#accordion{
+  width: 100%;
+}
+
+/* Styling for the accordion list */
+#accordion li{
+  list-style: none;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 0 10px 10px 10px;
+  border-bottom: 2px solid lightgray;
+}
+
+/* Styling for accordion labels */
+#accordion li label{
+  padding: 5px 12px 5px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--primary-colour);
+}
+#accordion li label span{
+  font-size: 22px;
+  color: var(--primary-colour);
+  transition: transform 0.5s; 
+}
+
+/* Styling for the accordion animations */
+#accordion li input[type="checkbox"]:checked ~ label span {
+  transform: rotate(180deg);
+}
+
+#accordion li input[type="checkbox"] {
+  display: none;
+}
+#accordion .qa-content{
+  padding: 0 10px;
+  line-height: 26px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s;
+}
+#accordion li input[type="checkbox"]:checked ~ .qa-content {
+  max-height: 300px;
 }
 
 /* Styling for the products */
@@ -1002,6 +2166,30 @@ body.dark-mode main{
   background-color: var(--dm-dark-bg);
 }
 
+/* Styling for the products grid */
+#products-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Styling for the review stars */
+.stars{
+  margin: 8px;
+}
+
+/* Styling for the star */
+.star {
+  color: #ccc; 
+  font-size: 18px;
+  cursor: pointer;
+}
+.star.hover,
+.star.selected {
+  color: var(--secondary-colour);
+}
+
 /* Styling for the cta text */
 #cta{
   width: 100%;
@@ -1016,20 +2204,19 @@ body.dark-mode main{
   margin-left: auto;
   content: "";
   position: absolute;
-  top: 70px;
   right: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.8);
   height: 80vh;
+  z-index: 99;
 }
 
 /* Styling for the cta text */
 .cta-text{
-  justify-content: center;
   align-self: center;
   display: grid;
   color: white;
-  z-index: 2000;
+  z-index: 999;
   position:relative;
   width: 100%;
   text-align: center;
@@ -1038,12 +2225,21 @@ body.dark-mode main{
 /* Styling for the cta text */
 .cta-text p{
   font-size: 20px;
+  transform: translateY(-15%);
+}
+.cta-text p.in-view:nth-child(1){
+  transform: none;
 }
 
 /* Styling for the cta text */
 .cta-text h3{
   font-size: 30px;
-  margin-top: 10px
+  margin-top: 10px;
+  transform: translateY(-15%);
+}
+.cta-text h3.in-view{
+  transform: none;
+  transition-delay: 200ms;
 }
 
 /* Styling for the cta text */
@@ -1052,6 +2248,12 @@ body.dark-mode main{
   margin-top: 10px;
   color: whitesmoke;
   letter-spacing: 1px;
+}
+
+/* Styling for the cta text */
+.cta-text p.in-view:nth-child(3){
+  transform: none;
+  transition-delay: 400ms;
 }
 
 /* Styling for the shop banner */
@@ -1075,6 +2277,12 @@ body.dark-mode #shop-banner{
 #shop-banner h2{
   letter-spacing: 1px;
   font-size: 30px;
+  transform: translateY(10%);
+}
+
+/* Styling for the shop banner */
+#shop-banner h2.in-view{
+  transform: none;
 }
 
 /* Styling for the filter buttons */
@@ -1124,13 +2332,40 @@ body.dark-mode .filter-buttons{
   text-align: center;
   font-size: 15;
   font-weight: bold;
+  transform: translateX(-15%);
+}
+
+/* Styling for the category icon animations */
+.category-wrapper.in-view{
+  transform: none;
+}
+.category-wrapper.in-view:nth-child(1){
+  transition-delay: 200ms;
+}
+.category-wrapper.in-view:nth-child(2){
+  transition-delay: 300ms;
+}
+.category-wrapper.in-view:nth-child(2){
+  transition-delay: 400ms;
+}
+.category-wrapper.in-view:nth-child(3){
+  transition-delay: 500ms;
+}
+.category-wrapper.in-view:nth-child(4){
+  transition-delay: 600ms;
+}
+.category-wrapper.in-view:nth-child(5){
+  transition-delay: 700ms;
+}
+.category-wrapper.in-view:nth-child(6){
+  transition-delay: 800ms;
 }
 
 /* Styling for searching the sort filter */
 .search-sort-filter{
   display: inline-flex;
   width: 100%;
-  margin: 30px 0 30px 0;
+  margin: 30px 0;
   padding-right: 30px;
 }
 
@@ -1143,7 +2378,7 @@ body.dark-mode .filter-buttons{
 
 /* Styling for the search bar */
 #search{
-  width: 15vw;
+  width: 130%;
   padding: 10px;
   border: 1px solid var(--primary-colour);
   background-color: var(--light-bg);
@@ -1160,7 +2395,7 @@ body.dark-mode #search{
 }
 
 /* Styling for the sort */
-#sort{
+#sort-select{
   width: fit-content;
   padding: 10px;
   border: 1px solid var(--primary-colour);
@@ -1170,16 +2405,10 @@ body.dark-mode #search{
 }
 
 /* Dark mode for sort */
-body.dark-mode #sort{
+body.dark-mode #sort-select{
   background-color: var(--dm-light-bg);
   border: 1px solid white;
   color: white;
-}
-
-/* Styling for the filter container */
-.filter-container {
-  position: relative;
-  display: inline-block;
 }
 
 /* Styling for the filter button */
@@ -1206,13 +2435,12 @@ body.dark-mode .filter-button{
 /* Styling for the filter dropdown */
 .filter-dropdown {
   position: absolute;
-  top: 131%;
   background-color: rgb(255,251,243);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border: 1px solid #ccc;
   width: 200px;
   padding: 15px;
-  z-index: 100;
+  z-index: 200;
 }
 
 /* Dark mode for filter dropdown */
@@ -1233,23 +2461,22 @@ body.dark-mode .filter-dropdown{
   font-size: smaller;
 }
 
-/* Styling for applying the filter */
-.apply-filter-button {
-  background-color: var(--secondary-colour);
-  color: var(--primary-colour);
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  width: 60%;
-  justify-self: center;
-  display: block;
-}
-
 /* Styling for if its hidden */
 .hidden {
   display: none;
 }
 
+/* Styling for the min and max price text */
+#min-price,
+#max-price{
+  width: 100%;
+  margin-bottom: 5px;
+  background-color: rgba(211, 211, 211, 0.3);;
+  border: 1px solid lightgray;
+  padding: 5px;
+  font-size: 12px;
+  
+}
 
 /* Styling for products grid*/
 .products-grid {
@@ -1268,28 +2495,46 @@ body.dark-mode .filter-dropdown{
   background-color: var(--light-bg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: fit-content;
+  display: grid;
+  flex-direction: column;
+  align-items: center; /* Centers all content */
+  justify-content: space-between; /* Distributes space properly */
+  max-height: 450px; /* Adjust as needed */
+  text-align: center; /* Ensures text is properly aligned */
+  overflow: hidden; /* Prevents content overflow */
 }
+
 
 /* Dark mode for product card */
 body.dark-mode .product-card {
   background-color: var(--dm-light-bg);
   color: white;
-  p, span{
+  p, span, h3, p.product-description{
     color: white;
   }
 }
 
 /* Styling for products card image*/
 .product-card img {
+  z-index: 200;
   max-width: 100%;
   border-radius: 8px;
   margin-bottom: 10px;
-  height: 20%;
   max-height: 113px;
   justify-self: center;
+  justify-content: center;
+  justify-items: center;
   display: grid;
+  filter: drop-shadow(7px 13px 10px gray);
 }
 
+/* Styling for the product card price */
+.product-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--secondary-colour);
+  margin-bottom: 10px;
+}
 /* Styling for the product row */
 .product-row{
   width: 100%;
@@ -1307,21 +2552,23 @@ body.dark-mode .product-card {
 /* Styling for the product price */
 .product-price{
   font-size: smaller;
-  color: #444;
+  color: var(--secondary-colour);
 }
 
 /* Styling for product price text */
 .product-price span{
-  font-size: larger;
-  color: #444;
+  font-size: 16px;
+  color: var(--title-colour);
+  font-weight: bold;
 }
 
 /* Styling for product description text */
 .product-description {
-  font-size: 10px;
-  color: #666;
+  font-size: 11px;
+  color: var(--text-colour);
   margin-bottom: 15px;
   text-align: left;
+  min-height: 48px;
 }
 
 /* Styling for view button */
@@ -1348,10 +2595,21 @@ body.dark-mode .product-card {
 
 /* Styling for adnin main secion */
 .admin-main{
-  background-color: var(--light-bg);
-  height: fit-content;
-  max-height: 100vh;
-  min-height: 70vh;
+  background-color: #f7f7f7;
+  position: relative;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  transition: 0.3s ease-in-out;
+}
+.admin-main.inactive {
+  grid-template-columns: 0% 100%; 
+  .admin-logo,
+  .admin-user,
+  .admin-buttons,
+  .navbar-buttons,
+  .admin-logout{
+    display: none;
+  }
 }
 
 /* Dark mode for admin main section */
@@ -1361,17 +2619,25 @@ body.dark-mode .admin-main{
 
 /* Styling for admin dashboard navbar */
 #admin-nav {
-  width: 71.5%;
-  background-color: #272727;
+  display: grid;
+  grid-template-rows: 5% 15% 35% 30% 5% 10%;
+  width: 100%;
+  left: 0;
+  padding: 7.5% 10%;
+  background-color: var(--primary-colour);
   color: var(--text-colour);
-  border-radius: 50px;
-  margin: 3% 14.25%;
-  height: 50px;
-  display: inline-flex;
+  height: 100vh;
   position: relative;
   align-items: center;
   justify-content: space-evenly;
   box-shadow: inset 1px 1px 20px 10px black;
+  max-height: 100vh;
+  transition: 0.3s ease-in-out;
+}
+
+/* Styling for if the admin nav is inactive */
+#admin-nav.inactive {
+  transform: translateX(-100%);  
 }
 
 /* Dark mode for admin navigation */
@@ -1381,50 +2647,110 @@ body.dark-mode #admin-nav{
   color: #000;
 }
 
-/* Styling for admin dashboard user section in navbar */
-.admin-user{
-  display: inline-flex;
+/* Styling for admin dashboard logo section in navbar */
+.admin-logo{
+  width: 100%;
 }
 
+/* Styling for admin dashboard logo image section in navbar */
+.admin-logo img{
+  width: 70%;
+}
+
+/* Styling for admin dashboard user section in navbar */
+.admin-user{
+  display: grid;
+  grid-template-columns: 15% 85%;
+  align-content: center;
+  padding: 5%;
+  height: 55%;
+  background-color: rgba(181, 181, 181, 0.1) ;
+  border-radius: 15px;
+  border: 1px solid rgba(128, 128, 128,0.6);
+}
 
 /* Styling for name text */
 .name{
-  font-size: 12px;
+  font-size: 15px;
   color: var(--headerfooter-text-colour);
-  margin-left: 5px;
+  margin-left: 10%;
+  height: 100%;
+  align-items: center;
+}
+
+/* Styling for admin nav buttons */
+.admin-buttons h4,
+.navbar-buttons h4{
+  text-transform: uppercase;
+  font-size: 14px;
+  padding-left: 6%;
+  letter-spacing: 1px;
 }
 
 /* Styling for admin buttons */
-.admin-buttons{
-  display: inline-flex;
+.admin-buttons,
+.navbar-buttons{
+  display: grid;
+  grid-template-rows: 10% 90%;
+  padding-top: 5%;
+  width: 100%;
+  height: 80%;
+  align-self: baseline;
+}
+
+/* Styling for the admin navbar buttons */
+.admin-buttons-all,
+.navbar-buttons-all{
+  width: 100%;
+  margin-top: 2%;
+  display: grid;
 }
 
 /* Styling for navigation bar links */
-.admin-buttons a{
+.admin-buttons a,
+.navbar-buttons a{
+  width: 100%;
   color: var(--headerfooter-text-colour);
-  font-size: 12px;
+  font-size: 15px;
   text-decoration: none;
   font-weight: 100;
   position: relative;
-  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  padding: 5%;
   border-radius: 5px;
-  transition: transform 0.5s linear, color 0.5s linear;
+  height: 100%;
+  align-self: center;
 }
-
 
 /* Styling for admin butons when hovering */
-.admin-buttons a:hover{
-  transform: translateY(-5px);
+.admin-buttons a:hover,
+.navbar-buttons a:hover{
+  background-color:rgba(247, 217, 135, 0.1) ;
+  color: var(--secondary-colour);
 }
 
+/* Styling for admin button icons */
+.admin-buttons i,
+.navbar-buttons i{
+  font-size: 20px;
+  padding-right: 5%;
+}
+
+/* Styling for admin logout */
+.admin-logout{
+  width: 100%;
+  align-content: center;
+}
 /* Styling for admin logout button */
 .admin-logout button{
   background: var(--secondary-colour);
   border: none;
-  border-radius: 15px;
-  width: fit-content;
-  height: fit-content;
-  padding: 5px 10px;
+  justify-self: center;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  padding: 10px 15px;
   color: var(--primary-colour);
   display: inline-flex;
   cursor: pointer;
@@ -1446,23 +2772,160 @@ body.dark-mode #admin-nav{
   cursor: pointer;
 }
 
-/* Styling for content section */
-.admin-content{
-  padding: 10px 14.25% 50px 14.25%;
-  max-height: 70%;
+/* Styling for the admin nav container */
+#admin-nav-container{
+  height: 100%;
+  background-color: var(--primary-colour);
+}
+
+/* Styling for the horizontal admin navbar */
+.admin-horizontal-nav{
+  width: 100%;
+  background-color: var(--primary-colour);
+  height: 70px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 1%;
+}
+
+/* Styling for admin hamburger menu */
+.admin-hamburger{
+  color: white;
+  position: relative;
+  align-self: center;
+  cursor: pointer;
+}
+
+/* Styling for admin middle of nav bar */
+.admin-nav-middle{
+  width: 100%;
+}
+.admin-nav-middle a{
+  display: contents;
+}
+.admin-nav-middle img {
+  width: 10%;
+  position: relative;
+  display: flow;
+  justify-self: center;
+}
+.admin-titles-content{
+  width: 100%;
+  padding: 2%;
+  background: var(--light-bg);
+  height: 90.5%;
+}
+.admin-titles{
+  width: 100%;
+  margin:2% 0;
+}
+.admin-titles p{
+  font-size: 40px;
+  color: var(--title-colour);
 }
 
 /* Styling for all users, content, products and setting section section */
-#allUsersContent,
-#allProductsContent,
-#settingsContent{
+#admin-allOrdersContent,
+#admin-allUsersContent,
+#admin-allCategoriesContent,
+#admin-allProductsContent,
+#admin-settingsContent{
   background-color: white;
   border-radius: 15px;
   height: fit-content;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  padding: 10px;
+  padding: 20px;
 }
 
+/* Styling for admin home content */
+#admin-homeContent{
+  display: grid;
+  width: 100%;
+}
+
+/* Styling for the quick stats */
+#quick-stats{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+  height: 100%;
+  gap: 5px;
+}
+
+/* Styling for the stat card */
+.stat-card{
+  background-color: white;
+  padding: 5%;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  h3{
+    color: var(--title-colour);
+  }
+  p{
+    margin-top: 5px;
+    font-size: 12px;
+    color: var(--text-colour);
+  }
+}
+
+/* Styling for stat icon */
+.stat-icon{
+  justify-content: right;
+  align-content: center;
+}
+
+/* Styling for stat icon */
+.stat-icon i{
+  margin-left: auto;
+  font-size: 30px;
+}
+
+/* Styling for main stats*/
+#main-stats {
+  display: grid;
+  grid-template-columns: 49.5% 49.5%;
+  gap: 1%;
+  margin: 40px 0;             
+}
+
+/* Styling for the main card */
+#main-card {
+  background-color: #ffffff;   
+  border-radius: 8px;        
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  width: 100%;               
+  padding: 1.5rem;            
+  text-align: center;         
+  border: 1px solid #e2e2e2;   
+}
+
+/* Title styling */
+#main-card h3 {
+  margin-bottom: 1rem;        
+  font-size: 1.5rem;          
+  font-weight: 600;           
+  color: var(--title-colour);   
+  text-align: left;             
+}
+
+/* Paragraph styling */
+#main-card p {
+  margin: 0.5rem 0;          
+  font-size: 1rem;            
+  color: var(--text-colour);                
+}
+
+/* Styling for best selling */
+table.basket,
+table.best-selling{
+  th,td{
+    border: none;
+    border-bottom: 1px solid rgba(128, 123, 118, 0.1);
+    padding: 11px 0px;
+  }
+}
 
 /* Styling for the orders table */
 .orders-table {
@@ -1511,6 +2974,7 @@ body.dark-mode #admin-nav{
 /* Styling for table header and table d*/
 th, td {
   border: 1px solid rgba(128, 123, 118, 0.1); 
+  padding: 5px 10px;
 }
 
 /* Styling for table */
@@ -1591,26 +3055,68 @@ table{
   border-bottom-right-radius: 8px;
 }
 
+/* Styling for edit user */
+#edit-user{
+  background-color: var(--light-bg);
+  top: 70px;
+  height: fit-content;
+  padding: 5% 25% 10% 25%;
+  position: relative;
+}
+
+/* Styling for edit user container */
+#edit-user-container{
+  background-color: white;
+  border-radius: 12px;
+  padding: 5%;
+  box-shadow: 0 2px 6px 0 #6f6f6f;
+  h1{
+    font-size: 35px;
+    margin-bottom: 2%;
+    position: relative;
+    padding: 0;
+    text-align: center;
+  }
+  label{
+    color: var(--title-colour);
+    align-self: center;
+  }
+  p{
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+/* Styling for the form grid */
+.form-grid{
+  display: grid;
+  grid-template-columns: 47.5% 47.5%;
+  gap: 5%;
+}
+.form-grid .form-row{
+  display: grid; 
+  grid-template-columns: 20% 80%;
+}
+
 /* Styling for all products content section */
-#allProductsContent{
-  grid-template-columns: 1fr 1fr ;
+#admin-allUsersContent,
+#admin-allProductsContent{
+  grid-template-columns: 45% 50%;
   padding: 20px;
-  gap: 10px;
+  gap: 5%;
 }
-
-/* Styling for categories section in admin dashboard */
-.categories{
-  border-right: 1px solid gray;
-}
-
-/* Styling for form in categories */
-.categories form{
-  margin-bottom: 5%;
+.add-user .form-row,
+.products .form-row{
+  grid-template-columns: 1fr 4fr;
 }
 
 /* Styling for header 4 in categoreis and products */
 .categories h4,
-.products h4{
+.add-user h4,
+.edit-user h4,
+.products h4,
+.edit-products h4{
   font-size: 20px;
   margin-bottom: 3%;
 }
@@ -1649,28 +3155,26 @@ table{
 }
 
 /* Styling for settings content section */
-#settingsContent{
+#admin-settingsContent{
   grid-template-columns: 1fr 1fr 1fr;
 }
 
 /* Styling for settings content input field */
-#settingsContent .input-field{
+#admin-settingsContent .input-field{
   width: 90%;
 }
 
 /* Styling for the main section of the blogs page */
 #blogs-main{
+  position: relative;
+  display: grid;
+  grid-template-columns: 52.5% 42.5%;
+  gap: 5%;
+  grid-auto-rows: auto;
+  min-height: 55vh; 
+  height: auto;     
+  padding: 10% 14.25% 8% 14.25%; 
   background: var(--light-bg);
-  display: flex;
-  flex-direction: row; 
-  max-width: 100%;
-  width: 100%;
-  padding-left: 14%;
-  padding-right: 10%;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  height: 100%;
-  min-height: 500px;
   h1{
     text-align: center;
     align-self: center;
@@ -1701,9 +3205,8 @@ body.dark-mode #blogs-main{
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 10%;
-  width: 550px;
-  max-width: 550px;
+  padding: 5%;
+  width: 100%;
   position: relative;
   margin-bottom: 30px;
   word-wrap: break-word;  
@@ -1712,25 +3215,16 @@ body.dark-mode #blogs-main{
   h4{
     padding-bottom: 20px;
     position: absolute;
-    top: 20px;
-    left: 20px;
-    padding: 0;
     color: var(--text-colour)
   }
   h2{
     position: relative;
-    top:-10px;
-    left: -35px;
-    font-size: 25px;
-    max-width: 500px;
-    padding-bottom: 10px;
+    margin: 5% 0 2% 0;
     color: var(--title-colour);
   }
   p{
     position: relative;
     color: var(--text-colour);
-    max-width: 500px;
-    left: -35px;
   }
 }
 
@@ -1755,12 +3249,12 @@ body.dark-mode .blog-post{
   border-radius: 12px;
   box-shadow: 0 2px 6px 0#6f6f6f;
   padding: 5%;
-  width: 400px;
-  margin-left: 10%;
+  width: 100%;
+  align-content: center;
   text-align: center;
-  height: fit-content;
+  height: 200px;
   .login {
-    font-size: 25px;
+    font-size: 20px;
     color: var(--primary-colour);
     background: var(--secondary-colour);
     text-decoration: none;
@@ -1784,11 +3278,10 @@ body.dark-mode .cant-post-blog{
   border-radius: 12px;
   box-shadow: 0 2px 6px 0#6f6f6f ;
   padding: 10%;
-  width: 400px;
-  margin-left: 10%;
+  width: 100%;
   button{
+    display: block;
     margin: 15px;
-    margin-left: 26%;
     color: var(--primary-colour);
     background: var(--secondary-colour);
     font-weight: bold;
@@ -1799,6 +3292,7 @@ body.dark-mode .cant-post-blog{
     border: none;
     font-size: 15px;
     border-radius: 5px;
+    justify-self: center;
   }
   h4{
     padding-bottom: 10px;
@@ -1819,7 +3313,7 @@ body.dark-mode .input-field{
 
 /* Styling for the blog title */
 .blog-title{
-  width: 300px;
+  width: 100%;
 }
 
 /* Styling for the blog message */
@@ -1827,7 +3321,7 @@ body.dark-mode .input-field{
   display: flex;
   flex-direction: column;
   .input-field{
-    width: 300px;
+    width: 100%;
     resize: none;
   }
 }
@@ -1848,6 +3342,9 @@ body.dark-mode .product-details-page{
   padding: 5% 14.25%;
   background-color: var(--light-bg);
   align-content: center;
+  top: 70px;
+  position: relative;
+  margin-bottom: 70px;
 }
 
 /* Dark mode for product details */
@@ -1865,6 +3362,7 @@ body.dark-mode .product-details{
 }
 
 /* Container for product image */
+
 .product-details-page .product-image {
   height: 100%;
   flex: 1;
@@ -1875,9 +3373,9 @@ body.dark-mode .product-details{
 /* Styling for the product details product image */
 .product-details-page .product-image img {
   width: 100%;
-  height: 100%;
   border-radius: 8px;
-  max-height: 90%;
+  max-width: 500px;
+  max-height: 500px;
   align-self: center;
   justify-self: center;
 }
@@ -1992,8 +3490,8 @@ body.dark-mode .product-info{
   align-items: center;
   justify-content: center;
   background-color: white;
+  padding: 5px 10px;
   border: 1px solid #ddd;
-  border-radius: 8px;
   width: fit-content;
   margin-top: 20px;
 }
@@ -2044,10 +3542,151 @@ body.dark-mode .product-info{
   cursor: not-allowed;
 }
 
+/* Styling for the product reviews in dark mode */
+body.dark-mode .product-reviews{
+  background-color: var(--dm-dark-bg);
+  .review-body{
+    background-color: var(--dm-light-bg);
+    color: white;
+  }
+}
+
+/* Styling for the products review section */
+.product-reviews{
+  padding: 40px 14.25%;
+  background-color:var(--dark-bg);
+  height: fit-content;
+  a{
+    padding-bottom: 50px;
+    color: var(--primary-colour);
+    background: var(--secondary-colour);
+    font-weight: bold;
+    padding: 5px 22px;
+    cursor: pointer;
+    max-width: 100%;
+    height: 50px;
+    border: none;
+    font-size: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  h2{
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--title-colour);
+    text-align: center;
+  }
+  p.review-description{
+    font-size: 1em;
+    margin: 10px auto;
+    width: 70%;
+    color: var(--text-colour);
+    text-align: center;
+    align-self: center;
+  }
+}
+
+/* Styling for the review container */
+#review-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  gap: 1%;
+  margin: 5% 0;
+}
+
+/* Styling for the products review body */
+.review-body{
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px 0#6f6f6f;
+  display: flex;
+  flex-direction: column;
+  padding: 2% 2% 4% 2%;
+  width: 100%;
+  position: relative;
+  word-wrap: break-word;  
+  overflow-wrap: break-word;  
+  white-space: normal;
+  height: -webkit-fill-available;
+  min-height: fit-content;
+}
+
+/* Styling for the review user information */
+.review-user-info{
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  padding: 1% 2% 2% 2%;
+  align-content: center;
+}
+
+/* Styling for the review profile picture */
+.review-pfp {
+  height: 100%;
+  width: 100%;
+}
+.review-pfp i {
+  font-size: 70px;
+}
+
+/* Styling for the review details */
+.review-details {
+  width: 100%;
+  height: 100%;
+  align-content: center;
+}
+.review-name {
+  font-size: 15px;
+  margin-bottom: 1%;
+}
+
+/* Styling for review by */
+.review-by{
+  color: var(--text-colour);
+  font-size: 10px;
+}
+
+/* Styling for the review main */
+.review-main {
+  width: 100%;
+  height: fit-content;
+  padding: 0 10%;
+}
+
+/* Styling for the review title */
+.review-title {
+  color: var(--title-colour);
+  font-size: 13px;
+  margin-bottom: 2%;
+}
+
+/* Styling for the review message */
+.review-message {
+  color: var(--text-colour);
+  position: relative;
+  overflow-wrap: anywhere;
+  font-style: italic;
+  font-weight: lighter;
+  font-size: 12px;
+}
+
+/* Styling for if the review is empty */
+#review-empty{
+  text-align: center;
+  justify-self: center;
+  position: absolute;
+  color: var(--primary-colour);
+  width: 60%;
+}
+
+/* Styling for the review button */
+#review-button{
+  justify-self: center;
+}
+
 /* Styling for recommended products section */
 .product-details-page .recommended-products {
   padding: 40px 14.25%;
-  background-color: #fff;
+  background-color: var(--light-bg);
 }
 
 /* Dark mode for reccomended products */
@@ -2067,14 +3706,6 @@ body.dark-mode .recommended-products{
   text-align: center;
 }
 
-/* Styling for product cards grid */
-.product-details-page .products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  justify-content: center;
-}
-
 /* Product card styles */
 .product-details-page .product-card {
   background-color: #fff;
@@ -2092,16 +3723,8 @@ body.dark-mode .recommended-products{
   transform: translateY(-5px);
 }
 
-/* Styling for the product detail product card */
-.product-details-page .product-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  height: 90%;
-}
-
 /* Styling for the product details product card heading 3 */
+#best-sellers .product-card h3,
 .product-details-page .product-card h3 {
   font-size: 18px;
   font-weight: bold;
@@ -2109,18 +3732,12 @@ body.dark-mode .recommended-products{
   margin-bottom: 5px;
 }
 
-/* Styling for the product card price */
-.product-details-page .product-card .product-price {
-  font-size: 16px;
-  font-weight: bold;
-  color: var(--secondary-colour);
-  margin-bottom: 10px;
-}
-
 /* Styling for the product card description */
+#best-sellers .product-card .product-description,
 .product-details-page .product-card .product-description {
   font-size: 14px;
   color: var(--text-colour);
+  padding-top: 10px;
   margin-bottom: 20px;
 }
 
@@ -2140,6 +3757,13 @@ body.dark-mode .recommended-products{
 /* Styling for hovering the voew button on product details */
 .product-details-page .view-button:hover {
   background-color: #e5a500;
+}
+
+/* Styling for the basket */
+#basket{
+  top: 70px;
+  position: relative;
+  margin-bottom: 70px;
 }
 
 /* Styling for the basket icon */
@@ -2164,10 +3788,8 @@ body.dark-mode .recommended-products{
 /* Styling for the main basket section */
 .basket-main{
   background-color: var(--light-bg);
-  padding-left: 20%;
-  padding-right: 24%;
-  padding-top: 3%;
-  padding-bottom: 3%;
+  padding: 3% 14.25%;
+  height: fit-content;
 }
 
 /* Dark mode for main section of basket */
@@ -2177,83 +3799,92 @@ body.dark-mode .basket-main{
 
 /* Styling for the basket and checkout */
 .basket-and-checkout{
-  display: flex;
+  display: grid;
+  grid-template-columns: 75% 23%;
   flex-direction: row;
-  height: 550px;
+  gap: 2%;
+  width: 100%;
 }
 
 /* Styling for the empty basket */
 .empty-basket{
-  display: flex;
+  display: grid;
   flex-direction: column;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 2px 6px 0#6f6f6f;
-  padding: 10%;
-  width: 700px;
+  box-shadow: 0 2px 6px 0 #6f6f6f;
+  padding: 2%;
+  color: var(--title-colour);
+  height: 100%;
+  grid-template-rows: 1fr 3fr 5fr;
   h1{
     font-size: 35px;
-    padding-bottom: 20px;
-    top: -70px;
-    left: -50px;
+    margin-bottom: 2%;
     position: relative;
     padding: 0;
   }
   hr{
-    top: -60px;
-    left: -50px;
-    position: relative;
     padding: 0;
-    width: 125%;
+    width: 100%;
+  }
+  p{
+    font-size: 20px;
+    justify-self: center;
+    color: var(--text-colour);
+  }
+  a{
+    color: var(--secondary-colour);
   }
 }
 
 /* Dark mode for an empty basket */
 body.dark-mode .empty-basket{
   background-color: var(--dm-dark-bg);
-  color: white;
+  p, h1{
+    color: white;
+  }
   a{
     color: var(--secondary-colour);
   }
 }
 
+/* Styling for basket summary in dark mode */
+body.dark-mode .basket-summary{
+  h2,h4{color: white;}
+}
+
 /* Styling for the the basket summary */
 .basket-summary{
-  margin-left: 5%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   background: white;
   border-radius: 12px;
   box-shadow: 0 2px 6px 0#6f6f6f;
   padding: 5%;
-  height: 300px;
-  width: 300px;
-  justify-content: space-between;
+  height: 65%;
+  width: 100%;
   align-items: center;
   h2{
+    color: var(--title-colour);
     text-align: left;
-    font-size: 25px;
-    padding-bottom: 20px;
-    padding: 0;
-    margin-top: -20%;
-    position: relative;
+    font-size: 20px;
   }
   h4{
     text-align: left;
-    position: relative;
     margin-right: auto;
+    color: var(--text-colour);
+    font-weight: lighter;
+    align-self: end;
   }
   hr{
-    position: relative;
-    width: 140%;
+    width: 80%;
+    color: lightgray;
+    transform: translateY(-15px);
   }
   button, a{
     position: relative;
-    width: 300px;
-    top: 30%;
     background-color: var(--secondary-colour);
-    border-radius: 0px 0px 12px 12px;
-    padding: 15px;
+    border-radius: 5px;
+    padding: 9px 2px;
     cursor: pointer;
     border: none;
     font-size: 15px;
@@ -2262,7 +3893,13 @@ body.dark-mode .empty-basket{
     text-decoration: none;
     font-weight: bold;
     align-items: center;
+    margin-top: 5%;
+    transition: 0.5s;
   }
+  a:hover{
+    scale: 0.9;
+  }
+  
 }
 
 /* Dark mode for basket summary */
@@ -2278,12 +3915,12 @@ body.dark-mode .basket-summary{
 
 /* Styling for the costs */
 .costs{
-  display: flex;
-  display: row;
-  align-items: none;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  display: grid;
+  height: 100%;
+  width: 80%;
+  grid-template-columns: 60% 40%;
   margin-right: auto;
+  align-content: center;
 }
 
 /* Styling for the items in the basket */
@@ -2294,11 +3931,13 @@ body.dark-mode .basket-summary{
   border-radius: 12px;
   box-shadow: 0 2px 6px 0#6f6f6f;
   padding: 2%;
-  width: 700px;
+  text-align: left;
   height: fit-content;
+  min-height: 60vh;
+  color: var(--title-colour);
   h1{
     font-size: 35px;
-    padding-bottom: 20px;
+    margin-bottom: 2%;
     position: relative;
     padding: 0;
   }
@@ -2308,21 +3947,29 @@ body.dark-mode .basket-summary{
     width: 100%;
   }
   img{
-    width:60px;
-    height: 60px;
-    padding: 5%;
+    width:70%;
   }
   table{
     padding-top: 2%;
     width: 100%;
     text-align: center;
-
+    .product-details{
+      padding: 0 5%;
+      display: grid;
+      grid-template-columns: 40% 60%;
+      align-content: center;
+    }
     button{
       background-color: var(--secondary-colour);
       color: black;
       border: none;
-      padding: 3%;
+      padding: 7% 10%;
       border-radius: 3px;
+      cursor: pointer;
+      transition: 1.5s;
+    }
+    button:hover{
+      scale: 1.2;
     }
   }
 }
@@ -2336,43 +3983,53 @@ body.dark-mode .items-in-basket{
   }
 }
 
-/* Styling for the service ssection */
-.services-section { 
-  display: flex; 
-  justify-content: space-between; 
-  padding: 0 10%; 
-} 
+/* Styling for the services*/
+#services{
+  background-color: var(--dark-bg);
+  padding: 5% 14.25% 10% 14.25%;
+  p{
+    transform: translateY(15%);
+    transition-delay: 400ms;
+  }
+  p.in-view{
+    transform: none;
+  }
+}
 
-/* Styling for the service box */
-.service-box { 
-  background-color: white; 
-  border-radius: 8px; 
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); 
-  padding: 20px; 
-  width: 25%; 
-  min-height: 250px;
-  text-align: center; 
-  transition: transform 0.3s; 
-  margin: 0 10px; 
-}  
-
-/* Dark mode for service box */
-body.dark-mode .service-box{
-  background-color: var(--dm-light-bg);
-  color: white;
-  img{background-color: white;}
-  p, a{
+/* Styling for start of contact me in dark mode */
+body.dark-mode #contact-start{
+  strong, h1, h2, h3, p, label{
     color: white;
   }
 }
 
-/* Styling for when hovering the service box */
-.service-box:hover {
-  transform: translateY(-5px); 
+/* Styling for contact us middle part */
+body.dark-mode #contact-middle{
+  strong, h1, h2, h3, p, label{
+    color: white;
+  }
 }
 
-#services{
-  background-color: var(--dark-bg);
+/* Styling for the chevron dark mode on the accordion */
+body.dark-mode .bx-chevron-down{
+  color: white;
+}
+
+/* Styling for the services heading animations */
+#services h1,
+#contact-start h1{
+  font-size: 2.5em;
+  margin: 0;
+  color: var(--title-colour);
+  transform: translateY(20%);
+  transition: 1s;
+}
+#services h1.in-view,
+#contact-start h1.in-view{
+  transform: none;
+}
+body.dark-mode #services h1 {
+  color: white;
 }
 
 /* Dark mode for services section */
@@ -2382,26 +4039,91 @@ body.dark-mode #services{
   strong{color: white;}
 }
 
-/* Styling for the service image */
-.service-image {
-  width: 100px; 
-  height: 100px; 
-  border-radius: 50%; 
-  margin-bottom: 15px; 
+/* Styling for the service ssection */
+.services-section { 
+  display: flex; 
+  justify-content: space-between; 
+  margin-top: 5%;
+} 
+
+/* Styling for the service card */
+.service-card { 
+  background-color: white; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 20px 3px rgba(0, 0, 0, 0.2); 
+  padding: 20px; 
+  width: 26%; 
+  min-height: 250px;
+  text-align: center; 
+  transition: transform 0.3s; 
+  margin: 0 10px; 
+  transform: translateY(15%);
+  transition: 1s;
+  opacity: 0;
+  .service-icon-circle{
+    width: 90px;
+    height: 90px;
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    background-color: var(--dark-bg);
+    margin: 10px;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: 0.3s;
+    align-content: center;
+    justify-content: center;
+  }
+  img {
+    filter: saturate(1);
+    width: 60%;
+    height: 60%;
+  }
+  h3{
+    color: var(--title-colour);
+  }
+  p{
+    justify-self: center;
+    color: var(--text-colour);
+    width: 85%;
+  }
+  .view-range{
+    display: inline-block; 
+    margin-top: 10px; 
+    color: var(--primary-colour); 
+    text-decoration: none; 
+    font-weight: bold; 
+    font-size: smaller;
+  }
+}  
+
+/* Styling for service card animations */
+.service-card.in-view{
+  transform: none;
+}
+.service-card.in-view:nth-child(1){
+  opacity: 1;
+  transition-delay: 200ms;
+}
+.service-card.in-view:nth-child(2){
+  opacity: 1;
+  transition-delay: 400ms;
+}
+.service-card.in-view:nth-child(3){
+  opacity: 1;
+  transition-delay: 600ms;
 }
 
-/* Styling for the service box text */
-.service-box p {
-  color: gray;
-}
 
-/* Styling for the view range */
-.view-range {
-  display: inline-block; 
-  margin-top: 10px; 
-  color: var(--primary-colour); 
-  text-decoration: none; 
-  font-weight: bold; 
+/* Dark mode for service card */
+body.dark-mode .service-card{
+  background-color: var(--dm-light-bg);
+  color: white;
+  p, a, h3{
+    color: white;
+  }
+  .service-icon-circle{
+    background-color: white;
+  }
 }
 
 /* Styling for hovering the view range */
@@ -2411,55 +4133,68 @@ body.dark-mode #services{
 
 /* Styling for the best sellers section */
 #best-sellers {
-  background-color: white;
-  padding: 40px 20px;
+  background-color: var(--light-bg);
+  padding: 5% 14.25%;
   text-align: center;
-  p{color: gray;}
+  h1{
+    font-size: 2.5em; 
+    color: var(--title-colour);
+    transform: translateY(20%);
+    #services{
+      background-color: var(--dark-bg);
+      padding: 5% 14.25% 10% 14.25%;
+    }
+  }
+  h1.in-view{
+    transform: none;
+  }
+  p.best-description{
+    margin-top: 10px; 
+    max-width: 600px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    color:gray;
+  }
+  p.best-description.in-view{
+    transform: translateY(15%);
+    transition-delay: 400ms;
+    transform: none;
+  }
+  .product-card{
+    opacity: 0;
+  }
+  .product-card.in-view{
+    transform: none;
+  }
+  .product-card.in-view:nth-child(1){
+    opacity: 1;
+    transition-delay: 400ms;
+  }
+  .product-card.in-view:nth-child(2){
+    opacity: 1;
+    transition-delay: 600ms;
+  }
+  .product-card.in-view:nth-child(3){
+    opacity: 1;
+    transition-delay: 800ms;
+  }
 }
 
 /* Dark mode for best sellers section */
 body.dark-mode #best-sellers{
   color: white;
   background-color: var(--dm-light-bg);
-  p{
+  p, h1{
     color: white;
   }
 }
 
-/* Styling for the best sellers button */
-.best-sellers-button {
-  background-color: rgb(254, 204, 66);
-  color: black;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 25px;
-  font-weight: bold;
-}
-
-/* Styling for the products carousel */
-.product-carousel {
-  position: relative;
-}
-
 /* Styling for the products container */
 .products-container {
-  display: flex;
-  overflow: hidden;
-  width: 80%; 
-  justify-content: flex-start; 
-  transition: transform 0.3s ease; 
-}
-
-/* Styling for the product box */
-.product-box {
-  background-color: var(--dark-bg);
-  border-radius: 10px;
-  padding: 20px;
-  width: 30%; 
-  margin: 0 10px;
-  text-align: center;
-  min-height: 350px; 
-  box-sizing: border-box; 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 5% 0;
 }
 
 /* Dark mode for product box */
@@ -2471,34 +4206,140 @@ body.dark-mode .product-box{
   }
 }
 
-/* Styling for the arrows */
-.arrow {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 2em;
-  z-index: 1; 
+/* Styling for the best sellers button */
+.best-sellers-button {
+  background-color: rgb(254, 204, 66);
+  color: black;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition:0.5s;
+  transform: translateY(-10%);
 }
 
-/* Styling for the right arrow */
-.left-arrow {
+/* Styling for best sellers button */
+.best-sellers-button.in-view{
+  transition-delay:600ms;
+}
+
+/* Styling for hovering best sellers button */
+.best-sellers-button:hover{
+  background-color: hsl(44, 62%, 42%);
+}
+
+/* Styling for the coffee fix part in dark mode */
+body.dark-mode #coffee-fix{
+  background-color: var(--dm-dark-bg);
+  #coffee-text{
+    h1, p{
+      color: white;
+    }
+  }
+}
+
+/* Styling for coffee fix section on home */
+#coffee-fix{
+  background-color: var(--dark-bg);
+  padding: 5% 14.25%;
+  display:grid;
+  #coffee-fix-container{
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    height: 100%;
+  }
+  #coffee-text{
+    align-self: center;
+    h1{
+      color: var(--title-colour);
+      font-size: 2.5rem;
+      transform: translateX(-15%);
+    }
+    h1.in-view{
+      transform: none;
+    }
+    p{
+      color:var(--text-colour);
+      margin: 5% 0;
+      width: 80%;
+      transform: translateX(-15%);
+      transition-delay: 300ms;
+    }
+    p.in-view{
+      transform: none;
+    }
+    #become-member-button{
+      font-size: 14px;
+      color: var(--primary-colour);
+      background-color: var(--secondary-colour);
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 4px;
+      transition: 0.5s;
+      transform: translateX(-20%);
+      display: inline-block;
+    }
+    #become-member-button.in-view{
+      transition-delay: 500ms;
+      transform: none;
+    }
+    #become-member-button:hover{
+      background:hsl(44, 62%, 42%);
+    }
+  }
+}
+
+/* Container styles */
+#bean-bags {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  margin-left: 49%;
+}
+
+/* Shared styles for all images */
+#bean-bags img {
   position: absolute;
-  left: 10px;
+  height: 100%;
+  object-fit: contain;
+  transition: 0.5s;
 }
 
-/* Styling for the right arrow */
-.right-arrow {
-  position: absolute;
-  right: 10px;
+/* Styling for the bag shadow */
+.bag{
+  filter: drop-shadow(11px 8px 13px black);
 }
 
-/* Styling for the product box image */
-.product-box img {
-  width: 100%; 
-  height: 200px; 
-  object-fit: cover; 
-  border-radius: 5px; 
+/* Default or "resting" transforms */
+.bag1 {
+  z-index: 3;
+  transform: rotate(21deg);
 }
+
+.bag2 {
+  z-index: 2;
+  /* If you need a default transform, add it here */
+}
+
+.bag3 {
+  z-index: 1;
+  transform: rotate(-18deg);
+}
+
+/* When hover of #bean-bags move each bag */
+#bean-bags:hover .bag1 {
+  transform: translateX(-120px) rotate(-11deg);
+}
+
+#bean-bags:hover .bag2 {
+  transform: translateY(-15px) translateX(-30px) rotate(5deg);
+}
+
+#bean-bags:hover .bag3 {
+  transform: translateY(-5px) translateX(50px) rotate(15deg);
+}
+
 
 /* Styling for the main checkout section */
 .checkout-main{
@@ -2524,12 +4365,14 @@ body.dark-mode .checkout-main{
   width: 600px;
   align-items: center;
   text-align: center;
+  margin-top: 20px;
   hr{
     margin-top: 5px;
     width: 100%;
   }
   h3, h4{
     text-align: left;
+    margin-top: 10px;
   }
   label{
     text-align: left;
@@ -2569,4 +4412,49 @@ body.dark-mode .checkout-form-section{
   border-radius: 4px;
   background: var(--secondary-colour);
   border: none;
+}
+
+/* Styling for the create a review main page */
+.create-review{
+  background-color: var(--light-bg);
+  display: flex;
+  flex-direction: column; 
+  max-width: 100%;
+  width: 100%;
+  padding: 10% 14.25% 5% 14.25%;
+  height: 100%;
+  min-height: 500px;
+}
+
+/* Styling for the create a review form */
+.review-form{
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px 0#6f6f6f ;
+  padding: 5%;
+  align-self: center;
+  display: flex ;
+  flex-direction: column;
+  button{
+    color: var(--primary-colour);
+    background: var(--secondary-colour);
+    font-weight: bold;
+    padding: 5px 22px;
+    cursor: pointer;
+    max-width: 100%;
+    height: 30px;
+    border: none;
+    font-size: 15px;
+    align-self: center;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  h3{
+    font-size: xx-large;
+    color: var(--primary-colour);
+    margin: 8px; 
+  }
+  .star{
+    font-size: 20px;
+  }
 }

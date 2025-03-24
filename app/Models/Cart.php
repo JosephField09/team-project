@@ -13,7 +13,7 @@ class Cart extends Model
     protected $table = 'carts'; 
     
     // Fields that can be filled 
-    protected $fillable = ['quantity','user_id','product_id'];
+    protected $fillable = ['quantity','user_id','product_id','size'];
 
     
     public function user() 

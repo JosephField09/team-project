@@ -8,7 +8,6 @@ use App\Models\Product;
 use App\Models\User;  
 use Illuminate\Support\Facades\Auth; 
 
-
 class BasketController extends Controller
 {
     // Handles displaying the basket. Ensures that logged in users only see their own basket from the database
@@ -26,39 +25,42 @@ class BasketController extends Controller
             $userId = Auth::id();
             return Cart::where('user_id', $userId)->sum('quantity');
         }
-        return 0; // For guests, the count is 0
+        return 0; 
     }
     
     // Adds an item to the basket. Includes validation to protect against invalid or malicious inputs.   
     public function add($id, Request $request)
     {
-        // Get the logged-in user
         $user = Auth::user();
         $user_id = $user->id;
-
-        // Find the product using the ID (assuming the product exists)
         $product_id = $id;
-        
-        // Validate the quantity input (defaults to 1 if not provided)
         $quantity = $request->input('quantity', 1);
+        $size = $request->input('size');
 
-        // Check if the product already exists in the user's cart
-        $cartItem = Cart::where('user_id', $user_id)->where('product_id', $product_id)->first();
+        $cartItem = Cart::where('user_id', $user_id)
+                        ->where('product_id', $product_id)
+                        ->first();
 
         if ($cartItem) {
-            // If the item is already in the cart, update the quantity
             $cartItem->quantity += $quantity;
             $cartItem->save();
         } else {
-            // Otherwise, create a new cart item with the specified quantity
             $data = new Cart;
             $data->user_id = $user_id;
             $data->product_id = $product_id;
             $data->quantity = $quantity;
             $data->save();
+          
         }
 
-        return redirect()->back(); // Redirect back to the previous page (or basket)
+        // Basket notification Toastie 
+        $basketCount = Cart::where('user_id', $user_id)->sum('quantity');
+
+        return response()->json([
+            "message" => "Product added to basket successfuly",
+            "basketCount" => $basketCount
+        ]);
+    
     }
 
 
@@ -83,6 +85,4 @@ class BasketController extends Controller
         $cart_Item->delete(); 
         return redirect()->route('basket'); // Redirect to the basket page 
     }
-    
-    
 }

@@ -8,110 +8,57 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/responsive.js') }}"></script>
 </head>
 
 <body>
     <main>
        <!-- Header Section -->
-       <section id="header">
-            <nav id="main">
-                <!-- Left navbar section -->
-                <div class="navbar-left">
-                    <a href="{{ route('home') }}"><img src="{{ asset('assets/E-spresso_logo.jpg') }}"></a>
-               </div>
-               <!-- Middle navbar section -->
-                <div class="navbar-middle">
-                    <a class="middle" href="{{ route('home') }}">Home</a>
-                    <a class="middle" href="{{ route('products') }}">Products</a>
-                    <a class="middle" href="{{ route('about-us') }}">About Us</a>
-                    <a class="middle" href="{{ route('blogs.index') }}">Blog</a>
-                </div>
-                <!-- Right navbar section -->
-                <div class="navbar-right">
-                    <!-- If user is logged in -->
-                    @if(Auth::check())
-                        <!-- If user is admin -->
-                        @if(Auth::user()->userType === 'admin')
-                            <a class="account" href="{{ route('admin.dashboard') }}">
-                                <i class='bx bx-user'></i>
-                            </a>
-                            <a class="basket" href="{{ route('basket') }}">
-                                <i class='bx bx-basket'></i>
-                                @if($basketCount > 0)
-                                    <span class="basket-count">{{ $basketCount }}</span>
-                                @endif
-                            </a>
-                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                            <script src="{{ asset('js/dark-mode.js') }}"></script>
-                        <!-- If user is user -->
-                        @elseif(Auth::user()->userType === 'user')
-                            <a class="account" href="{{ route('dashboard') }}">
-                                <i class='bx bx-user'></i>
-                            </a>
-                            <a class="basket" href="{{ route('basket') }}">
-                                <i class='bx bx-basket'></i>
-                                @if($basketCount > 0)
-                                    <span class="basket-count">{{ $basketCount }}</span>
-                                @endif
-                            </a>
-                            <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                            <script src="{{ asset('js/dark-mode.js') }}"></script>
-                        @endif
-                    <!-- If user is not logged in -->
-                    @else
-                        <a class="login" href="{{ route('login') }}">Login</a>
-                        <p>|</p>
-                        <a class="basket" href="{{ route('basket') }}">
-                            <i class='bx bx-basket'></i>
-                        </a>
-                        <button id="toggleMode"><i class='bx bxs-moon'></i></button>
-                        <script src="{{ asset('js/dark-mode.js') }}"></script>
-                    @endif
-                </div>
-            </nav>
-        </section>
+       @include('layouts.navbar')
 
         <!-- Basket Section -->
         <section id="basket">
             <div class="basket-main">
                 <div class="basket-and-checkout">
-                    <!-- When the basket is empty -->
+                    <!-- If the basket is empty -->
                     @if (empty($basket_Items) || $basket_Items->isEmpty())
                         <div class="empty-basket">
                             <h1>Basket</h1>
-                            <hr width="90%" size="2"></hr>
-                            <h3>Your basket is empty. <a href="{{ route('products') }}">Please continue shopping</a>.</h2>
+                            <hr size="2"></hr>
+                            <p>Your basket is empty. <a href="{{ route('products') }}">Please continue shopping</a>.</p>
                         </div>
                         <div class="basket-summary">
                             <h2>Summary</h2>
-                            <hr width="100%" size="2">
+                            <hr width="90%" size="2"></hr>
                             <div class="costs">
                                 <h4>Total Products:</h4>
-                                <h4 c>£{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}</h4>
+                                <h4 class="basket-price" data-gbp="{{ 0 }}">£0</h4>
                             </div>
                             <div class="costs">
                                 <h4>Shipping costs:</h4>
                                 <h4>FREE</h4>
                             </div>
-                            <hr width="100%" size="2">
-                            <h4 class="total">Total: £{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}</h3>
+                            <hr style="transform: translateY(20px)" size="2"></hr>
+                            <h4 class="total" data-gbp="{{ 0 }}">Total: £0</h3>
                             <button class="btn btn-primary" @if(empty($basket_Items) || $basket_Items->isEmpty()) disabled @endif>Checkout</button>
                         </div>
                     @else
-                        <!-- Basket Table -->
+                         <!-- If there are items in teh basket -->
                         <div class="items-in-basket">
                             <div class="basket-table">
                                 <h1>Basket</h1>
                                 <hr width="90%" size="2"></hr>
-                                <table class="table table-bordered">
-                                    <thead class="thead-light">
+                                <!-- Basket Table -->
+                                <table class="basket">
+                                    <thead style=" border: none;border-bottom: 1px solid lightgray">
                                         <tr>
-                                            <th>Product</th>
-                                            <th>Price</th>
-                                            <th>Quantity</th>
-                                            <th>Total</th>
-                                            <th>Actions</th>
+                                            <th style="width: 30%; text-align: left; padding-left: 2%;">Products</th>
+                                            <th style="width: 20%;" >Size</th>
+                                            <th style="width: 15%;">Quantity</th>
+                                            <th style="width: 20%;">Total</th>
+                                            <th style="width: 20%;">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -121,16 +68,19 @@
                                                 <td>
                                                     <div class="product-details">
                                                         <img src="{{ asset('assets/' . $item->product->image) }}" alt="{{ $item->product->name }}" class="basket-image">
+                                                        <p style="align-self:center; justify-self: left; font-size:16px;">{{ $item->product->name }}</p>
                                                     </div>
                                                 </td>
-                                                <td>£{{ $item->product->price }}</td>
+                                                <td style="text-transform: capitalize;">
+                                                    {{ $item->product->size ?? 'N/A' }}
+                                                </td>
                                                 <td>
                                                     <form action= "{{route('basket.update', $item->id)}}" method="POST">
                                                         @csrf 
-                                                        <input type="number" name="quantity" value="{{$item->quantity}}" min="1" class="basket_quantity form-control" onchange="this.form.submit()">
+                                                        <input style="width: 80%; text-align: center;" type="number" name="quantity" value="{{$item->quantity}}" min="1" class="basket_quantity form-control" onchange="this.form.submit()">
                                                     </form>
                                                 </td>
-                                                <td>£{{ $item->product->price * $item->quantity }}</td>
+                                                <td class="basket-price" data-gbp="{{ $item->product->price * $item->quantity }}">£{{ $item->product->price * $item->quantity }}</td>
                                                 <td>
                                                     <form action="{{route('basket.remove', $item->id)}}" method="POST">
                                                         @csrf
@@ -147,17 +97,17 @@
                         <!-- Basket Summary Section -->
                         <div class="basket-summary">
                             <h2>Summary</h2>
-                            <hr width="100%" size="2">
+                            <hr size="2"></hr>
                             <div class="costs">
                                 <h4>Total Products:</h4>
-                                <h4>£{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}</h4>
+                                <h4 class="basket-price" data-gbp="{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}">£{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}</h4>
                             </div>
                             <div class="costs">
                                 <h4>Shipping costs:</h4>
                                 <h4>FREE</h4>
                             </div>
-                            <hr width="100%" size="2">
-                            <h4 class="total">Total: £{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}</h3>
+                            <hr style="transform: translateY(20px)" size="2"></hr>
+                            <h4 class="total" data-gbp="{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}">Total: £{{ $basket_Items->sum(fn($item) => $item->product->price * $item->quantity) }}</h3>
                             <a href="{{ route('checkout') }}"> Checkout </a>
                         </div>
                     @endif
@@ -190,9 +140,10 @@
                         <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="{{ route('products') }}">Products</a></li>
                         <li><a href="{{ route('about-us') }}">About Us </a></li>
+                        <li><a href="{{ route('contact-us') }}">Contact Us </a></li>
                         <li><a href="{{ route('blog') }}">Blog</a></li>
                         <li><a class="login" href="{{ route('admin.register') }}">Admin Register</a></li>
-
+                        <li><a href="{{ route('reviews.create', 0) }}">Review E-Spresso</a></li>
                     </ul>
                 </div>
                 <!-- Information Section -->
@@ -233,5 +184,28 @@
             </footer>
         </section>
     </main>
+    <!-- Toastie Notification CSS link-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <!-- Toastie Notification JS-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <script>
+        @if(session('success'))
+        Toastify({
+            text: "{{session('success')}}",
+            duration: 3000, // translates into 3 seconds in realtime
+            close: false, 
+            gravity: "top",
+            position: "center", 
+            backgroundColor: "green", 
+        }).showToast(); 
+
+        //Redirect back to homepage in 3 seconds 
+        setTimeout(function() {
+            window.location.href = "{{route('home')}}"; 
+        }, 3000); 
+        @endif 
+    </script>
 </body>
 </html>

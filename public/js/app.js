@@ -6,102 +6,123 @@ document.addEventListener("DOMContentLoaded", function() {
     const contents = document.querySelectorAll('.content-section');
 
     // Function to reset all to inactive state
-    function resetChosenNav() {
+    function resetChosenDashNav() {
         // Set all background colours to light grey
         options.forEach(option => {
             option.style.backgroundColor = 'rgba(254, 204, 66, 0.3)'; 
         });
-        // Don't diplay any titles
+        // Don't display any titles
         titles.forEach(title => {
             title.style.display = 'none'; 
         });
-        // Don't diplay any content
+        // Don't display any content
         contents.forEach(content => {
             content.style.display = 'none'; 
         });
     }
 
     // Function to set the active state based on the button pressed
-    function setChosenNav(id) {
-        resetChosenNav();
-        const activeOption = document.querySelector(`#${id}`);
+    function setChosenDashNav(id) {
+        resetChosenDashNav();
+        const activeOption = document.querySelector(`.dash-buttons #${id}`);
         const activeTitle = document.querySelector(`#${id}Title`);
         const activeContent = document.querySelector(`#${id}Content`);
-
-        activeOption.style.backgroundColor = '#fecc42'; 
-        activeTitle.style.display = 'block'; 
-        activeContent.style.display = 'grid'; 
+    
+        if (activeOption) activeOption.style.backgroundColor = '#fecc42';
+        if (activeTitle) activeTitle.style.display = 'block';
+        if (activeContent) activeContent.style.display = 'grid';
     }
 
-    // Set the default active state to "orders"
-    setChosenNav('orders');
+    // Check for a query parameter to set the initial state
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get('tab');
 
+    // If a query parameter exists, use it; otherwise, default to "orders"
+    const defaultTab = tab || 'orders';
+    setChosenDashNav(`dash-${defaultTab}`); // Prefix dashboard tabs
     // Add click event listeners to each option
     options.forEach(option => {
         option.addEventListener('click', function() {
             const id = this.id;
-            setChosenNav(id);
+            setChosenDashNav(id);
         });
     });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Get all the navigation links
-    const choices = document.querySelectorAll('.admin-buttons .choice');
-    // Get all the content sections
     const sections = document.querySelectorAll('.admin-content .admin-section');
+    const titles = document.querySelectorAll('.adminTitle'); // ← Collect all the titles
 
-    // Function to reset all to inactive state
-    function resetChosenNav() {
-        // Reset all links' styles
-        choices.forEach(choice => {
-            choice.style.color = 'rgba(255, 255, 255,0.7)';
-        });
-        // Hide all content sections
-        sections.forEach(section => {
-            section.style.display = 'none';
-        });
+    // Hide all sections and titles immediately on page load
+    sections.forEach(section => section.style.display = 'none');
+    titles.forEach(title => title.style.display = 'none');
+
+    function resetChosenAdminNav() {
+        // Hide all sections
+        sections.forEach(section => section.style.display = 'none');
+        // Hide all titles
+        titles.forEach(title => title.style.display = 'none');
     }
 
-    // Function to set the active state based on the button pressed
-    function setChosenNav(id) {
-        resetChosenNav();
-        const activeChoice = document.querySelector(`#${id}`);
+    function setChosenAdminNav(id, updateURL = true) {
+        resetChosenAdminNav();
+
+        const activeChoice = document.querySelector(`.admin-buttons #${id}`);
         const activeSection = document.querySelector(`#${id}Content`);
+        const activeTitle = document.querySelector(`#${id}Title`); // Find the matching title
 
         if (activeChoice && activeSection) {
             activeChoice.style.color = '#fecc42';
-            activeChoice.style.transform = 'translateY(0)'; 
+            activeChoice.style.transform = 'translateY(0)';
             activeSection.style.display = 'grid';
+
+            // Show the matching title if it exists
+            if (activeTitle) {
+                activeTitle.style.display = 'block';
+            }
+
+            // Update URL without refreshing the page
+            if (updateURL) {
+                const newTab = id.replace('admin-', ''); // Remove "admin-" for cleaner URLs
+                const newUrl = `${window.location.pathname}?tab=${newTab}`;
+                window.history.replaceState(null, '', newUrl);
+            }
         } else {
             console.warn(`No matching elements found for ID: ${id}`);
         }
     }
 
-    // Check the query parameter to set the initial active state
+    // Get tab from URL
     const urlParams = new URLSearchParams(window.location.search);
     const tab = urlParams.get('tab');
 
     if (tab) {
-        setChosenNav(tab);
+        setChosenAdminNav(`admin-${tab}`, false); 
     } else {
-        // Default to "home" tab if no query parameter is provided
-        setChosenNav('home');
+        setChosenAdminNav('admin-home', false); 
     }
 
-    // Add click event listeners to each choice
+    // Click events
     choices.forEach(choice => {
         choice.addEventListener('click', function () {
-            const id = this.id;
-            setChosenNav(id);
-
-            // Update the URL without refreshing the page
-            const newUrl = `${window.location.pathname}?tab=${id}`;
-            window.history.replaceState(null, '', newUrl);
+            setChosenAdminNav(this.id); 
         });
     });
 });
 
+// Function for Admin sidebar
+document.addEventListener("DOMContentLoaded", function () {
+    const admin = document.querySelector(".admin-main");
+    const hamburger = document.querySelector(".admin-hamburger");
+    const sidebar = document.querySelector("#admin-nav");
+
+    // Open sidebar when hamburger is clicked
+    hamburger.addEventListener("click", function () {
+        admin.classList.toggle("inactive");
+        hamburger.classList.toggle("inactive");
+        sidebar.classList.toggle("inactive");
+    });
+});
 
 function editCell(cell, user_id, fieldName) {
     // Check if an input is already present
@@ -110,7 +131,7 @@ function editCell(cell, user_id, fieldName) {
     // Get the current text content
     const currentValue = cell.textContent.trim();
 
-    // Save the original value for restoration in case of failure
+    // Save the original value in case it fails
     cell.dataset.originalValue = currentValue;
 
     // Create an input element
@@ -126,7 +147,7 @@ function editCell(cell, user_id, fieldName) {
     // Focus the input
     input.focus();
 
-    // Save the value on blur or pressing Enter
+    // Save the value on blur or when pressing Enter
     input.addEventListener('blur', () => saveCellValue(cell, input.value, user_id, fieldName));
     input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') saveCellValue(cell, input.value, user_id, fieldName);
@@ -137,7 +158,7 @@ function saveCellValue(cell, newValue, user_id, fieldName) {
     // Check if the new value is empty
     if (!newValue.trim()) {
         alert('Value cannot be empty.');
-        cell.textContent = cell.dataset.originalValue; // Restore the original value
+        cell.textContent = cell.dataset.originalValue; 
         return;
     }
 
@@ -224,6 +245,28 @@ function toggleFilterDropdown() {
     const dropdown = document.getElementById('filter-dropdown');
     dropdown.classList.toggle('hidden');
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all the elements with the .out-of-view class
+    const allSections = document.querySelectorAll('.out-of-view');
+    
+    // Create an intersection observer
+    const observer = new IntersectionObserver((entries, observerRef) => {
+    entries.forEach(entry => {
+        // If the element is visible add the .in-view class
+        if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        // Stop observing once it's in view 
+        observerRef.unobserve(entry.target);
+        }
+    });
+    }, {
+    threshold: 0.1
+    });
+
+    // Loop over each target and observe it
+    allSections.forEach(section => observer.observe(section));
+});
 
 // Request a fresh CSRF token
 window.axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').content;

@@ -66,16 +66,14 @@ class CheckoutController extends Controller
                     'quantity' => $item->quantity,
                     'price' => $product -> price,
                 ]);
-
-                //Adjusts the stock of the item by how many hte user ordered
-                $product->stock -= $item->quantity;
-                $product->save();
             }
 
             //Deletes the user's cart now that they have checked out
             Cart::where('user_id', Auth::id())->delete();
 
         });
-        return redirect()->route('basket');
+
+        // Checkout Notification
+        return redirect()->route('basket')->with('success', 'Your order has been placed successfully!');
     }
 }
